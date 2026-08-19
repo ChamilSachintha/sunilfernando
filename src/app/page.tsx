@@ -212,16 +212,19 @@ export default function Home() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-montserrat font-black tracking-widest leading-none">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-montserrat font-semibold tracking-widest leading-none text-white">
                 TRUSTED
               </h1>
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-montserrat font-black tracking-widest leading-none text-sfa-cyan mt-1">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-montserrat font-semibold tracking-widest leading-none text-white mt-1">
                 VALUATIONS
               </h1>
-              <div className="flex items-center justify-end gap-4 mt-2">
-                <span className="text-xl sm:text-2xl font-montserrat font-light tracking-widest text-sfa-grey uppercase">INFORMED DECISIONS</span>
-                <div className="h-[2px] w-12 bg-sfa-cyan" />
-                <span className="text-xs font-avenir font-medium tracking-widest text-sfa-grey">SINCE 1999</span>
+              <div className="mt-4 space-y-2">
+                <span className="block text-xl sm:text-2xl font-montserrat font-light tracking-widest text-white uppercase">
+                  INFORMED DECISIONS
+                </span>
+                <span className="block text-lg sm:text-xl font-avenir font-medium tracking-widest text-white/90">
+                  SINCE 1999
+                </span>
               </div>
             </motion.div>
 
