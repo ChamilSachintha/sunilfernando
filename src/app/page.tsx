@@ -187,7 +187,7 @@ export default function Home() {
             key={heroIndex}
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 0.5, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
+            exit={{ opacity: 0.5 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
             className="absolute inset-0 w-full h-full"
           >
