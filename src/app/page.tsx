@@ -212,16 +212,16 @@ export default function Home() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-sans font-black tracking-widest leading-none">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-montserrat font-black tracking-widest leading-none">
                 TRUSTED
               </h1>
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-sans font-black tracking-widest leading-none text-sfa-cyan mt-1">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-montserrat font-black tracking-widest leading-none text-sfa-cyan mt-1">
                 VALUATIONS
               </h1>
               <div className="flex items-center justify-end gap-4 mt-2">
-                <span className="text-xl sm:text-2xl font-light tracking-widest text-sfa-grey uppercase">INFORMED DECISIONS</span>
+                <span className="text-xl sm:text-2xl font-montserrat font-light tracking-widest text-sfa-grey uppercase">INFORMED DECISIONS</span>
                 <div className="h-[2px] w-12 bg-sfa-cyan" />
-                <span className="text-xs font-bold tracking-widest text-sfa-grey">SINCE 1999</span>
+                <span className="text-xs font-avenir font-medium tracking-widest text-sfa-grey">SINCE 1999</span>
               </div>
             </motion.div>
 
@@ -229,7 +229,7 @@ export default function Home() {
               initial={{ y: 35, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xs sm:text-sm font-sans tracking-wide leading-relaxed font-light text-white/90 mt-8 max-w-xl ml-auto"
+              className="text-xs sm:text-sm font-avenir tracking-wide leading-relaxed font-light text-white/90 mt-8 max-w-xl ml-auto"
             >
               SUNIL FERNANDO & ASSOCIATES DELIVERS INTERNATIONALLY ACCEPTED VALUATION AND REAL ESTATE ADVISORY SERVICES ACROSS SRI LANKA AND THE MALDIVES, BACKED BY 25 YEARS OF EXPERTISE, RICS COMPLIANCE, AND A GLOBAL PARTNER NETWORK.
             </motion.p>
@@ -242,7 +242,7 @@ export default function Home() {
             >
               <button
                 onClick={() => setValuationOpen(true)}
-                className="px-8 py-3 bg-sfa-blue hover:bg-sfa-navy border border-sfa-blue hover:border-white text-xs font-bold tracking-widest uppercase transition-all duration-300"
+                className="px-8 py-3 bg-sfa-blue hover:bg-sfa-navy border border-sfa-blue hover:border-white text-xs font-avenir font-medium tracking-widest uppercase transition-all duration-300"
               >
                 Request a Valuation
               </button>
@@ -264,7 +264,7 @@ export default function Home() {
         {/* Bottom Banner Bar "Explore Services" */}
         <div
           onClick={() => scrollTo("offer")}
-          className="absolute bottom-0 left-0 right-0 z-20 bg-sfa-navy border-t border-white/10 hover:bg-sfa-blue cursor-pointer py-5 text-center text-white tracking-widest text-xs font-bold uppercase transition duration-300"
+          className="absolute bottom-0 left-0 right-0 z-20 bg-sfa-navy border-t border-white/10 hover:bg-sfa-blue cursor-pointer py-5 text-center text-white tracking-widest text-xs font-avenir font-medium uppercase transition duration-300"
         >
           EXPLORE OUR SERVICES
         </div>
@@ -278,7 +278,7 @@ export default function Home() {
             {["VALUATION ADVISORY", "OCCUPIER SERVICES", "CAPITAL MARKETS", "RESEARCH SERVICES"].map((tab, idx) => (
               <div
                 key={idx}
-                className="py-4 font-sans text-xs font-bold tracking-widest border-r border-sfa-navy/10 last:border-0 hover:bg-slate-50 transition cursor-pointer text-sfa-navy/80"
+                className="py-4 font-avenir text-xs font-medium tracking-widest border-r border-sfa-navy/10 last:border-0 hover:bg-slate-50 transition cursor-pointer text-sfa-navy/80"
               >
                 {tab}
               </div>
@@ -296,16 +296,16 @@ export default function Home() {
 
             {/* Stat 1 */}
             <div className="text-center md:text-right flex flex-col md:items-end justify-center z-10">
-              <span className="text-5xl sm:text-7xl font-sans font-black tracking-tight text-sfa-blue">25+</span>
-              <span className="text-xs font-bold tracking-widest text-sfa-navy/60 uppercase mt-2">Years of Advisory</span>
-              <span className="text-xs font-bold tracking-widest text-sfa-navy/80 uppercase">Excellence</span>
+              <span className="text-5xl sm:text-7xl font-montserrat font-black tracking-tight text-sfa-blue">25+</span>
+              <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">Years of Advisory</span>
+              <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">Excellence</span>
             </div>
 
             {/* Stat 2 */}
             <div className="text-center md:text-left flex flex-col md:items-start justify-center z-10">
-              <span className="text-5xl sm:text-7xl font-sans font-black tracking-tight text-sfa-navy">9</span>
-              <span className="text-xs font-bold tracking-widest text-sfa-navy/60 uppercase mt-2">Asset Classes</span>
-              <span className="text-xs font-bold tracking-widest text-sfa-navy/80 uppercase">Covered</span>
+              <span className="text-5xl sm:text-7xl font-montserrat font-black tracking-tight text-sfa-navy">9</span>
+              <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">Asset Classes</span>
+              <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">Covered</span>
             </div>
 
             {/* Separator line */}
@@ -313,16 +313,16 @@ export default function Home() {
 
             {/* Stat 3 */}
             <div className="text-center md:text-right flex flex-col md:items-end justify-center z-10">
-              <span className="text-5xl sm:text-7xl font-sans font-black tracking-tight text-sfa-navy">3</span>
-              <span className="text-xs font-bold tracking-widest text-sfa-navy/60 uppercase mt-2">Countries</span>
-              <span className="text-xs font-bold tracking-widest text-sfa-navy/80 uppercase">Sri Lanka, Maldives & UAE</span>
+              <span className="text-5xl sm:text-7xl font-montserrat font-black tracking-tight text-sfa-navy">3</span>
+              <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">Countries</span>
+              <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">Sri Lanka, Maldives & UAE</span>
             </div>
 
             {/* Stat 4 */}
             <div className="text-center md:text-left flex flex-col md:items-start justify-center z-10">
-              <span className="text-5xl sm:text-7xl font-sans font-black tracking-tight text-sfa-blue">RICS</span>
-              <span className="text-xs font-bold tracking-widest text-sfa-navy/60 uppercase mt-2">& IVSL</span>
-              <span className="text-xs font-bold tracking-widest text-sfa-navy/80 uppercase">Compliant</span>
+              <span className="text-5xl sm:text-7xl font-montserrat font-black tracking-tight text-sfa-blue">RICS</span>
+              <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">& IVSL</span>
+              <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">Compliant</span>
             </div>
           </div>
         </div>
@@ -334,17 +334,17 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full">
           {/* Left panel - white background */}
           <div className="lg:col-span-5 bg-white text-sfa-navy p-12 lg:p-24 flex flex-col justify-center relative">
-            <span className="text-xs font-bold tracking-widest text-sfa-grey uppercase mb-2">WHAT WE DO</span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-black tracking-tight uppercase leading-none">
+            <span className="text-xs font-avenir font-medium tracking-widest text-sfa-grey uppercase mb-2">WHAT WE DO</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight uppercase leading-none">
               END-TO-END
             </h2>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-black tracking-tight uppercase text-sfa-blue leading-none mt-1">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight uppercase text-sfa-blue leading-none mt-1">
               REAL ESTATE
             </h2>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-black tracking-tight uppercase leading-none mt-1">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight uppercase leading-none mt-1">
               ADVISORY
             </h2>
-            <p className="text-xs font-bold tracking-widest text-sfa-blue mt-4 uppercase">BUILT FOR INSTITUTIONS</p>
+            <p className="text-xs font-avenir font-medium tracking-widest text-sfa-blue mt-4 uppercase">BUILT FOR INSTITUTIONS</p>
 
             {/* Slanted wedge absolute overlay */}
             <div className="hidden lg:block absolute top-0 bottom-0 right-[-80px] w-[80px] bg-white z-10" style={{ clipPath: "polygon(0 0, 0 100%, 100% 100%)" }} />
@@ -352,7 +352,7 @@ export default function Home() {
 
           {/* Right panel - blue background */}
           <div className="lg:col-span-7 bg-[#1d3d63] p-12 lg:p-24 flex flex-col justify-center">
-            <p className="text-base sm:text-lg lg:text-xl font-sans leading-relaxed tracking-wider font-light text-white/90 text-justify">
+            <p className="text-base sm:text-lg lg:text-xl font-avenir leading-relaxed tracking-wider font-light text-white/90 text-justify">
               FROM COMPLEX PORTFOLIO VALUATIONS TO STRATEGIC OCCUPIER DECISIONS, EVERY SERVICE AT SFA IS DELIVERED TO INTERNATIONAL STANDARDS ACCEPTED BY BANKS, AUDIT FIRMS, AND LAW FIRMS ACROSS THE GLOBE.
             </p>
           </div>
@@ -365,19 +365,19 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left side text details */}
             <div className="lg:col-span-6 space-y-6">
-              <h2 className="text-4xl sm:text-5xl font-sans font-black tracking-tight uppercase text-sfa-navy">
+              <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase text-sfa-navy">
                 VALUATIONS
               </h2>
               <div className="h-[2px] w-24 bg-sfa-cyan" />
-              <p className="text-sm font-sans text-sfa-navy/80 leading-relaxed text-justify">
+              <p className="text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
                 Comprehensive valuation across commercial, residential, agricultural, leisure, industrial, retail, warehousing, plant & machinery, and vessels conducted in strict conformity with RICS and IVSL standards.
               </p>
-              <p className="text-sm font-sans text-sfa-navy/80 leading-relaxed text-justify">
+              <p className="text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
                 We serve financial institutions, private equity funds, property companies, and individuals — delivering reports that stand up to international scrutiny.
               </p>
               <button
                 onClick={() => setValuationOpen(true)}
-                className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-sfa-blue uppercase hover:text-sfa-navy transition-all duration-300 mt-4 group"
+                className="inline-flex items-center gap-2 text-xs font-avenir font-medium tracking-widest text-sfa-blue uppercase hover:text-sfa-navy transition-all duration-300 mt-4 group"
               >
                 <span>EXPLORE VALUATION SERVICES</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -399,7 +399,7 @@ export default function Home() {
               ].map((category, idx) => (
                 <div
                   key={idx}
-                  className="bg-sfa-cyan text-white hover:bg-sfa-navy py-3 px-6 text-sm font-bold tracking-wider uppercase transition-all duration-300 transform hover:-translate-x-2 flex justify-between items-center cursor-pointer shadow-sm"
+                  className="bg-sfa-cyan text-white hover:bg-sfa-navy py-3 px-6 text-sm font-avenir font-semibold tracking-wider uppercase transition-all duration-300 transform hover:-translate-x-2 flex justify-between items-center cursor-pointer shadow-sm"
                   style={{
                     clipPath: "polygon(0 0, 95% 0, 100% 100%, 0% 100%)",
                     marginLeft: `${idx * 12}px`,
@@ -421,13 +421,13 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full">
           {/* Left Text Detail */}
           <div className="lg:col-span-7 p-12 lg:p-24 flex flex-col justify-center space-y-6">
-            <h2 className="text-4xl sm:text-5xl font-sans font-black tracking-tight uppercase text-sfa-navy">
+            <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase text-sfa-navy">
               OCCUPIER SERVICES
             </h2>
             <div className="h-[2px] w-24 bg-sfa-blue" />
 
-            <div className="space-y-4 text-xs sm:text-sm font-sans text-sfa-navy/80 leading-relaxed text-justify">
-              <p className="font-semibold text-sfa-navy">
+            <div className="space-y-4 text-xs sm:text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
+              <p className="font-avenir font-semibold text-sfa-navy">
                 Strategic advisory for organisations leasing, expanding, or relocating space aligned with your operational and financial goals.
               </p>
               <p>
@@ -443,7 +443,7 @@ export default function Home() {
 
             <button
               onClick={() => setContactOpen(true)}
-              className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-sfa-blue uppercase hover:text-sfa-navy transition-all duration-300 mt-4 group"
+              className="inline-flex items-center gap-2 text-xs font-avenir font-medium tracking-widest text-sfa-blue uppercase hover:text-sfa-navy transition-all duration-300 mt-4 group"
             >
               <span>LEARN MORE</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -475,19 +475,19 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             {/* Left side summary */}
             <div className="lg:col-span-5 space-y-6">
-              <h2 className="text-4xl sm:text-5xl font-sans font-black tracking-tight uppercase leading-none">
+              <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase leading-none">
                 CAPITAL
               </h2>
-              <h2 className="text-4xl sm:text-5xl font-sans font-black tracking-tight uppercase text-sfa-cyan leading-none mt-1">
+              <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase text-sfa-cyan leading-none mt-1">
                 MARKETS
               </h2>
               <div className="h-[2px] w-24 bg-sfa-cyan" />
-              <p className="text-sm font-sans text-white/80 leading-relaxed text-justify">
+              <p className="text-sm font-avenir text-white/80 leading-relaxed text-justify">
                 Expert support for property acquisitions, disposals, and investment transactions in evolving market.
               </p>
               <button
                 onClick={() => setValuationOpen(true)}
-                className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-sfa-cyan uppercase hover:text-white transition"
+                className="inline-flex items-center gap-2 text-xs font-avenir font-medium tracking-widest text-sfa-cyan uppercase hover:text-white transition"
               >
                 <span>LEARN MORE</span>
                 <ArrowRight className="w-4 h-4" />
@@ -497,10 +497,10 @@ export default function Home() {
             {/* Right side details (Bullet groups and description) */}
             <div className="lg:col-span-7 space-y-8">
               <div className="border-l-2 border-sfa-cyan pl-6 space-y-4">
-                <h3 className="text-xs font-black tracking-widest text-sfa-cyan uppercase">
+                <h3 className="text-xs font-montserrat font-medium tracking-widest text-sfa-cyan uppercase">
                   WE FOCUS ON PROVIDING UNIQUE AND PERSONALIZED ADVICE TO
                 </h3>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs font-bold tracking-wider text-white/95 uppercase">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs font-avenir font-medium tracking-wider text-white/95 uppercase">
                   <li>• INSTITUTIONAL FUNDS</li>
                   <li>• PRIVATE EQUITY</li>
                   <li>• STATE & PUBLIC SECTOR ENTITIES</li>
@@ -511,12 +511,12 @@ export default function Home() {
                 </ul>
               </div>
 
-              <p className="text-xs sm:text-sm font-sans text-white/80 leading-relaxed text-justify">
+              <p className="text-xs sm:text-sm font-avenir text-white/80 leading-relaxed text-justify">
                 We focus on providing unique and personalized advice, adding value through a combination of unparalleled access to capital, financing expertise, real estate market intelligence and thought leadership. Our services are solidified with real estate expertise together with innovative capital solutions.
               </p>
 
               <div className="border-t border-white/10 pt-6 space-y-4">
-                <h3 className="text-xs font-black tracking-widest text-sfa-cyan uppercase">
+                <h3 className="text-xs font-montserrat font-medium tracking-widest text-sfa-cyan uppercase">
                   OUR SERVICES EXTEND ACROSS A RANGE OF STRATEGIC TRANSACTIONS INCLUDING
                 </h3>
                 <div className="flex flex-wrap gap-x-6 gap-y-2 text-[10px] font-bold tracking-widest text-white/90 uppercase">
@@ -539,20 +539,20 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             {/* Left side headers */}
             <div className="lg:col-span-5 space-y-6">
-              <span className="text-xs font-bold tracking-widest text-sfa-blue uppercase">INSIGHTS</span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-black tracking-tight text-sfa-navy leading-none uppercase">
+              <span className="text-xs font-avenir font-medium tracking-widest text-sfa-blue uppercase">INSIGHTS</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight text-sfa-navy leading-none uppercase">
                 MARKET
               </h2>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-black tracking-tight text-sfa-navy leading-none uppercase">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight text-sfa-navy leading-none uppercase">
                 INTELLIGENCE
               </h2>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-black tracking-tight text-sfa-navy leading-none uppercase">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight text-sfa-navy leading-none uppercase">
                 FOR INFORMED
               </h2>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-black tracking-tight text-sfa-navy leading-none uppercase">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight text-sfa-navy leading-none uppercase">
                 DECISIONS.
               </h2>
-              <div className="inline-block mt-4 px-4 py-2 border border-sfa-blue text-xs font-bold tracking-widest text-sfa-blue uppercase">
+              <div className="inline-block mt-4 px-4 py-2 border border-sfa-blue text-xs font-avenir font-medium tracking-widest text-sfa-blue uppercase">
                 LATEST REPORT • 2026
               </div>
             </div>
@@ -561,15 +561,15 @@ export default function Home() {
             <div className="lg:col-span-7 space-y-12">
               {/* Report 1 */}
               <div className="border-b border-sfa-grey/15 pb-8 space-y-3">
-                <h3 className="text-lg font-extrabold text-sfa-navy tracking-wide">
+                <h3 className="text-lg font-avenir font-bold text-sfa-navy tracking-wide">
                   SRI LANKA REAL ESTATE MARKET OUTLOOK 2026
                 </h3>
-                <p className="text-xs text-sfa-grey uppercase tracking-widest font-bold">
+                <p className="text-xs font-barlow font-normal text-sfa-grey uppercase tracking-widest">
                   AN INDEPENDENT ASSESSMENT OF SRI LANKA&apos;S COMMERCIAL, RESIDENTIAL, AND LEISURE PROPERTY MARKETS — WITH A FOCUS ON COLOMBO, PORT CITY, AND THE RECOVERING TOURISM CORRIDOR.
                 </p>
                 <button
                   onClick={() => alert("Downloading Report: Sri Lanka Real Estate Market Outlook 2026 (Mock File)")}
-                  className="inline-flex items-center gap-2 text-xs font-black tracking-widest text-sfa-blue uppercase hover:underline"
+                  className="inline-flex items-center gap-2 text-xs font-avenir font-bold tracking-widest text-sfa-blue uppercase hover:underline"
                 >
                   <span>DOWNLOAD REPORT</span>
                   <Download className="w-4 h-4" />
@@ -578,20 +578,20 @@ export default function Home() {
 
               {/* Report 2 */}
               <div className="border-b border-sfa-grey/15 pb-8 space-y-2">
-                <span className="text-[10px] font-bold text-sfa-blue uppercase tracking-widest">MARKET COMMENTARY</span>
-                <h3 className="text-base font-extrabold text-sfa-navy tracking-wide">
+                <span className="text-[10px] font-montserrat font-bold text-sfa-blue uppercase tracking-widest">MARKET COMMENTARY</span>
+                <h3 className="text-base font-avenir font-bold text-sfa-navy tracking-wide">
                   PORT CITY COLOMBO: WHAT THE FIRST WAVE OF COMPLETIONS MEANS FOR COMMERCIAL VALUES
                 </h3>
-                <span className="block text-xs font-bold text-sfa-grey uppercase tracking-wider">APRIL 2026</span>
+                <span className="block text-xs font-barlow font-normal text-sfa-grey uppercase tracking-wider">APRIL 2026</span>
               </div>
 
               {/* Report 3 */}
               <div className="border-b border-sfa-grey/15 pb-8 space-y-2">
-                <span className="text-[10px] font-bold text-sfa-blue uppercase tracking-widest">MALDIVES</span>
-                <h3 className="text-base font-extrabold text-sfa-navy tracking-wide">
+                <span className="text-[10px] font-montserrat font-bold text-sfa-blue uppercase tracking-widest">MALDIVES</span>
+                <h3 className="text-base font-avenir font-bold text-sfa-navy tracking-wide">
                   RESORT ASSET VALUATIONS IN THE MALDIVES: KEY METHODOLOGIES AND LENDER REQUIREMENTS
                 </h3>
-                <span className="block text-xs font-bold text-sfa-grey uppercase tracking-wider">MARCH 2026</span>
+                <span className="block text-xs font-barlow font-normal text-sfa-grey uppercase tracking-wider">MARCH 2026</span>
               </div>
             </div>
           </div>
@@ -602,11 +602,11 @@ export default function Home() {
       <section className="py-24 bg-[#0a2340] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border-b border-white/10 pb-8 mb-16 space-y-4">
-            <span className="text-xs font-bold tracking-widest text-sfa-cyan uppercase">CASE STUDIES</span>
-            <h2 className="text-4xl sm:text-5xl font-sans font-black tracking-tight uppercase leading-none">
+            <span className="text-xs font-avenir font-medium tracking-widest text-sfa-cyan uppercase">CASE STUDIES</span>
+            <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase leading-none">
               WHAT WE&apos;VE DELIVERED.
             </h2>
-            <h2 className="text-4xl sm:text-5xl font-sans font-black tracking-tight text-sfa-cyan uppercase leading-none mt-1">
+            <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight text-sfa-cyan uppercase leading-none mt-1">
               HOW IT HELPED.
             </h2>
           </div>
@@ -615,18 +615,18 @@ export default function Home() {
             {/* Case 1 */}
             <div className="space-y-6 flex flex-col justify-between h-full bg-[#113156] p-8 border border-white/5 shadow-md">
               <div className="space-y-4">
-                <span className="text-[9px] font-bold tracking-widest text-sfa-cyan uppercase block">
+                <span className="text-[9px] font-montserrat font-bold tracking-widest text-sfa-cyan uppercase block">
                   FINANCIAL INSTITUTION • PORTFOLIO VALUATION
                 </span>
-                <h3 className="text-lg font-extrabold tracking-wide uppercase leading-tight">
+                <h3 className="text-lg font-avenir font-bold tracking-wide uppercase leading-tight">
                   LARGE-SCALE BANK COLLATERAL PORTFOLIO
                 </h3>
-                <p className="text-xs font-sans text-white/80 leading-relaxed text-justify">
+                <p className="text-xs font-avenir text-white/80 leading-relaxed text-justify">
                   A LEADING SRI LANKAN COMMERCIAL BANK REQUIRED INDEPENDENT RICS-COMPLIANT VALUATIONS ACROSS A MIXED COMMERCIAL AND RESIDENTIAL PORTFOLIO FOR INTERNAL RISK ASSESSMENT AND REGULATORY REPORTING.
                 </p>
               </div>
               <div className="border-t border-white/10 pt-4">
-                <span className="text-[9px] font-bold tracking-wider text-sfa-cyan block">
+                <span className="text-[9px] font-barlow font-normal tracking-wider text-sfa-cyan block">
                   47 ASSETS VALUED • 30-DAY DELIVERY • REPORTS ACCEPTED BY INTERNATIONAL AUDIT PARTNER
                 </span>
               </div>
@@ -635,18 +635,18 @@ export default function Home() {
             {/* Case 2 */}
             <div className="space-y-6 flex flex-col justify-between h-full bg-[#113156] p-8 border border-white/5 shadow-md">
               <div className="space-y-4">
-                <span className="text-[9px] font-bold tracking-widest text-sfa-cyan uppercase block">
+                <span className="text-[9px] font-montserrat font-bold tracking-widest text-sfa-cyan uppercase block">
                   HOSPITALITY • MALDIVES • CROSS-BORDER FINANCING
                 </span>
-                <h3 className="text-lg font-extrabold tracking-wide uppercase leading-tight">
+                <h3 className="text-lg font-avenir font-bold tracking-wide uppercase leading-tight">
                   MALDIVES RESORT ISLAND REFINANCING
                 </h3>
-                <p className="text-xs font-sans text-white/80 leading-relaxed text-justify">
+                <p className="text-xs font-avenir text-white/80 leading-relaxed text-justify">
                   AN INTERNATIONAL HOSPITALITY GROUP SOUGHT INDEPENDENT VALUATION OF A MALDIVES RESORT FOR REFINANCING WITH A EUROPEAN LENDER REQUIRING RICS-COMPLIANT METHODOLOGY AND INTERNATIONAL HOTEL VALUATION STANDARDS.
                 </p>
               </div>
               <div className="border-t border-white/10 pt-4">
-                <span className="text-[9px] font-bold tracking-wider text-sfa-cyan block">
+                <span className="text-[9px] font-barlow font-normal tracking-wider text-sfa-cyan block">
                   RICS HOTEL VALUATION METHODOLOGY • ACCEPTED BY EUROPEAN FINANCIAL INSTITUTION
                 </span>
               </div>
@@ -655,18 +655,18 @@ export default function Home() {
             {/* Case 3 */}
             <div className="space-y-6 flex flex-col justify-between h-full bg-[#113156] p-8 border border-white/5 shadow-md">
               <div className="space-y-4">
-                <span className="text-[9px] font-bold tracking-widest text-sfa-cyan uppercase block">
+                <span className="text-[9px] font-montserrat font-bold tracking-widest text-sfa-cyan uppercase block">
                   AGRICULTURAL • ESTATE SETTLEMENT • LEGAL
                 </span>
-                <h3 className="text-lg font-extrabold tracking-wide uppercase leading-tight">
+                <h3 className="text-lg font-avenir font-bold tracking-wide uppercase leading-tight">
                   HILL COUNTRY TEA ESTATE VALUATION
                 </h3>
-                <p className="text-xs font-sans text-white/80 leading-relaxed text-justify">
+                <p className="text-xs font-avenir text-white/80 leading-relaxed text-justify">
                   A FAMILY REQUIRED INDEPENDENT VALUATION OF A 250-ACRE TEA ESTATE IN SRI LANKA&apos;S HILL COUNTRY FOR ESTATE SETTLEMENT AND INHERITANCE PROCEEDINGS, INCORPORATING LAND, CROP VALUE, AND INFRASTRUCTURE.
                 </p>
               </div>
               <div className="border-t border-white/10 pt-4">
-                <span className="text-[9px] font-bold tracking-wider text-sfa-cyan block">
+                <span className="text-[9px] font-barlow font-normal tracking-wider text-sfa-cyan block">
                   ACCEPTED IN FORMAL LEGAL PROCEEDINGS • EXPERT WITNESS SUPPORT PROVIDED
                 </span>
               </div>
@@ -682,14 +682,14 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             {/* Left Description */}
             <div className="lg:col-span-5 space-y-6">
-              <h2 className="text-4xl sm:text-5xl font-sans font-black tracking-tight uppercase text-sfa-navy leading-none">
+              <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase text-sfa-navy leading-none">
                 OUR CLIENTS
               </h2>
               <div className="h-[2px] w-24 bg-sfa-blue" />
-              <p className="text-sm font-sans text-sfa-navy/80 leading-relaxed text-justify">
+              <p className="text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
                 Our diverse client portfolio, spanning individuals to multinational corporations, is a testament to our success.
               </p>
-              <p className="text-sm font-sans text-sfa-navy/80 leading-relaxed text-justify">
+              <p className="text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
                 Each year, we complete thousands of valuation assignments across various sectors. With tailored methodologies and deep expertise, we consistently meet client needs and deliver exceptional value.
               </p>
             </div>
@@ -713,19 +713,19 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             {/* Left Description */}
             <div className="lg:col-span-5 space-y-6">
-              <h2 className="text-4xl sm:text-5xl font-sans font-black tracking-tight uppercase text-sfa-navy leading-none">
+              <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase text-sfa-navy leading-none">
                 OUR PARTNERS
               </h2>
-              <span className="block text-xs font-bold text-sfa-blue uppercase tracking-widest">
+              <span className="block text-xs font-montserrat font-medium text-sfa-blue uppercase tracking-widest">
                 A GLOBAL NETWORK. • A LOCAL ADVANTAGE.
               </span>
               <div className="h-[2px] w-24 bg-sfa-blue" />
-              <p className="text-sm font-sans text-sfa-navy/80 leading-relaxed text-justify">
+              <p className="text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
                 Our partnerships extend local expertise through a network of world-class professional organisations — so every report meets the rigour international clients require.
               </p>
               <button
                 onClick={() => setContactOpen(true)}
-                className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-sfa-blue uppercase hover:text-sfa-navy transition-all duration-300"
+                className="inline-flex items-center gap-2 text-xs font-avenir font-medium tracking-widest text-sfa-blue uppercase hover:text-sfa-navy transition-all duration-300"
               >
                 <span>LEARN MORE</span>
                 <ArrowRight className="w-4 h-4" />
@@ -757,13 +757,13 @@ export default function Home() {
         <div className="bg-[#112d4e] text-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-4">
-              <span className="text-xs font-bold tracking-widest text-sfa-cyan uppercase">LEADERSHIP</span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-black tracking-tight uppercase leading-none mt-1">
+              <span className="text-xs font-avenir font-medium tracking-widest text-sfa-cyan uppercase">LEADERSHIP</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight uppercase leading-none mt-1">
                 OUR TEAM
               </h2>
             </div>
             <div className="lg:col-span-8 border-l border-white/20 pl-6">
-              <p className="text-xs sm:text-sm font-sans tracking-wide leading-relaxed font-light text-white/80 uppercase">
+              <p className="text-xs sm:text-sm font-avenir tracking-wide leading-relaxed font-light text-white/80 uppercase">
                 SFA EMPLOYS PROFESSIONALS WITH SPECIALIZED EXPERTISE IN VARIOUS REAL ESTATE SECTORS. BASED ON THE NATURE AND SCOPE OF EACH ASSIGNMENT, THE APPROPRIATE EXPERTS ARE INTEGRATED INTO THE LEADERSHIP TEAM.
               </p>
             </div>
@@ -829,14 +829,14 @@ export default function Home() {
                 </div>
 
                 <div className="space-y-1">
-                  <h3 className="text-lg font-black text-sfa-navy tracking-wide">
+                  <h3 className="text-lg font-montserrat font-bold text-sfa-navy tracking-wide">
                     {director.name}
                   </h3>
-                  <p className="text-[10px] font-bold text-sfa-blue uppercase tracking-widest">
+                  <p className="text-[10px] font-avenir font-medium text-sfa-blue uppercase tracking-widest">
                     {director.credentials}
                   </p>
                   <div className="h-[1px] w-12 bg-sfa-grey/20 mx-auto my-2" />
-                  <p className="text-xs font-bold text-sfa-grey uppercase tracking-widest leading-relaxed">
+                  <p className="text-xs font-poppins font-normal text-sfa-grey uppercase tracking-widest leading-relaxed">
                     {director.designation}
                   </p>
                 </div>
@@ -854,24 +854,24 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <span className="text-xs font-bold tracking-widest text-sfa-cyan uppercase">GET IN TOUCH</span>
-          <h2 className="text-4xl sm:text-5xl font-sans font-black tracking-tight uppercase">
+          <span className="text-xs font-avenir font-medium tracking-widest text-sfa-cyan uppercase">GET IN TOUCH</span>
+          <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase">
             READY TO START?
           </h2>
-          <p className="text-sm sm:text-base font-sans text-white/80 leading-relaxed max-w-xl mx-auto">
+          <p className="text-sm sm:text-base font-avenir text-white/80 leading-relaxed max-w-xl mx-auto">
             Whether for a financial transaction, an acquisition, IFRS reporting, or legal proceedings. Our valuation team is ready to help.
           </p>
 
           <div className="pt-4 flex flex-col sm:flex-row justify-center gap-4">
             <button
               onClick={() => setValuationOpen(true)}
-              className="px-8 py-3 bg-sfa-cyan text-white text-xs font-bold tracking-widest uppercase hover:bg-white hover:text-sfa-navy border border-sfa-cyan transition duration-300"
+              className="px-8 py-3 bg-sfa-cyan text-white text-xs font-avenir font-medium tracking-widest uppercase hover:bg-white hover:text-sfa-navy border border-sfa-cyan transition duration-300"
             >
               Request a Valuation
             </button>
             <button
               onClick={() => setContactOpen(true)}
-              className="px-8 py-3 border border-white hover:border-sfa-cyan hover:text-sfa-cyan text-white text-xs font-bold tracking-widest uppercase transition duration-300"
+              className="px-8 py-3 border border-white hover:border-sfa-cyan hover:text-sfa-cyan text-white text-xs font-avenir font-medium tracking-widest uppercase transition duration-300"
             >
               Contact Us
             </button>
@@ -887,30 +887,30 @@ export default function Home() {
             <div className="flex items-center gap-3">
               {/* White SFA Text Badge */}
               <span className="font-serif text-3xl font-extrabold tracking-tighter border-b-2 border-white pb-1">SFA</span>
-              <div className="flex flex-col leading-none font-sans text-xs tracking-wider">
-                <span className="font-black">SUNIL FERNANDO</span>
+              <div className="flex flex-col leading-none font-avenir text-xs tracking-wider">
+                <span className="font-bold">SUNIL FERNANDO</span>
                 <span className="font-light text-white/80">& ASSOCIATES</span>
               </div>
             </div>
 
-            <p className="text-xs font-sans tracking-wide text-white/80 uppercase">
+            <p className="text-xs font-avenir tracking-wide text-white/80 uppercase">
               Real Estate Advisory Since 1999
             </p>
 
-            <p className="text-xs font-sans leading-relaxed text-white/90 text-justify">
+            <p className="text-xs font-avenir leading-relaxed text-white/90 text-justify">
               Sri Lanka&apos;s largest independent real estate consultancy delivering internationally accepted valuation and advisory services across Sri Lanka and the Maldives.
             </p>
 
             <div className="flex gap-2 pt-2">
-              <span className="border border-white/30 px-3 py-1 text-[10px] font-bold tracking-widest">RICS</span>
-              <span className="border border-white/30 px-3 py-1 text-[10px] font-bold tracking-widest">IVSL</span>
+              <span className="border border-white/30 px-3 py-1 text-[10px] font-barlow font-normal tracking-widest">RICS</span>
+              <span className="border border-white/30 px-3 py-1 text-[10px] font-barlow font-normal tracking-widest">IVSL</span>
             </div>
           </div>
 
           {/* Column 2: Services links */}
           <div className="lg:col-span-2 lg:col-start-6 space-y-4">
-            <h4 className="text-xs font-black tracking-widest text-white/70 uppercase">Services</h4>
-            <ul className="space-y-2 text-xs font-bold text-white/90 uppercase tracking-wide">
+            <h4 className="text-xs font-montserrat font-medium tracking-widest text-white/70 uppercase">Services</h4>
+            <ul className="space-y-2 text-xs font-avenir font-medium text-white/90 uppercase tracking-wide">
               <li>
                 <button onClick={() => scrollTo("offer")} className="hover:text-sfa-navy transition">
                   Valuation & Advisory
@@ -936,8 +936,8 @@ export default function Home() {
 
           {/* Column 3: Sectors */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-black tracking-widest text-white/70 uppercase">Sectors</h4>
-            <ul className="space-y-2 text-xs font-bold text-white/90 uppercase tracking-wide">
+            <h4 className="text-xs font-montserrat font-medium tracking-widest text-white/70 uppercase">Sectors</h4>
+            <ul className="space-y-2 text-xs font-avenir font-medium text-white/90 uppercase tracking-wide">
               <li>• Tourism & Hospitality</li>
               <li>• Commercial & Office</li>
               <li>• Residential</li>
@@ -948,8 +948,8 @@ export default function Home() {
 
           {/* Column 4: Markets */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-black tracking-widest text-white/70 uppercase">Markets</h4>
-            <ul className="space-y-2 text-xs font-bold text-white/90 uppercase tracking-wide">
+            <h4 className="text-xs font-montserrat font-medium tracking-widest text-white/70 uppercase">Markets</h4>
+            <ul className="space-y-2 text-xs font-avenir font-medium text-white/90 uppercase tracking-wide">
               <li>• Sri Lanka</li>
               <li>• Maldives</li>
               <li>• Properties</li>
@@ -958,8 +958,8 @@ export default function Home() {
 
           {/* Column 5: Contact Info */}
           <div className="lg:col-span-2 space-y-4 text-xs">
-            <h4 className="text-xs font-black tracking-widest text-white/70 uppercase">Contact</h4>
-            <div className="space-y-3 font-sans text-white/90 text-left">
+            <h4 className="text-xs font-montserrat font-medium tracking-widest text-white/70 uppercase">Contact</h4>
+            <div className="space-y-3 font-avenir text-white/90 text-left">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
                 <p className="leading-relaxed">
@@ -981,7 +981,7 @@ export default function Home() {
         </div>
 
         {/* Bottom copyright line */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] font-bold tracking-widest text-white/70 uppercase">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] font-avenir font-medium tracking-widest text-white/70 uppercase">
           <span>
             © 2026 SUNIL FERNANDO & ASSOCIATES (PVT) LTD. ALL RIGHTS RESERVED.
           </span>
