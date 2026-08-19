@@ -1,33 +1,13 @@
 import React from "react";
 
-// SFA Logo: Serif "SFA", smaller italic grey "&", and "SUNIL FERNANDO & ASSOCIATES" text
+// SFA Logo: Renders the official corporate logo image
 export const SfaLogo: React.FC<{ className?: string }> = ({ className = "h-12" }) => {
   return (
-    <div className={`flex items-center gap-3 select-none ${className}`}>
-      {/* SFA & graphic */}
-      <div className="relative flex items-center justify-center">
-        <span className="font-serif text-4xl font-extrabold tracking-tight text-sfa-navy">
-          SFA
-        </span>
-        <span className="absolute font-serif text-3xl font-bold italic text-sfa-grey/70 translate-x-[26px] translate-y-[14px]">
-          &
-        </span>
-      </div>
-      {/* Vertical separator */}
-      <div className="h-10 w-[2px] bg-sfa-grey/20 ml-5" />
-      {/* Text brand name */}
-      <div className="flex flex-col leading-none">
-        <span className="font-sans text-[15px] font-extrabold tracking-widest text-sfa-navy">
-          SUNIL
-        </span>
-        <span className="font-sans text-[15px] font-extrabold tracking-widest text-sfa-navy">
-          FERNANDO
-        </span>
-        <span className="font-sans text-[10px] font-medium tracking-wide text-sfa-grey">
-          & ASSOCIATES
-        </span>
-      </div>
-    </div>
+    <img
+      src="/logo.png"
+      alt="Sunil Fernando & Associates Logo"
+      className={`object-contain ${className}`}
+    />
   );
 };
 
