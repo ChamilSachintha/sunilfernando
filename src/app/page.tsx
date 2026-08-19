@@ -182,7 +182,7 @@ export default function Home() {
       {/* 2. Hero Section & Carousel (Page 1-4) */}
       <section id="home" className="relative h-screen w-full flex items-center justify-center pt-20 overflow-hidden bg-black">
         {/* Background images transitioning */}
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.div
             key={heroIndex}
             initial={{ opacity: 0, scale: 1.05 }}
@@ -212,10 +212,10 @@ export default function Home() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-montserrat font-semibold tracking-widest leading-none text-white">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-montserrat font-medium tracking-widest leading-none text-white">
                 TRUSTED
               </h1>
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-montserrat font-semibold tracking-widest leading-none text-white mt-1">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-montserrat font-medium tracking-widest leading-none text-white mt-1">
                 VALUATIONS
               </h1>
               <div className="mt-4 space-y-2">
