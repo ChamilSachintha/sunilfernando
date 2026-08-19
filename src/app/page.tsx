@@ -245,7 +245,7 @@ export default function Home() {
             >
               <button
                 onClick={() => setValuationOpen(true)}
-                className="px-8 py-3 bg-sfa-blue hover:bg-sfa-navy border border-sfa-blue hover:border-white text-xs font-avenir font-medium tracking-widest uppercase transition-all duration-300"
+                className="px-12 py-3.5 bg-[#1e4e72] hover:bg-[#153a53] text-white text-xs sm:text-sm font-avenir font-medium tracking-widest uppercase rounded-full transition duration-300 shadow-md"
               >
                 Request a Valuation
               </button>
