@@ -20,7 +20,7 @@ export default function Home() {
       alt: "Corporate modern glass building",
     },
     {
-      image: "https://images.unsplash.com/photo-1479839672679-a76a1868f72a?q=80&w=1600",
+      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1600",
       alt: "Modern facade architecture with orange lighting grid",
     },
     {
@@ -28,7 +28,7 @@ export default function Home() {
       alt: "White modern geometric structure angles",
     },
     {
-      image: "https://images.unsplash.com/photo-1448697517562-baf581858f73?q=80&w=1600",
+      image: "https://images.unsplash.com/photo-1485081669829-bacb8c7bb1f3?q=80&w=1600",
       alt: "Curved metal abstract architecture details",
     },
   ];
