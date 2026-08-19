@@ -222,7 +222,7 @@ export default function Home() {
                 <span className="block text-xl sm:text-2xl font-montserrat font-light tracking-widest text-white uppercase">
                   INFORMED DECISIONS
                 </span>
-                <span className="block text-lg sm:text-xl font-avenir font-medium tracking-widest text-white/90">
+                 <span className="block text-lg sm:text-xl font-avenir font-light tracking-widest text-white/90">
                   SINCE 1999
                 </span>
               </div>
@@ -232,7 +232,7 @@ export default function Home() {
               initial={{ y: 35, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xs sm:text-sm font-avenir tracking-wide leading-relaxed font-light text-white/90 mt-8 max-w-xl ml-auto"
+              className="text-xs sm:text-sm font-avenir tracking-wide leading-relaxed font-normal text-white mt-8 max-w-xl ml-auto"
             >
               SUNIL FERNANDO & ASSOCIATES DELIVERS INTERNATIONALLY ACCEPTED VALUATION AND REAL ESTATE ADVISORY SERVICES ACROSS SRI LANKA AND THE MALDIVES, BACKED BY 25 YEARS OF EXPERTISE, RICS COMPLIANCE, AND A GLOBAL PARTNER NETWORK.
             </motion.p>
@@ -245,7 +245,7 @@ export default function Home() {
             >
               <button
                 onClick={() => setValuationOpen(true)}
-                className="px-12 py-3.5 bg-[#1e4e72] hover:bg-[#153a53] text-white text-xs sm:text-sm font-avenir font-medium tracking-widest uppercase rounded-full transition duration-300 shadow-md"
+                className="px-12 py-3.5 bg-[#1e4e72] hover:bg-[#153a53] text-white text-sm sm:text-base font-avenir font-normal tracking-widest uppercase rounded-xl transition duration-300 shadow-md"
               >
                 Request a Valuation
               </button>
