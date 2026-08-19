@@ -182,24 +182,24 @@ export default function Home() {
       {/* 2. Hero Section & Carousel (Page 1-4) */}
       <section id="home" className="relative h-screen w-full flex items-center justify-center pt-20 overflow-hidden bg-black">
         {/* Background images transitioning */}
-        <AnimatePresence>
+        {heroSlides.map((slide, idx) => (
           <motion.div
-            key={heroIndex}
+            key={idx}
             initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 0.5, scale: 1 }}
-            exit={{ opacity: 0.5 }}
+            animate={{
+              opacity: idx === heroIndex ? 0.5 : 0,
+              scale: idx === heroIndex ? 1 : 1.05,
+            }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
             className="absolute inset-0 w-full h-full"
           >
-            <Image
-              src={heroSlides[heroIndex].image}
-              alt={heroSlides[heroIndex].alt}
-              fill
-              priority
-              className="object-cover"
+            <img
+              src={slide.image}
+              alt={slide.alt}
+              className="w-full h-full object-cover"
             />
           </motion.div>
-        </AnimatePresence>
+        ))}
 
         {/* Diagonal Light Overlay Effect */}
         <div className="absolute inset-0 bg-gradient-to-tr from-sfa-navy/85 via-sfa-navy/50 to-transparent z-10" />
