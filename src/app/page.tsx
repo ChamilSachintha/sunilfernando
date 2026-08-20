@@ -267,7 +267,7 @@ export default function Home() {
         {/* Bottom Banner Bar "Explore Services" */}
         <div
           onClick={() => scrollTo("offer")}
-          className="absolute bottom-0 left-0 right-0 z-20 bg-secondary border-t border-white/10 cursor-pointer py-5 text-center text-white tracking-[0.4em] text-xl sm:text-2xl font-avenir font-medium uppercase transition duration-300"
+          className="absolute bottom-0 left-0 right-0 z-20 bg-secondary border-t border-white/10 cursor-pointer py-5 text-center text-white tracking-[0.4em] text-2xl sm:text-3xl font-avenir font-light uppercase transition duration-300"
         >
           EXPLORE OUR SERVICES
         </div>
