@@ -281,7 +281,7 @@ export default function Home() {
             {["VALUATION ADVISORY", "OCCUPIER SERVICES", "CAPITAL MARKETS", "RESEARCH SERVICES"].map((tab, idx) => (
               <div
                 key={idx}
-                className="py-4 font-avenir text-sm sm:text-base font-medium tracking-[0.15em] border-r border-sfa-navy/10 last:border-0 hover:bg-slate-50 transition cursor-pointer text-primary"
+                className="py-4 font-avenir text-sm sm:text-base font-medium tracking-[0.15em] border-r border-sfa-navy/10 last:border-0 cursor-pointer text-primary"
               >
                 {tab}
               </div>
@@ -290,11 +290,15 @@ export default function Home() {
 
           {/* Grid Stats Layout with Ampersand in center */}
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-24 md:gap-y-16 items-center">
-            {/* Center ampersand background logo */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-              <span className="font-serif text-[180px] sm:text-[320px] font-bold text-sfa-grey/10 leading-none">
-                &
-              </span>
+            {/* Center ampersand and dividers background logo */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden px-4">
+              <div className="w-full max-w-[1400px] flex items-center justify-center gap-6">
+                <div className="flex-1 h-[2px] bg-sfa-grey/10 hidden md:block" />
+                <span className="font-serif text-[180px] sm:text-[320px] font-bold text-sfa-grey/10 leading-none">
+                  &
+                </span>
+                <div className="flex-1 h-[2px] bg-sfa-grey/10 hidden md:block" />
+              </div>
             </div>
 
             {/* Stat 1 */}
@@ -310,9 +314,6 @@ export default function Home() {
               <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">Asset Classes</span>
               <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">Covered</span>
             </div>
-
-            {/* Separator line */}
-            <div className="col-span-full h-[1px] bg-sfa-grey/20 hidden md:block" />
 
             {/* Stat 3 */}
             <div className="text-center md:text-right flex flex-col md:items-end justify-center z-10">
