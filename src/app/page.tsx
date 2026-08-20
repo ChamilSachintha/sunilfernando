@@ -274,14 +274,14 @@ export default function Home() {
       </section>
 
       {/* 3. Stats & Columns (Page 5) */}
-      <section id="offer" className="py-24 bg-white relative">
+      <section id="offer" className="pt-0 pb-24 bg-white relative">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header tabs row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 border-b border-sfa-navy/10 text-center mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 text-center mb-16">
             {["VALUATION ADVISORY", "OCCUPIER SERVICES", "CAPITAL MARKETS", "RESEARCH SERVICES"].map((tab, idx) => (
               <div
                 key={idx}
-                className="py-4 font-avenir text-xs font-medium tracking-widest border-r border-sfa-navy/10 last:border-0 hover:bg-slate-50 transition cursor-pointer text-sfa-navy/80"
+                className="py-4 font-avenir text-sm sm:text-base font-medium tracking-[0.15em] border-r border-sfa-navy/10 last:border-0 hover:bg-slate-50 transition cursor-pointer text-primary"
               >
                 {tab}
               </div>
