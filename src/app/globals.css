@@ -8,6 +8,10 @@
   --color-sfa-light-blue: #e0f2fe;
   --color-sfa-dark-grey: #1a2e46;
   
+  --color-primary: #2684be;
+  --color-secondary: #194866;
+  --color-tertiary: #00bdf1;
+  
   --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
   --font-avenir: "Avenir", "Avenir Next", system-ui, -apple-system, sans-serif;
   --font-montserrat: var(--font-montserrat), system-ui, -apple-system, sans-serif;
