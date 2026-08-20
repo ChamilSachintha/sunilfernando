@@ -80,48 +80,48 @@ export default function Home() {
     <div className="relative min-h-screen bg-white text-sfa-navy overflow-x-hidden">
       {/* 1. Header (Page 1) */}
       <header className="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-sfa-grey/10 shadow-sm transition-all">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
-          <div className="cursor-pointer" onClick={() => scrollTo("home")}>
-            <SfaLogo />
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+          <div className="cursor-pointer flex items-center" onClick={() => scrollTo("home")}>
+            <SfaLogo className="h-20 py-0 block object-contain" />
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8 font-sans text-xs font-bold uppercase tracking-widest text-sfa-navy/80">
+          <nav className="hidden lg:flex items-center gap-8 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
             <button
               onClick={() => scrollTo("home")}
-              className={`hover:text-sfa-blue transition ${activeSection === "home" ? "text-sfa-blue font-black" : ""}`}
+              className={`hover:text-sfa-blue transition ${activeSection === "home" ? "text-sfa-blue font-semibold" : ""}`}
             >
-              Home
+              HOME
             </button>
             <button
               onClick={() => scrollTo("offer")}
-              className={`hover:text-sfa-blue transition ${activeSection === "offer" ? "text-sfa-blue font-black" : ""}`}
+              className={`hover:text-sfa-blue transition ${activeSection === "offer" ? "text-sfa-blue font-semibold" : ""}`}
             >
-              What We Offer
+              WHAT WE OFFER
             </button>
             <button
               onClick={() => scrollTo("network")}
-              className={`hover:text-sfa-blue transition ${activeSection === "network" ? "text-sfa-blue font-black" : ""}`}
+              className={`hover:text-sfa-blue transition ${activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
             >
-              Our Network
+              OUR NETWORK
             </button>
             <button
               onClick={() => scrollTo("team")}
-              className={`hover:text-sfa-blue transition ${activeSection === "team" ? "text-sfa-blue font-black" : ""}`}
+              className={`hover:text-sfa-blue transition ${activeSection === "team" ? "text-sfa-blue font-semibold" : ""}`}
             >
-              Our Team
+              OUR TEAM
             </button>
             <button
               onClick={() => scrollTo("newsroom")}
-              className={`hover:text-sfa-blue transition ${activeSection === "newsroom" ? "text-sfa-blue font-black" : ""}`}
+              className={`hover:text-sfa-blue transition ${activeSection === "newsroom" ? "text-sfa-blue font-semibold" : ""}`}
             >
-              Newsroom
+              NEWSROOM
             </button>
             <button
               onClick={() => scrollTo("contact")}
-              className={`hover:text-sfa-blue transition ${activeSection === "contact" ? "text-sfa-blue font-black" : ""}`}
+              className={`hover:text-sfa-blue transition ${activeSection === "contact" ? "text-sfa-blue font-semibold" : ""}`}
             >
-              Reach Us
+              REACH US
             </button>
           </nav>
 
@@ -145,33 +145,33 @@ export default function Home() {
               exit={{ opacity: 0, height: 0 }}
               className="lg:hidden border-t border-sfa-grey/10 bg-white"
             >
-              <div className="px-4 py-6 space-y-4 flex flex-col font-sans text-xs font-bold uppercase tracking-widest text-sfa-navy">
+              <div className="px-4 py-6 space-y-4 flex flex-col font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy">
                 <button onClick={() => scrollTo("home")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
-                  Home
+                  HOME
                 </button>
                 <button onClick={() => scrollTo("offer")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
-                  What We Offer
+                  WHAT WE OFFER
                 </button>
                 <button onClick={() => scrollTo("network")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
-                  Our Network
+                  OUR NETWORK
                 </button>
                 <button onClick={() => scrollTo("team")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
-                  Our Team
+                  OUR TEAM
                 </button>
                 <button onClick={() => scrollTo("newsroom")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
-                  Newsroom
+                  NEWSROOM
                 </button>
                 <button onClick={() => scrollTo("contact")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
-                  Reach Us
+                  REACH US
                 </button>
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
                     setValuationOpen(true);
                   }}
-                  className="w-full text-center py-3 bg-sfa-navy text-white hover:bg-sfa-blue transition"
+                  className="w-full text-center py-3 bg-sfa-navy text-white hover:bg-sfa-blue transition font-bold"
                 >
-                  Request a Valuation
+                  REQUEST A VALUATION
                 </button>
               </div>
             </motion.div>
@@ -205,8 +205,8 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-tr from-sfa-navy/85 via-sfa-navy/50 to-transparent z-10" />
 
         {/* Content */}
-        <div className="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-white h-full flex flex-col justify-center">
-          <div className="max-w-3xl self-end text-right pr-4 lg:pr-12 md:pr-8">
+        <div className="relative z-20 max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 text-white h-full flex flex-col justify-center">
+          <div className="max-w-3xl self-end text-right">
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -275,7 +275,7 @@ export default function Home() {
 
       {/* 3. Stats & Columns (Page 5) */}
       <section id="offer" className="py-24 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header tabs row */}
           <div className="grid grid-cols-2 md:grid-cols-4 border-b border-sfa-navy/10 text-center mb-16">
             {["VALUATION ADVISORY", "OCCUPIER SERVICES", "CAPITAL MARKETS", "RESEARCH SERVICES"].map((tab, idx) => (
@@ -336,7 +336,7 @@ export default function Home() {
         {/* Slanted wedge divider grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full">
           {/* Left panel - white background */}
-          <div className="lg:col-span-5 bg-white text-sfa-navy p-12 lg:p-24 flex flex-col justify-center relative">
+          <div className="lg:col-span-5 bg-white text-sfa-navy p-12 lg:px-12 lg:py-24 flex flex-col justify-center relative">
             <span className="text-xs font-avenir font-medium tracking-widest text-sfa-grey uppercase mb-2">WHAT WE DO</span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight uppercase leading-none">
               END-TO-END
@@ -354,7 +354,7 @@ export default function Home() {
           </div>
 
           {/* Right panel - blue background */}
-          <div className="lg:col-span-7 bg-[#1d3d63] p-12 lg:p-24 flex flex-col justify-center">
+          <div className="lg:col-span-7 bg-[#1d3d63] p-12 lg:px-12 lg:py-24 flex flex-col justify-center">
             <p className="text-base sm:text-lg lg:text-xl font-avenir leading-relaxed tracking-wider font-light text-white/90 text-justify">
               FROM COMPLEX PORTFOLIO VALUATIONS TO STRATEGIC OCCUPIER DECISIONS, EVERY SERVICE AT SFA IS DELIVERED TO INTERNATIONAL STANDARDS ACCEPTED BY BANKS, AUDIT FIRMS, AND LAW FIRMS ACROSS THE GLOBE.
             </p>
@@ -364,7 +364,7 @@ export default function Home() {
 
       {/* 5. Valuations Section (Page 9) */}
       <section className="py-24 bg-[#eaeff5] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left side text details */}
             <div className="lg:col-span-6 space-y-6">
@@ -423,7 +423,7 @@ export default function Home() {
       <section className="relative bg-white min-h-[500px] flex items-stretch overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full">
           {/* Left Text Detail */}
-          <div className="lg:col-span-7 p-12 lg:p-24 flex flex-col justify-center space-y-6">
+          <div className="lg:col-span-7 p-12 lg:px-12 lg:py-24 flex flex-col justify-center space-y-6">
             <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase text-sfa-navy">
               OCCUPIER SERVICES
             </h2>
@@ -474,7 +474,7 @@ export default function Home() {
 
       {/* 7. Capital Markets (Page 11) */}
       <section className="relative bg-[#0d2a4a] text-white py-24 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             {/* Left side summary */}
             <div className="lg:col-span-5 space-y-6">
@@ -538,7 +538,7 @@ export default function Home() {
 
       {/* 8. Insights & Reports (Page 7) */}
       <section id="newsroom" className="py-24 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             {/* Left side headers */}
             <div className="lg:col-span-5 space-y-6">
@@ -603,7 +603,7 @@ export default function Home() {
 
       {/* 9. Case Studies (Page 8) */}
       <section className="py-24 bg-[#0a2340] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border-b border-white/10 pb-8 mb-16 space-y-4">
             <span className="text-xs font-avenir font-medium tracking-widest text-sfa-cyan uppercase">CASE STUDIES</span>
             <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase leading-none">
@@ -680,7 +680,7 @@ export default function Home() {
 
       {/* 10. Clients & Partners (Page 12-13) */}
       <section id="network" className="py-24 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
           {/* Clients block (Page 12) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             {/* Left Description */}
@@ -758,7 +758,7 @@ export default function Home() {
       <section id="team" className="bg-slate-50 border-t border-b border-sfa-grey/10 overflow-hidden">
         {/* Intro Banner (Page 14) */}
         <div className="bg-[#112d4e] text-white py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-4">
               <span className="text-xs font-avenir font-medium tracking-widest text-sfa-cyan uppercase">LEADERSHIP</span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight uppercase leading-none mt-1">
@@ -774,7 +774,7 @@ export default function Home() {
         </div>
 
         {/* Profiles Section (Page 15) */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
@@ -884,7 +884,7 @@ export default function Home() {
 
       {/* 13. Footer & Contact Details (Page 16) */}
       <footer className="bg-[#1d70b8] text-white pt-16 pb-8 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 items-start mb-12">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 items-start mb-12">
           {/* Column 1: SFA identity & Reg info */}
           <div className="lg:col-span-4 space-y-6">
             <SfaLogo className="h-12 brightness-0 invert" />
@@ -977,7 +977,7 @@ export default function Home() {
         </div>
 
         {/* Bottom copyright line */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] font-avenir font-medium tracking-widest text-white/70 uppercase">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] font-avenir font-medium tracking-widest text-white/70 uppercase">
           <span>
             © 2026 SUNIL FERNANDO & ASSOCIATES (PVT) LTD. ALL RIGHTS RESERVED.
           </span>
