@@ -347,7 +347,7 @@ export default function Home() {
           <svg viewBox="0 0 1000 400" className="w-full h-full" preserveAspectRatio="none">
             <defs>
               <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="-8" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.12" />
+                <feDropShadow dx="-8" dy="4" stdDeviation="8" floodColor="#000000" floodOpacity={0.12} />
               </filter>
             </defs>
 
