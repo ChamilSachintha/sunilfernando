@@ -341,30 +341,66 @@ export default function Home() {
       </section>
 
       {/* 4. What We Do (Page 6) */}
-      <section className="relative bg-sfa-navy text-white min-h-[400px] flex items-stretch overflow-hidden">
-        {/* Slanted wedge divider grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 w-full">
-          {/* Left panel - white background */}
-          <div className="lg:col-span-5 bg-white text-sfa-navy p-12 lg:px-12 lg:py-24 flex flex-col justify-center relative">
-            <span className="text-xs font-avenir font-medium tracking-widest text-sfa-grey uppercase mb-2">WHAT WE DO</span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight uppercase leading-none">
-              END-TO-END
-            </h2>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight uppercase text-sfa-blue leading-none mt-1">
-              REAL ESTATE
-            </h2>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight uppercase leading-none mt-1">
-              ADVISORY
-            </h2>
-            <p className="text-xs font-avenir font-medium tracking-widest text-sfa-blue mt-4 uppercase">BUILT FOR INSTITUTIONS</p>
+      <section className="relative min-h-[400px] flex items-stretch overflow-hidden bg-white">
+        {/* SVG Vector Background */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
+          <svg viewBox="0 0 1000 400" className="w-full h-full" preserveAspectRatio="none">
+            <defs>
+              <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="-8" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.12" />
+              </filter>
+            </defs>
 
-            {/* Slanted wedge absolute overlay */}
-            <div className="hidden lg:block absolute top-0 bottom-0 right-[-80px] w-[80px] bg-white z-10" style={{ clipPath: "polygon(0 0, 0 100%, 100% 100%)" }} />
+            {/* Left Side White Background */}
+            <polygon points="0,0 521,0 639,400 0,400" fill="#ffffff" />
+
+            {/* Right Side Primary Blue Background */}
+            <polygon points="521,0 1000,0 1000,400 639,400" fill="#2684be" />
+
+            {/* Top Left Dark Banner (Secondary color) */}
+            <path d="M 0,0 L 510,0 Q 525,0 520,15 L 500,70 Q 495,80 485,80 L 0,80 Z" fill="#194866" />
+
+            {/* Stylized "A" symbol in the middle */}
+            <path
+              d="M 430,370 L 515,60 Q 530,15 545,60 L 630,370 Q 635,385 620,385 Q 610,385 605,370 L 575,270 L 485,270 L 455,370 Q 450,385 440,385 Q 425,385 430,370 Z M 530,110 L 565,240 L 495,240 Z"
+              fill="#ffffff"
+              fillRule="evenodd"
+              filter="url(#shadow)"
+            />
+          </svg>
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12">
+          {/* Left Column (WHAT WE DO + End-to-End text) */}
+          <div className="lg:col-span-7 flex flex-col justify-between bg-white lg:bg-transparent">
+            {/* Header Banner Text */}
+            <div className="h-20 flex items-center pl-12 lg:pl-24 bg-secondary lg:bg-transparent">
+              <span className="text-sm font-avenir font-semibold tracking-[0.2em] text-white uppercase">
+                WHAT WE DO
+              </span>
+            </div>
+            
+            {/* Main Left Content */}
+            <div className="flex-1 flex flex-col justify-center px-12 lg:pl-24 lg:pr-12 py-12">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-black tracking-tight uppercase leading-[1.1] text-sfa-navy">
+                END-TO-END
+              </h2>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-black tracking-tight uppercase text-primary leading-[1.1]">
+                REAL ESTATE
+              </h2>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-black tracking-tight uppercase leading-[1.1] text-sfa-navy">
+                ADVISORY
+              </h2>
+              <p className="text-sm sm:text-base font-avenir font-semibold tracking-[0.15em] text-primary mt-6 uppercase">
+                BUILT FOR INSTITUTIONS
+              </p>
+            </div>
           </div>
 
-          {/* Right panel - blue background */}
-          <div className="lg:col-span-7 bg-[#1d3d63] p-12 lg:px-12 lg:py-24 flex flex-col justify-center">
-            <p className="text-base sm:text-lg lg:text-xl font-avenir leading-relaxed tracking-wider font-light text-white/90 text-justify">
+          {/* Right Column (From Complex Portfolio Valuations...) */}
+          <div className="lg:col-span-5 flex flex-col justify-center px-12 lg:px-24 py-24 text-white bg-primary lg:bg-transparent">
+            <p className="text-base sm:text-lg lg:text-xl font-avenir leading-relaxed tracking-wider font-light text-white/95 text-left lg:max-w-md">
               FROM COMPLEX PORTFOLIO VALUATIONS TO STRATEGIC OCCUPIER DECISIONS, EVERY SERVICE AT SFA IS DELIVERED TO INTERNATIONAL STANDARDS ACCEPTED BY BANKS, AUDIT FIRMS, AND LAW FIRMS ACROSS THE GLOBE.
             </p>
           </div>
