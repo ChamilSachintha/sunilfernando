@@ -281,7 +281,7 @@ export default function Home() {
             {["VALUATION ADVISORY", "OCCUPIER SERVICES", "CAPITAL MARKETS", "RESEARCH SERVICES"].map((tab, idx) => (
               <div
                 key={idx}
-                className="py-4 font-avenir text-sm sm:text-base font-medium tracking-[0.15em] border-r border-sfa-navy/10 last:border-0 cursor-pointer text-primary"
+                className="py-4 font-avenir text-sm sm:text-base font-medium tracking-[0.15em] border-r-[3px] border-sfa-grey/10 last:border-0 cursor-pointer text-primary"
               >
                 {tab}
               </div>
@@ -292,12 +292,20 @@ export default function Home() {
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-24 md:gap-y-16 items-center">
             {/* Center ampersand and dividers background logo */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden px-4">
-              <div className="w-full max-w-[1400px] flex items-center justify-center gap-6">
-                <div className="flex-1 h-[2px] bg-sfa-grey/10 hidden md:block" />
-                <span className="font-serif text-[180px] sm:text-[320px] font-bold text-sfa-grey/10 leading-none">
+              {/* Horizontal dividers */}
+              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center gap-6 px-4 md:px-8">
+                <div className="flex-1 h-[3px] bg-sfa-grey/10 hidden md:block" />
+                <div className="w-[100px] sm:w-[170px] shrink-0 h-[3px] opacity-0" />
+                <div className="flex-1 h-[3px] bg-sfa-grey/10 hidden md:block" />
+              </div>
+              
+              {/* Vertical dividers & ampersand */}
+              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center gap-4 py-8">
+                <div className="w-[3px] flex-1 bg-sfa-grey/10 hidden md:block" />
+                <span className="font-serif text-[150px] sm:text-[250px] font-bold text-sfa-grey/10 leading-none">
                   &
                 </span>
-                <div className="flex-1 h-[2px] bg-sfa-grey/10 hidden md:block" />
+                <div className="w-[3px] flex-1 bg-sfa-grey/10 hidden md:block" />
               </div>
             </div>
 
