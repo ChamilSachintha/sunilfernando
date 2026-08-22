@@ -300,12 +300,12 @@ export default function Home() {
               </div>
               
               {/* Vertical dividers & ampersand */}
-              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center gap-4 py-0 h-full">
-                <div className="w-[3px] flex-1 bg-sfa-grey/10 hidden md:block" />
+              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center gap-0 py-0 h-full">
+                <div className="w-[3px] flex-1 bg-sfa-grey/10 hidden md:block mb-[-20px] sm:mb-[-35px]" />
                 <span className="font-serif text-[150px] sm:text-[250px] font-bold text-sfa-grey/10 leading-none">
                   &
                 </span>
-                <div className="w-[3px] flex-1 bg-sfa-grey/10 hidden md:block" />
+                <div className="w-[3px] flex-1 bg-sfa-grey/10 hidden md:block mt-[-20px] sm:mt-[-35px]" />
               </div>
             </div>
 
