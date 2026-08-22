@@ -289,7 +289,7 @@ export default function Home() {
           </div>
 
           {/* Grid Stats Layout with Ampersand in center */}
-          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-24 md:gap-y-16 items-center">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-24 md:gap-y-32 items-center md:py-16">
             {/* Center ampersand and dividers background logo */}
             <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
               {/* Horizontal dividers */}
@@ -300,7 +300,7 @@ export default function Home() {
               </div>
               
               {/* Vertical dividers & ampersand */}
-              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center gap-4 py-8 h-full">
+              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center gap-4 py-0 h-full">
                 <div className="w-[3px] flex-1 bg-sfa-grey/10 hidden md:block" />
                 <span className="font-serif text-[150px] sm:text-[250px] font-bold text-sfa-grey/10 leading-none">
                   &
