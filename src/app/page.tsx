@@ -310,28 +310,28 @@ export default function Home() {
             </div>
 
             {/* Stat 1 */}
-            <div className="text-center md:text-right flex flex-col md:items-end justify-center z-10">
+            <div className="text-center md:text-right flex flex-col md:items-end justify-center z-10 md:pr-24 lg:pr-28">
               <span className="text-5xl sm:text-7xl font-montserrat font-black tracking-tight text-sfa-blue">25+</span>
               <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">Years of Advisory</span>
               <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">Excellence</span>
             </div>
 
             {/* Stat 2 */}
-            <div className="text-center md:text-left flex flex-col md:items-start justify-center z-10">
+            <div className="text-center md:text-left flex flex-col md:items-start justify-center z-10 md:pl-24 lg:pl-28">
               <span className="text-5xl sm:text-7xl font-montserrat font-black tracking-tight text-sfa-navy">9</span>
               <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">Asset Classes</span>
               <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">Covered</span>
             </div>
 
             {/* Stat 3 */}
-            <div className="text-center md:text-right flex flex-col md:items-end justify-center z-10">
+            <div className="text-center md:text-right flex flex-col md:items-end justify-center z-10 md:pr-24 lg:pr-28">
               <span className="text-5xl sm:text-7xl font-montserrat font-black tracking-tight text-sfa-navy">3</span>
               <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">Countries</span>
               <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">Sri Lanka, Maldives & UAE</span>
             </div>
 
             {/* Stat 4 */}
-            <div className="text-center md:text-left flex flex-col md:items-start justify-center z-10">
+            <div className="text-center md:text-left flex flex-col md:items-start justify-center z-10 md:pl-24 lg:pl-28">
               <span className="text-5xl sm:text-7xl font-montserrat font-black tracking-tight text-sfa-blue">RICS</span>
               <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">& IVSL</span>
               <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">Compliant</span>
