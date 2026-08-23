@@ -345,12 +345,6 @@ export default function Home() {
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1000 400" className="w-full h-full" preserveAspectRatio="none">
-            <defs>
-              <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="-8" dy="4" stdDeviation="8" floodColor="#000000" floodOpacity={0.12} />
-              </filter>
-            </defs>
-
             {/* Left Side White Background */}
             <polygon points="0,0 521,0 639,400 0,400" fill="#ffffff" />
 
@@ -360,13 +354,17 @@ export default function Home() {
             {/* Top Left Dark Banner (Secondary color) */}
             <path d="M 0,0 L 510,0 Q 525,0 520,15 L 500,70 Q 495,80 485,80 L 0,80 Z" fill="#194866" />
 
-            {/* Stylized "A" symbol in the middle */}
-            <path
-              d="M 430,370 L 515,60 Q 530,15 545,60 L 630,370 Q 635,385 620,385 Q 610,385 605,370 L 575,270 L 485,270 L 455,370 Q 450,385 440,385 Q 425,385 430,370 Z M 530,110 L 565,240 L 495,240 Z"
-              fill="#ffffff"
-              fillRule="evenodd"
-              filter="url(#shadow)"
-            />
+            {/* Stylized "A" symbol in the middle matching "&" symbol styles */}
+            <text
+              x="530"
+              y="380"
+              fill="currentColor"
+              className="font-serif font-bold text-sfa-grey/10"
+              fontSize="420"
+              textAnchor="middle"
+            >
+              A
+            </text>
           </svg>
         </div>
 
