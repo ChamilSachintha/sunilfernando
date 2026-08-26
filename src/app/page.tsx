@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, Download, Phone, Mail, MapPin, ChevronRight, Award } from "lucide-react";
+import { Menu, X, ArrowRight, Phone, MapPin, ChevronRight } from "lucide-react";
 import { SfaLogo, HsbcLogo, StandardCharteredLogo, DeloitteLogo, CbiLogo, CinnamonLogo, LoadstarLogo, ShangriLaLogo, HiltonLogo, KpmgLogo, KnightFrankLogo, KrestonLogo, BdoLogo, MakeeluChambersLogo, BakerTillyLogo, WarrenVicksLogo, DesignAdvocacyLogo, AcquestLogo, NdbLogo, CoenergiLogo, SudathPereraLogo } from "@/components/Logos";
 import { RequestValuationModal, ContactModal } from "@/components/Forms";
 
@@ -419,7 +419,107 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Valuations Section (Page 9) */}
+      {/* 5. Insights & Reports (Page 7) */}
+      <section id="newsroom" className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+        {/* SVG Vector Background */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
+          <svg viewBox="0 0 1000 400" className="w-full h-full" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="insights-left-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#e2e8f0" />
+                <stop offset="100%" stopColor="#194866" />
+              </linearGradient>
+            </defs>
+
+            {/* Right Side Bright Cyan Background */}
+            <rect width="1000" height="400" fill="#00bdf1" />
+
+            {/* Left Side Gradient Background */}
+            <path d="M 0,0 L 500,0 C 540,0 550,40 530,80 L 330,400 L 0,400 Z" fill="url(#insights-left-grad)" />
+
+            {/* White Curved Divider Line */}
+            <path d="M 500,0 C 540,0 550,40 530,80 L 330,400" fill="none" stroke="#ffffff" strokeWidth="16" />
+          </svg>
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12">
+          {/* Left Column (INSIGHTS Header Details) */}
+          <div className="lg:col-span-5 flex flex-col justify-between p-12 lg:py-24 lg:pl-24 lg:pr-12 bg-gradient-to-br from-slate-200 to-secondary lg:bg-transparent">
+            <span className="text-sm font-avenir font-semibold tracking-[0.2em] text-primary uppercase mb-6 lg:mb-0">
+              INSIGHTS
+            </span>
+            
+            <div className="flex-1 flex flex-col justify-center my-8 lg:my-0">
+              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-black tracking-tight uppercase leading-[1.05] text-sfa-navy">
+                MARKET
+              </h2>
+              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-black tracking-tight uppercase leading-[1.05] text-sfa-navy">
+                INTELLIGENCE
+              </h2>
+              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-black tracking-tight uppercase leading-[1.05] text-sfa-navy">
+                FOR INFORMED
+              </h2>
+              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-black tracking-tight uppercase leading-[1.05] text-sfa-navy">
+                DECISIONS.
+              </h2>
+            </div>
+
+            <div className="text-sm font-avenir font-semibold tracking-[0.15em] text-primary uppercase mt-6 lg:mt-0">
+              LATEST REPORT • 2026
+            </div>
+          </div>
+
+          {/* Right Column (Reports & Commentaries) */}
+          <div className="lg:col-span-7 flex flex-col justify-center p-12 lg:py-24 lg:pl-20 lg:pr-24 bg-tertiary lg:bg-transparent text-sfa-navy">
+            <div className="space-y-10 lg:space-y-12">
+              {/* Report 1 */}
+              <div className="space-y-3 pb-8 border-b border-sfa-navy/15 last:border-0 last:pb-0">
+                <h3 className="text-lg lg:text-xl font-avenir font-bold tracking-wide uppercase leading-snug">
+                  SRI LANKA REAL ESTATE MARKET OUTLOOK 2026
+                </h3>
+                <p className="text-xs lg:text-sm font-avenir font-normal text-sfa-navy/80 uppercase tracking-wider leading-relaxed">
+                  AN INDEPENDENT ASSESSMENT OF SRI LANKA&apos;S COMMERCIAL, RESIDENTIAL, AND LEISURE PROPERTY MARKETS — WITH A FOCUS ON COLOMBO, PORT CITY, AND THE RECOVERING TOURISM CORRIDOR.
+                </p>
+                <button
+                  onClick={() => alert("Downloading Report: Sri Lanka Real Estate Market Outlook 2026 (Mock File)")}
+                  className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest uppercase hover:underline cursor-pointer"
+                >
+                  <span>DOWNLOAD REPORT &rarr;</span>
+                </button>
+              </div>
+
+              {/* Report 2 */}
+              <div className="space-y-2 pb-8 border-b border-sfa-navy/15 last:border-0 last:pb-0">
+                <span className="text-[10px] font-montserrat font-bold text-secondary uppercase tracking-widest">
+                  MARKET COMMENTARY
+                </span>
+                <h3 className="text-base lg:text-lg font-avenir font-bold tracking-wide uppercase leading-snug">
+                  PORT CITY COLOMBO: WHAT THE FIRST WAVE OF COMPLETIONS MEANS FOR COMMERCIAL VALUES
+                </h3>
+                <span className="block text-xs font-avenir font-normal text-sfa-navy/70 uppercase tracking-wider">
+                  APRIL 2026
+                </span>
+              </div>
+
+              {/* Report 3 */}
+              <div className="space-y-2">
+                <span className="text-[10px] font-montserrat font-bold text-secondary uppercase tracking-widest">
+                  MALDIVES
+                </span>
+                <h3 className="text-base lg:text-lg font-avenir font-bold tracking-wide uppercase leading-snug">
+                  RESORT ASSET VALUATIONS IN THE MALDIVES: KEY METHODOLOGIES AND LENDER REQUIREMENTS
+                </h3>
+                <span className="block text-xs font-avenir font-normal text-sfa-navy/70 uppercase tracking-wider">
+                  MARCH 2026
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Valuations Section (Page 9) */}
       <section className="py-24 bg-[#eaeff5] overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -593,70 +693,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. Insights & Reports (Page 7) */}
-      <section id="newsroom" className="py-24 bg-white relative">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            {/* Left side headers */}
-            <div className="lg:col-span-5 space-y-6">
-              <span className="text-xs font-avenir font-medium tracking-widest text-sfa-blue uppercase">INSIGHTS</span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight text-sfa-navy leading-none uppercase">
-                MARKET
-              </h2>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight text-sfa-navy leading-none uppercase">
-                INTELLIGENCE
-              </h2>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight text-sfa-navy leading-none uppercase">
-                FOR INFORMED
-              </h2>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight text-sfa-navy leading-none uppercase">
-                DECISIONS.
-              </h2>
-              <div className="inline-block mt-4 px-4 py-2 border border-sfa-blue text-xs font-avenir font-medium tracking-widest text-sfa-blue uppercase">
-                LATEST REPORT • 2026
-              </div>
-            </div>
 
-            {/* Right side Reports List */}
-            <div className="lg:col-span-7 space-y-12">
-              {/* Report 1 */}
-              <div className="border-b border-sfa-grey/15 pb-8 space-y-3">
-                <h3 className="text-lg font-avenir font-bold text-sfa-navy tracking-wide">
-                  SRI LANKA REAL ESTATE MARKET OUTLOOK 2026
-                </h3>
-                <p className="text-xs font-barlow font-normal text-sfa-grey uppercase tracking-widest">
-                  AN INDEPENDENT ASSESSMENT OF SRI LANKA&apos;S COMMERCIAL, RESIDENTIAL, AND LEISURE PROPERTY MARKETS — WITH A FOCUS ON COLOMBO, PORT CITY, AND THE RECOVERING TOURISM CORRIDOR.
-                </p>
-                <button
-                  onClick={() => alert("Downloading Report: Sri Lanka Real Estate Market Outlook 2026 (Mock File)")}
-                  className="inline-flex items-center gap-2 text-xs font-avenir font-bold tracking-widest text-sfa-blue uppercase hover:underline"
-                >
-                  <span>DOWNLOAD REPORT</span>
-                  <Download className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* Report 2 */}
-              <div className="border-b border-sfa-grey/15 pb-8 space-y-2">
-                <span className="text-[10px] font-montserrat font-bold text-sfa-blue uppercase tracking-widest">MARKET COMMENTARY</span>
-                <h3 className="text-base font-avenir font-bold text-sfa-navy tracking-wide">
-                  PORT CITY COLOMBO: WHAT THE FIRST WAVE OF COMPLETIONS MEANS FOR COMMERCIAL VALUES
-                </h3>
-                <span className="block text-xs font-barlow font-normal text-sfa-grey uppercase tracking-wider">APRIL 2026</span>
-              </div>
-
-              {/* Report 3 */}
-              <div className="border-b border-sfa-grey/15 pb-8 space-y-2">
-                <span className="text-[10px] font-montserrat font-bold text-sfa-blue uppercase tracking-widest">MALDIVES</span>
-                <h3 className="text-base font-avenir font-bold text-sfa-navy tracking-wide">
-                  RESORT ASSET VALUATIONS IN THE MALDIVES: KEY METHODOLOGIES AND LENDER REQUIREMENTS
-                </h3>
-                <span className="block text-xs font-barlow font-normal text-sfa-grey uppercase tracking-wider">MARCH 2026</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 9. Case Studies (Page 8) */}
       <section className="py-24 bg-[#0a2340] text-white">
