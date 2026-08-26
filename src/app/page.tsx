@@ -420,7 +420,7 @@ export default function Home() {
       </section>
 
       {/* 5. Insights & Reports (Page 7) */}
-      <section id="newsroom" className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+      <section id="newsroom" className="relative min-h-[380px] flex items-stretch overflow-hidden bg-white">
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
@@ -445,7 +445,7 @@ export default function Home() {
         {/* Content Overlay */}
         <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12">
           {/* Left Column (INSIGHTS Header Details) */}
-          <div className="lg:col-span-5 flex flex-col justify-between p-12 lg:py-24 lg:pl-24 lg:pr-12 bg-transparent">
+          <div className="lg:col-span-5 flex flex-col justify-between p-12 lg:py-16 lg:pl-24 lg:pr-12 bg-transparent">
             <span className="text-sm font-avenir font-semibold tracking-[0.2em] text-primary uppercase mb-6 lg:mb-0">
               INSIGHTS
             </span>
@@ -471,7 +471,7 @@ export default function Home() {
           </div>
 
           {/* Right Column (Reports & Commentaries) */}
-          <div className="lg:col-span-7 flex flex-col justify-center p-12 lg:py-24 lg:pl-32 lg:pr-24 bg-tertiary lg:bg-transparent text-sfa-navy">
+          <div className="lg:col-span-7 flex flex-col justify-center p-12 lg:py-16 lg:pl-32 lg:pr-24 bg-tertiary lg:bg-transparent text-sfa-navy">
             <div className="space-y-10 lg:space-y-12">
               {/* Report 1 */}
               <div className="space-y-3 pb-8 border-b border-sfa-navy/15 last:border-0 last:pb-0">
