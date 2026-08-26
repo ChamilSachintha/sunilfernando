@@ -423,7 +423,7 @@ export default function Home() {
       <section id="newsroom" className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
-          <svg viewBox="0 0 1000 400" className="w-full h-full" preserveAspectRatio="none">
+          <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
             <defs>
               <linearGradient id="insights-left-grad" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0%" stopColor="#e2e8f0" />
@@ -431,14 +431,14 @@ export default function Home() {
               </linearGradient>
             </defs>
 
-            {/* Right Side Bright Cyan Background */}
-            <rect width="1000" height="400" fill="#00bdf1" />
+            {/* Right Side Bright Cyan Background (extended height to cover margins) */}
+            <rect y="-20" width="1000" height="440" fill="#00bdf1" />
 
-            {/* Left Side Gradient Background */}
-            <path d="M 0,0 L 560,0 C 510,0 480,30 460,80 L 330,400 L 0,400 Z" fill="url(#insights-left-grad)" />
+            {/* Left Side Gradient Background (extended beyond boundaries) */}
+            <path d="M 0,-20 L 569,-20 C 519,-20 480,30 460,80 L 322,420 L 0,420 Z" fill="url(#insights-left-grad)" />
 
-            {/* White Curved Divider Line */}
-            <path d="M 560,0 C 510,0 480,30 460,80 L 330,400" fill="none" stroke="#ffffff" strokeWidth="16" />
+            {/* White Curved Divider Line (extended to clip flat at section edges) */}
+            <path d="M 569,-20 C 519,-20 480,30 460,80 L 322,420" fill="none" stroke="#ffffff" strokeWidth="16" />
           </svg>
         </div>
 
