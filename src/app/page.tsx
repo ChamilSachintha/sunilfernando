@@ -345,26 +345,40 @@ export default function Home() {
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1000 400" className="w-full h-full" preserveAspectRatio="none">
+            <defs>
+              {/* Soft drop shadow for the left leg of the A */}
+              <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="-8" dy="4" stdDeviation="12" floodColor="#000000" floodOpacity={0.08} />
+              </filter>
+
+              {/* Slate gradient for the stylized A */}
+              <linearGradient id="a-gradient" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#ffffff" />
+                <stop offset="40%" stopColor="#ffffff" />
+                <stop offset="65%" stopColor="#e2e8f0" />
+                <stop offset="100%" stopColor="#94a3b8" />
+              </linearGradient>
+            </defs>
+
             {/* Left Side White Background */}
             <polygon points="0,0 521,0 639,400 0,400" fill="#ffffff" />
 
             {/* Right Side Primary Blue Background */}
-            <polygon points="521,0 1000,0 1000,400 639,400" fill="#2684be" />
+            <polygon points="541,0 1000,0 1000,400 659,400" fill="#2684be" />
+
+            {/* Dark Blue Divider Stripe (Secondary color) */}
+            <polygon points="521,0 541,0 659,400 639,400" fill="#194866" />
 
             {/* Top Left Dark Banner (Secondary color) */}
             <path d="M 0,0 L 510,0 Q 525,0 520,15 L 500,70 Q 495,80 485,80 L 0,80 Z" fill="#194866" />
 
-            {/* Stylized "A" symbol in the middle matching "&" symbol styles */}
-            <text
-              x="530"
-              y="380"
-              fill="currentColor"
-              className="font-serif font-bold text-sfa-grey/10"
-              fontSize="420"
-              textAnchor="middle"
-            >
-              A
-            </text>
+            {/* Stylized "A" symbol in the middle with gradient and shadow */}
+            <path
+              d="M 430,370 L 515,60 Q 530,15 545,60 L 630,370 Q 635,385 620,385 Q 610,385 605,370 L 575,270 L 485,270 L 455,370 Q 450,385 440,385 Q 425,385 430,370 Z M 530,110 L 565,240 L 495,240 Z"
+              fill="url(#a-gradient)"
+              fillRule="evenodd"
+              filter="url(#shadow)"
+            />
           </svg>
         </div>
 
