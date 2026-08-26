@@ -445,7 +445,7 @@ export default function Home() {
         {/* Content Overlay */}
         <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12">
           {/* Left Column (INSIGHTS Header Details) */}
-          <div className="lg:col-span-5 flex flex-col justify-between p-12 lg:py-24 lg:pl-24 lg:pr-12 bg-gradient-to-br from-slate-200 to-secondary lg:bg-transparent">
+          <div className="lg:col-span-5 flex flex-col justify-between p-12 lg:py-24 lg:pl-24 lg:pr-12 bg-transparent">
             <span className="text-sm font-avenir font-semibold tracking-[0.2em] text-primary uppercase mb-6 lg:mb-0">
               INSIGHTS
             </span>
