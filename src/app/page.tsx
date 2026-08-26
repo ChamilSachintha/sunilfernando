@@ -435,10 +435,10 @@ export default function Home() {
             <rect width="1000" height="400" fill="#00bdf1" />
 
             {/* Left Side Gradient Background */}
-            <path d="M 0,0 L 500,0 C 540,0 550,40 530,80 L 330,400 L 0,400 Z" fill="url(#insights-left-grad)" />
+            <path d="M 0,0 L 560,0 C 510,0 480,30 460,80 L 330,400 L 0,400 Z" fill="url(#insights-left-grad)" />
 
             {/* White Curved Divider Line */}
-            <path d="M 500,0 C 540,0 550,40 530,80 L 330,400" fill="none" stroke="#ffffff" strokeWidth="16" />
+            <path d="M 560,0 C 510,0 480,30 460,80 L 330,400" fill="none" stroke="#ffffff" strokeWidth="16" />
           </svg>
         </div>
 
@@ -451,16 +451,16 @@ export default function Home() {
             </span>
             
             <div className="flex-1 flex flex-col justify-center my-8 lg:my-0">
-              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-black tracking-tight uppercase leading-[1.05] text-sfa-navy">
+              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-sfa-navy">
                 MARKET
               </h2>
-              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-black tracking-tight uppercase leading-[1.05] text-sfa-navy">
+              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-sfa-navy">
                 INTELLIGENCE
               </h2>
-              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-black tracking-tight uppercase leading-[1.05] text-sfa-navy">
+              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-sfa-navy">
                 FOR INFORMED
               </h2>
-              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-black tracking-tight uppercase leading-[1.05] text-sfa-navy">
+              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-sfa-navy">
                 DECISIONS.
               </h2>
             </div>
@@ -471,7 +471,7 @@ export default function Home() {
           </div>
 
           {/* Right Column (Reports & Commentaries) */}
-          <div className="lg:col-span-7 flex flex-col justify-center p-12 lg:py-24 lg:pl-20 lg:pr-24 bg-tertiary lg:bg-transparent text-sfa-navy">
+          <div className="lg:col-span-7 flex flex-col justify-center p-12 lg:py-24 lg:pl-32 lg:pr-24 bg-tertiary lg:bg-transparent text-sfa-navy">
             <div className="space-y-10 lg:space-y-12">
               {/* Report 1 */}
               <div className="space-y-3 pb-8 border-b border-sfa-navy/15 last:border-0 last:pb-0">
