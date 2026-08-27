@@ -707,55 +707,78 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Occupier Services (Page 10) */}
-      <section className="relative bg-white min-h-[500px] flex items-stretch overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-12 w-full">
-          {/* Left Text Detail */}
-          <div className="lg:col-span-7 p-12 lg:px-12 lg:py-24 flex flex-col justify-center space-y-6">
-            <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase text-sfa-navy">
-              OCCUPIER SERVICES
-            </h2>
-            <div className="h-[2px] w-24 bg-sfa-blue" />
+      {/* 8. Occupier Services (Page 10) */}
+      <section className="relative min-h-[500px] flex items-stretch overflow-hidden bg-white">
+        {/* Full-width building background image on desktop (clipped by overlay) */}
+        <div className="absolute inset-0 z-0 hidden lg:block">
+          <Image
+            src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1600"
+            alt="High-rise modern workspace architecture"
+            fill
+            className="object-cover"
+          />
+        </div>
 
-            <div className="space-y-4 text-xs sm:text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
+        {/* SVG Vector Background */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block z-10">
+          <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="occupier-left-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#194866" />
+                <stop offset="100%" stopColor="#e2e8f0" />
+              </linearGradient>
+            </defs>
+
+            {/* Left Side Gradient Background */}
+            <path d="M 0,-20 L 512,-20 C 572,-20 610,30 630,80 L 758,420 L 0,420 Z" fill="url(#occupier-left-grad)" />
+
+            {/* White Curved Divider Line */}
+            <path d="M 512,-20 C 572,-20 610,30 630,80 L 758,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+          </svg>
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Left Text Detail */}
+          <div className="lg:col-span-7 py-12 lg:py-16 lg:pr-24 flex flex-col justify-center space-y-6 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-white">
+              OCCUPIER
+              <span className="block mt-1">SERVICES</span>
+            </h2>
+
+            <div className="space-y-4 text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-justify max-w-xl">
               <p className="font-avenir font-semibold text-sfa-navy">
                 Strategic advisory for organisations leasing, expanding, or relocating space aligned with your operational and financial goals.
               </p>
-              <p>
+              <p className="text-sfa-navy/90">
                 Whatever property you may need, our team will be able to provide you just the right assistance you need to move into optimum space.
               </p>
-              <p>
+              <p className="text-sfa-navy/90">
                 Through a wide range of consultancy and transactional services, we are able to understand the critical success factors for our clients’ benefit.
               </p>
-              <p>
+              <p className="text-sfa-navy/90">
                 Our dedicated team of experienced professionals with the right balance of local and international knowledge will match varying client requirements, leverage our relationship with occupiers and decision makers, empower clients to attain their desired goals by creating value, addressing trends and superseding the competition.
               </p>
             </div>
 
             <button
               onClick={() => setContactOpen(true)}
-              className="inline-flex items-center gap-2 text-xs font-avenir font-medium tracking-widest text-sfa-blue uppercase hover:text-sfa-navy transition-all duration-300 mt-4 group"
+              className="inline-flex items-center gap-2 text-xs font-avenir font-bold tracking-widest text-[#2684be] uppercase hover:underline cursor-pointer w-fit"
             >
-              <span>LEARN MORE</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <span>LEARN MORE &rarr;</span>
             </button>
           </div>
 
-          {/* Right Building Image with curved/slanted overlay */}
-          <div className="lg:col-span-5 relative min-h-[300px] lg:min-h-full">
-            <Image
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200"
-              alt="High-rise modern workspace architecture"
-              fill
-              className="object-cover"
-            />
-            {/* Custom overlay curved shape */}
-            <div
-              className="absolute inset-y-0 left-0 w-24 bg-white hidden lg:block"
-              style={{
-                clipPath: "polygon(0 0, 0 100%, 100% 100%)",
-              }}
-            />
+          {/* Right Column Spacer / Mobile Image */}
+          <div className="lg:col-span-5 relative min-h-[350px] lg:min-h-full">
+            <div className="absolute inset-0 lg:hidden">
+              <Image
+                src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1200"
+                alt="High-rise modern workspace architecture"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
