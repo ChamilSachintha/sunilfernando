@@ -80,9 +80,9 @@ export default function Home() {
     <div className="relative min-h-screen bg-white text-sfa-navy overflow-x-hidden">
       {/* 1. Header (Page 1) */}
       <header className="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-sfa-grey/10 shadow-sm transition-all">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex justify-between items-center">
           <div className="cursor-pointer flex items-center" onClick={() => scrollTo("home")}>
-            <SfaLogo className="h-20 py-0 block object-contain" />
+            <SfaLogo className="h-16 sm:h-20 py-0 block object-contain" />
           </div>
 
           {/* Desktop Nav */}
@@ -180,7 +180,7 @@ export default function Home() {
       </header>
 
       {/* 2. Hero Section & Carousel (Page 1-4) */}
-      <section id="home" className="relative h-screen w-full flex items-center justify-center pt-20 overflow-hidden bg-black">
+      <section id="home" className="relative h-screen w-full flex items-center justify-center pt-16 sm:pt-20 overflow-hidden bg-black">
         {/* Background images transitioning */}
         {heroSlides.map((slide, idx) => (
           <motion.div
@@ -277,11 +277,11 @@ export default function Home() {
       <section id="offer" className="pt-0 pb-24 bg-white relative">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header tabs row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 text-center mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 text-center mb-16 border-b border-sfa-grey/10 md:border-b-0">
             {["VALUATION ADVISORY", "OCCUPIER SERVICES", "CAPITAL MARKETS", "RESEARCH SERVICES"].map((tab, idx) => (
               <div
                 key={idx}
-                className="py-4 font-avenir text-sm sm:text-base font-medium tracking-[0.15em] border-r-[3px] border-sfa-grey/10 last:border-0 cursor-pointer text-primary"
+                className="py-4 font-avenir text-sm sm:text-base font-medium tracking-[0.15em] border-sfa-grey/10 cursor-pointer text-primary border-r-[3px] border-b-[3px] odd:border-r-[3px] even:border-r-0 md:even:border-r-[3px] md:last:border-r-0 md:border-b-0 [&:nth-child(3)]:border-b-0 [&:nth-child(4)]:border-b-0"
               >
                 {tab}
               </div>
