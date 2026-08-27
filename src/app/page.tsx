@@ -361,20 +361,20 @@ export default function Home() {
             </defs>
 
             {/* Left Side White Background */}
-            <polygon points="0,0 521,0 639,400 0,400" fill="#ffffff" />
+            <polygon points="0,0 520,0 620,400 0,400" fill="#ffffff" />
 
             {/* Right Side Primary Blue Background */}
-            <polygon points="541,0 1000,0 1000,400 659,400" fill="#2684be" />
+            <polygon points="520,0 1000,0 1000,400 620,400" fill="#2684be" />
 
-            {/* Dark Blue Divider Stripe (Secondary color) */}
-            <polygon points="521,0 541,0 659,400 639,400" fill="#194866" />
-
-            {/* Top Left Dark Banner (Secondary color) */}
-            <path d="M 0,0 L 510,0 Q 525,0 520,15 L 500,70 Q 495,80 485,80 L 0,80 Z" fill="#194866" />
+            {/* Combined Dark Blue Banner + Stripe (Secondary color #194866) */}
+            <path
+              d="M 0,0 L 528,0 L 628,400 L 612,400 L 512,50 Q 508,50 496,50 L 0,50 Z"
+              fill="#194866"
+            />
 
             {/* Stylized "A" symbol in the middle with gradient and shadow */}
             <path
-              d="M 430,370 L 515,60 Q 530,15 545,60 L 630,370 Q 635,385 620,385 Q 610,385 605,370 L 575,270 L 485,270 L 455,370 Q 450,385 440,385 Q 425,385 430,370 Z M 530,110 L 565,240 L 495,240 Z"
+              d="M 455,250 L 490,95 C 495,75 505,75 510,95 L 545,250 Z M 500,140 L 525,230 L 475,230 Z M 445,265 L 555,265 L 590,400 L 555,400 C 555,330 535,300 500,300 C 465,300 445,330 445,400 L 410,400 Z"
               fill="url(#a-gradient)"
               fillRule="evenodd"
               filter="url(#shadow)"
@@ -387,7 +387,7 @@ export default function Home() {
           {/* Left Column (WHAT WE DO + End-to-End text) */}
           <div className="lg:col-span-7 flex flex-col justify-between bg-white lg:bg-transparent">
             {/* Header Banner Text */}
-            <div className="h-20 flex items-center pl-12 lg:pl-24 bg-secondary lg:bg-transparent">
+            <div className="h-[50px] flex items-center pl-12 lg:pl-24 bg-secondary lg:bg-transparent">
               <span className="text-sm font-avenir font-semibold tracking-[0.2em] text-white uppercase">
                 WHAT WE DO
               </span>
@@ -395,16 +395,12 @@ export default function Home() {
             
             {/* Main Left Content */}
             <div className="flex-1 flex flex-col justify-center px-12 lg:pl-24 lg:pr-12 py-12">
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-black tracking-tight uppercase leading-[1.1] text-sfa-navy">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-light tracking-tight uppercase leading-[1.1] text-sfa-navy">
                 END-TO-END
+                <span className="block mt-1">REAL ESTATE</span>
+                <span className="block mt-1">ADVISORY</span>
               </h2>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-black tracking-tight uppercase text-primary leading-[1.1]">
-                REAL ESTATE
-              </h2>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-black tracking-tight uppercase leading-[1.1] text-sfa-navy">
-                ADVISORY
-              </h2>
-              <p className="text-sm sm:text-base font-avenir font-semibold tracking-[0.15em] text-primary mt-6 uppercase">
+              <p className="text-sm sm:text-base font-avenir font-semibold tracking-[0.15em] text-[#2684be] mt-6 uppercase">
                 BUILT FOR INSTITUTIONS
               </p>
             </div>
