@@ -990,28 +990,60 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 11. Leadership Team Section (Page 14-15) */}
-      <section id="team" className="bg-slate-50 border-t border-b border-sfa-grey/10 overflow-hidden">
-        {/* Intro Banner (Page 14) */}
-        <div className="bg-[#112d4e] text-white py-16">
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-4">
-              <span className="text-xs font-avenir font-medium tracking-widest text-sfa-cyan uppercase">LEADERSHIP</span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-montserrat font-black tracking-tight uppercase leading-none mt-1">
-                OUR TEAM
-              </h2>
-            </div>
-            <div className="lg:col-span-8 border-l border-white/20 pl-6">
-              <p className="text-xs sm:text-sm font-avenir tracking-wide leading-relaxed font-light text-white/80 uppercase">
-                SFA EMPLOYS PROFESSIONALS WITH SPECIALIZED EXPERTISE IN VARIOUS REAL ESTATE SECTORS. BASED ON THE NATURE AND SCOPE OF EACH ASSIGNMENT, THE APPROPRIATE EXPERTS ARE INTEGRATED INTO THE LEADERSHIP TEAM.
-              </p>
-            </div>
-          </div>
+      {/* 11. Leadership Team Header (Page 14) */}
+      <section id="team" className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+        {/* SVG Vector Background */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
+          <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="team-header-left-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#194866" />
+                <stop offset="100%" stopColor="#e2e8f0" />
+              </linearGradient>
+            </defs>
+
+            {/* Left Side Gradient Background */}
+            <path d="M 0,-20 L 530,-20 C 590,-20 620,30 640,80 L 730,420 L 0,420 Z" fill="url(#team-header-left-grad)" />
+
+            {/* White Curved Divider Line */}
+            <path d="M 530,-20 C 590,-20 620,30 640,80 L 730,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+          </svg>
         </div>
 
-        {/* Profiles Section (Page 15) */}
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Background Building Image */}
+        <div className="absolute top-0 bottom-0 right-0 left-0 lg:left-1/3 z-0 pointer-events-none select-none">
+          <Image
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab"
+            alt="Office building architecture"
+            fill
+            className="object-cover object-center opacity-40 lg:opacity-100"
+          />
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
+          {/* Left Column (Details) */}
+          <div className="lg:col-span-6 flex flex-col justify-center p-12 lg:py-16 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-white">
+              OUR
+              <span className="block mt-1">LEADERSHIP</span>
+              <span className="block mt-1">TEAM</span>
+            </h2>
+
+            <p className="text-xs sm:text-sm lg:text-[15px] font-avenir leading-relaxed text-justify text-white lg:text-sfa-navy my-6 max-w-xl uppercase font-semibold">
+              SFA EMPLOYS PROFESSIONALS WITH SPECIALIZED EXPERTISE IN VARIOUS REAL ESTATE SECTORS. BASED ON THE NATURE AND SCOPE OF EACH ASSIGNMENT, THE APPROPRIATE EXPERTS ARE INTEGRATED INTO THE LEADERSHIP TEAM.
+            </p>
+          </div>
+
+          {/* Right Column (Spacing for desktop layout building image to show through) */}
+          <div className="lg:col-span-6 lg:block hidden"></div>
+        </div>
+      </section>
+
+      {/* 12. Leadership Team Profiles (Page 15) */}
+      <section className="relative overflow-hidden bg-white py-1">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-0 border-t lg:border-t-0 border-sfa-grey/10">
             {[
               {
                 name: "Sunil Fernando",
@@ -1022,60 +1054,70 @@ export default function Home() {
               {
                 name: "Manju Fernando",
                 designation: "Group Managing Director",
-                credentials: "M B A (Edin), MRICS",
+                credentials: "M.B.A.(Aus), MRICS",
                 image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400",
               },
               {
                 name: "Dilshan Perera",
                 designation: "Director Valuation & Advisory",
-                credentials: "M B A (Syd)",
+                credentials: "M.B.A.(Aus)",
                 image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400",
               },
               {
                 name: "Vicks Vickneswaran",
                 designation: "Director UAE",
-                credentials: "MSc(GLOUC), FCMA, FCCA, FCMI",
+                credentials: "M.B.A.(UK), MRICS, FCMA, FCCA, FCIM",
                 image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400",
               },
               {
                 name: "Nalin Seneviratne",
                 designation: "Director / Advisor",
-                credentials: "BSc LLB FRICS",
+                credentials: "BSc.LM, FRICS",
                 image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400",
               },
               {
                 name: "Mohamed Hilmy",
                 designation: "Director - Maldives",
-                credentials: "LLB(Hons), LLM",
+                credentials: "L.B.M.(Mal), A.I.V",
                 image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400",
               },
             ].map((director, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-sfa-grey/15 shadow-sm p-6 flex flex-col items-center text-center space-y-4 hover:shadow-md transition duration-300 relative group overflow-hidden"
+                className="relative group overflow-hidden h-[360px] w-full bg-gradient-to-b from-[#194866] to-[#e2e8f0]"
               >
-                {/* Diagonal Slate Card overlay on hover */}
-                <div className="absolute top-0 right-0 w-24 h-24 bg-sfa-navy/5 rounded-bl-full transition-all duration-300 group-hover:scale-110 pointer-events-none" />
+                {/* SVG Divider & Clip Definition */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none select-none z-20 hidden lg:block" viewBox="0 0 200 400" preserveAspectRatio="none">
+                  <defs>
+                    <clipPath id={`team-clip-${idx}`}>
+                      <path d="M 60,-20 C 40,-20 20,30 15,80 L -25,420 L 250,420 L 250,-20 Z" />
+                    </clipPath>
+                  </defs>
+                  {/* White Curved Divider Stroke */}
+                  <path d="M 60,-20 C 40,-20 20,30 15,80 L -25,420" fill="none" stroke="#ffffff" strokeWidth="8" />
+                </svg>
 
-                {/* Profile Image with Slate Oval Border */}
-                <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-sfa-navy/10 group-hover:border-sfa-blue transition duration-300 shadow-inner">
+                {/* Clipped Photo */}
+                <div 
+                  className={`absolute inset-0 w-full h-full [clip-path:none] lg:[clip-path:url(#team-clip-${idx})]`}
+                >
                   <Image
                     src={director.image}
                     alt={director.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition duration-300"
+                    className="object-cover object-top filter grayscale hover:grayscale-0 transition duration-500"
                   />
                 </div>
 
-                <div className="space-y-1">
-                  <h3 className="text-lg font-montserrat font-bold text-sfa-navy tracking-wide">
+                {/* Bottom Text Banner */}
+                <div className="absolute bottom-0 left-0 right-0 bg-[#0c2340]/90 text-center py-4 px-2 z-30 min-h-[90px] flex flex-col justify-center">
+                  <h3 className="text-white font-montserrat font-bold text-xs sm:text-[13px] tracking-wide uppercase leading-tight">
                     {director.name}
                   </h3>
-                  <p className="text-[10px] font-avenir font-medium text-sfa-blue uppercase tracking-widest">
+                  <p className="text-[#00bdf1] font-avenir font-black text-[9px] uppercase tracking-wider mt-1">
                     {director.credentials}
                   </p>
-                  <div className="h-[1px] w-12 bg-sfa-grey/20 mx-auto my-2" />
-                  <p className="text-xs font-poppins font-normal text-sfa-grey uppercase tracking-widest leading-relaxed">
+                  <p className="text-white/80 font-avenir font-medium text-[9px] sm:text-[10px] uppercase tracking-wide mt-0.5 leading-tight">
                     {director.designation}
                   </p>
                 </div>
