@@ -746,7 +746,7 @@ export default function Home() {
               <span className="block mt-1">SERVICES</span>
             </h2>
 
-            <div className="space-y-4 text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-justify max-w-xl">
+            <div className="space-y-4 text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-justify max-w-2xl">
               <p className="font-avenir font-semibold text-sfa-navy">
                 Strategic advisory for organisations leasing, expanding, or relocating space aligned with your operational and financial goals.
               </p>
