@@ -345,43 +345,29 @@ export default function Home() {
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1000 400" className="w-full h-full" preserveAspectRatio="none">
-            <defs>
-              {/* Soft drop shadow for the left leg of the A */}
-              <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="-8" dy="4" stdDeviation="12" floodColor="#000000" floodOpacity={0.08} />
-              </filter>
-
-              {/* Slate gradient for the stylized A */}
-              <linearGradient id="a-gradient" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="40%" stopColor="#ffffff" />
-                <stop offset="65%" stopColor="#e2e8f0" />
-                <stop offset="100%" stopColor="#94a3b8" />
-              </linearGradient>
-            </defs>
-
             {/* Left Side White Background */}
-            <polygon points="0,0 520,0 620,400 0,400" fill="#ffffff" />
+            <polygon points="0,0 520,0 640,400 0,400" fill="#ffffff" />
 
             {/* Right Side Primary Blue Background */}
-            <polygon points="520,0 1000,0 1000,400 620,400" fill="#2684be" />
-
-            {/* Combined Dark Blue Banner + Stripe (Secondary color #194866) */}
             <path
-              d="M 0,0 L 528,0 L 628,400 L 612,400 L 512,50 Q 508,50 496,50 L 0,50 Z"
+              d="M 520,-20 C 560,40 570,100 590,160 L 640,420 L 1000,420 L 1000,-20 Z"
+              fill="#2684be"
+            />
+
+            {/* Top Left Dark Banner (Secondary color #194866) */}
+            <path
+              d="M 0,0 L 500,0 C 510,0 515,10 512,20 L 505,50 L 0,50 Z"
               fill="#194866"
             />
-          </svg>
 
-          {/* Stylized "A" symbol cropped image */}
-          <div className="absolute left-[27%] w-[46%] top-[5%] bottom-[0%] z-0">
-            <Image
-              src="/what-we-do-a.png"
-              alt="Stylized A background symbol"
-              fill
-              className="object-contain"
+            {/* Curved White Separator Line */}
+            <path
+              d="M 520,-20 C 560,40 570,100 590,160 L 640,420"
+              stroke="#ffffff"
+              strokeWidth="16"
+              fill="none"
             />
-          </div>
+          </svg>
         </div>
 
         {/* Content Overlay */}
