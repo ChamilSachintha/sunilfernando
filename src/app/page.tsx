@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, MapPin } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { SfaLogo, HsbcLogo, StandardCharteredLogo, DeloitteLogo, CbiLogo, CinnamonLogo, LoadstarLogo, ShangriLaLogo, HiltonLogo, KpmgLogo, KnightFrankLogo, KrestonLogo, BdoLogo, MakeeluChambersLogo, BakerTillyLogo, WarrenVicksLogo, DesignAdvocacyLogo, AcquestLogo, NdbLogo, CoenergiLogo, SudathPereraLogo } from "@/components/Logos";
 import { RequestValuationModal, ContactModal } from "@/components/Forms";
 
@@ -1158,47 +1158,51 @@ export default function Home() {
       </section>
 
       {/* 13. Footer & Contact Details (Page 16) */}
-      <footer className="bg-[#1d70b8] text-white pt-16 pb-8 border-t border-white/10">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 items-start mb-12">
+      {/* 13. Footer & Contact Details (Page 16) */}
+      <footer className="bg-primary text-white pt-16 pb-8 border-t border-white/10">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-0 items-start mb-12">
           {/* Column 1: SFA identity & Reg info */}
-          <div className="lg:col-span-4 space-y-6">
-            <SfaLogo className="h-12 brightness-0 invert" />
+          <div className="lg:col-span-4 space-y-6 lg:pr-8">
+            <h3 className="text-2xl font-montserrat font-bold tracking-[0.1em] uppercase leading-tight text-white">
+              SUNIL FERNANDO &
+              <span className="block mt-1">ASSOCIATES</span>
+            </h3>
 
-            <p className="text-xs font-avenir tracking-wide text-white/80 uppercase">
+            <p className="text-sm font-avenir tracking-wide text-white uppercase">
               Real Estate Advisory Since 1999
             </p>
 
-            <p className="text-xs font-avenir leading-relaxed text-white/90 text-justify">
+            <p className="text-sm font-avenir leading-relaxed text-[#0c2340] text-justify font-medium">
               Sri Lanka&apos;s largest independent real estate consultancy delivering internationally accepted valuation and advisory services across Sri Lanka and the Maldives.
             </p>
 
             <div className="flex gap-2 pt-2">
-              <span className="border border-white/30 px-3 py-1 text-[10px] font-barlow font-normal tracking-widest">RICS</span>
-              <span className="border border-white/30 px-3 py-1 text-[10px] font-barlow font-normal tracking-widest">IVSL</span>
+              <span className="border border-white/40 px-3 py-1 text-[10px] font-barlow font-normal tracking-widest text-white">RICS</span>
+              <span className="border border-white/40 px-3 py-1 text-[10px] font-barlow font-normal tracking-widest text-white">IVSL</span>
             </div>
           </div>
 
           {/* Column 2: Services links */}
-          <div className="lg:col-span-2 lg:col-start-6 space-y-4">
-            <h4 className="text-xs font-montserrat font-medium tracking-widest text-white/70 uppercase">Services</h4>
-            <ul className="space-y-2 text-xs font-avenir font-medium text-white/90 uppercase tracking-wide">
+          <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4">
+            <h4 className="text-lg font-montserrat font-semibold text-white">Services</h4>
+            <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
               <li>
-                <button onClick={() => scrollTo("offer")} className="hover:text-sfa-navy transition">
+                <button onClick={() => scrollTo("offer")} className="hover:text-white transition cursor-pointer">
                   Valuation & Advisory
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollTo("offer")} className="hover:text-sfa-navy transition">
+                <button onClick={() => scrollTo("offer")} className="hover:text-white transition cursor-pointer">
                   Occupier Services
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollTo("offer")} className="hover:text-sfa-navy transition">
+                <button onClick={() => scrollTo("offer")} className="hover:text-white transition cursor-pointer">
                   Capital Markets
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollTo("offer")} className="hover:text-sfa-navy transition">
+                <button onClick={() => scrollTo("offer")} className="hover:text-white transition cursor-pointer">
                   Research & Analytics
                 </button>
               </li>
@@ -1206,53 +1210,48 @@ export default function Home() {
           </div>
 
           {/* Column 3: Sectors */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-montserrat font-medium tracking-widest text-white/70 uppercase">Sectors</h4>
-            <ul className="space-y-2 text-xs font-avenir font-medium text-white/90 uppercase tracking-wide">
-              <li>• Tourism & Hospitality</li>
-              <li>• Commercial & Office</li>
-              <li>• Residential</li>
-              <li>• Agricultural</li>
-              <li>• Industrial</li>
+          <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4">
+            <h4 className="text-lg font-montserrat font-semibold text-white">Sectors</h4>
+            <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
+              <li>Tourism & Hospitality</li>
+              <li>Commercial & Office</li>
+              <li>Residential</li>
+              <li>Agricultural</li>
+              <li>Industrial</li>
             </ul>
           </div>
 
           {/* Column 4: Markets */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-montserrat font-medium tracking-widest text-white/70 uppercase">Markets</h4>
-            <ul className="space-y-2 text-xs font-avenir font-medium text-white/90 uppercase tracking-wide">
-              <li>• Sri Lanka</li>
-              <li>• Maldives</li>
-              <li>• Properties</li>
+          <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4">
+            <h4 className="text-lg font-montserrat font-semibold text-white">Markets</h4>
+            <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
+              <li>Sri Lanka</li>
+              <li>Maldives</li>
+              <li>Properties</li>
             </ul>
           </div>
 
           {/* Column 5: Contact Info */}
-          <div className="lg:col-span-2 space-y-4 text-xs">
-            <h4 className="text-xs font-montserrat font-medium tracking-widest text-white/70 uppercase">Contact</h4>
-            <div className="space-y-3 font-avenir text-white/90 text-left">
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-                <p className="leading-relaxed">
-                  No 505, Nawala Road, Rajagiriya
-                </p>
+          <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4 text-sm">
+            <h4 className="text-lg font-montserrat font-semibold text-white">Contact</h4>
+            <div className="space-y-4 font-avenir font-medium text-[#0c2340] text-left">
+              <div>
+                <p className="leading-relaxed">No 505, Nawala Road,</p>
+                <p className="leading-relaxed">Rajagiriya</p>
               </div>
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-                <p className="leading-relaxed">
-                  Level 24, One Galle Face Tower, Colombo 02
-                </p>
+              <div>
+                <p className="leading-relaxed">Level 24, One Galle Face Tower,</p>
+                <p className="leading-relaxed">Colombo 02</p>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4" />
-                <span>Tel: 011 2887829</span>
+              <div>
+                <p className="leading-relaxed">Tel: 011 2887829</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom copyright line */}
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] font-avenir font-medium tracking-widest text-white/70 uppercase">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/20 pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] font-avenir font-bold tracking-widest text-[#0c2340] uppercase">
           <span>
             © 2026 SUNIL FERNANDO & ASSOCIATES (PVT) LTD. ALL RIGHTS RESERVED.
           </span>
