@@ -1163,7 +1163,7 @@ export default function Home() {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-0 items-start mb-12">
           {/* Column 1: SFA identity & Reg info */}
           <div className="lg:col-span-4 space-y-6 lg:pr-8">
-            <h3 className="text-2xl font-montserrat font-bold tracking-[0.1em] uppercase leading-tight text-white">
+            <h3 className="text-xl sm:text-2xl font-montserrat font-medium tracking-[0.15em] uppercase leading-tight text-white">
               SUNIL FERNANDO &
               <span className="block mt-1">ASSOCIATES</span>
             </h3>
@@ -1184,7 +1184,7 @@ export default function Home() {
 
           {/* Column 2: Services links */}
           <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4">
-            <h4 className="text-lg font-montserrat font-semibold text-white">Services</h4>
+            <h4 className="text-base font-montserrat font-medium text-white">Services</h4>
             <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
               <li>
                 <button onClick={() => scrollTo("offer")} className="hover:text-white transition cursor-pointer">
@@ -1211,7 +1211,7 @@ export default function Home() {
 
           {/* Column 3: Sectors */}
           <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4">
-            <h4 className="text-lg font-montserrat font-semibold text-white">Sectors</h4>
+            <h4 className="text-base font-montserrat font-medium text-white">Sectors</h4>
             <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
               <li>Tourism & Hospitality</li>
               <li>Commercial & Office</li>
@@ -1223,7 +1223,7 @@ export default function Home() {
 
           {/* Column 4: Markets */}
           <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4">
-            <h4 className="text-lg font-montserrat font-semibold text-white">Markets</h4>
+            <h4 className="text-base font-montserrat font-medium text-white">Markets</h4>
             <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
               <li>Sri Lanka</li>
               <li>Maldives</li>
@@ -1233,7 +1233,7 @@ export default function Home() {
 
           {/* Column 5: Contact Info */}
           <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4 text-sm">
-            <h4 className="text-lg font-montserrat font-semibold text-white">Contact</h4>
+            <h4 className="text-base font-montserrat font-medium text-white">Contact</h4>
             <div className="space-y-4 font-avenir font-medium text-[#0c2340] text-left">
               <div>
                 <p className="leading-relaxed">No 505, Nawala Road,</p>
