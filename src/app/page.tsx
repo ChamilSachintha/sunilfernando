@@ -803,10 +803,10 @@ export default function Home() {
             <rect y="-20" width="1000" height="440" fill="url(#capital-right-grad)" />
 
             {/* Left Side Gradient Background */}
-            <path d="M 0,-20 L 490,-20 C 440,-20 400,30 380,80 L 310,420 L 0,420 Z" fill="url(#capital-left-grad)" />
+            <path d="M 0,-20 L 490,-20 C 440,-20 390,30 380,80 L 310,420 L 0,420 Z" fill="url(#capital-left-grad)" />
 
             {/* White Curved Divider Line */}
-            <path d="M 490,-20 C 440,-20 400,30 380,80 L 310,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+            <path d="M 490,-20 C 440,-20 390,30 380,80 L 310,420" fill="none" stroke="#ffffff" strokeWidth="16" />
           </svg>
         </div>
 
