@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, Phone, MapPin, ChevronRight } from "lucide-react";
+import { Menu, X, ArrowRight, Phone, MapPin } from "lucide-react";
 import { SfaLogo, HsbcLogo, StandardCharteredLogo, DeloitteLogo, CbiLogo, CinnamonLogo, LoadstarLogo, ShangriLaLogo, HiltonLogo, KpmgLogo, KnightFrankLogo, KrestonLogo, BdoLogo, MakeeluChambersLogo, BakerTillyLogo, WarrenVicksLogo, DesignAdvocacyLogo, AcquestLogo, NdbLogo, CoenergiLogo, SudathPereraLogo } from "@/components/Logos";
 import { RequestValuationModal, ContactModal } from "@/components/Forms";
 
@@ -632,32 +632,56 @@ export default function Home() {
       </section>
 
       {/* 7. Valuations Section (Page 9) */}
-      <section className="py-24 bg-[#eaeff5] overflow-hidden">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left side text details */}
-            <div className="lg:col-span-6 space-y-6">
-              <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase text-sfa-navy">
-                VALUATIONS
-              </h2>
-              <div className="h-[2px] w-24 bg-sfa-cyan" />
-              <p className="text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
+      <section className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+        {/* SVG Vector Background */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
+          <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="valuations-left-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#e2e8f0" />
+                <stop offset="100%" stopColor="#194866" />
+              </linearGradient>
+            </defs>
+
+            {/* Right Side Bright Cyan Background */}
+            <rect y="-20" width="1000" height="440" fill="#00bdf1" />
+
+            {/* Left Side Gradient Background */}
+            <path d="M 0,-20 L 709,-20 C 659,-20 620,30 600,80 L 494,420 L 0,420 Z" fill="url(#valuations-left-grad)" />
+
+            {/* White Curved Divider Line */}
+            <path d="M 709,-20 C 659,-20 620,30 600,80 L 494,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+          </svg>
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
+          {/* Left Column (Details) */}
+          <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
+            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
+              VALUATIONS
+            </h2>
+
+            <div className="space-y-6 my-8 lg:my-0 lg:max-w-xl">
+              <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95">
                 Comprehensive valuation across commercial, residential, agricultural, leisure, industrial, retail, warehousing, plant & machinery, and vessels conducted in strict conformity with RICS and IVSL standards.
               </p>
-              <p className="text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
+              <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95">
                 We serve financial institutions, private equity funds, property companies, and individuals — delivering reports that stand up to international scrutiny.
               </p>
-              <button
-                onClick={() => setValuationOpen(true)}
-                className="inline-flex items-center gap-2 text-xs font-avenir font-medium tracking-widest text-sfa-blue uppercase hover:text-sfa-navy transition-all duration-300 mt-4 group"
-              >
-                <span>EXPLORE VALUATION SERVICES</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
             </div>
 
-            {/* Right side slanted categories list */}
-            <div className="lg:col-span-6 flex flex-col gap-2">
+            <button
+              onClick={() => setValuationOpen(true)}
+              className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-[#00bdf1] uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
+            >
+              <span>EXPLORE VALUATION SERVICES &rarr;</span>
+            </button>
+          </div>
+
+          {/* Right Column (Categories) */}
+          <div className="lg:col-span-5 flex flex-col justify-center bg-tertiary lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16">
+            <div className="w-full max-w-[320px] lg:max-w-[360px] mx-auto flex flex-col h-full justify-between divide-y divide-white/30 border-y border-white/30">
               {[
                 "Commercial",
                 "Residential",
@@ -671,16 +695,12 @@ export default function Home() {
               ].map((category, idx) => (
                 <div
                   key={idx}
-                  className="bg-sfa-cyan text-white hover:bg-sfa-navy py-3 px-6 text-sm font-avenir font-semibold tracking-wider uppercase transition-all duration-300 transform hover:-translate-x-2 flex justify-between items-center cursor-pointer shadow-sm"
-                  style={{
-                    clipPath: "polygon(0 0, 95% 0, 100% 100%, 0% 100%)",
-                    marginLeft: `${idx * 12}px`,
-                    marginRight: `${(8 - idx) * 12}px`,
-                  }}
                   onClick={() => setValuationOpen(true)}
+                  className="flex items-center justify-center py-2.5 cursor-pointer hover:bg-white/10 transition-colors"
                 >
-                  <span>{category}</span>
-                  <ChevronRight className="w-4 h-4 opacity-50 hover:opacity-100" />
+                  <span className="text-base sm:text-lg lg:text-xl font-montserrat font-bold italic text-sfa-navy tracking-wider uppercase">
+                    {category}
+                  </span>
                 </div>
               ))}
             </div>
