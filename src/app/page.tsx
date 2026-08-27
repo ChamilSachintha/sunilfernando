@@ -1105,7 +1105,7 @@ export default function Home() {
                     src={director.image}
                     alt={director.name}
                     fill
-                    className="object-cover object-right"
+                    className="object-cover object-center"
                   />
                 </div>
 
