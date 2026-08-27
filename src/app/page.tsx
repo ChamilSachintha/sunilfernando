@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, Phone, MapPin } from "lucide-react";
+import { Menu, X, Phone, MapPin } from "lucide-react";
 import { SfaLogo, HsbcLogo, StandardCharteredLogo, DeloitteLogo, CbiLogo, CinnamonLogo, LoadstarLogo, ShangriLaLogo, HiltonLogo, KpmgLogo, KnightFrankLogo, KrestonLogo, BdoLogo, MakeeluChambersLogo, BakerTillyLogo, WarrenVicksLogo, DesignAdvocacyLogo, AcquestLogo, NdbLogo, CoenergiLogo, SudathPereraLogo } from "@/components/Logos";
 import { RequestValuationModal, ContactModal } from "@/components/Forms";
 
@@ -871,78 +871,129 @@ export default function Home() {
 
 
       {/* 10. Clients & Partners (Page 12-13) */}
-      <section id="network" className="py-24 bg-white relative">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
-          {/* Clients block (Page 12) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            {/* Left Description */}
-            <div className="lg:col-span-5 space-y-6">
-              <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase text-sfa-navy leading-none">
-                OUR CLIENTS
-              </h2>
-              <div className="h-[2px] w-24 bg-sfa-blue" />
-              <p className="text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
-                Our diverse client portfolio, spanning individuals to multinational corporations, is a testament to our success.
-              </p>
-              <p className="text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
-                Each year, we complete thousands of valuation assignments across various sectors. With tailored methodologies and deep expertise, we consistently meet client needs and deliver exceptional value.
-              </p>
+      <section id="network" className="bg-[#0c2340] py-6 space-y-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          
+          {/* Clients Panel (Page 12) */}
+          <div className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+            {/* SVG Vector Background */}
+            <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
+              <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="clients-bg-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#194866" />
+                    <stop offset="100%" stopColor="#e2e8f0" />
+                  </linearGradient>
+                </defs>
+
+                {/* Full Background Vertical Gradient */}
+                <rect y="-20" width="1000" height="440" fill="url(#clients-bg-grad)" />
+
+                {/* White Curved Divider Line */}
+                <path d="M 341,-20 C 401,-20 430,30 450,80 L 509,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+              </svg>
             </div>
 
-            {/* Right Logos Grid */}
-            <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-8 items-center justify-items-center">
-              <HsbcLogo />
-              <StandardCharteredLogo />
-              <DeloitteLogo />
-              <CbiLogo />
-              <CinnamonLogo />
-              <LoadstarLogo />
-              <ShangriLaLogo />
-              <HiltonLogo />
+            {/* Content Overlay */}
+            <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12">
+              {/* Left Column (Details) */}
+              <div className="lg:col-span-5 flex flex-col justify-center p-12 lg:py-16 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+                <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-white">
+                  OUR
+                  <span className="block mt-1">CLIENTS</span>
+                </h2>
+
+                <div className="space-y-4 text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-justify max-w-xl my-6 text-sfa-navy">
+                  <p className="font-avenir font-normal">
+                    Our diverse client portfolio, spanning individuals to multinational corporations, is a testament to our success.
+                  </p>
+                  <p className="font-avenir font-normal">
+                    Each year, we complete thousands of valuation assignments across various sectors. With tailored methodologies and deep expertise, we consistently meet client needs and deliver exceptional value.
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Column (Logos) */}
+              <div className="lg:col-span-7 flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+                  <HsbcLogo />
+                  <StandardCharteredLogo />
+                  <DeloitteLogo />
+                  <CbiLogo />
+                  <CinnamonLogo />
+                  <LoadstarLogo />
+                  <ShangriLaLogo />
+                  <HiltonLogo />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Partners Panel (Page 13) */}
+          <div className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+            {/* SVG Vector Background */}
+            <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
+              <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="partners-bg-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#e2e8f0" />
+                    <stop offset="100%" stopColor="#194866" />
+                  </linearGradient>
+                </defs>
+
+                {/* Full Background Vertical Gradient */}
+                <rect y="-20" width="1000" height="440" fill="url(#partners-bg-grad)" />
+
+                {/* White Curved Divider Line */}
+                <path d="M 709,-20 C 659,-20 620,30 600,80 L 445,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+              </svg>
+            </div>
+
+            {/* Content Overlay */}
+            <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12">
+              {/* Left Column (Details) */}
+              <div className="lg:col-span-6 flex flex-col justify-center p-12 lg:py-16 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
+                <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-sfa-navy">
+                  OUR
+                  <span className="block mt-1">PARTNERS</span>
+                </h2>
+
+                <span className="block text-xs lg:text-sm font-montserrat font-semibold text-white/70 uppercase tracking-widest mt-6">
+                  A GLOBAL NETWORK. • A LOCAL ADVANTAGE.
+                </span>
+
+                <p className="text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-justify text-white/95 my-4 max-w-xl">
+                  Our partnerships extend local expertise through a network of world-class professional organisations — so every report meets the rigour international clients require.
+                </p>
+
+                <button
+                  onClick={() => setContactOpen(true)}
+                  className="inline-flex items-center gap-2 text-xs font-avenir font-bold tracking-widest text-[#2684be] uppercase hover:underline cursor-pointer w-fit mt-2"
+                >
+                  <span>LEARN MORE &rarr;</span>
+                </button>
+              </div>
+
+              {/* Right Column (Logos) */}
+              <div className="lg:col-span-6 flex flex-col justify-center bg-[#194866] lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-8 items-center justify-items-center">
+                  <KpmgLogo />
+                  <KnightFrankLogo />
+                  <KrestonLogo />
+                  <BdoLogo />
+                  <MakeeluChambersLogo />
+                  <BakerTillyLogo />
+                  <WarrenVicksLogo />
+                  <DesignAdvocacyLogo />
+                  <AcquestLogo />
+                  <NdbLogo />
+                  <CoenergiLogo />
+                  <SudathPereraLogo />
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="h-[1px] bg-sfa-grey/10 w-full" />
-
-          {/* Partners block (Page 13) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            {/* Left Description */}
-            <div className="lg:col-span-5 space-y-6">
-              <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase text-sfa-navy leading-none">
-                OUR PARTNERS
-              </h2>
-              <span className="block text-xs font-montserrat font-medium text-sfa-blue uppercase tracking-widest">
-                A GLOBAL NETWORK. • A LOCAL ADVANTAGE.
-              </span>
-              <div className="h-[2px] w-24 bg-sfa-blue" />
-              <p className="text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
-                Our partnerships extend local expertise through a network of world-class professional organisations — so every report meets the rigour international clients require.
-              </p>
-              <button
-                onClick={() => setContactOpen(true)}
-                className="inline-flex items-center gap-2 text-xs font-avenir font-medium tracking-widest text-sfa-blue uppercase hover:text-sfa-navy transition-all duration-300"
-              >
-                <span>LEARN MORE</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Right Logos Grid */}
-            <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-8 items-center justify-items-center">
-              <KpmgLogo />
-              <KnightFrankLogo />
-              <KrestonLogo />
-              <BdoLogo />
-              <MakeeluChambersLogo />
-              <BakerTillyLogo />
-              <WarrenVicksLogo />
-              <DesignAdvocacyLogo />
-              <AcquestLogo />
-              <NdbLogo />
-              <CoenergiLogo />
-              <SudathPereraLogo />
-            </div>
-          </div>
         </div>
       </section>
 
