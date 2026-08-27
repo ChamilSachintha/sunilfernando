@@ -371,15 +371,17 @@ export default function Home() {
               d="M 0,0 L 528,0 L 628,400 L 612,400 L 512,50 Q 508,50 496,50 L 0,50 Z"
               fill="#194866"
             />
-
-            {/* Stylized "A" symbol in the middle with gradient and shadow */}
-            <path
-              d="M 455,250 L 490,95 C 495,75 505,75 510,95 L 545,250 Z M 500,140 L 525,230 L 475,230 Z M 445,265 L 555,265 L 590,400 L 555,400 C 555,330 535,300 500,300 C 465,300 445,330 445,400 L 410,400 Z"
-              fill="url(#a-gradient)"
-              fillRule="evenodd"
-              filter="url(#shadow)"
-            />
           </svg>
+
+          {/* Stylized "A" symbol cropped image */}
+          <div className="absolute left-[39.0625%] w-[23.925%] top-[7.194%] h-[92.806%] z-0">
+            <Image
+              src="/what-we-do-a.png"
+              alt="Stylized A background symbol"
+              fill
+              className="object-fill"
+            />
+          </div>
         </div>
 
         {/* Content Overlay */}
