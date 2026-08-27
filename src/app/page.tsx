@@ -793,33 +793,33 @@ export default function Home() {
                 <stop offset="0%" stopColor="#e2e8f0" />
                 <stop offset="100%" stopColor="#194866" />
               </linearGradient>
-              <linearGradient id="capital-right-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#2684be" />
+              <linearGradient id="capital-divider-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#ffffff" />
                 <stop offset="100%" stopColor="#194866" />
               </linearGradient>
             </defs>
 
-            {/* Right Side Vertical Gradient Background */}
-            <rect y="-20" width="1000" height="440" fill="url(#capital-right-grad)" />
+            {/* Right Side Solid Primary Blue Background */}
+            <rect y="-20" width="1000" height="440" fill="#2684be" />
 
             {/* Left Side Gradient Background */}
             <path d="M 0,-20 L 490,-20 C 440,-20 390,30 380,80 L 310,420 L 0,420 Z" fill="url(#capital-left-grad)" />
 
-            {/* White Curved Divider Line */}
-            <path d="M 490,-20 C 440,-20 390,30 380,80 L 310,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+            {/* Curved Divider Line (White to Secondary Navy Gradient) */}
+            <path d="M 490,-20 C 440,-20 390,30 380,80 L 310,420" fill="none" stroke="url(#capital-divider-grad)" strokeWidth="16" />
           </svg>
         </div>
 
         {/* Content Overlay */}
         <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
           {/* Left Column (Details) */}
-          <div className="lg:col-span-4 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
+          <div className="lg:col-span-5 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
             <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
               CAPITAL
               <span className="block mt-1">MARKETS</span>
             </h2>
 
-            <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95 my-8 lg:my-0 lg:max-w-[280px] uppercase">
+            <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95 my-8 lg:my-0 lg:max-w-[320px] uppercase">
               Expert support for property acquisitions, disposals, and investment transactions in evolving market.
             </p>
 
@@ -832,7 +832,7 @@ export default function Home() {
           </div>
 
           {/* Right Column (Details) */}
-          <div className="lg:col-span-8 flex flex-col justify-center bg-[#194866] lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-28 lg:pr-16 text-white space-y-8">
+          <div className="lg:col-span-7 flex flex-col justify-center bg-primary lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16 text-white space-y-8">
             <div className="space-y-4">
               <h3 className="text-sm sm:text-base lg:text-lg font-montserrat font-bold tracking-wider text-white">
                 WE FOCUS ON PROVIDING UNIQUE AND PERSONALIZED ADVICE TO
