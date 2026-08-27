@@ -712,7 +712,7 @@ export default function Home() {
         {/* Full-width building background image on desktop (clipped by overlay) */}
         <div className="absolute inset-0 z-0 hidden lg:block">
           <Image
-            src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1600"
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600"
             alt="High-rise modern workspace architecture"
             fill
             className="object-cover"
@@ -773,7 +773,7 @@ export default function Home() {
           <div className="lg:col-span-5 relative min-h-[350px] lg:min-h-full">
             <div className="absolute inset-0 lg:hidden">
               <Image
-                src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1200"
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200"
                 alt="High-rise modern workspace architecture"
                 fill
                 className="object-cover"
