@@ -374,12 +374,12 @@ export default function Home() {
           </svg>
 
           {/* Stylized "A" symbol cropped image */}
-          <div className="absolute left-[39.0625%] w-[23.925%] top-[7.194%] h-[92.806%] z-0">
+          <div className="absolute left-[27%] w-[46%] top-[5%] bottom-[0%] z-0">
             <Image
               src="/what-we-do-a.png"
               alt="Stylized A background symbol"
               fill
-              className="object-fill"
+              className="object-contain"
             />
           </div>
         </div>
