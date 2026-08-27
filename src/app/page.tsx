@@ -696,75 +696,103 @@ export default function Home() {
 
 
       {/* 9. Case Studies (Page 8) */}
-      <section className="py-24 bg-[#0a2340] text-white">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border-b border-white/10 pb-8 mb-16 space-y-4">
-            <span className="text-xs font-avenir font-medium tracking-widest text-sfa-cyan uppercase">CASE STUDIES</span>
-            <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase leading-none">
+      <section className="relative overflow-hidden bg-white">
+        {/* SVG Vector Background */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
+          <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="case-studies-left-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#194866" />
+                <stop offset="100%" stopColor="#e2e8f0" />
+              </linearGradient>
+            </defs>
+
+            {/* Right Side Solid Dark Navy Background */}
+            <rect y="-20" width="1000" height="440" fill="#0c2340" />
+
+            {/* Left Side Gradient Background */}
+            <path d="M 0,-20 L 729,-20 C 789,-20 820,30 840,80 L 982,420 L 0,420 Z" fill="url(#case-studies-left-grad)" />
+
+            {/* White Curved Divider Line */}
+            <path d="M 729,-20 C 789,-20 820,30 840,80 L 982,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+          </svg>
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-12 lg:px-24 py-20 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-transparent">
+          <div className="pb-6 mb-8 space-y-4">
+            <span className="text-sm font-avenir font-semibold tracking-[0.2em] text-[#00bdf1] uppercase">
+              CASE STUDIES
+            </span>
+            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.1] text-white">
               WHAT WE&apos;VE DELIVERED.
-            </h2>
-            <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight text-sfa-cyan uppercase leading-none mt-1">
-              HOW IT HELPED.
+              <span className="block mt-2">HOW IT HELPED.</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {/* Case 1 */}
-            <div className="space-y-6 flex flex-col justify-between h-full bg-[#113156] p-8 border border-white/5 shadow-md">
+          <div className="h-[2px] w-full bg-white/20 mb-12" />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+            {/* Column 1 */}
+            <div className="flex flex-col justify-between h-full space-y-6">
               <div className="space-y-4">
-                <span className="text-[9px] font-montserrat font-bold tracking-widest text-sfa-cyan uppercase block">
-                  FINANCIAL INSTITUTION • PORTFOLIO VALUATION
+                <span className="text-[10px] font-montserrat font-bold tracking-widest text-[#194866] uppercase block">
+                  FINANCIAL INSTITUTION · PORTFOLIO VALUATION
                 </span>
-                <h3 className="text-lg font-avenir font-bold tracking-wide uppercase leading-tight">
-                  LARGE-SCALE BANK COLLATERAL PORTFOLIO
+                <h3 className="text-2xl lg:text-3xl font-montserrat font-light tracking-tight text-sfa-navy uppercase leading-tight">
+                  LARGE-SCALE
+                  <span className="block">BANK COLLATERAL</span>
+                  <span className="block">PORTFOLIO</span>
                 </h3>
-                <p className="text-xs font-avenir text-white/80 leading-relaxed text-justify">
+                <p className="text-xs lg:text-sm font-avenir font-normal text-sfa-navy/80 tracking-wider leading-relaxed text-justify uppercase">
                   A LEADING SRI LANKAN COMMERCIAL BANK REQUIRED INDEPENDENT RICS-COMPLIANT VALUATIONS ACROSS A MIXED COMMERCIAL AND RESIDENTIAL PORTFOLIO FOR INTERNAL RISK ASSESSMENT AND REGULATORY REPORTING.
                 </p>
               </div>
-              <div className="border-t border-white/10 pt-4">
-                <span className="text-[9px] font-barlow font-normal tracking-wider text-sfa-cyan block">
-                  47 ASSETS VALUED • 30-DAY DELIVERY • REPORTS ACCEPTED BY INTERNATIONAL AUDIT PARTNER
+              <div className="pt-4 border-t border-sfa-navy/10 lg:border-t-0 lg:pt-0">
+                <span className="text-[10px] font-avenir font-black italic tracking-wide text-sfa-navy/90 uppercase block leading-relaxed">
+                  47 ASSETS VALUED · 30-DAY DELIVERY · REPORTS ACCEPTED BY INTERNATIONAL AUDIT PARTNER
                 </span>
               </div>
             </div>
 
-            {/* Case 2 */}
-            <div className="space-y-6 flex flex-col justify-between h-full bg-[#113156] p-8 border border-white/5 shadow-md">
+            {/* Column 2 */}
+            <div className="flex flex-col justify-between h-full space-y-6">
               <div className="space-y-4">
-                <span className="text-[9px] font-montserrat font-bold tracking-widest text-sfa-cyan uppercase block">
-                  HOSPITALITY • MALDIVES • CROSS-BORDER FINANCING
+                <span className="text-[10px] font-montserrat font-bold tracking-widest text-[#194866] uppercase block">
+                  HOSPITALITY · MALDIVES · CROSS-BORDER FINANCING
                 </span>
-                <h3 className="text-lg font-avenir font-bold tracking-wide uppercase leading-tight">
-                  MALDIVES RESORT ISLAND REFINANCING
+                <h3 className="text-2xl lg:text-3xl font-montserrat font-light tracking-tight text-sfa-navy uppercase leading-tight">
+                  MALDIVES RESORT
+                  <span className="block">ISLAND REFINANCING</span>
                 </h3>
-                <p className="text-xs font-avenir text-white/80 leading-relaxed text-justify">
+                <p className="text-xs lg:text-sm font-avenir font-normal text-sfa-navy/80 tracking-wider leading-relaxed text-justify uppercase">
                   AN INTERNATIONAL HOSPITALITY GROUP SOUGHT INDEPENDENT VALUATION OF A MALDIVES RESORT FOR REFINANCING WITH A EUROPEAN LENDER REQUIRING RICS-COMPLIANT METHODOLOGY AND INTERNATIONAL HOTEL VALUATION STANDARDS.
                 </p>
               </div>
-              <div className="border-t border-white/10 pt-4">
-                <span className="text-[9px] font-barlow font-normal tracking-wider text-sfa-cyan block">
-                  RICS HOTEL VALUATION METHODOLOGY • ACCEPTED BY EUROPEAN FINANCIAL INSTITUTION
+              <div className="pt-4 border-t border-sfa-navy/10 lg:border-t-0 lg:pt-0">
+                <span className="text-[10px] font-avenir font-black italic tracking-wide text-sfa-navy/90 uppercase block leading-relaxed">
+                  RICS HOTEL VALUATION METHODOLOGY · ACCEPTED BY EUROPEAN FINANCIAL INSTITUTION
                 </span>
               </div>
             </div>
 
-            {/* Case 3 */}
-            <div className="space-y-6 flex flex-col justify-between h-full bg-[#113156] p-8 border border-white/5 shadow-md">
+            {/* Column 3 */}
+            <div className="flex flex-col justify-between h-full space-y-6">
               <div className="space-y-4">
-                <span className="text-[9px] font-montserrat font-bold tracking-widest text-sfa-cyan uppercase block">
-                  AGRICULTURAL • ESTATE SETTLEMENT • LEGAL
+                <span className="text-[10px] font-montserrat font-bold tracking-widest text-[#194866] uppercase block">
+                  AGRICULTURAL · ESTATE SETTLEMENT · LEGAL
                 </span>
-                <h3 className="text-lg font-avenir font-bold tracking-wide uppercase leading-tight">
-                  HILL COUNTRY TEA ESTATE VALUATION
+                <h3 className="text-2xl lg:text-3xl font-montserrat font-light tracking-tight text-sfa-navy uppercase leading-tight">
+                  HILL COUNTRY TEA
+                  <span className="block">ESTATE VALUATION</span>
                 </h3>
-                <p className="text-xs font-avenir text-white/80 leading-relaxed text-justify">
+                <p className="text-xs lg:text-sm font-avenir font-normal text-sfa-navy/80 tracking-wider leading-relaxed text-justify uppercase">
                   A FAMILY REQUIRED INDEPENDENT VALUATION OF A 250-ACRE TEA ESTATE IN SRI LANKA&apos;S HILL COUNTRY FOR ESTATE SETTLEMENT AND INHERITANCE PROCEEDINGS, INCORPORATING LAND, CROP VALUE, AND INFRASTRUCTURE.
                 </p>
               </div>
-              <div className="border-t border-white/10 pt-4">
-                <span className="text-[9px] font-barlow font-normal tracking-wider text-sfa-cyan block">
-                  ACCEPTED IN FORMAL LEGAL PROCEEDINGS • EXPERT WITNESS SUPPORT PROVIDED
+              <div className="pt-4 border-t border-sfa-navy/10 lg:border-t-0 lg:pt-0">
+                <span className="text-[10px] font-avenir font-black italic tracking-wide text-sfa-navy/90 uppercase block leading-relaxed">
+                  ACCEPTED IN FORMAL LEGAL PROCEEDINGS · EXPERT WITNESS SUPPORT PROVIDED
                 </span>
               </div>
             </div>
