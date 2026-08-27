@@ -783,65 +783,83 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Capital Markets (Page 11) */}
-      <section className="relative bg-[#0d2a4a] text-white py-24 overflow-hidden">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            {/* Left side summary */}
-            <div className="lg:col-span-5 space-y-6">
-              <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase leading-none">
-                CAPITAL
-              </h2>
-              <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase text-sfa-cyan leading-none mt-1">
-                MARKETS
-              </h2>
-              <div className="h-[2px] w-24 bg-sfa-cyan" />
-              <p className="text-sm font-avenir text-white/80 leading-relaxed text-justify">
-                Expert support for property acquisitions, disposals, and investment transactions in evolving market.
-              </p>
-              <button
-                onClick={() => setValuationOpen(true)}
-                className="inline-flex items-center gap-2 text-xs font-avenir font-medium tracking-widest text-sfa-cyan uppercase hover:text-white transition"
-              >
-                <span>LEARN MORE</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+      {/* 9. Capital Markets (Page 11) */}
+      <section className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+        {/* SVG Vector Background */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
+          <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="capital-left-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#e2e8f0" />
+                <stop offset="100%" stopColor="#194866" />
+              </linearGradient>
+              <linearGradient id="capital-right-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#2684be" />
+                <stop offset="100%" stopColor="#194866" />
+              </linearGradient>
+            </defs>
+
+            {/* Right Side Vertical Gradient Background */}
+            <rect y="-20" width="1000" height="440" fill="url(#capital-right-grad)" />
+
+            {/* Left Side Gradient Background */}
+            <path d="M 0,-20 L 490,-20 C 440,-20 400,30 380,80 L 310,420 L 0,420 Z" fill="url(#capital-left-grad)" />
+
+            {/* White Curved Divider Line */}
+            <path d="M 490,-20 C 440,-20 400,30 380,80 L 310,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+          </svg>
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
+          {/* Left Column (Details) */}
+          <div className="lg:col-span-4 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
+            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
+              CAPITAL
+              <span className="block mt-1">MARKETS</span>
+            </h2>
+
+            <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95 my-8 lg:my-0 lg:max-w-[280px] uppercase">
+              Expert support for property acquisitions, disposals, and investment transactions in evolving market.
+            </p>
+
+            <button
+              onClick={() => setContactOpen(true)}
+              className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-white uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
+            >
+              <span>LEARN MORE &rarr;</span>
+            </button>
+          </div>
+
+          {/* Right Column (Details) */}
+          <div className="lg:col-span-8 flex flex-col justify-center bg-[#194866] lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-28 lg:pr-16 text-white space-y-8">
+            <div className="space-y-4">
+              <h3 className="text-sm sm:text-base lg:text-lg font-montserrat font-bold tracking-wider text-white">
+                WE FOCUS ON PROVIDING UNIQUE AND PERSONALIZED ADVICE TO
+              </h3>
+              <ul className="space-y-1.5 text-xs lg:text-sm font-avenir font-normal tracking-wide text-white/90 uppercase">
+                <li>• INSTITUTIONAL FUNDS</li>
+                <li>• PRIVATE EQUITY</li>
+                <li>• STATE & PUBLIC SECTOR ENTITIES</li>
+                <li>• PROPERTY COMPANIES & DEVELOPERS</li>
+                <li>• CORPORATES</li>
+                <li>• FAMILY OFFICES</li>
+                <li>• PRIVATE INDIVIDUALS</li>
+              </ul>
             </div>
 
-            {/* Right side details (Bullet groups and description) */}
-            <div className="lg:col-span-7 space-y-8">
-              <div className="border-l-2 border-sfa-cyan pl-6 space-y-4">
-                <h3 className="text-xs font-montserrat font-medium tracking-widest text-sfa-cyan uppercase">
-                  WE FOCUS ON PROVIDING UNIQUE AND PERSONALIZED ADVICE TO
-                </h3>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs font-avenir font-medium tracking-wider text-white/95 uppercase">
-                  <li>• INSTITUTIONAL FUNDS</li>
-                  <li>• PRIVATE EQUITY</li>
-                  <li>• STATE & PUBLIC SECTOR ENTITIES</li>
-                  <li>• PROPERTY COMPANIES & DEVELOPERS</li>
-                  <li>• CORPORATES</li>
-                  <li>• FAMILY OFFICES</li>
-                  <li>• PRIVATE INDIVIDUALS</li>
-                </ul>
-              </div>
+            <p className="text-xs sm:text-sm font-avenir text-white/80 leading-relaxed text-justify tracking-wide">
+              We focus on providing unique and personalized advice, adding value through a combination of unparalleled access to capital, financing expertise, real estate market intelligence and thought leadership. Our services are solidified with real estate expertise together with innovative capital solutions.
+            </p>
 
-              <p className="text-xs sm:text-sm font-avenir text-white/80 leading-relaxed text-justify">
-                We focus on providing unique and personalized advice, adding value through a combination of unparalleled access to capital, financing expertise, real estate market intelligence and thought leadership. Our services are solidified with real estate expertise together with innovative capital solutions.
-              </p>
-
-              <div className="border-t border-white/10 pt-6 space-y-4">
-                <h3 className="text-xs font-montserrat font-medium tracking-widest text-sfa-cyan uppercase">
-                  OUR SERVICES EXTEND ACROSS A RANGE OF STRATEGIC TRANSACTIONS INCLUDING
-                </h3>
-                <div className="flex flex-wrap gap-x-6 gap-y-2 text-[10px] font-bold tracking-widest text-white/90 uppercase">
-                  <span>• DEBT ADVISORY</span>
-                  <span>• CAPITAL RAISING</span>
-                  <span>• JOINT VENTURES</span>
-                  <span>• M&A SOLUTIONS</span>
-                  <span>• SALES & LEASEBACKS</span>
-                  <span>• RESTRUCTURING</span>
-                </div>
-              </div>
+            <div className="space-y-4">
+              <h3 className="text-sm sm:text-base lg:text-lg font-montserrat font-bold tracking-wider text-white">
+                OUR SERVICES EXTEND ACROSS A RANGE OF STRATEGIC TRANSACTIONS INCLUDING
+              </h3>
+              <ul className="space-y-1.5 text-xs lg:text-sm font-avenir font-semibold tracking-wide text-white/95 uppercase">
+                <li>• DEBT ADVISORY • CAPITAL RAISING • JOINT VENTURES</li>
+                <li>• M&A SOLUTIONS • SALES & LEASEBACKS • RESTRUCTURING</li>
+              </ul>
             </div>
           </div>
         </div>
