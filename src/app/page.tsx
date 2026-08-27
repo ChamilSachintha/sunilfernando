@@ -1084,7 +1084,7 @@ export default function Home() {
             ].map((director, idx) => (
               <div
                 key={idx}
-                className="relative group overflow-hidden h-[360px] w-full bg-gradient-to-b from-[#194866] to-[#e2e8f0]"
+                className="relative group overflow-hidden h-[360px] w-full bg-gradient-to-t from-[#194866] to-[#e2e8f0]"
               >
                 {/* SVG Divider & Clip Definition */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none select-none z-20 hidden lg:block" viewBox="0 0 200 400" preserveAspectRatio="none">
@@ -1105,7 +1105,7 @@ export default function Home() {
                     src={director.image}
                     alt={director.name}
                     fill
-                    className="object-cover object-top filter grayscale hover:grayscale-0 transition duration-500"
+                    className="object-cover object-right"
                   />
                 </div>
 
