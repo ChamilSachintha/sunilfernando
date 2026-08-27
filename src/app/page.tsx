@@ -425,7 +425,7 @@ export default function Home() {
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
             <defs>
-              <linearGradient id="insights-left-grad" x1="0" y1="0" x2="1" y2="1">
+              <linearGradient id="insights-left-grad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#e2e8f0" />
                 <stop offset="100%" stopColor="#194866" />
               </linearGradient>
