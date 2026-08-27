@@ -992,8 +992,18 @@ export default function Home() {
 
       {/* 11. Leadership Team Header (Page 14) */}
       <section id="team" className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+        {/* Background Building Image */}
+        <div className="absolute top-0 bottom-0 right-0 left-0 lg:left-1/3 z-0 pointer-events-none select-none">
+          <Image
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab"
+            alt="Office building architecture"
+            fill
+            className="object-cover object-center opacity-40 lg:opacity-100"
+          />
+        </div>
+
         {/* SVG Vector Background */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
+        <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block z-10">
           <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
             <defs>
               <linearGradient id="team-header-left-grad" x1="0" y1="0" x2="0" y2="1">
@@ -1008,16 +1018,6 @@ export default function Home() {
             {/* White Curved Divider Line */}
             <path d="M 530,-20 C 590,-20 620,30 640,80 L 730,420" fill="none" stroke="#ffffff" strokeWidth="16" />
           </svg>
-        </div>
-
-        {/* Background Building Image */}
-        <div className="absolute top-0 bottom-0 right-0 left-0 lg:left-1/3 z-0 pointer-events-none select-none">
-          <Image
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab"
-            alt="Office building architecture"
-            fill
-            className="object-cover object-center opacity-40 lg:opacity-100"
-          />
         </div>
 
         {/* Content Overlay */}
@@ -1041,7 +1041,7 @@ export default function Home() {
       </section>
 
       {/* 12. Leadership Team Profiles (Page 15) */}
-      <section className="relative overflow-hidden bg-white py-1">
+      <section className="relative overflow-hidden bg-gradient-to-t from-[#194866] to-[#e2e8f0] py-6">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-0 border-t lg:border-t-0 border-sfa-grey/10">
             {[
@@ -1084,13 +1084,13 @@ export default function Home() {
             ].map((director, idx) => (
               <div
                 key={idx}
-                className="relative group overflow-hidden h-[360px] w-full bg-gradient-to-t from-[#194866] to-[#e2e8f0]"
+                className="relative group overflow-hidden h-[360px] w-full bg-transparent"
               >
                 {/* SVG Divider & Clip Definition */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none select-none z-20 hidden lg:block" viewBox="0 0 200 400" preserveAspectRatio="none">
                   <defs>
-                    <clipPath id={`team-clip-${idx}`}>
-                      <path d="M 60,-20 C 40,-20 20,30 15,80 L -25,420 L 250,420 L 250,-20 Z" />
+                    <clipPath id={`team-clip-${idx}`} clipPathUnits="objectBoundingBox">
+                      <path d="M 0.3,-0.05 C 0.2,-0.05 0.1,0.075 0.075,0.2 L -0.125,1.05 L 1.25,1.05 L 1.25,-0.05 Z" />
                     </clipPath>
                   </defs>
                   {/* White Curved Divider Stroke */}
