@@ -679,9 +679,13 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Right Column (Categories) */}
-          <div className="lg:col-span-5 flex flex-col justify-center bg-tertiary lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16">
-            <div className="w-full max-w-[320px] lg:max-w-[360px] mx-auto flex flex-col h-full justify-between divide-y divide-white/30 border-y border-white/30">
+          {/* Right Column (Categories - Desktop) */}
+          <div
+            className="absolute inset-0 w-full h-full pointer-events-none hidden lg:grid lg:grid-cols-12 max-w-[1400px] mx-auto z-20"
+            style={{ clipPath: "polygon(70.9% 0, 100% 0, 100% 100%, 49.4% 100%)" }}
+          >
+            {/* Starts at col 6 (which is 41.7% to 100%) to be clipped exactly on the slanted divider */}
+            <div className="col-start-6 col-span-7 pointer-events-auto flex flex-col justify-between h-full divide-y-[3px] divide-white border-y-[3px] border-white py-16">
               {[
                 "Commercial",
                 "Residential",
@@ -696,9 +700,36 @@ export default function Home() {
                 <div
                   key={idx}
                   onClick={() => setValuationOpen(true)}
-                  className="flex items-center justify-center py-2.5 cursor-pointer hover:bg-white/10 transition-colors"
+                  className="flex-1 flex items-center justify-end pr-24 lg:pr-32 cursor-pointer hover:bg-white/10 transition-colors"
                 >
                   <span className="text-base sm:text-lg lg:text-xl font-montserrat font-bold italic text-sfa-navy tracking-wider uppercase">
+                    {category}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column (Categories - Mobile/Tablet) */}
+          <div className="lg:hidden flex flex-col justify-center bg-tertiary px-8 py-10">
+            <div className="w-full max-w-[320px] mx-auto flex flex-col h-full justify-between divide-y-2 divide-white/30 border-y-2 border-white/30">
+              {[
+                "Commercial",
+                "Residential",
+                "Agriculture",
+                "Leisure",
+                "Retail",
+                "Industrial",
+                "Warehousing",
+                "Plant & Machinery",
+                "Vessels",
+              ].map((category, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => setValuationOpen(true)}
+                  className="flex items-center justify-center py-2.5 cursor-pointer"
+                >
+                  <span className="text-base sm:text-lg font-montserrat font-bold italic text-sfa-navy tracking-wider uppercase">
                     {category}
                   </span>
                 </div>
