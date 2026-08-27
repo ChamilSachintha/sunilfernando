@@ -795,6 +795,7 @@ export default function Home() {
               </linearGradient>
               <linearGradient id="capital-divider-grad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#ffffff" />
+                <stop offset="20%" stopColor="#194866" />
                 <stop offset="100%" stopColor="#194866" />
               </linearGradient>
             </defs>
