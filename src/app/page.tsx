@@ -539,10 +539,10 @@ export default function Home() {
             <rect y="-20" width="1000" height="440" fill="url(#case-studies-right-grad)" />
 
             {/* Left Side Gradient Background */}
-            <path d="M 0,-20 L 729,-20 C 789,-20 820,30 840,80 L 982,420 L 0,420 Z" fill="url(#case-studies-left-grad)" />
+            <path d="M 0,-20 L 729,-20 C 789,-20 820,30 840,80 L 1010,420 L 0,420 Z" fill="url(#case-studies-left-grad)" />
 
             {/* White Curved Divider Line */}
-            <path d="M 729,-20 C 789,-20 820,30 840,80 L 982,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+            <path d="M 729,-20 C 789,-20 820,30 840,80 L 1010,420" fill="none" stroke="#ffffff" strokeWidth="16" />
           </svg>
         </div>
 
