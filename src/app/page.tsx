@@ -1049,37 +1049,37 @@ export default function Home() {
                 name: "Sunil Fernando",
                 designation: "Founder/Chairman",
                 credentials: "FIV(SL), FRICS",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400",
+                image: "/sunil-fernando.png",
               },
               {
                 name: "Manju Fernando",
                 designation: "Group Managing Director",
                 credentials: "M.B.A.(Aus), MRICS",
-                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400",
+                image: "/manju-fernando.png",
               },
               {
                 name: "Dilshan Perera",
                 designation: "Director Valuation & Advisory",
                 credentials: "M.B.A.(Aus)",
-                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400",
+                image: "/dilshan-perera.png",
               },
               {
                 name: "Vicks Vickneswaran",
                 designation: "Director UAE",
                 credentials: "M.B.A.(UK), MRICS, FCMA, FCCA, FCIM",
-                image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400",
+                image: "/avatar-placeholder.svg",
               },
               {
                 name: "Nalin Seneviratne",
                 designation: "Director / Advisor",
                 credentials: "BSc.LM, FRICS",
-                image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400",
+                image: "/nalin-seneviratne.png",
               },
               {
                 name: "Mohamed Hilmy",
                 designation: "Director - Maldives",
                 credentials: "L.B.M.(Mal), A.I.V",
-                image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400",
+                image: "/avatar-placeholder.svg",
               },
             ].map((director, idx) => (
               <div
