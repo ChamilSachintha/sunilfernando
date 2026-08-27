@@ -1128,31 +1128,28 @@ export default function Home() {
       </section>
 
       {/* 12. Get In Touch Banner (Page 15) */}
-      <section id="contact" className="bg-sfa-navy text-white py-20 text-center relative overflow-hidden">
-        {/* Ampersand watermark */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none select-none">
-          <span className="font-serif text-[400px] font-bold">&</span>
-        </div>
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <span className="text-xs font-avenir font-medium tracking-widest text-sfa-cyan uppercase">GET IN TOUCH</span>
-          <h2 className="text-4xl sm:text-5xl font-montserrat font-black tracking-tight uppercase">
-            READY TO START?
+      <section id="contact" className="bg-secondary text-white py-16 text-center relative overflow-hidden">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-montserrat font-light tracking-[0.3em] uppercase leading-tight text-white">
+            GET IN TOUCH
           </h2>
-          <p className="text-sm sm:text-base font-avenir text-white/80 leading-relaxed max-w-xl mx-auto">
+          <div className="text-sm sm:text-base lg:text-lg font-montserrat font-medium tracking-[0.15em] uppercase text-white/90">
+            READY TO START?
+          </div>
+          <p className="text-xs sm:text-sm lg:text-[15px] font-avenir text-white/90 leading-relaxed max-w-2xl mx-auto">
             Whether for a financial transaction, an acquisition, IFRS reporting, or legal proceedings. Our valuation team is ready to help.
           </p>
 
-          <div className="pt-4 flex flex-col sm:flex-row justify-center gap-4">
+          <div className="pt-6 flex flex-col sm:flex-row justify-center gap-6">
             <button
               onClick={() => setValuationOpen(true)}
-              className="px-8 py-3 bg-sfa-cyan text-white text-xs font-avenir font-medium tracking-widest uppercase hover:bg-white hover:text-sfa-navy border border-sfa-cyan transition duration-300"
+              className="px-10 py-2.5 border border-[#2684be] text-white text-sm sm:text-[15px] font-avenir font-medium tracking-wide transition duration-300 bg-transparent hover:bg-white/10"
             >
               Request a Valuation
             </button>
             <button
               onClick={() => setContactOpen(true)}
-              className="px-8 py-3 border border-white hover:border-sfa-cyan hover:text-sfa-cyan text-white text-xs font-avenir font-medium tracking-widest uppercase transition duration-300"
+              className="px-10 py-2.5 border border-[#2684be] text-white text-sm sm:text-[15px] font-avenir font-medium tracking-wide transition duration-300 bg-transparent hover:bg-white/10"
             >
               Contact Us
             </button>
