@@ -192,9 +192,15 @@ export const WarrenVicksLogo: React.FC<{ className?: string }> = ({ className = 
   </div>
 );
 
-export const DesignAdvocacyLogo = () => (
-  <div className="border border-dashed border-sfa-grey px-2 py-1 font-sans text-xs font-bold text-sfa-navy uppercase tracking-widest">
-    Design Advocacy
+export const DesignAdvocacyLogo: React.FC<{ className?: string }> = ({ className = "h-8 sm:h-9" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/design-advocacy.png"
+      alt="Design Advocacy"
+      width={456}
+      height={189}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
