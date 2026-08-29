@@ -198,31 +198,50 @@ export const DesignAdvocacyLogo = () => (
   </div>
 );
 
-export const AcquestLogo = () => (
-  <div className="font-sans font-black text-lg text-red-600 tracking-widest uppercase">
-    ACQUEST
+export const AcquestLogo: React.FC<{ className?: string }> = ({ className = "h-6 sm:h-7" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/acquest.png"
+      alt="Acquest"
+      width={395}
+      height={77}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
-export const NdbLogo = () => (
-  <div className="flex items-center gap-1 font-sans font-bold text-sm text-sfa-navy">
-    <div className="w-3 h-3 bg-red-600 rotate-45" />
-    <div className="flex flex-col leading-none text-left">
-      <span className="font-black text-red-600 text-xs">NDB</span>
-      <span className="text-[6px] tracking-wider font-light uppercase">Investment Bank</span>
-    </div>
+export const NdbLogo: React.FC<{ className?: string }> = ({ className = "h-7 sm:h-8" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/ndb.png"
+      alt="NDB Investment Bank"
+      width={496}
+      height={144}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
-export const CoenergiLogo = () => (
-  <div className="flex flex-col items-center leading-none text-purple-700 font-sans font-light">
-    <span className="text-base font-bold">coenergi</span>
+export const CoenergiLogo: React.FC<{ className?: string }> = ({ className = "h-10 sm:h-12" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/coenergi.png"
+      alt="Coenergi"
+      width={319}
+      height={208}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
-export const SudathPereraLogo = () => (
-  <div className="border border-sfa-grey/30 rounded-full px-3 py-1 font-sans text-[9px] font-bold text-sfa-navy text-center leading-tight">
-    <div>SUDATH PERERA</div>
-    <div className="text-[7px] text-sfa-grey">ASSOCIATES</div>
+export const SudathPereraLogo: React.FC<{ className?: string }> = ({ className = "h-11 sm:h-12" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/sudath-perera.png"
+      alt="Sudath Perera Associates"
+      width={438}
+      height={454}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
