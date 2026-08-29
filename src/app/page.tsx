@@ -1060,7 +1060,7 @@ export default function Home() {
                 name: "Vicks Vickneswaran",
                 designation: "Director UAE",
                 credentials: "M.B.A.(UK), MRICS, FCMA, FCCA, FCIM",
-                image: "/avatar-placeholder.svg",
+                image: "/vicks-vickneswaran.png",
               },
               {
                 name: "Nalin Seneviratne",
