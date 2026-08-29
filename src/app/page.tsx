@@ -345,28 +345,29 @@ export default function Home() {
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1000 400" className="w-full h-full" preserveAspectRatio="none">
-            <defs>
-              {/* Soft drop shadow cast onto the blue right-hand section */}
-              <filter id="divider-shadow" x="-10%" y="-10%" width="140%" height="140%">
-                <feDropShadow dx="3" dy="1" stdDeviation="3" floodColor="#0c2340" floodOpacity="0.28" />
-              </filter>
-            </defs>
-
             {/* Left Side White Background */}
             <polygon points="0,0 535,0 699,400 0,400" fill="#ffffff" />
 
-            {/* Right Side Primary Blue Background */}
-            <polygon points="535,0 1000,0 1000,400 699,400" fill="#2684be" />
-
-            {/* 3D Semi-transparent 'A' Graphic with Smooth Transparent Gradient on Left */}
-            <image href="/what-we-do-a.png" x="360" y="11" width="338" height="389" preserveAspectRatio="none" />
-
-            {/* Continuous Top Dark Blue Tab (#194866) and Diagonal Divider with Drop Shadow */}
+            {/* Lighter Blue Background (#2684be) with curved top-right and bottom-right corners */}
             <path
-              d="M 0,0 L 535,0 L 699,400 L 687,400 L 544,52 Q 532,52 508,52 L 0,52 Z"
-              fill="#194866"
-              filter="url(#divider-shadow)"
+              d="M 533,0 L 946,0 Q 970,0 970,24 L 970,376 Q 970,400 946,400 L 697,400 Z"
+              fill="#2684be"
             />
+
+            {/* Dark Blue Framing Element on Far Right (#194866) with curved top-inner and bottom-inner corners */}
+            <path
+              d="M 946,0 L 1000,0 L 1000,400 L 946,400 Q 970,400 970,376 L 970,24 Q 970,0 946,0 Z"
+              fill="#194866"
+            />
+
+            {/* Continuous Top Dark Blue Tab (#194866) and Diagonal Divider (Flat, No Shadow) */}
+            <path
+              d="M 0,0 L 508,0 C 524,0 532,6 535,16 L 699,400 L 687,400 L 544,52 Q 532,52 508,52 L 0,52 Z"
+              fill="#194866"
+            />
+
+            {/* Central 3D Semi-transparent 'A' Graphic - Layered in Foreground with Apex Fully Visible */}
+            <image href="/what-we-do-a.png" x="354" y="12" width="338" height="388" preserveAspectRatio="none" />
           </svg>
         </div>
 
