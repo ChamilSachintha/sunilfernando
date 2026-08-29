@@ -428,10 +428,10 @@ export default function Home() {
             <rect y="-20" width="1000" height="440" fill="#00bdf1" />
 
             {/* Left Side Gradient Background (extended beyond boundaries) */}
-            <path d="M 0,-20 L 569,-20 C 519,-20 480,30 460,80 L 322,420 L 0,420 Z" fill="url(#insights-left-grad)" />
+            <path d="M 0,-20 L 586,-20 L 565,0 C 520,10 498,44 490,78 L 347,420 L 0,420 Z" fill="url(#insights-left-grad)" />
 
-            {/* White Curved Divider Line (extended to clip flat at section edges) */}
-            <path d="M 569,-20 C 519,-20 480,30 460,80 L 322,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+            {/* Thick Solid White Diagonal Band Separator (41px thickness) */}
+            <path d="M 601,-20 L 565,0 C 520,10 498,44 490,78 L 347,420" fill="none" stroke="#ffffff" strokeWidth="41" />
           </svg>
         </div>
 
