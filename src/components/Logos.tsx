@@ -173,8 +173,8 @@ export const BakerTillyLogo: React.FC<{ className?: string }> = ({ className = "
     <Image
       src="/logos/baker-tilly.png"
       alt="Baker Tilly"
-      width={1024}
-      height={269}
+      width={829}
+      height={217}
       className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
     />
   </div>
