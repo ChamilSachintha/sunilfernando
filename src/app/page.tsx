@@ -427,14 +427,11 @@ export default function Home() {
             {/* Right Side Bright Cyan Background (extended height to cover margins) */}
             <rect y="-20" width="1000" height="440" fill="#00bdf1" />
 
-            {/* Left Side Gradient Background (Straight diagonal right boundary) */}
-            <path d="M 0,-20 L 524,-20 L 340,420 L 0,420 Z" fill="url(#insights-left-grad)" />
+            {/* Left Side Gradient Background (extended beyond boundaries) */}
+            <path d="M 0,-20 L 569,-20 C 519,-20 480,30 460,80 L 322,420 L 0,420 Z" fill="url(#insights-left-grad)" />
 
-            {/* Thick White Diagonal Divider (Straight left edge, parallel lower right edge, flaring curved top right edge) */}
-            <path
-              d="M 524,-20 L 340,420 L 381,420 L 508,117 C 520,68 545,0 605,-20 Z"
-              fill="#ffffff"
-            />
+            {/* White Curved Divider Line (extended to clip flat at section edges) */}
+            <path d="M 569,-20 C 519,-20 480,30 460,80 L 322,420" fill="none" stroke="#ffffff" strokeWidth="16" />
           </svg>
         </div>
 
