@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 // SFA Logo: Renders the official corporate logo image
 export const SfaLogo: React.FC<{ className?: string }> = ({ className = "h-12" }) => {
@@ -59,31 +60,51 @@ export const CbiLogo = () => (
   </div>
 );
 
-export const CinnamonLogo = () => (
-  <div className="flex flex-col items-center leading-none text-purple-800 font-serif italic font-extrabold text-lg">
-    <span>Cinnamon</span>
-    <span className="text-[7px] tracking-widest uppercase font-sans font-bold text-sfa-grey mt-0.5">Hotels & Resorts</span>
+export const CinnamonLogo: React.FC<{ className?: string }> = ({ className = "h-8 sm:h-9" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/cinnamon.png"
+      alt="Cinnamon Hotels & Resorts"
+      width={404}
+      height={123}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
-export const LoadstarLogo = () => (
-  <div className="font-sans font-black text-xl italic tracking-wider text-sfa-blue flex items-center gap-1">
-    <span className="text-red-500">★</span>
-    <span>LOADSTAR</span>
+export const LoadstarLogo: React.FC<{ className?: string }> = ({ className = "h-6 sm:h-7" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/loadstar.png"
+      alt="Loadstar"
+      width={767}
+      height={88}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
-export const ShangriLaLogo = () => (
-  <div className="flex flex-col items-center leading-none font-sans text-center">
-    <span className="text-amber-500 text-lg">⚜</span>
-    <span className="text-sm font-bold tracking-widest text-sfa-navy">SHANGRI-LA</span>
-    <span className="text-[6px] tracking-widest text-sfa-grey mt-0.5 uppercase">Hotels and Resorts</span>
+export const ShangriLaLogo: React.FC<{ className?: string }> = ({ className = "h-9 sm:h-11" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/shangri-la.png"
+      alt="Shangri-La Hotels and Resorts"
+      width={866}
+      height={436}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
-export const HiltonLogo = () => (
-  <div className="border border-sfa-navy px-3 py-1 font-serif text-xl font-bold tracking-wider text-sfa-navy">
-    Hilton
+export const HiltonLogo: React.FC<{ className?: string }> = ({ className = "h-8 sm:h-9" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/hilton.png"
+      alt="Hilton"
+      width={902}
+      height={336}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
