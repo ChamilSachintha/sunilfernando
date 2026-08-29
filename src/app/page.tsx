@@ -351,12 +351,12 @@ export default function Home() {
             {/* Right Side Primary Blue Background */}
             <polygon points="533,0 1000,0 1000,400 697,400" fill="#2684be" />
 
-            {/* 3D Semi-transparent 'A' Graphic with Drop Shadow */}
-            <image href="/what-we-do-a.png" x="348" y="20" width="344" height="380" preserveAspectRatio="none" />
+            {/* 3D Semi-transparent 'A' Graphic on Single Clean Split */}
+            <image href="/what-we-do-a.png" x="375" y="20" width="334" height="380" preserveAspectRatio="none" />
 
-            {/* Top Left Dark Banner (#194866) and Sharp Diagonal Divider Stripe */}
+            {/* Top Left Dark Banner (#194866) connecting seamlessly to the diagonal split */}
             <path
-              d="M 0,0 L 503,0 C 520,0 531,6 535,16 L 697,400 L 685,400 L 550,51 Q 539,51 518,51 L 0,51 Z"
+              d="M 0,0 L 533,0 L 554,52 Q 538,52 518,52 L 0,52 Z"
               fill="#194866"
             />
           </svg>
@@ -389,7 +389,7 @@ export default function Home() {
           </div>
 
           {/* Right Column (From Complex Portfolio Valuations...) */}
-          <div className="lg:col-span-5 flex flex-col justify-center px-8 sm:px-12 lg:pl-16 lg:pr-20 py-16 lg:py-24 text-white bg-primary lg:bg-transparent">
+          <div className="lg:col-span-5 flex flex-col justify-center px-8 sm:px-12 lg:pl-32 xl:pl-40 lg:pr-8 py-16 lg:py-24 text-white bg-primary lg:bg-transparent">
             <div className="font-avenir font-normal text-xs sm:text-sm lg:text-[13px] uppercase tracking-[0.18em] leading-[2.1] text-white lg:max-w-[400px]">
               <span className="block">FROM COMPLEX PORTFOLIO</span>
               <span className="block">VALUATIONS TO STRATEGIC</span>
