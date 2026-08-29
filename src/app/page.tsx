@@ -345,19 +345,27 @@ export default function Home() {
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1000 400" className="w-full h-full" preserveAspectRatio="none">
+            <defs>
+              {/* Soft drop shadow cast onto the blue right-hand section */}
+              <filter id="divider-shadow" x="-10%" y="-10%" width="140%" height="140%">
+                <feDropShadow dx="3" dy="1" stdDeviation="3" floodColor="#0c2340" floodOpacity="0.28" />
+              </filter>
+            </defs>
+
             {/* Left Side White Background */}
-            <polygon points="0,0 533,0 697,400 0,400" fill="#ffffff" />
+            <polygon points="0,0 535,0 699,400 0,400" fill="#ffffff" />
 
             {/* Right Side Primary Blue Background */}
-            <polygon points="533,0 1000,0 1000,400 697,400" fill="#2684be" />
+            <polygon points="535,0 1000,0 1000,400 699,400" fill="#2684be" />
 
-            {/* 3D Semi-transparent 'A' Graphic on Single Clean Split */}
-            <image href="/what-we-do-a.png" x="375" y="20" width="334" height="380" preserveAspectRatio="none" />
+            {/* 3D Semi-transparent 'A' Graphic with Smooth Transparent Gradient on Left */}
+            <image href="/what-we-do-a.png" x="360" y="11" width="338" height="389" preserveAspectRatio="none" />
 
-            {/* Top Left Dark Banner (#194866) connecting seamlessly to the diagonal split */}
+            {/* Continuous Top Dark Blue Tab (#194866) and Diagonal Divider with Drop Shadow */}
             <path
-              d="M 0,0 L 533,0 L 554,52 Q 538,52 518,52 L 0,52 Z"
+              d="M 0,0 L 535,0 L 699,400 L 687,400 L 544,52 Q 532,52 508,52 L 0,52 Z"
               fill="#194866"
+              filter="url(#divider-shadow)"
             />
           </svg>
         </div>
