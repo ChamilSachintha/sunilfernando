@@ -14,49 +14,51 @@ export const SfaLogo: React.FC<{ className?: string }> = ({ className = "h-12" }
 
 // --- CLIENT LOGOS ---
 
-export const HsbcLogo = () => (
-  <div className="flex items-center gap-2 grayscale hover:grayscale-0 transition duration-300">
-    <svg viewBox="0 0 100 100" className="w-10 h-10">
-      <polygon points="50,15 15,50 50,85" fill="#db1b24" />
-      <polygon points="50,15 85,50 50,85" fill="#db1b24" />
-      <polygon points="50,15 50,85 15,50" fill="#ffffff" />
-      <polygon points="50,15 50,85 85,50" fill="#ffffff" />
-      <polygon points="15,50 35,50 50,35" fill="#db1b24" />
-      <polygon points="85,50 65,50 50,35" fill="#db1b24" />
-    </svg>
-    <span className="font-sans text-xl font-black tracking-tight text-sfa-navy">HSBC</span>
+export const HsbcLogo: React.FC<{ className?: string }> = ({ className = "h-7 sm:h-8" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/hsbc.png"
+      alt="HSBC"
+      width={1011}
+      height={274}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
-export const StandardCharteredLogo = () => (
-  <div className="flex items-center gap-2 grayscale hover:grayscale-0 transition duration-300">
-    <svg viewBox="0 0 100 100" className="w-9 h-9">
-      <path d="M25,20 C10,35 10,65 25,80 C30,85 45,85 55,75 L45,65 C40,70 35,70 32,68" fill="#00b4d8" />
-      <path d="M75,80 C90,65 90,35 75,20 C70,15 55,15 45,25 L55,35 C60,30 65,30 68,32" fill="#00f5d4" />
-      <path d="M35,45 C45,55 55,45 65,55" stroke="#00b4d8" strokeWidth="8" strokeLinecap="round" fill="none" />
-      <path d="M45,35 C55,45 45,55 55,65" stroke="#00f5d4" strokeWidth="8" strokeLinecap="round" fill="none" />
-    </svg>
-    <div className="flex flex-col leading-none font-sans text-left">
-      <span className="text-[12px] font-bold text-sfa-navy tracking-tight">standard</span>
-      <span className="text-[12px] font-bold text-sfa-navy tracking-tight">chartered</span>
-    </div>
+export const StandardCharteredLogo: React.FC<{ className?: string }> = ({ className = "h-8 sm:h-9" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/standard-chartered.png"
+      alt="Standard Chartered"
+      width={463}
+      height={183}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
-export const DeloitteLogo = () => (
-  <div className="flex items-baseline grayscale hover:grayscale-0 transition duration-300 font-sans font-black text-2xl tracking-tighter text-sfa-navy">
-    <span>Deloitte</span>
-    <span className="text-green-500 text-3xl leading-none">.</span>
+export const DeloitteLogo: React.FC<{ className?: string }> = ({ className = "h-6 sm:h-7" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/deloitte.png"
+      alt="Deloitte"
+      width={516}
+      height={98}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
-export const CbiLogo = () => (
-  <div className="flex flex-col items-center leading-none grayscale hover:grayscale-0 transition duration-300">
-    <div className="flex items-center gap-1 font-sans font-black text-2xl tracking-tighter text-sfa-navy">
-      <span className="text-[#db1b24]">✴</span>
-      <span>CBI</span>
-    </div>
-    <span className="text-[8px] text-sfa-grey font-medium">البنك التجاري الدولي</span>
+export const CbiLogo: React.FC<{ className?: string }> = ({ className = "h-9 sm:h-11" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/cbi.png"
+      alt="Commercial Bank International"
+      width={607}
+      height={334}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
