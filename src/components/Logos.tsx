@@ -112,9 +112,15 @@ export const HiltonLogo: React.FC<{ className?: string }> = ({ className = "h-8 
 
 // --- PARTNER LOGOS ---
 
-export const KpmgLogo = () => (
-  <div className="font-sans font-black text-2xl italic tracking-tighter text-sfa-blue">
-    KPMG
+export const KpmgLogo: React.FC<{ className?: string }> = ({ className = "h-7 sm:h-8" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/kpmg.png"
+      alt="KPMG"
+      width={256}
+      height={104}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
@@ -128,10 +134,15 @@ export const KnightFrankLogo = () => (
   </div>
 );
 
-export const KrestonLogo = () => (
-  <div className="font-sans font-black text-lg italic tracking-widest text-[#006699] flex items-center gap-1">
-    <span className="text-lg">K</span>
-    <span className="text-xs uppercase font-normal tracking-wide text-sfa-grey mt-1">Kreston</span>
+export const KrestonLogo: React.FC<{ className?: string }> = ({ className = "h-7 sm:h-8" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/kreston.png"
+      alt="Kreston"
+      width={385}
+      height={168}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
