@@ -345,29 +345,28 @@ export default function Home() {
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1000 400" className="w-full h-full" preserveAspectRatio="none">
+            <defs>
+              {/* Soft drop shadow cast onto the blue right-hand section */}
+              <filter id="divider-shadow" x="-10%" y="-10%" width="140%" height="140%">
+                <feDropShadow dx="3" dy="1" stdDeviation="3" floodColor="#0c2340" floodOpacity="0.28" />
+              </filter>
+            </defs>
+
             {/* Left Side White Background */}
-            <polygon points="0,0 535,0 699,400 0,400" fill="#ffffff" />
+            <polygon points="0,0 537,0 684,400 0,400" fill="#ffffff" />
 
-            {/* Lighter Blue Background (#2684be) with curved top-right and bottom-right corners */}
-            <path
-              d="M 533,0 L 946,0 Q 970,0 970,24 L 970,376 Q 970,400 946,400 L 697,400 Z"
-              fill="#2684be"
-            />
+            {/* Right Side Primary Blue Background (Top horizontal edge aligned with A graphic apex at y=50) */}
+            <polygon points="537,50 1000,50 1000,400 684,400" fill="#2684be" />
 
-            {/* Dark Blue Framing Element on Far Right (#194866) with curved top-inner and bottom-inner corners */}
+            {/* 3D Semi-transparent 'A' Graphic (Apex starts strictly below banner at y=50) */}
+            <image href="/what-we-do-a.png" x="366" y="50" width="313" height="350" preserveAspectRatio="none" />
+
+            {/* Continuous Top Dark Blue Tab (#194866) and Diagonal Divider with Drop Shadow */}
             <path
-              d="M 946,0 L 1000,0 L 1000,400 L 946,400 Q 970,400 970,376 L 970,24 Q 970,0 946,0 Z"
+              d="M 0,0 L 508,0 C 525,0 535,8 539,21 L 684,400 L 672,400 L 525,50 Q 515,50 493,50 L 0,50 Z"
               fill="#194866"
+              filter="url(#divider-shadow)"
             />
-
-            {/* Continuous Top Dark Blue Tab (#194866) and Diagonal Divider (Flat, No Shadow) */}
-            <path
-              d="M 0,0 L 508,0 C 524,0 532,6 535,16 L 699,400 L 687,400 L 544,52 Q 532,52 508,52 L 0,52 Z"
-              fill="#194866"
-            />
-
-            {/* Central 3D Semi-transparent 'A' Graphic - Layered in Foreground with Apex Fully Visible */}
-            <image href="/what-we-do-a.png" x="354" y="12" width="338" height="388" preserveAspectRatio="none" />
           </svg>
         </div>
 
