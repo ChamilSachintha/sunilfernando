@@ -146,9 +146,15 @@ export const KrestonLogo: React.FC<{ className?: string }> = ({ className = "h-7
   </div>
 );
 
-export const BdoLogo = () => (
-  <div className="font-sans font-black text-2xl tracking-wide text-[#e31b23] border-b-2 border-[#e31b23] leading-none pb-0.5">
-    BDO
+export const BdoLogo: React.FC<{ className?: string }> = ({ className = "h-7 sm:h-8" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/bdo.png"
+      alt="BDO"
+      width={659}
+      height={254}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
@@ -162,16 +168,27 @@ export const MakeeluChambersLogo = () => (
   </div>
 );
 
-export const BakerTillyLogo = () => (
-  <div className="flex flex-col items-start leading-none font-sans">
-    <span className="text-lg font-extrabold text-sfa-navy">bakertilly</span>
+export const BakerTillyLogo: React.FC<{ className?: string }> = ({ className = "h-7 sm:h-8" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/baker-tilly.png"
+      alt="Baker Tilly"
+      width={1024}
+      height={269}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
-export const WarrenVicksLogo = () => (
-  <div className="flex flex-col items-center leading-none font-sans">
-    <span className="text-sm font-bold text-sfa-navy tracking-widest">WARREN VICKS</span>
-    <span className="text-[6px] tracking-wider text-sfa-grey">MANAGEMENT CONSULTANCIES LLC</span>
+export const WarrenVicksLogo: React.FC<{ className?: string }> = ({ className = "h-11 sm:h-12" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/warren-vicks.png"
+      alt="Warren Vicks Management Consultancies LLC"
+      width={661}
+      height={536}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 
