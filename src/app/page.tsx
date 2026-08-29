@@ -12,9 +12,38 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
+  // Carousel State
+  const [heroIndex, setHeroIndex] = useState(0);
+  const heroSlides = [
+    {
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600",
+      alt: "Corporate modern glass building",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1600",
+      alt: "Modern facade architecture with orange lighting grid",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1600",
+      alt: "White modern geometric structure angles",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1485081669829-bacb8c7bb1f3?q=80&w=1600",
+      alt: "Curved metal abstract architecture details",
+    },
+  ];
+
   // Forms / Modals state
   const [valuationOpen, setValuationOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
+
+  // Auto-play Carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroIndex((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [heroSlides.length]);
 
   // Handle active section on scroll
   useEffect(() => {
@@ -57,49 +86,42 @@ export default function Home() {
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
+          <nav className="hidden lg:flex items-center gap-8 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
             <button
               onClick={() => scrollTo("home")}
-              className={`hover:text-sfa-blue transition cursor-pointer ${activeSection === "home" ? "text-sfa-blue font-semibold" : ""}`}
+              className={`hover:text-sfa-blue transition ${activeSection === "home" ? "text-sfa-blue font-semibold" : ""}`}
             >
               HOME
             </button>
             <button
               onClick={() => scrollTo("offer")}
-              className={`hover:text-sfa-blue transition cursor-pointer ${activeSection === "offer" ? "text-sfa-blue font-semibold" : ""}`}
+              className={`hover:text-sfa-blue transition ${activeSection === "offer" ? "text-sfa-blue font-semibold" : ""}`}
             >
               WHAT WE OFFER
             </button>
             <button
               onClick={() => scrollTo("network")}
-              className={`hover:text-sfa-blue transition cursor-pointer ${activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
+              className={`hover:text-sfa-blue transition ${activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
             >
               OUR NETWORK
             </button>
             <button
               onClick={() => scrollTo("team")}
-              className={`hover:text-sfa-blue transition cursor-pointer ${activeSection === "team" ? "text-sfa-blue font-semibold" : ""}`}
+              className={`hover:text-sfa-blue transition ${activeSection === "team" ? "text-sfa-blue font-semibold" : ""}`}
             >
               OUR TEAM
             </button>
             <button
               onClick={() => scrollTo("newsroom")}
-              className={`hover:text-sfa-blue transition cursor-pointer ${activeSection === "newsroom" ? "text-sfa-blue font-semibold" : ""}`}
+              className={`hover:text-sfa-blue transition ${activeSection === "newsroom" ? "text-sfa-blue font-semibold" : ""}`}
             >
               NEWSROOM
             </button>
             <button
               onClick={() => scrollTo("contact")}
-              className={`hover:text-sfa-blue transition cursor-pointer ${activeSection === "contact" ? "text-sfa-blue font-semibold" : ""}`}
+              className={`hover:text-sfa-blue transition ${activeSection === "contact" ? "text-sfa-blue font-semibold" : ""}`}
             >
               REACH US
-            </button>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-slate-600 hover:text-sfa-blue transition cursor-pointer ml-1 p-1"
-              aria-label="Toggle navigation menu"
-            >
-              <Menu className="w-6 h-6 stroke-[2.5]" />
             </button>
           </nav>
 
@@ -107,39 +129,39 @@ export default function Home() {
           <div className="flex lg:hidden items-center gap-4">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-sfa-navy hover:text-sfa-blue transition focus:outline-none cursor-pointer"
+              className="p-2 text-sfa-navy hover:text-sfa-blue transition focus:outline-none"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
-        {/* Navigation menu panel */}
+        {/* Mobile menu panel */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="border-t border-sfa-grey/10 bg-white shadow-lg"
+              className="lg:hidden border-t border-sfa-grey/10 bg-white"
             >
-              <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-4 flex flex-col font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy">
-                <button onClick={() => scrollTo("home")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue cursor-pointer">
+              <div className="px-4 py-6 space-y-4 flex flex-col font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy">
+                <button onClick={() => scrollTo("home")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   HOME
                 </button>
-                <button onClick={() => scrollTo("offer")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue cursor-pointer">
+                <button onClick={() => scrollTo("offer")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   WHAT WE OFFER
                 </button>
-                <button onClick={() => scrollTo("network")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue cursor-pointer">
+                <button onClick={() => scrollTo("network")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR NETWORK
                 </button>
-                <button onClick={() => scrollTo("team")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue cursor-pointer">
+                <button onClick={() => scrollTo("team")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR TEAM
                 </button>
-                <button onClick={() => scrollTo("newsroom")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue cursor-pointer">
+                <button onClick={() => scrollTo("newsroom")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   NEWSROOM
                 </button>
-                <button onClick={() => scrollTo("contact")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue cursor-pointer">
+                <button onClick={() => scrollTo("contact")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   REACH US
                 </button>
                 <button
@@ -147,7 +169,7 @@ export default function Home() {
                     setMobileMenuOpen(false);
                     setValuationOpen(true);
                   }}
-                  className="w-full text-center py-3 bg-sfa-navy text-white hover:bg-sfa-blue transition font-bold cursor-pointer"
+                  className="w-full text-center py-3 bg-sfa-navy text-white hover:bg-sfa-blue transition font-bold"
                 >
                   REQUEST A VALUATION
                 </button>
@@ -157,40 +179,50 @@ export default function Home() {
         </AnimatePresence>
       </header>
 
-      {/* 2. Hero Section (Page 1-4) */}
+      {/* 2. Hero Section & Carousel (Page 1-4) */}
       <section id="home" className="relative h-screen w-full flex items-center justify-center pt-16 sm:pt-20 overflow-hidden bg-black">
-        {/* Background Image: Night-time city skyline through office window with reflection & businessmen */}
-        <div className="absolute inset-0 w-full h-full">
-          <img
-            src="/hero-skyline.jpg"
-            alt="Businessmen shaking hands in high-rise office overlooking city skyline at night"
-            className="w-full h-full object-cover object-center"
-          />
-        </div>
+        {/* Background images transitioning */}
+        {heroSlides.map((slide, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{
+              opacity: idx === heroIndex ? 0.5 : 0,
+              scale: idx === heroIndex ? 1 : 1.05,
+            }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full"
+          >
+            <img
+              src={slide.image}
+              alt={slide.alt}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        ))}
 
-        {/* Subtle contrast gradient on the right side for text legibility, keeping left side & floor reflections clear */}
-        <div className="absolute inset-0 bg-gradient-to-l from-black/55 via-black/25 to-transparent z-10 pointer-events-none" />
+        {/* Diagonal Light Overlay Effect */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-sfa-navy/85 via-sfa-navy/50 to-transparent z-10" />
 
         {/* Content */}
-        <div className="relative z-20 max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 text-white h-full flex flex-col justify-center items-end">
-          <div className="max-w-xl w-full text-right flex flex-col items-end">
+        <div className="relative z-20 max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 text-white h-full flex flex-col justify-center">
+          <div className="max-w-3xl self-end text-right">
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
-              className="space-y-1 w-full"
             >
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-bold tracking-[0.12em] uppercase leading-none text-white">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-montserrat font-medium tracking-widest leading-none text-white">
                 TRUSTED
               </h1>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-bold tracking-[0.12em] uppercase leading-none text-white mt-1">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-montserrat font-medium tracking-widest leading-none text-white mt-1">
                 VALUATIONS
               </h1>
-              <div className="pt-3 space-y-1">
-                <span className="block text-xl sm:text-2xl lg:text-[26px] font-montserrat font-light tracking-[0.18em] text-white uppercase">
+              <div className="mt-4 space-y-2">
+                <span className="block text-xl sm:text-2xl font-montserrat font-light tracking-widest text-white uppercase">
                   INFORMED DECISIONS
                 </span>
-                <span className="block text-base sm:text-lg lg:text-xl font-avenir font-light tracking-[0.22em] text-white/90 uppercase">
+                 <span className="block text-lg sm:text-xl font-avenir font-light tracking-widest text-white/90">
                   SINCE 1999
                 </span>
               </div>
@@ -200,7 +232,7 @@ export default function Home() {
               initial={{ y: 35, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-[11px] sm:text-xs lg:text-[13px] font-avenir tracking-wide leading-relaxed font-normal text-white/95 mt-6 max-w-md text-right uppercase"
+              className="text-xs sm:text-sm font-avenir tracking-wide leading-relaxed font-normal text-white mt-8 max-w-xl ml-auto"
             >
               SUNIL FERNANDO & ASSOCIATES DELIVERS INTERNATIONALLY ACCEPTED VALUATION AND REAL ESTATE ADVISORY SERVICES ACROSS SRI LANKA AND THE MALDIVES, BACKED BY 25 YEARS OF EXPERTISE, RICS COMPLIANCE, AND A GLOBAL PARTNER NETWORK.
             </motion.p>
@@ -209,22 +241,33 @@ export default function Home() {
               initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-6 flex justify-end"
+              className="mt-8 flex justify-end gap-4"
             >
               <button
                 onClick={() => setValuationOpen(true)}
-                className="px-8 py-2.5 sm:py-3 bg-[#18456b] hover:bg-[#123654] border border-[#2684be] text-white text-xs sm:text-sm font-avenir font-medium tracking-widest uppercase rounded-lg transition duration-300 shadow-md cursor-pointer"
+                className="px-12 py-3.5 bg-[#1e4e72] hover:bg-[#153a53] text-white text-sm sm:text-base font-avenir font-normal tracking-widest uppercase rounded-xl transition duration-300 shadow-md"
               >
-                REQUEST A VALUATION
+                Request a Valuation
               </button>
             </motion.div>
           </div>
+
+          {/* Dots Indicator */}
+          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
+            {heroSlides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setHeroIndex(i)}
+                className={`h-2 transition-all rounded-full ${i === heroIndex ? "w-8 bg-sfa-cyan" : "w-2 bg-white/40"}`}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* Bottom Banner Bar "Explore Services" with rounded top corners matching image_0.png */}
+        {/* Bottom Banner Bar "Explore Services" */}
         <div
           onClick={() => scrollTo("offer")}
-          className="absolute bottom-0 left-0 right-0 z-20 bg-secondary rounded-t-[24px] sm:rounded-t-[32px] border-t border-white/10 cursor-pointer py-4 sm:py-5 text-center text-white tracking-[0.35em] text-xl sm:text-2xl lg:text-3xl font-avenir font-light uppercase transition duration-300 hover:bg-[#153e5c]"
+          className="absolute bottom-0 left-0 right-0 z-20 bg-secondary border-t border-white/10 cursor-pointer py-5 text-center text-white tracking-[0.4em] text-2xl sm:text-3xl font-avenir font-light uppercase transition duration-300"
         >
           EXPLORE OUR SERVICES
         </div>
@@ -303,26 +346,18 @@ export default function Home() {
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1000 400" className="w-full h-full" preserveAspectRatio="none">
             {/* Left Side White Background */}
-            <polygon points="0,0 520,0 640,400 0,400" fill="#ffffff" />
+            <polygon points="0,0 533,0 697,400 0,400" fill="#ffffff" />
 
             {/* Right Side Primary Blue Background */}
-            <path
-              d="M 520,-20 C 560,40 570,100 590,160 L 640,420 L 1000,420 L 1000,-20 Z"
-              fill="#2684be"
-            />
+            <polygon points="533,0 1000,0 1000,400 697,400" fill="#2684be" />
 
-            {/* Top Left Dark Banner (Secondary color #194866) */}
+            {/* 3D Semi-transparent 'A' Graphic with Drop Shadow */}
+            <image href="/what-we-do-a.png" x="348" y="20" width="344" height="380" preserveAspectRatio="none" />
+
+            {/* Top Left Dark Banner (#194866) and Sharp Diagonal Divider Stripe */}
             <path
-              d="M 0,0 L 500,0 C 510,0 515,10 512,20 L 505,50 L 0,50 Z"
+              d="M 0,0 L 503,0 C 520,0 531,6 535,16 L 697,400 L 685,400 L 550,51 Q 539,51 518,51 L 0,51 Z"
               fill="#194866"
-            />
-
-            {/* Curved White Separator Line */}
-            <path
-              d="M 520,-20 C 560,40 570,100 590,160 L 640,420"
-              stroke="#ffffff"
-              strokeWidth="16"
-              fill="none"
             />
           </svg>
         </div>
@@ -332,30 +367,39 @@ export default function Home() {
           {/* Left Column (WHAT WE DO + End-to-End text) */}
           <div className="lg:col-span-7 flex flex-col justify-between bg-white lg:bg-transparent">
             {/* Header Banner Text */}
-            <div className="h-[50px] flex items-center pl-12 lg:pl-24 bg-secondary lg:bg-transparent">
-              <span className="text-sm font-avenir font-semibold tracking-[0.2em] text-white uppercase">
+            <div className="h-[51px] sm:h-[54px] flex items-center pl-8 sm:pl-12 lg:pl-16 bg-secondary lg:bg-transparent">
+              <span className="text-xs sm:text-sm font-avenir font-semibold tracking-[0.4em] text-white uppercase">
                 WHAT WE DO
               </span>
             </div>
             
             {/* Main Left Content */}
-            <div className="flex-1 flex flex-col justify-center px-12 lg:pl-24 lg:pr-12 py-12">
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-light tracking-tight uppercase leading-[1.1] text-sfa-navy">
-                END-TO-END
-                <span className="block mt-1">REAL ESTATE</span>
-                <span className="block mt-1">ADVISORY</span>
-              </h2>
-              <p className="text-sm sm:text-base font-avenir font-semibold tracking-[0.15em] text-[#2684be] mt-6 uppercase">
-                BUILT FOR INSTITUTIONS
-              </p>
+            <div className="flex-1 flex flex-col justify-center px-8 sm:px-12 lg:pl-16 lg:pr-8 py-10 lg:py-12">
+              <div className="w-fit flex flex-col items-center text-center">
+                <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.08] text-secondary">
+                  END-TO-END
+                  <span className="block mt-1">REAL ESTATE</span>
+                  <span className="block mt-1">ADVISORY</span>
+                </h2>
+                <p className="text-base sm:text-lg font-avenir font-semibold tracking-[0.18em] text-[#2885bf] mt-6 uppercase text-center">
+                  BUILT FOR INSTITUTIONS
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Right Column (From Complex Portfolio Valuations...) */}
-          <div className="lg:col-span-5 flex flex-col justify-center px-12 lg:px-24 py-24 text-white bg-primary lg:bg-transparent">
-            <p className="text-base sm:text-lg lg:text-xl font-avenir leading-relaxed tracking-wider font-light text-white/95 text-left lg:max-w-md">
-              FROM COMPLEX PORTFOLIO VALUATIONS TO STRATEGIC OCCUPIER DECISIONS, EVERY SERVICE AT SFA IS DELIVERED TO INTERNATIONAL STANDARDS ACCEPTED BY BANKS, AUDIT FIRMS, AND LAW FIRMS ACROSS THE GLOBE.
-            </p>
+          <div className="lg:col-span-5 flex flex-col justify-center px-8 sm:px-12 lg:pl-16 lg:pr-20 py-16 lg:py-24 text-white bg-primary lg:bg-transparent">
+            <div className="font-avenir font-normal text-xs sm:text-sm lg:text-[13px] uppercase tracking-[0.18em] leading-[2.1] text-white lg:max-w-[400px]">
+              <span className="block">FROM COMPLEX PORTFOLIO</span>
+              <span className="block">VALUATIONS TO STRATEGIC</span>
+              <span className="block">OCCUPIER DECISIONS, EVERY</span>
+              <span className="block">SERVICE AT SFA IS DELIVERED</span>
+              <span className="block">TO INTERNATIONAL STANDARDS</span>
+              <span className="block">ACCEPTED BY BANKS, AUDIT</span>
+              <span className="block">FIRMS, AND LAW FIRMS ACROSS</span>
+              <span className="block">THE GLOBE.</span>
+            </div>
           </div>
         </div>
       </section>
