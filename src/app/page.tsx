@@ -938,7 +938,7 @@ export default function Home() {
           <svg viewBox="0 0 1024 287" className="w-full h-full overflow-visible" preserveAspectRatio="none">
             <defs>
               {/* Left side depth gradient: transitions from silvery-blue to deep dark blue immediately adjacent to the divider */}
-              <linearGradient id="partners-left-depth" x1="0" y1="0" x2="0.95" y2="0.85">
+              <linearGradient id="partners-left-depth" x1="0" y1="0" x2="0.75" y2="0.65">
                 <stop offset="0%" stopColor="#dce4ea" />
                 <stop offset="35%" stopColor="#9eb6c7" />
                 <stop offset="65%" stopColor="#3b6b8c" />
@@ -956,15 +956,15 @@ export default function Home() {
             {/* Right Side Background Gradient */}
             <rect y="-10" width="1024" height="310" fill="url(#partners-right-grad)" />
 
-            {/* Left Side with Depth Gradient (bounded by divider left edge) */}
+            {/* Left Side with Depth Gradient (bounded by flipped divider left edge) */}
             <path
-              d="M 0,-15 L 315,-15 C 375,-15 422,42 448,125 L 508,300 L 0,300 Z"
+              d="M 0,-15 L 650,-15 C 600,-15 555,42 530,125 L 435,310 L 0,310 Z"
               fill="url(#partners-left-depth)"
             />
 
-            {/* Exact White Solid Sweeping Curved Divider from Mockup */}
+            {/* Exact White Solid Sweeping Curved Divider (Flipped / angle from top-right to bottom-left) */}
             <path
-              d="M 315,-15 C 375,-15 422,42 448,125 L 508,300 L 543,300 L 483,125 C 457,42 410,-15 355,-15 Z"
+              d="M 695,-15 C 635,-15 590,42 565,125 L 470,310 L 435,310 L 530,125 C 555,42 600,-15 650,-15 Z"
               fill="#ffffff"
             />
           </svg>
