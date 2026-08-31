@@ -946,73 +946,81 @@ export default function Home() {
                 <stop offset="100%" stopColor="#0b2438" />
               </linearGradient>
 
-              {/* Right side gradient: clean background for partner logos */}
-              <linearGradient id="partners-right-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#2a5773" />
-                <stop offset="100%" stopColor="#f8f9fa" />
-              </linearGradient>
-            </defs>
+            {/* Central Divider Gradient: flows smoothly across the entire sweeping divider shape */}
+            <linearGradient id="partners-divider-grad" x1="0.65" y1="0" x2="0.35" y2="1">
+              <stop offset="0%" stopColor="#486d85" />
+              <stop offset="25%" stopColor="#3a627c" />
+              <stop offset="65%" stopColor="#224f6c" />
+              <stop offset="100%" stopColor="#194866" />
+            </linearGradient>
 
-            {/* Right Side Background Gradient */}
-            <rect y="-10" width="1024" height="310" fill="url(#partners-right-grad)" />
+            {/* Right side gradient: clean background for partner logos */}
+            <linearGradient id="partners-right-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#2a5773" />
+              <stop offset="100%" stopColor="#f8f9fa" />
+            </linearGradient>
+          </defs>
 
-            {/* Left Side with Depth Gradient (bounded by flipped divider left edge) */}
-            <path
-              d="M 0,-15 L 650,-15 C 600,-15 555,42 530,125 L 435,310 L 0,310 Z"
-              fill="url(#partners-left-depth)"
-            />
+          {/* Right Side Background Gradient */}
+          <rect y="-10" width="1024" height="310" fill="url(#partners-right-grad)" />
 
-            {/* Exact White Solid Sweeping Curved Divider (Flipped / angle from top-right to bottom-left) */}
-            <path
-              d="M 695,-15 C 635,-15 590,42 565,125 L 470,310 L 435,310 L 530,125 C 555,42 600,-15 650,-15 Z"
-              fill="#ffffff"
-            />
-          </svg>
+          {/* Left Side with Depth Gradient (bounded strictly by divider left edge) */}
+          <path
+            d="M 0,-15 L 652,-15 C 597,-15 553,35 537,70 L 429,310 L 0,310 Z"
+            fill="url(#partners-left-depth)"
+          />
+
+          {/* Exact Central Diagonal Divider: sweeping curve at top, perfectly straight and uniform in width downward */}
+          <path
+            d="M 690,-15 C 635,-15 591,35 575,70 L 467,310 L 429,310 L 537,70 C 553,35 597,-15 652,-15 Z"
+            fill="url(#partners-divider-grad)"
+          />
+        </svg>
+      </div>
+
+      {/* Content Overlay */}
+      <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-[45%_55%] max-w-[1440px] mx-auto">
+        {/* Left Column (Details - 45%) */}
+        <div className="flex flex-col justify-center p-8 sm:p-12 lg:py-16 lg:pl-16 lg:pr-10 xl:pl-20 xl:pr-14 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
+          <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-[#133852]">
+            OUR
+            <span className="block mt-1">PARTNERS</span>
+          </h2>
+
+          <span className="block text-xs lg:text-sm font-montserrat font-semibold text-white/80 uppercase tracking-widest mt-6">
+            A GLOBAL NETWORK. • A LOCAL ADVANTAGE.
+          </span>
+
+          <p className="text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-left text-white/95 my-4">
+            Our partnerships extend local expertise through a network of world-class professional organisations — so every report meets the rigour international clients require.
+          </p>
+
+          <button
+            onClick={() => setContactOpen(true)}
+            className="inline-flex items-center gap-2 text-xs font-avenir font-bold tracking-widest text-white uppercase hover:underline cursor-pointer w-fit mt-2"
+          >
+            <span>LEARN MORE</span>
+          </button>
         </div>
 
-        {/* Content Overlay */}
-        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-[45%_55%] max-w-[1440px] mx-auto">
-          {/* Left Column (Details - 45%) */}
-          <div className="flex flex-col justify-center p-8 sm:p-12 lg:py-16 lg:pl-16 lg:pr-10 xl:pl-20 xl:pr-14 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
-            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-[#133852]">
-              OUR
-              <span className="block mt-1">PARTNERS</span>
-            </h2>
-
-            <span className="block text-xs lg:text-sm font-montserrat font-semibold text-white/80 uppercase tracking-widest mt-6">
-              A GLOBAL NETWORK. • A LOCAL ADVANTAGE.
-            </span>
-
-            <p className="text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-left text-white/95 my-4">
-              Our partnerships extend local expertise through a network of world-class professional organisations — so every report meets the rigour international clients require.
-            </p>
-
-            <button
-              onClick={() => setContactOpen(true)}
-              className="inline-flex items-center gap-2 text-xs font-avenir font-bold tracking-widest text-white uppercase hover:underline cursor-pointer w-fit mt-2"
-            >
-              <span>LEARN MORE</span>
-            </button>
-          </div>
-
-          {/* Right Column (Logos - 55%) */}
-          <div className="flex flex-col justify-center bg-[#194866] lg:bg-transparent px-6 sm:px-10 lg:py-14 lg:pl-10 lg:pr-12 xl:pl-14 xl:pr-20">
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 sm:gap-x-10 lg:gap-x-12 gap-y-6 sm:gap-y-8 items-center justify-items-center w-full">
-              <KpmgLogo />
-              <KnightFrankLogo />
-              <KrestonLogo />
-              <BdoLogo />
-              <MakeeluChambersLogo />
-              <BakerTillyLogo />
-              <WarrenVicksLogo />
-              <DesignAdvocacyLogo />
-              <AcquestLogo />
-              <NdbLogo />
-              <CoenergiLogo />
-              <SudathPereraLogo />
-            </div>
+        {/* Right Column (Logos - 55%, strictly contained to the right of divider boundary) */}
+        <div className="flex flex-col justify-center bg-[#194866] lg:bg-transparent px-6 sm:px-10 lg:py-14 lg:pl-28 xl:pl-36 2xl:pl-44 lg:pr-8 xl:pr-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 sm:gap-x-10 lg:gap-x-12 gap-y-6 sm:gap-y-8 items-center justify-items-center w-full max-w-[620px]">
+            <KpmgLogo />
+            <KnightFrankLogo />
+            <KrestonLogo />
+            <BdoLogo />
+            <MakeeluChambersLogo />
+            <BakerTillyLogo />
+            <WarrenVicksLogo />
+            <DesignAdvocacyLogo />
+            <AcquestLogo />
+            <NdbLogo />
+            <CoenergiLogo />
+            <SudathPereraLogo />
           </div>
         </div>
+      </div>
       </section>
 
       {/* 11. Leadership Team Header (Page 14) */}
