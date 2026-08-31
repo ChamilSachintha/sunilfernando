@@ -867,44 +867,57 @@ export default function Home() {
       <section id="clients" className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
-          <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+          <svg viewBox="0 0 1024 287" className="w-full h-full overflow-visible" preserveAspectRatio="none">
             <defs>
-              <linearGradient id="clients-bg-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#194866" />
-                <stop offset="100%" stopColor="#e2e8f0" />
+              <linearGradient id="clients-bg-grad-left" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#1e4663" />
+                <stop offset="100%" stopColor="#dfe6eb" />
+              </linearGradient>
+              <linearGradient id="clients-bg-grad-right" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#295571" />
+                <stop offset="100%" stopColor="#f8f9fa" />
               </linearGradient>
             </defs>
 
-            {/* Full Background Vertical Gradient */}
-            <rect y="-20" width="1000" height="440" fill="url(#clients-bg-grad)" />
+            {/* Right Side Background Gradient */}
+            <rect y="-10" width="1024" height="310" fill="url(#clients-bg-grad-right)" />
 
-            {/* White Curved Divider Line */}
-            <path d="M 341,-20 C 401,-20 430,30 450,80 L 509,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+            {/* Left Side Background Gradient (fills up to divider left edge) */}
+            <path
+              d="M 0,-15 L 315,-15 C 375,-15 422,42 448,125 L 508,300 L 0,300 Z"
+              fill="url(#clients-bg-grad-left)"
+            />
+
+            {/* Exact White Solid Sweeping Curved Divider from Mockup */}
+            <path
+              d="M 315,-15 C 375,-15 422,42 448,125 L 508,300 L 543,300 L 483,125 C 457,42 410,-15 355,-15 Z"
+              fill="#ffffff"
+            />
           </svg>
         </div>
 
         {/* Content Overlay */}
-        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
-          {/* Left Column (Details) */}
-          <div className="lg:col-span-5 flex flex-col justify-center p-12 lg:py-16 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-[45%_55%] max-w-[1440px] mx-auto">
+          {/* Left Column (Details - 45%) */}
+          <div className="flex flex-col justify-center p-8 sm:p-12 lg:py-16 lg:pl-16 lg:pr-10 xl:pl-20 xl:pr-14 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
             <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-white">
               OUR
               <span className="block mt-1">CLIENTS</span>
             </h2>
 
-            <div className="space-y-4 text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-justify max-w-xl my-6 text-sfa-navy">
-              <p className="font-avenir font-normal text-white lg:text-sfa-navy">
+            <div className="space-y-4 text-xs sm:text-sm lg:text-[15px] font-avenir leading-relaxed text-left my-6 text-white lg:text-[#1a384c]">
+              <p className="font-avenir font-normal">
                 Our diverse client portfolio, spanning individuals to multinational corporations, is a testament to our success.
               </p>
-              <p className="font-avenir font-normal text-white lg:text-sfa-navy">
+              <p className="font-avenir font-normal">
                 Each year, we complete thousands of valuation assignments across various sectors. With tailored methodologies and deep expertise, we consistently meet client needs and deliver exceptional value.
               </p>
             </div>
           </div>
 
-          {/* Right Column (Logos) */}
-          <div className="lg:col-span-7 flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+          {/* Right Column (Logos - 55%) */}
+          <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent px-6 sm:px-10 lg:py-14 lg:pl-10 lg:pr-12 xl:pl-14 xl:pr-20">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 sm:gap-x-8 lg:gap-x-10 gap-y-8 sm:gap-y-10 items-center justify-items-center w-full">
               <HsbcLogo />
               <StandardCharteredLogo />
               <DeloitteLogo />
