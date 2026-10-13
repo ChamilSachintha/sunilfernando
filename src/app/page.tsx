@@ -253,7 +253,7 @@ export default function Home() {
           </div>
 
           {/* Dots Indicator */}
-          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
+          <div className="hidden lg:flex absolute bottom-[180px] left-1/2 transform -translate-x-1/2 z-20 gap-2">
             {heroSlides.map((_, i) => (
               <button
                 key={i}
@@ -264,10 +264,78 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Regional Offices Row: Dubai, Maldives, and Sri Lanka */}
+        <div className="absolute bottom-[68px] sm:bottom-[72px] left-0 right-0 z-20 bg-sfa-navy/90 backdrop-blur-md border-t border-white/10 text-white py-3.5 sm:py-4 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-white/15 text-center md:text-left">
+            {/* Dubai */}
+            <div className="pt-3 md:pt-0 md:px-4 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-center md:justify-start gap-2 mb-1.5">
+                  <span className="w-2 h-2 rounded-full bg-sfa-cyan" />
+                  <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white">
+                    DUBAI, UAE
+                  </h3>
+                </div>
+                <p className="text-xs font-avenir font-normal text-white/80 leading-relaxed">
+                  Office #1029, Building B-2, Level 1, Dubai CommerCity, Umm Ramool, Dubai
+                </p>
+              </div>
+              <div className="mt-2 pt-1 border-t border-white/10 flex items-center justify-center md:justify-start gap-2">
+                <span className="text-[10px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold">Tel:</span>
+                <a href="tel:+97148942444" className="text-xs font-avenir font-medium text-white hover:text-sfa-cyan transition">
+                  +971 4 894 2444
+                </a>
+              </div>
+            </div>
+
+            {/* Maldives */}
+            <div className="pt-3 md:pt-0 md:px-6 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-center md:justify-start gap-2 mb-1.5">
+                  <span className="w-2 h-2 rounded-full bg-sfa-cyan" />
+                  <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white">
+                    MALDIVES
+                  </h3>
+                </div>
+                <p className="text-xs font-avenir font-normal text-white/80 leading-relaxed">
+                  Sunil Fernando &amp; Associates Maldives Pvt Ltd, Malé City, Republic of Maldives
+                </p>
+              </div>
+              <div className="mt-2 pt-1 border-t border-white/10 flex items-center justify-center md:justify-start gap-2">
+                <span className="text-[10px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold">Tel:</span>
+                <a href="tel:+9603308829" className="text-xs font-avenir font-medium text-white hover:text-sfa-cyan transition">
+                  +960 330 8829 / +94 11 2887829
+                </a>
+              </div>
+            </div>
+
+            {/* Sri Lanka */}
+            <div className="pt-3 md:pt-0 md:px-6 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-center md:justify-start gap-2 mb-1.5">
+                  <span className="w-2 h-2 rounded-full bg-sfa-cyan" />
+                  <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white">
+                    SRI LANKA
+                  </h3>
+                </div>
+                <p className="text-xs font-avenir font-normal text-white/80 leading-relaxed">
+                  No. 505, Nawala Road, Rajagiriya / Level 24, One Galle Face Tower, Colombo 02
+                </p>
+              </div>
+              <div className="mt-2 pt-1 border-t border-white/10 flex items-center justify-center md:justify-start gap-2">
+                <span className="text-[10px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold">Tel:</span>
+                <a href="tel:+94112887829" className="text-xs font-avenir font-medium text-white hover:text-sfa-cyan transition">
+                  +94 11 2887829
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Banner Bar "Explore Services" */}
         <div
           onClick={() => scrollTo("offer")}
-          className="absolute bottom-0 left-0 right-0 z-20 bg-secondary border-t border-white/10 cursor-pointer py-5 text-center text-white tracking-[0.4em] text-2xl sm:text-3xl font-avenir font-light uppercase transition duration-300"
+          className="absolute bottom-0 left-0 right-0 z-20 bg-secondary border-t border-white/10 cursor-pointer py-5 text-center text-white tracking-[0.4em] text-2xl sm:text-3xl font-avenir font-light uppercase transition duration-300 hover:bg-[#133852]"
         >
           EXPLORE OUR SERVICES
         </div>
