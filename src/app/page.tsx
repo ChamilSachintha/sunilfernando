@@ -859,6 +859,91 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 9.1 Research Services (Page 11.5) */}
+      <section className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+        {/* SVG Vector Background */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
+          <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="research-left-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#194866" />
+                <stop offset="100%" stopColor="#e2e8f0" />
+              </linearGradient>
+            </defs>
+
+            {/* Right Side Soft Muted Slate-Blue Background */}
+            <rect y="-20" width="1000" height="440" fill="#e2e8f0" />
+
+            {/* Left Side Gradient Background */}
+            <path d="M 0,-20 L 512,-20 C 572,-20 610,30 630,80 L 758,420 L 0,420 Z" fill="url(#research-left-grad)" />
+
+            {/* White Curved Divider Line */}
+            <path d="M 512,-20 C 572,-20 610,30 630,80 L 758,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+          </svg>
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
+          {/* Left Column (Details) */}
+          <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
+              RESEARCH
+              <span className="block mt-1">SERVICES</span>
+            </h2>
+
+            <div className="space-y-6 my-8 lg:my-0 lg:max-w-xl">
+              <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-sfa-navy lg:text-sfa-navy font-medium">
+                We offer comprehensive local and regional market intelligence on real estate trends as well as tailored publications addressing the specific requirements of our clients.
+              </p>
+              <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-sfa-navy/90 lg:text-sfa-navy/90">
+                Our research team collaborates with all sectors of our organization, leveraging over 21 years of Sunil Fernando & Associates real estate intelligence.
+              </p>
+            </div>
+
+            <button
+              onClick={() => setContactOpen(true)}
+              className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-[#2684be] uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
+            >
+              <span>LEARN MORE &rarr;</span>
+            </button>
+          </div>
+
+          {/* Right Column (Highlights & Capabilities) */}
+          <div className="lg:col-span-5 flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16 text-sfa-navy space-y-6">
+            <div className="space-y-3">
+              <h3 className="text-xs sm:text-sm font-montserrat font-bold tracking-widest text-primary uppercase">
+                STRATEGIC MARKET INTELLIGENCE
+              </h3>
+              <p className="text-xs sm:text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
+                Delivering actionable data-driven insights, in-depth feasibility studies, and bespoke sector analytics across emerging and established asset classes.
+              </p>
+            </div>
+
+            <div className="w-full h-[1px] bg-sfa-navy/10" />
+
+            <div className="space-y-3">
+              <h3 className="text-xs sm:text-sm font-montserrat font-bold tracking-widest text-secondary uppercase">
+                TAILORED PUBLICATIONS & REPORTS
+              </h3>
+              <ul className="space-y-2 text-xs sm:text-sm font-avenir font-medium text-sfa-navy/90 uppercase tracking-wide">
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Quarterly Market Overviews
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Custom Sector & Demographic Studies
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Development Feasibility Assessments
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
 
 
