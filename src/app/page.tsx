@@ -180,7 +180,7 @@ export default function Home() {
       </header>
 
       {/* 2. Hero Section & Carousel (Page 1-4) */}
-      <section id="home" className="relative h-screen w-full flex items-center justify-center pt-16 sm:pt-20 overflow-hidden bg-black">
+      <section id="home" className="relative min-h-screen w-full flex flex-col justify-between pt-16 sm:pt-20 overflow-hidden bg-black">
         {/* Background images transitioning */}
         {heroSlides.map((slide, idx) => (
           <motion.div
@@ -191,7 +191,7 @@ export default function Home() {
               scale: idx === heroIndex ? 1 : 1.05,
             }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full pointer-events-none"
           >
             <img
               src={slide.image}
@@ -202,27 +202,27 @@ export default function Home() {
         ))}
 
         {/* Diagonal Light Overlay Effect */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-sfa-navy/85 via-sfa-navy/50 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-sfa-navy/85 via-sfa-navy/50 to-transparent z-10 pointer-events-none" />
 
         {/* Content */}
-        <div className="relative z-20 max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 text-white h-full flex flex-col justify-center">
+        <div className="relative z-20 max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 text-white flex-1 flex flex-col justify-center py-4 sm:py-6">
           <div className="max-w-3xl self-end text-right">
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-montserrat font-medium tracking-widest leading-none text-white">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-montserrat font-medium tracking-widest leading-none text-white">
                 TRUSTED
               </h1>
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-montserrat font-medium tracking-widest leading-none text-white mt-1">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-montserrat font-medium tracking-widest leading-none text-white mt-1">
                 VALUATIONS
               </h1>
-              <div className="mt-4 space-y-2">
-                <span className="block text-xl sm:text-2xl font-montserrat font-light tracking-widest text-white uppercase">
+              <div className="mt-3 sm:mt-4 space-y-1 sm:space-y-2">
+                <span className="block text-lg sm:text-xl lg:text-2xl font-montserrat font-light tracking-widest text-white uppercase">
                   INFORMED DECISIONS
                 </span>
-                 <span className="block text-lg sm:text-xl font-avenir font-light tracking-widest text-white/90">
+                <span className="block text-base sm:text-lg lg:text-xl font-avenir font-light tracking-widest text-white/90">
                   SINCE 1999
                 </span>
               </div>
@@ -232,7 +232,7 @@ export default function Home() {
               initial={{ y: 35, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xs sm:text-sm font-avenir tracking-wide leading-relaxed font-normal text-white mt-8 max-w-xl ml-auto"
+              className="text-xs sm:text-sm font-avenir tracking-wide leading-relaxed font-normal text-white mt-4 sm:mt-6 max-w-xl ml-auto"
             >
               SUNIL FERNANDO & ASSOCIATES DELIVERS INTERNATIONALLY ACCEPTED VALUATION AND REAL ESTATE ADVISORY SERVICES ACROSS SRI LANKA AND THE MALDIVES, BACKED BY 25 YEARS OF EXPERTISE, RICS COMPLIANCE, AND A GLOBAL PARTNER NETWORK.
             </motion.p>
@@ -241,114 +241,103 @@ export default function Home() {
               initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-8 flex justify-end gap-4"
+              className="mt-5 sm:mt-6 flex justify-end gap-4"
             >
               <button
                 onClick={() => setValuationOpen(true)}
-                className="px-12 py-3.5 bg-[#1e4e72] hover:bg-[#153a53] text-white text-sm sm:text-base font-avenir font-normal tracking-widest uppercase rounded-xl transition duration-300 shadow-md"
+                className="px-10 sm:px-12 py-3 sm:py-3.5 bg-[#1e4e72] hover:bg-[#153a53] text-white text-xs sm:text-sm lg:text-base font-avenir font-normal tracking-widest uppercase rounded-xl transition duration-300 shadow-md"
               >
                 Request a Valuation
               </button>
             </motion.div>
           </div>
-
-          {/* Dots Indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
-            {heroSlides.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setHeroIndex(i)}
-                className={`h-2 transition-all rounded-full ${i === heroIndex ? "w-8 bg-sfa-cyan" : "w-2 bg-white/40"}`}
-              />
-            ))}
-          </div>
         </div>
-      </section>
 
-      {/* 2.1 Regional Offices Row: Dubai, Maldives, and Sri Lanka (Under the landing page) */}
-      <section className="bg-[#0c2340] text-white py-8 sm:py-10 px-4 sm:px-6 lg:px-8 border-b border-white/10">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 text-center md:text-left">
-          {/* Dubai */}
-          <div className="flex flex-col justify-start">
-            <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
-              <Image
-                src="/flag-ae.png"
-                alt="UAE Flag"
-                width={28}
-                height={18}
-                className="w-6 h-auto rounded-[2px] shadow-sm object-cover"
-              />
-              <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white">
-                DUBAI, UAE
-              </h3>
+        {/* Regional Offices Row: Dubai, Maldives, and Sri Lanka (Visible at the bottom of the landing viewport) */}
+        <div className="relative z-20 w-full bg-[#0c2340]/90 backdrop-blur-md border-t border-white/10 text-white py-4 sm:py-5 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 lg:gap-24 xl:gap-32 text-center md:text-left">
+            {/* Dubai */}
+            <div className="flex flex-col justify-start">
+              <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
+                <Image
+                  src="/flag-ae.png"
+                  alt="UAE Flag"
+                  width={28}
+                  height={18}
+                  className="w-6 sm:w-7 h-auto rounded-[2px] shadow-sm object-cover shrink-0"
+                />
+                <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white">
+                  DUBAI, UAE
+                </h3>
+              </div>
+              <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/80 leading-relaxed">
+                Office #1029, Building B-2, Level 1, Dubai CommerCity, Umm Ramool, Dubai
+              </p>
+              <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
+                <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold">Tel:</span>
+                <a href="tel:+97148942444" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition">
+                  +971 4 894 2444
+                </a>
+              </div>
             </div>
-            <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/80 leading-relaxed">
-              Office #1029, Building B-2, Level 1, Dubai CommerCity, Umm Ramool, Dubai
-            </p>
-            <div className="mt-2.5 flex items-center justify-center md:justify-start gap-2">
-              <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold">Tel:</span>
-              <a href="tel:+97148942444" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition">
-                +971 4 894 2444
-              </a>
-            </div>
-          </div>
 
-          {/* Maldives */}
-          <div className="flex flex-col justify-start">
-            <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
-              <Image
-                src="/flag-mv.png"
-                alt="Maldives Flag"
-                width={28}
-                height={18}
-                className="w-6 h-auto rounded-[2px] shadow-sm object-cover"
-              />
-              <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white">
-                MALDIVES
-              </h3>
+            {/* Maldives */}
+            <div className="flex flex-col justify-start">
+              <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
+                <Image
+                  src="/flag-mv.png"
+                  alt="Maldives Flag"
+                  width={28}
+                  height={18}
+                  className="w-6 sm:w-7 h-auto rounded-[2px] shadow-sm object-cover shrink-0"
+                />
+                <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white">
+                  MALDIVES
+                </h3>
+              </div>
+              <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/80 leading-relaxed">
+                Sunil Fernando &amp; Associates Maldives Pvt Ltd, Malé City, Republic of Maldives
+              </p>
+              <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
+                <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold">Tel:</span>
+                <a href="tel:+9603308829" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition">
+                  +960 330 8829 / +94 11 2887829
+                </a>
+              </div>
             </div>
-            <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/80 leading-relaxed">
-              Sunil Fernando &amp; Associates Maldives Pvt Ltd, Malé City, Republic of Maldives
-            </p>
-            <div className="mt-2.5 flex items-center justify-center md:justify-start gap-2">
-              <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold">Tel:</span>
-              <a href="tel:+9603308829" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition">
-                +960 330 8829 / +94 11 2887829
-              </a>
-            </div>
-          </div>
 
-          {/* Sri Lanka */}
-          <div className="flex flex-col justify-start">
-            <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
-              <Image
-                src="/flag-lk.png"
-                alt="Sri Lanka Flag"
-                width={28}
-                height={18}
-                className="w-6 h-auto rounded-[2px] shadow-sm object-cover"
-              />
-              <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white">
-                SRI LANKA
-              </h3>
-            </div>
-            <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/80 leading-relaxed">
-              No. 505, Nawala Road, Rajagiriya / Level 24, One Galle Face Tower, Colombo 02
-            </p>
-            <div className="mt-2.5 flex items-center justify-center md:justify-start gap-2">
-              <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold">Tel:</span>
-              <a href="tel:+94112887829" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition">
-                +94 11 2887829
-              </a>
+            {/* Sri Lanka */}
+            <div className="flex flex-col justify-start">
+              <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
+                <Image
+                  src="/flag-lk.png"
+                  alt="Sri Lanka Flag"
+                  width={28}
+                  height={18}
+                  className="w-6 sm:w-7 h-auto rounded-[2px] shadow-sm object-cover shrink-0"
+                />
+                <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white">
+                  SRI LANKA
+                </h3>
+              </div>
+              <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/80 leading-relaxed">
+                No. 505, Nawala Road, Rajagiriya / Level 24, One Galle Face Tower, Colombo 02
+              </p>
+              <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
+                <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold">Tel:</span>
+                <a href="tel:+94112887829" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition">
+                  +94 11 2887829
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2.2 Bottom Banner Bar "Explore Services" (Moved below the country row) */}
+      {/* 2.2 Bottom Banner Bar "Explore Services" (Immediately below the landing viewport) */}
       <div
         onClick={() => scrollTo("offer")}
-        className="w-full bg-secondary cursor-pointer py-5 text-center text-white tracking-[0.4em] text-2xl sm:text-3xl font-avenir font-light uppercase transition duration-300 hover:bg-[#133852]"
+        className="w-full bg-secondary cursor-pointer py-5 text-center text-white tracking-[0.4em] text-xl sm:text-2xl lg:text-3xl font-avenir font-light uppercase transition duration-300 hover:bg-[#133852]"
       >
         EXPLORE OUR SERVICES
       </div>
