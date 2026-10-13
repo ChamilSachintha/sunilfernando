@@ -16,6 +16,10 @@ export default function Home() {
   const [heroIndex, setHeroIndex] = useState(0);
   const heroSlides = [
     {
+      image: "/hero-skyline.jpg",
+      alt: "Corporate high-rise office overlooking city skyline at night with reflections",
+    },
+    {
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600",
       alt: "Corporate modern glass building",
     },
@@ -187,7 +191,7 @@ export default function Home() {
             key={idx}
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{
-              opacity: idx === heroIndex ? 0.5 : 0,
+              opacity: idx === heroIndex ? 0.95 : 0,
               scale: idx === heroIndex ? 1 : 1.05,
             }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -201,8 +205,8 @@ export default function Home() {
           </motion.div>
         ))}
 
-        {/* Diagonal Light Overlay Effect */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-sfa-navy/85 via-sfa-navy/50 to-transparent z-10 pointer-events-none" />
+        {/* Right-side text contrast gradient, leaving the bottom and center completely transparent */}
+        <div className="absolute inset-0 bg-gradient-to-l from-black/75 via-black/35 to-transparent z-10 pointer-events-none" />
 
         {/* Content */}
         <div className="relative z-20 max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 text-white flex-1 flex flex-col justify-center py-4 sm:py-6">
