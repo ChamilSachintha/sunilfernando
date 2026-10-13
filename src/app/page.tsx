@@ -253,11 +253,11 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Regional Offices Row: Dubai, Maldives, and Sri Lanka (Visible at the bottom of the landing viewport) */}
-        <div className="relative z-20 w-full bg-[#0c2340]/90 backdrop-blur-md border-t border-white/10 text-white py-4 sm:py-5 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 lg:gap-24 xl:gap-32 text-center md:text-left">
+        {/* Regional Offices Row: Dubai, Maldives, and Sri Lanka (Transparent over hero background) */}
+        <div className="relative z-20 w-full bg-transparent text-white py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 lg:gap-24 xl:gap-36 text-center md:text-left">
             {/* Dubai */}
-            <div className="flex flex-col justify-start">
+            <div className="flex flex-col justify-start max-w-[260px] mx-auto md:mx-0">
               <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
                 <Image
                   src="/flag-ae.png"
@@ -266,23 +266,23 @@ export default function Home() {
                   height={18}
                   className="w-6 sm:w-7 h-auto rounded-[2px] shadow-sm object-cover shrink-0"
                 />
-                <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white">
+                <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white drop-shadow-sm">
                   DUBAI, UAE
                 </h3>
               </div>
-              <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/80 leading-relaxed">
+              <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/85 leading-relaxed drop-shadow-sm">
                 Office #1029, Building B-2, Level 1, Dubai CommerCity, Umm Ramool, Dubai
               </p>
               <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
-                <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold">Tel:</span>
-                <a href="tel:+97148942444" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition">
+                <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold drop-shadow-sm">Tel:</span>
+                <a href="tel:+97148942444" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
                   +971 4 894 2444
                 </a>
               </div>
             </div>
 
             {/* Maldives */}
-            <div className="flex flex-col justify-start">
+            <div className="flex flex-col justify-start max-w-[260px] mx-auto md:mx-0">
               <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
                 <Image
                   src="/flag-mv.png"
@@ -291,23 +291,23 @@ export default function Home() {
                   height={18}
                   className="w-6 sm:w-7 h-auto rounded-[2px] shadow-sm object-cover shrink-0"
                 />
-                <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white">
+                <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white drop-shadow-sm">
                   MALDIVES
                 </h3>
               </div>
-              <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/80 leading-relaxed">
+              <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/85 leading-relaxed drop-shadow-sm">
                 Sunil Fernando &amp; Associates Maldives Pvt Ltd, Malé City, Republic of Maldives
               </p>
               <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
-                <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold">Tel:</span>
-                <a href="tel:+9603308829" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition">
+                <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold drop-shadow-sm">Tel:</span>
+                <a href="tel:+9603308829" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
                   +960 330 8829 / +94 11 2887829
                 </a>
               </div>
             </div>
 
             {/* Sri Lanka */}
-            <div className="flex flex-col justify-start">
+            <div className="flex flex-col justify-start max-w-[260px] mx-auto md:mx-0">
               <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
                 <Image
                   src="/flag-lk.png"
@@ -316,16 +316,16 @@ export default function Home() {
                   height={18}
                   className="w-6 sm:w-7 h-auto rounded-[2px] shadow-sm object-cover shrink-0"
                 />
-                <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white">
+                <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white drop-shadow-sm">
                   SRI LANKA
                 </h3>
               </div>
-              <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/80 leading-relaxed">
+              <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/85 leading-relaxed drop-shadow-sm">
                 No. 505, Nawala Road, Rajagiriya / Level 24, One Galle Face Tower, Colombo 02
               </p>
               <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
-                <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold">Tel:</span>
-                <a href="tel:+94112887829" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition">
+                <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold drop-shadow-sm">Tel:</span>
+                <a href="tel:+94112887829" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
                   +94 11 2887829
                 </a>
               </div>
