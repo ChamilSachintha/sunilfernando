@@ -37,6 +37,14 @@ export default function Home() {
   const [valuationOpen, setValuationOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
 
+  // Explore Our Services tab state (0: Valuation, 1: Occupier, 2: Capital Markets, 3: Research)
+  const [activeService, setActiveService] = useState(0);
+
+  const openService = (idx: number) => {
+    setActiveService(idx);
+    scrollTo("offer");
+  };
+
   // Auto-play Carousel
   useEffect(() => {
     const timer = setInterval(() => {
@@ -346,16 +354,365 @@ export default function Home() {
       <section id="offer" className="pt-0 pb-24 bg-white relative">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header tabs row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 text-center mb-16 border-b border-sfa-grey/10 md:border-b-0">
-            {["VALUATION ADVISORY", "OCCUPIER SERVICES", "CAPITAL MARKETS", "RESEARCH SERVICES"].map((tab, idx) => (
-              <div
+          <div role="tablist" className="grid grid-cols-2 md:grid-cols-4 text-center border-b border-sfa-grey/10 md:border-b-0">
+            {["VALUATION & ADVISORY", "OCCUPIER SERVICES", "CAPITAL MARKETS", "RESEARCH SERVICES"].map((tab, idx) => (
+              <button
                 key={idx}
-                className="py-4 font-avenir text-sm sm:text-base font-medium tracking-[0.15em] border-sfa-grey/10 cursor-pointer text-primary border-r-[3px] border-b-[3px] odd:border-r-[3px] even:border-r-0 md:even:border-r-[3px] md:last:border-r-0 md:border-b-0 [&:nth-child(3)]:border-b-0 [&:nth-child(4)]:border-b-0"
+                type="button"
+                role="tab"
+                aria-selected={activeService === idx}
+                aria-controls="service-panel"
+                onClick={() => setActiveService(idx)}
+                className={`py-4 font-avenir text-sm sm:text-base tracking-[0.15em] border-sfa-grey/10 cursor-pointer transition-colors duration-300 border-r-[3px] border-b-[3px] odd:border-r-[3px] even:border-r-0 md:even:border-r-[3px] md:last:border-r-0 md:border-b-0 [&:nth-child(3)]:border-b-0 [&:nth-child(4)]:border-b-0 ${
+                  activeService === idx
+                    ? "bg-secondary text-white font-semibold"
+                    : "bg-white text-primary font-medium hover:bg-sfa-light-blue/60"
+                }`}
               >
                 {tab}
-              </div>
+              </button>
             ))}
           </div>
+
+        </div>
+
+        {/* Service Tab Panels: content of the selected tab */}
+        <div id="service-panel" className="w-full">
+          {activeService === 0 && (
+            <>
+            {/* 7. Valuations Section (Page 9) */}
+            <section className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+              {/* SVG Vector Background */}
+              <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
+                <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="valuations-left-grad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#e2e8f0" />
+                      <stop offset="100%" stopColor="#194866" />
+                    </linearGradient>
+                  </defs>
+
+                  {/* Right Side Bright Cyan Background */}
+                  <rect y="-20" width="1000" height="440" fill="#00bdf1" />
+
+                  {/* Left Side Gradient Background */}
+                  <path d="M 0,-20 L 709,-20 C 659,-20 620,30 600,80 L 494,420 L 0,420 Z" fill="url(#valuations-left-grad)" />
+
+                  {/* White Curved Divider Line */}
+                  <path d="M 709,-20 C 659,-20 620,30 600,80 L 494,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+                </svg>
+              </div>
+
+              {/* Content Overlay */}
+              <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
+                {/* Left Column (Details) */}
+                <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
+                  <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
+                    VALUATIONS
+                  </h2>
+
+                  <div className="space-y-6 my-8 lg:my-0 lg:max-w-xl">
+                    <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95">
+                      Comprehensive valuation across commercial, residential, agricultural, leisure, industrial, retail, warehousing, plant & machinery, and vessels conducted in strict conformity with RICS and IVSL standards.
+                    </p>
+                    <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95">
+                      We serve financial institutions, private equity funds, property companies, and individuals — delivering reports that stand up to international scrutiny.
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => setValuationOpen(true)}
+                    className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-[#00bdf1] uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
+                  >
+                    <span>EXPLORE VALUATION SERVICES &rarr;</span>
+                  </button>
+                </div>
+
+                {/* Right Column (Categories) */}
+                <div className="lg:col-span-5 flex flex-col justify-center bg-tertiary lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16">
+                  <div className="w-full max-w-[320px] lg:max-w-[360px] mx-auto flex flex-col h-full justify-between divide-y divide-white/30 border-y border-white/30">
+                    {[
+                      "Commercial",
+                      "Residential",
+                      "Agriculture",
+                      "Leisure",
+                      "Retail",
+                      "Industrial",
+                      "Warehousing",
+                      "Plant & Machinery",
+                      "Vessels",
+                    ].map((category, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-center justify-start py-2.5 pl-6 sm:pl-10 lg:pl-16"
+                      >
+                        <span className="text-base sm:text-lg lg:text-xl font-montserrat font-bold italic text-sfa-navy tracking-wider uppercase">
+                          {category}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+            </>
+          )}
+          {activeService === 1 && (
+            <>
+            {/* 8. Occupier Services (Page 10) */}
+            <section className="relative min-h-[500px] flex items-stretch overflow-hidden bg-white">
+              {/* Full-width building background image on desktop (clipped by overlay) */}
+              <div className="absolute inset-0 z-0 hidden lg:block">
+                <Image
+                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600"
+                  alt="High-rise modern workspace architecture"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              {/* SVG Vector Background */}
+              <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block z-10">
+                <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="occupier-left-grad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#194866" />
+                      <stop offset="100%" stopColor="#e2e8f0" />
+                    </linearGradient>
+                  </defs>
+
+                  {/* Left Side Gradient Background */}
+                  <path d="M 0,-20 L 512,-20 C 572,-20 610,30 630,80 L 758,420 L 0,420 Z" fill="url(#occupier-left-grad)" />
+
+                  {/* White Curved Divider Line */}
+                  <path d="M 512,-20 C 572,-20 610,30 630,80 L 758,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+                </svg>
+              </div>
+
+              {/* Content Overlay */}
+              <div className="relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Left Text Detail */}
+                <div className="lg:col-span-7 py-12 lg:py-16 lg:pr-24 flex flex-col justify-center space-y-6 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+                  <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-white">
+                    OCCUPIER
+                    <span className="block mt-1">SERVICES</span>
+                  </h2>
+
+                  <div className="space-y-4 text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-justify max-w-2xl">
+                    <p className="font-avenir font-semibold text-sfa-navy">
+                      Strategic advisory for organisations leasing, expanding, or relocating space aligned with your operational and financial goals.
+                    </p>
+                    <p className="text-sfa-navy/90">
+                      Whatever property you may need, our team will be able to provide you just the right assistance you need to move into optimum space.
+                    </p>
+                    <p className="text-sfa-navy/90">
+                      Through a wide range of consultancy and transactional services, we are able to understand the critical success factors for our clients’ benefit.
+                    </p>
+                    <p className="text-sfa-navy/90">
+                      Our dedicated team of experienced professionals with the right balance of local and international knowledge will match varying client requirements, leverage our relationship with occupiers and decision makers, empower clients to attain their desired goals by creating value, addressing trends and superseding the competition.
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => setContactOpen(true)}
+                    className="inline-flex items-center gap-2 text-xs font-avenir font-bold tracking-widest text-[#2684be] uppercase hover:underline cursor-pointer w-fit"
+                  >
+                    <span>LEARN MORE &rarr;</span>
+                  </button>
+                </div>
+
+                {/* Right Column Spacer / Mobile Image */}
+                <div className="lg:col-span-5 relative min-h-[350px] lg:min-h-full">
+                  <div className="absolute inset-0 lg:hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200"
+                      alt="High-rise modern workspace architecture"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </section>
+            </>
+          )}
+          {activeService === 2 && (
+            <>
+            {/* 9. Capital Markets (Page 11) */}
+            <section className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+              {/* SVG Vector Background */}
+              <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
+                <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="capital-left-grad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#e2e8f0" />
+                      <stop offset="100%" stopColor="#194866" />
+                    </linearGradient>
+                    <linearGradient id="capital-divider-grad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#ffffff" />
+                      <stop offset="20%" stopColor="#194866" />
+                      <stop offset="100%" stopColor="#194866" />
+                    </linearGradient>
+                  </defs>
+
+                  {/* Right Side Solid Primary Blue Background */}
+                  <rect y="-20" width="1000" height="440" fill="#2684be" />
+
+                  {/* Left Side Gradient Background */}
+                  <path d="M 0,-20 L 490,-20 C 440,-20 390,30 380,80 L 310,420 L 0,420 Z" fill="url(#capital-left-grad)" />
+
+                  {/* Curved Divider Line (White to Secondary Navy Gradient) */}
+                  <path d="M 490,-20 C 440,-20 390,30 380,80 L 310,420" fill="none" stroke="url(#capital-divider-grad)" strokeWidth="16" />
+                </svg>
+              </div>
+
+              {/* Content Overlay */}
+              <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
+                {/* Left Column (Details) */}
+                <div className="lg:col-span-5 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
+                  <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
+                    CAPITAL
+                    <span className="block mt-1">MARKETS</span>
+                  </h2>
+
+                  <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95 my-8 lg:my-0 lg:max-w-[320px] uppercase">
+                    Expert support for property acquisitions, disposals, and investment transactions in evolving market.
+                  </p>
+
+                  <button
+                    onClick={() => setContactOpen(true)}
+                    className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-white uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
+                  >
+                    <span>LEARN MORE &rarr;</span>
+                  </button>
+                </div>
+
+                {/* Right Column (Details) */}
+                <div className="lg:col-span-7 flex flex-col justify-center bg-primary lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16 text-white space-y-8">
+                  <div className="space-y-4">
+                    <h3 className="text-sm sm:text-base lg:text-lg font-montserrat font-bold tracking-wider text-white">
+                      WE FOCUS ON PROVIDING UNIQUE AND PERSONALIZED ADVICE TO
+                    </h3>
+                    <ul className="space-y-1.5 text-xs lg:text-sm font-avenir font-normal tracking-wide text-white/90 uppercase">
+                      <li>• INSTITUTIONAL FUNDS</li>
+                      <li>• PRIVATE EQUITY</li>
+                      <li>• STATE & PUBLIC SECTOR ENTITIES</li>
+                      <li>• PROPERTY COMPANIES & DEVELOPERS</li>
+                      <li>• CORPORATES</li>
+                      <li>• FAMILY OFFICES</li>
+                      <li>• PRIVATE INDIVIDUALS</li>
+                    </ul>
+                  </div>
+
+                  <p className="text-xs sm:text-sm font-avenir text-white/80 leading-relaxed text-justify tracking-wide">
+                    We focus on providing unique and personalized advice, adding value through a combination of unparalleled access to capital, financing expertise, real estate market intelligence and thought leadership. Our services are solidified with real estate expertise together with innovative capital solutions.
+                  </p>
+
+                  <div className="space-y-4">
+                    <h3 className="text-sm sm:text-base lg:text-lg font-montserrat font-bold tracking-wider text-white">
+                      OUR SERVICES EXTEND ACROSS A RANGE OF STRATEGIC TRANSACTIONS INCLUDING
+                    </h3>
+                    <ul className="space-y-1.5 text-xs lg:text-sm font-avenir font-semibold tracking-wide text-white/95 uppercase">
+                      <li>• DEBT ADVISORY • CAPITAL RAISING • JOINT VENTURES</li>
+                      <li>• M&A SOLUTIONS • SALES & LEASEBACKS • RESTRUCTURING</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+            </>
+          )}
+          {activeService === 3 && (
+            <>
+            {/* 9.1 Research Services (Page 11.5) */}
+            <section className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+              {/* SVG Vector Background */}
+              <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
+                <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="research-left-grad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#194866" />
+                      <stop offset="100%" stopColor="#e2e8f0" />
+                    </linearGradient>
+                  </defs>
+
+                  {/* Right Side Soft Muted Slate-Blue Background */}
+                  <rect y="-20" width="1000" height="440" fill="#e2e8f0" />
+
+                  {/* Left Side Gradient Background */}
+                  <path d="M 0,-20 L 512,-20 C 572,-20 610,30 630,80 L 758,420 L 0,420 Z" fill="url(#research-left-grad)" />
+
+                  {/* White Curved Divider Line */}
+                  <path d="M 512,-20 C 572,-20 610,30 630,80 L 758,420" fill="none" stroke="#ffffff" strokeWidth="16" />
+                </svg>
+              </div>
+
+              {/* Content Overlay */}
+              <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
+                {/* Left Column (Details) */}
+                <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+                  <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
+                    RESEARCH
+                    <span className="block mt-1">SERVICES</span>
+                  </h2>
+
+                  <div className="space-y-6 my-8 lg:my-0 lg:max-w-xl">
+                    <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-sfa-navy lg:text-sfa-navy font-medium">
+                      We offer comprehensive local and regional market intelligence on real estate trends as well as tailored publications addressing the specific requirements of our clients.
+                    </p>
+                    <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-sfa-navy/90 lg:text-sfa-navy/90">
+                      Our research team collaborates with all sectors of our organization, leveraging over 21 years of Sunil Fernando & Associates real estate intelligence.
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => setContactOpen(true)}
+                    className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-[#2684be] uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
+                  >
+                    <span>LEARN MORE &rarr;</span>
+                  </button>
+                </div>
+
+                {/* Right Column (Highlights & Capabilities) */}
+                <div className="lg:col-span-5 flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16 text-sfa-navy space-y-6">
+                  <div className="space-y-3">
+                    <h3 className="text-xs sm:text-sm font-montserrat font-bold tracking-widest text-primary uppercase">
+                      STRATEGIC MARKET INTELLIGENCE
+                    </h3>
+                    <p className="text-xs sm:text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
+                      Delivering actionable data-driven insights, in-depth feasibility studies, and bespoke sector analytics across emerging and established asset classes.
+                    </p>
+                  </div>
+
+                  <div className="w-full h-[1px] bg-sfa-navy/10" />
+
+                  <div className="space-y-3">
+                    <h3 className="text-xs sm:text-sm font-montserrat font-bold tracking-widest text-secondary uppercase">
+                      TAILORED PUBLICATIONS & REPORTS
+                    </h3>
+                    <ul className="space-y-2 text-xs sm:text-sm font-avenir font-medium text-sfa-navy/90 uppercase tracking-wide">
+                      <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        Quarterly Market Overviews
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        Custom Sector & Demographic Studies
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        Development Feasibility Assessments
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+            </>
+          )}
+        </div>
+
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-16">
 
           {/* Grid Stats Layout with Ampersand in center */}
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-24 md:gap-y-32 items-center md:py-16">
@@ -692,329 +1049,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* 7. Valuations Section (Page 9) */}
-      <section className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
-        {/* SVG Vector Background */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
-          <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="valuations-left-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#e2e8f0" />
-                <stop offset="100%" stopColor="#194866" />
-              </linearGradient>
-            </defs>
-
-            {/* Right Side Bright Cyan Background */}
-            <rect y="-20" width="1000" height="440" fill="#00bdf1" />
-
-            {/* Left Side Gradient Background */}
-            <path d="M 0,-20 L 709,-20 C 659,-20 620,30 600,80 L 494,420 L 0,420 Z" fill="url(#valuations-left-grad)" />
-
-            {/* White Curved Divider Line */}
-            <path d="M 709,-20 C 659,-20 620,30 600,80 L 494,420" fill="none" stroke="#ffffff" strokeWidth="16" />
-          </svg>
-        </div>
-
-        {/* Content Overlay */}
-        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
-          {/* Left Column (Details) */}
-          <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
-            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
-              VALUATIONS
-            </h2>
-
-            <div className="space-y-6 my-8 lg:my-0 lg:max-w-xl">
-              <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95">
-                Comprehensive valuation across commercial, residential, agricultural, leisure, industrial, retail, warehousing, plant & machinery, and vessels conducted in strict conformity with RICS and IVSL standards.
-              </p>
-              <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95">
-                We serve financial institutions, private equity funds, property companies, and individuals — delivering reports that stand up to international scrutiny.
-              </p>
-            </div>
-
-            <button
-              onClick={() => setValuationOpen(true)}
-              className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-[#00bdf1] uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
-            >
-              <span>EXPLORE VALUATION SERVICES &rarr;</span>
-            </button>
-          </div>
-
-          {/* Right Column (Categories) */}
-          <div className="lg:col-span-5 flex flex-col justify-center bg-tertiary lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16">
-            <div className="w-full max-w-[320px] lg:max-w-[360px] mx-auto flex flex-col h-full justify-between divide-y divide-white/30 border-y border-white/30">
-              {[
-                "Commercial",
-                "Residential",
-                "Agriculture",
-                "Leisure",
-                "Retail",
-                "Industrial",
-                "Warehousing",
-                "Plant & Machinery",
-                "Vessels",
-              ].map((category, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center justify-start py-2.5 pl-6 sm:pl-10 lg:pl-16"
-                >
-                  <span className="text-base sm:text-lg lg:text-xl font-montserrat font-bold italic text-sfa-navy tracking-wider uppercase">
-                    {category}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Occupier Services (Page 10) */}
-      <section className="relative min-h-[500px] flex items-stretch overflow-hidden bg-white">
-        {/* Full-width building background image on desktop (clipped by overlay) */}
-        <div className="absolute inset-0 z-0 hidden lg:block">
-          <Image
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600"
-            alt="High-rise modern workspace architecture"
-            fill
-            className="object-cover"
-          />
-        </div>
-
-        {/* SVG Vector Background */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block z-10">
-          <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="occupier-left-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#194866" />
-                <stop offset="100%" stopColor="#e2e8f0" />
-              </linearGradient>
-            </defs>
-
-            {/* Left Side Gradient Background */}
-            <path d="M 0,-20 L 512,-20 C 572,-20 610,30 630,80 L 758,420 L 0,420 Z" fill="url(#occupier-left-grad)" />
-
-            {/* White Curved Divider Line */}
-            <path d="M 512,-20 C 572,-20 610,30 630,80 L 758,420" fill="none" stroke="#ffffff" strokeWidth="16" />
-          </svg>
-        </div>
-
-        {/* Content Overlay */}
-        <div className="relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Left Text Detail */}
-          <div className="lg:col-span-7 py-12 lg:py-16 lg:pr-24 flex flex-col justify-center space-y-6 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
-            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-white">
-              OCCUPIER
-              <span className="block mt-1">SERVICES</span>
-            </h2>
-
-            <div className="space-y-4 text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-justify max-w-2xl">
-              <p className="font-avenir font-semibold text-sfa-navy">
-                Strategic advisory for organisations leasing, expanding, or relocating space aligned with your operational and financial goals.
-              </p>
-              <p className="text-sfa-navy/90">
-                Whatever property you may need, our team will be able to provide you just the right assistance you need to move into optimum space.
-              </p>
-              <p className="text-sfa-navy/90">
-                Through a wide range of consultancy and transactional services, we are able to understand the critical success factors for our clients’ benefit.
-              </p>
-              <p className="text-sfa-navy/90">
-                Our dedicated team of experienced professionals with the right balance of local and international knowledge will match varying client requirements, leverage our relationship with occupiers and decision makers, empower clients to attain their desired goals by creating value, addressing trends and superseding the competition.
-              </p>
-            </div>
-
-            <button
-              onClick={() => setContactOpen(true)}
-              className="inline-flex items-center gap-2 text-xs font-avenir font-bold tracking-widest text-[#2684be] uppercase hover:underline cursor-pointer w-fit"
-            >
-              <span>LEARN MORE &rarr;</span>
-            </button>
-          </div>
-
-          {/* Right Column Spacer / Mobile Image */}
-          <div className="lg:col-span-5 relative min-h-[350px] lg:min-h-full">
-            <div className="absolute inset-0 lg:hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200"
-                alt="High-rise modern workspace architecture"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 9. Capital Markets (Page 11) */}
-      <section className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
-        {/* SVG Vector Background */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
-          <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="capital-left-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#e2e8f0" />
-                <stop offset="100%" stopColor="#194866" />
-              </linearGradient>
-              <linearGradient id="capital-divider-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="20%" stopColor="#194866" />
-                <stop offset="100%" stopColor="#194866" />
-              </linearGradient>
-            </defs>
-
-            {/* Right Side Solid Primary Blue Background */}
-            <rect y="-20" width="1000" height="440" fill="#2684be" />
-
-            {/* Left Side Gradient Background */}
-            <path d="M 0,-20 L 490,-20 C 440,-20 390,30 380,80 L 310,420 L 0,420 Z" fill="url(#capital-left-grad)" />
-
-            {/* Curved Divider Line (White to Secondary Navy Gradient) */}
-            <path d="M 490,-20 C 440,-20 390,30 380,80 L 310,420" fill="none" stroke="url(#capital-divider-grad)" strokeWidth="16" />
-          </svg>
-        </div>
-
-        {/* Content Overlay */}
-        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
-          {/* Left Column (Details) */}
-          <div className="lg:col-span-5 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
-            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
-              CAPITAL
-              <span className="block mt-1">MARKETS</span>
-            </h2>
-
-            <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95 my-8 lg:my-0 lg:max-w-[320px] uppercase">
-              Expert support for property acquisitions, disposals, and investment transactions in evolving market.
-            </p>
-
-            <button
-              onClick={() => setContactOpen(true)}
-              className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-white uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
-            >
-              <span>LEARN MORE &rarr;</span>
-            </button>
-          </div>
-
-          {/* Right Column (Details) */}
-          <div className="lg:col-span-7 flex flex-col justify-center bg-primary lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16 text-white space-y-8">
-            <div className="space-y-4">
-              <h3 className="text-sm sm:text-base lg:text-lg font-montserrat font-bold tracking-wider text-white">
-                WE FOCUS ON PROVIDING UNIQUE AND PERSONALIZED ADVICE TO
-              </h3>
-              <ul className="space-y-1.5 text-xs lg:text-sm font-avenir font-normal tracking-wide text-white/90 uppercase">
-                <li>• INSTITUTIONAL FUNDS</li>
-                <li>• PRIVATE EQUITY</li>
-                <li>• STATE & PUBLIC SECTOR ENTITIES</li>
-                <li>• PROPERTY COMPANIES & DEVELOPERS</li>
-                <li>• CORPORATES</li>
-                <li>• FAMILY OFFICES</li>
-                <li>• PRIVATE INDIVIDUALS</li>
-              </ul>
-            </div>
-
-            <p className="text-xs sm:text-sm font-avenir text-white/80 leading-relaxed text-justify tracking-wide">
-              We focus on providing unique and personalized advice, adding value through a combination of unparalleled access to capital, financing expertise, real estate market intelligence and thought leadership. Our services are solidified with real estate expertise together with innovative capital solutions.
-            </p>
-
-            <div className="space-y-4">
-              <h3 className="text-sm sm:text-base lg:text-lg font-montserrat font-bold tracking-wider text-white">
-                OUR SERVICES EXTEND ACROSS A RANGE OF STRATEGIC TRANSACTIONS INCLUDING
-              </h3>
-              <ul className="space-y-1.5 text-xs lg:text-sm font-avenir font-semibold tracking-wide text-white/95 uppercase">
-                <li>• DEBT ADVISORY • CAPITAL RAISING • JOINT VENTURES</li>
-                <li>• M&A SOLUTIONS • SALES & LEASEBACKS • RESTRUCTURING</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 9.1 Research Services (Page 11.5) */}
-      <section className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
-        {/* SVG Vector Background */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
-          <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="research-left-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#194866" />
-                <stop offset="100%" stopColor="#e2e8f0" />
-              </linearGradient>
-            </defs>
-
-            {/* Right Side Soft Muted Slate-Blue Background */}
-            <rect y="-20" width="1000" height="440" fill="#e2e8f0" />
-
-            {/* Left Side Gradient Background */}
-            <path d="M 0,-20 L 512,-20 C 572,-20 610,30 630,80 L 758,420 L 0,420 Z" fill="url(#research-left-grad)" />
-
-            {/* White Curved Divider Line */}
-            <path d="M 512,-20 C 572,-20 610,30 630,80 L 758,420" fill="none" stroke="#ffffff" strokeWidth="16" />
-          </svg>
-        </div>
-
-        {/* Content Overlay */}
-        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
-          {/* Left Column (Details) */}
-          <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
-            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
-              RESEARCH
-              <span className="block mt-1">SERVICES</span>
-            </h2>
-
-            <div className="space-y-6 my-8 lg:my-0 lg:max-w-xl">
-              <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-sfa-navy lg:text-sfa-navy font-medium">
-                We offer comprehensive local and regional market intelligence on real estate trends as well as tailored publications addressing the specific requirements of our clients.
-              </p>
-              <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-sfa-navy/90 lg:text-sfa-navy/90">
-                Our research team collaborates with all sectors of our organization, leveraging over 21 years of Sunil Fernando & Associates real estate intelligence.
-              </p>
-            </div>
-
-            <button
-              onClick={() => setContactOpen(true)}
-              className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-[#2684be] uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
-            >
-              <span>LEARN MORE &rarr;</span>
-            </button>
-          </div>
-
-          {/* Right Column (Highlights & Capabilities) */}
-          <div className="lg:col-span-5 flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16 text-sfa-navy space-y-6">
-            <div className="space-y-3">
-              <h3 className="text-xs sm:text-sm font-montserrat font-bold tracking-widest text-primary uppercase">
-                STRATEGIC MARKET INTELLIGENCE
-              </h3>
-              <p className="text-xs sm:text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
-                Delivering actionable data-driven insights, in-depth feasibility studies, and bespoke sector analytics across emerging and established asset classes.
-              </p>
-            </div>
-
-            <div className="w-full h-[1px] bg-sfa-navy/10" />
-
-            <div className="space-y-3">
-              <h3 className="text-xs sm:text-sm font-montserrat font-bold tracking-widest text-secondary uppercase">
-                TAILORED PUBLICATIONS & REPORTS
-              </h3>
-              <ul className="space-y-2 text-xs sm:text-sm font-avenir font-medium text-sfa-navy/90 uppercase tracking-wide">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Quarterly Market Overviews
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Custom Sector & Demographic Studies
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Development Feasibility Assessments
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
 
 
       {/* 10. Clients (Page 12) */}
@@ -1374,22 +1408,22 @@ export default function Home() {
             <h4 className="text-base font-montserrat font-medium text-white">Services</h4>
             <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
               <li>
-                <button onClick={() => scrollTo("offer")} className="hover:text-white transition cursor-pointer">
+                <button onClick={() => openService(0)} className="hover:text-white transition cursor-pointer">
                   Valuation & Advisory
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollTo("offer")} className="hover:text-white transition cursor-pointer">
+                <button onClick={() => openService(1)} className="hover:text-white transition cursor-pointer">
                   Occupier Services
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollTo("offer")} className="hover:text-white transition cursor-pointer">
+                <button onClick={() => openService(2)} className="hover:text-white transition cursor-pointer">
                   Capital Markets
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollTo("offer")} className="hover:text-white transition cursor-pointer">
+                <button onClick={() => openService(3)} className="hover:text-white transition cursor-pointer">
                   Research & Analytics
                 </button>
               </li>
