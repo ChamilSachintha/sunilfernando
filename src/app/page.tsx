@@ -97,37 +97,37 @@ export default function Home() {
           <nav className="hidden lg:flex items-center gap-8 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
             <button
               onClick={() => scrollTo("home")}
-              className={`hover:text-sfa-blue transition ${activeSection === "home" ? "text-sfa-blue font-semibold" : ""}`}
+              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "home" ? "text-sfa-blue font-semibold" : ""}`}
             >
               HOME
             </button>
             <button
               onClick={() => scrollTo("offer")}
-              className={`hover:text-sfa-blue transition ${activeSection === "offer" ? "text-sfa-blue font-semibold" : ""}`}
+              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "offer" ? "text-sfa-blue font-semibold" : ""}`}
             >
               WHAT WE OFFER
             </button>
             <button
               onClick={() => scrollTo("newsroom")}
-              className={`hover:text-sfa-blue transition ${activeSection === "newsroom" ? "text-sfa-blue font-semibold" : ""}`}
+              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "newsroom" ? "text-sfa-blue font-semibold" : ""}`}
             >
               NEWSROOM
             </button>
             <button
               onClick={() => scrollTo("network")}
-              className={`hover:text-sfa-blue transition ${activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
+              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
             >
               OUR NETWORK
             </button>
             <button
               onClick={() => scrollTo("team")}
-              className={`hover:text-sfa-blue transition ${activeSection === "team" ? "text-sfa-blue font-semibold" : ""}`}
+              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "team" ? "text-sfa-blue font-semibold" : ""}`}
             >
               OUR TEAM
             </button>
             <button
               onClick={() => scrollTo("contact")}
-              className={`hover:text-sfa-blue transition ${activeSection === "contact" ? "text-sfa-blue font-semibold" : ""}`}
+              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "contact" ? "text-sfa-blue font-semibold" : ""}`}
             >
               REACH US
             </button>
@@ -137,7 +137,7 @@ export default function Home() {
           <div className="flex lg:hidden items-center gap-4">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-sfa-navy hover:text-sfa-blue transition focus:outline-none"
+              className="cursor-pointer p-2 text-sfa-navy hover:text-sfa-blue transition focus:outline-none"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -154,22 +154,22 @@ export default function Home() {
               className="lg:hidden border-t border-sfa-grey/10 bg-white"
             >
               <div className="px-4 py-6 space-y-4 flex flex-col font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy">
-                <button onClick={() => scrollTo("home")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <button onClick={() => scrollTo("home")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   HOME
                 </button>
-                <button onClick={() => scrollTo("offer")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <button onClick={() => scrollTo("offer")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   WHAT WE OFFER
                 </button>
-                <button onClick={() => scrollTo("newsroom")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <button onClick={() => scrollTo("newsroom")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   NEWSROOM
                 </button>
-                <button onClick={() => scrollTo("network")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <button onClick={() => scrollTo("network")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR NETWORK
                 </button>
-                <button onClick={() => scrollTo("team")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <button onClick={() => scrollTo("team")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR TEAM
                 </button>
-                <button onClick={() => scrollTo("contact")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <button onClick={() => scrollTo("contact")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   REACH US
                 </button>
                 <button
@@ -177,7 +177,7 @@ export default function Home() {
                     setMobileMenuOpen(false);
                     setValuationOpen(true);
                   }}
-                  className="w-full text-center py-3 bg-sfa-navy text-white hover:bg-sfa-blue transition font-bold"
+                  className="cursor-pointer w-full text-center py-3 bg-sfa-navy text-white hover:bg-sfa-blue transition font-bold"
                 >
                   REQUEST A VALUATION
                 </button>
@@ -253,7 +253,7 @@ export default function Home() {
             >
               <button
                 onClick={() => setValuationOpen(true)}
-                className="px-10 sm:px-12 py-3 sm:py-3.5 bg-[#1e4e72] hover:bg-[#153a53] text-white text-xs sm:text-sm lg:text-base font-avenir font-normal tracking-widest uppercase rounded-xl transition duration-300 shadow-md"
+                className="cursor-pointer px-10 sm:px-12 py-3 sm:py-3.5 bg-[#1e4e72] hover:bg-[#153a53] text-white text-xs sm:text-sm lg:text-base font-avenir font-normal tracking-widest uppercase rounded-xl transition duration-300 shadow-md"
               >
                 Request a Valuation
               </button>
@@ -283,7 +283,7 @@ export default function Home() {
               </p>
               <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
                 <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold drop-shadow-sm">Tel:</span>
-                <a href="tel:+97148942444" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
+                <a href="tel:+97148942444" className="cursor-pointer text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
                   +971 4 894 2444
                 </a>
               </div>
@@ -308,7 +308,7 @@ export default function Home() {
               </p>
               <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
                 <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold drop-shadow-sm">Tel:</span>
-                <a href="tel:+9603308829" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
+                <a href="tel:+9603308829" className="cursor-pointer text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
                   +960 330 8829 / +94 11 2887829
                 </a>
               </div>
@@ -333,7 +333,7 @@ export default function Home() {
               </p>
               <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
                 <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold drop-shadow-sm">Tel:</span>
-                <a href="tel:+94112887829" className="text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
+                <a href="tel:+94112887829" className="cursor-pointer text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
                   +94 11 2887829
                 </a>
               </div>
@@ -1443,13 +1443,13 @@ export default function Home() {
           <div className="pt-6 flex flex-col sm:flex-row justify-center gap-6">
             <button
               onClick={() => setValuationOpen(true)}
-              className="px-10 py-2.5 border border-[#2684be] text-white text-sm sm:text-[15px] font-avenir font-medium tracking-wide transition duration-300 bg-transparent hover:bg-white/10"
+              className="cursor-pointer px-10 py-2.5 border border-[#2684be] text-white text-sm sm:text-[15px] font-avenir font-medium tracking-wide transition duration-300 bg-transparent hover:bg-white/10"
             >
               Request a Valuation
             </button>
             <button
               onClick={() => setContactOpen(true)}
-              className="px-10 py-2.5 border border-[#2684be] text-white text-sm sm:text-[15px] font-avenir font-medium tracking-wide transition duration-300 bg-transparent hover:bg-white/10"
+              className="cursor-pointer px-10 py-2.5 border border-[#2684be] text-white text-sm sm:text-[15px] font-avenir font-medium tracking-wide transition duration-300 bg-transparent hover:bg-white/10"
             >
               Contact Us
             </button>

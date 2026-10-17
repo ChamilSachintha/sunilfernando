@@ -94,6 +94,24 @@ body {
   scroll-behavior: smooth;
 }
 
+a,
+button,
+[role="button"],
+[role="tab"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+select,
+summary {
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled {
+  cursor: not-allowed;
+}
+
 /* Custom Diagonal Cuts and Curves matching SFA design */
 
 .slanted-divider-right {

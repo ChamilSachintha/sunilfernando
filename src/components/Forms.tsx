@@ -82,7 +82,7 @@ export const RequestValuationModal: React.FC<ModalProps> = ({ isOpen, onClose })
                 <h3 className="text-xl font-bold tracking-wider font-sans uppercase">Request a Valuation</h3>
                 <p className="text-xs text-sfa-cyan mt-1 font-sans">Submit details for a professional RICS-compliant report</p>
               </div>
-              <button onClick={handleClose} className="p-2 hover:bg-white/10 rounded-full transition">
+              <button onClick={handleClose} className="cursor-pointer p-2 hover:bg-white/10 rounded-full transition">
                 <X className="w-5 h-5 text-white" />
               </button>
             </div>
@@ -98,7 +98,7 @@ export const RequestValuationModal: React.FC<ModalProps> = ({ isOpen, onClose })
                   </p>
                   <button
                     onClick={handleClose}
-                    className="mt-6 px-6 py-2 bg-sfa-navy text-white text-xs font-bold tracking-widest uppercase hover:bg-sfa-blue transition"
+                    className="cursor-pointer mt-6 px-6 py-2 bg-sfa-navy text-white text-xs font-bold tracking-widest uppercase hover:bg-sfa-blue transition"
                   >
                     Close
                   </button>
@@ -153,7 +153,7 @@ export const RequestValuationModal: React.FC<ModalProps> = ({ isOpen, onClose })
                       <label className="block text-[10px] font-bold uppercase tracking-wider text-sfa-navy mb-1">Asset Sector</label>
                       <select
                         {...register("sector")}
-                        className="w-full px-3 py-2 border border-sfa-grey/30 text-sm focus:outline-none focus:border-sfa-cyan text-sfa-navy bg-white"
+                        className="cursor-pointer w-full px-3 py-2 border border-sfa-grey/30 text-sm focus:outline-none focus:border-sfa-cyan text-sfa-navy bg-white"
                       >
                         <option value="">Select Sector</option>
                         <option value="Tourism & Hospitality">Tourism & Hospitality</option>
@@ -169,7 +169,7 @@ export const RequestValuationModal: React.FC<ModalProps> = ({ isOpen, onClose })
                       <label className="block text-[10px] font-bold uppercase tracking-wider text-sfa-navy mb-1">Target Market</label>
                       <select
                         {...register("country")}
-                        className="w-full px-3 py-2 border border-sfa-grey/30 text-sm focus:outline-none focus:border-sfa-cyan text-sfa-navy bg-white"
+                        className="cursor-pointer w-full px-3 py-2 border border-sfa-grey/30 text-sm focus:outline-none focus:border-sfa-cyan text-sfa-navy bg-white"
                       >
                         <option value="">Select Country</option>
                         <option value="Sri Lanka">Sri Lanka</option>
@@ -195,7 +195,7 @@ export const RequestValuationModal: React.FC<ModalProps> = ({ isOpen, onClose })
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 py-3 bg-sfa-navy hover:bg-sfa-blue text-white text-xs font-bold tracking-widest uppercase transition disabled:opacity-50"
+                    className="cursor-pointer w-full flex items-center justify-center gap-2 py-3 bg-sfa-navy hover:bg-sfa-blue text-white text-xs font-bold tracking-widest uppercase transition disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <>
@@ -262,7 +262,7 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                 <h3 className="text-xl font-bold tracking-wider font-sans uppercase">Contact Us</h3>
                 <p className="text-xs text-white/80 mt-1 font-sans">Reach out to our offices in Sri Lanka, Maldives, or UAE</p>
               </div>
-              <button onClick={handleClose} className="p-2 hover:bg-white/10 rounded-full transition">
+              <button onClick={handleClose} className="cursor-pointer p-2 hover:bg-white/10 rounded-full transition">
                 <X className="w-5 h-5 text-white" />
               </button>
             </div>
@@ -278,7 +278,7 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                   </p>
                   <button
                     onClick={handleClose}
-                    className="mt-6 px-6 py-2 bg-sfa-navy text-white text-xs font-bold tracking-widest uppercase hover:bg-sfa-blue transition"
+                    className="cursor-pointer mt-6 px-6 py-2 bg-sfa-navy text-white text-xs font-bold tracking-widest uppercase hover:bg-sfa-blue transition"
                   >
                     Close
                   </button>
@@ -341,7 +341,7 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 py-3 bg-sfa-navy hover:bg-sfa-blue text-white text-xs font-bold tracking-widest uppercase transition disabled:opacity-50"
+                    className="cursor-pointer w-full flex items-center justify-center gap-2 py-3 bg-sfa-navy hover:bg-sfa-blue text-white text-xs font-bold tracking-widest uppercase transition disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <>
