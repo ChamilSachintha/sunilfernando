@@ -346,7 +346,7 @@ export default function Home() {
       <section className="py-8 md:py-10 bg-white relative">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Two-Column Stats Layout with Ampersand in center */}
-          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-x-24 items-center min-h-[160px] sm:min-h-[200px] md:py-6">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-x-36 lg:gap-x-48 items-center min-h-[160px] sm:min-h-[200px] md:py-6">
             {/* Center ampersand background logo */}
             <div className="absolute inset-0 pointer-events-none select-none flex items-center justify-center">
               <span className="font-serif text-[140px] sm:text-[210px] font-bold text-sfa-grey/10 leading-none">
@@ -355,14 +355,14 @@ export default function Home() {
             </div>
 
             {/* Left Stat */}
-            <div className="text-center md:text-right flex flex-col md:items-end justify-center z-10 md:pr-24 lg:pr-28">
+            <div className="text-center md:text-right flex flex-col md:items-end justify-center z-10 md:pr-28 lg:pr-40 xl:pr-48">
               <span className="text-5xl sm:text-7xl font-montserrat font-black tracking-tight text-sfa-blue">26+</span>
               <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">Years of Advisory</span>
               <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">Excellence</span>
             </div>
 
             {/* Right Stat */}
-            <div className="text-center md:text-left flex flex-col md:items-start justify-center z-10 md:pl-24 lg:pl-28">
+            <div className="text-center md:text-left flex flex-col md:items-start justify-center z-10 md:pl-28 lg:pl-40 xl:pl-48">
               <span className="text-5xl sm:text-7xl font-montserrat font-black tracking-tight text-sfa-blue">RICS</span>
               <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">& IVSL</span>
               <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">Compliant</span>
