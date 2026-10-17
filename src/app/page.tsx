@@ -343,19 +343,15 @@ export default function Home() {
       </section>
 
       {/* 2.9 Two-Column Figures / Stats Section (Above Current Figures Section) */}
-      <section className="py-16 md:py-24 bg-white relative">
+      <section className="py-8 md:py-10 bg-white relative">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Two-Column Stats Layout with Ampersand in center */}
-          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-24 items-center min-h-[260px] sm:min-h-[340px] md:py-16">
-            {/* Center ampersand and vertical divider background logo */}
-            <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center gap-0 py-0 h-full">
-                <div className="w-[3px] flex-1 bg-sfa-grey/10 hidden md:block mb-[-12px] sm:mb-[-22px]" />
-                <span className="font-serif text-[150px] sm:text-[250px] font-bold text-sfa-grey/10 leading-none">
-                  &
-                </span>
-                <div className="w-[3px] flex-1 bg-sfa-grey/10 hidden md:block mt-[-12px] sm:mt-[-22px]" />
-              </div>
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-x-24 items-center min-h-[160px] sm:min-h-[200px] md:py-6">
+            {/* Center ampersand background logo */}
+            <div className="absolute inset-0 pointer-events-none select-none flex items-center justify-center">
+              <span className="font-serif text-[140px] sm:text-[210px] font-bold text-sfa-grey/10 leading-none">
+                &
+              </span>
             </div>
 
             {/* Left Stat */}
