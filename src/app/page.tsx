@@ -56,7 +56,7 @@ export default function Home() {
   // Handle active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "offer", "network", "team", "newsroom", "contact"];
+      const sections = ["home", "offer", "newsroom", "network", "team", "contact"];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -108,6 +108,12 @@ export default function Home() {
               WHAT WE OFFER
             </button>
             <button
+              onClick={() => scrollTo("newsroom")}
+              className={`hover:text-sfa-blue transition ${activeSection === "newsroom" ? "text-sfa-blue font-semibold" : ""}`}
+            >
+              NEWSROOM
+            </button>
+            <button
               onClick={() => scrollTo("network")}
               className={`hover:text-sfa-blue transition ${activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
             >
@@ -118,12 +124,6 @@ export default function Home() {
               className={`hover:text-sfa-blue transition ${activeSection === "team" ? "text-sfa-blue font-semibold" : ""}`}
             >
               OUR TEAM
-            </button>
-            <button
-              onClick={() => scrollTo("newsroom")}
-              className={`hover:text-sfa-blue transition ${activeSection === "newsroom" ? "text-sfa-blue font-semibold" : ""}`}
-            >
-              NEWSROOM
             </button>
             <button
               onClick={() => scrollTo("contact")}
@@ -160,14 +160,14 @@ export default function Home() {
                 <button onClick={() => scrollTo("offer")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   WHAT WE OFFER
                 </button>
+                <button onClick={() => scrollTo("newsroom")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                  NEWSROOM
+                </button>
                 <button onClick={() => scrollTo("network")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR NETWORK
                 </button>
                 <button onClick={() => scrollTo("team")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR TEAM
-                </button>
-                <button onClick={() => scrollTo("newsroom")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
-                  NEWSROOM
                 </button>
                 <button onClick={() => scrollTo("contact")} className="text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   REACH US
