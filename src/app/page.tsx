@@ -381,7 +381,7 @@ export default function Home() {
           {activeService === 0 && (
             <>
             {/* 7. Valuations Section (Page 9) */}
-            <section className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+            <section className="relative min-h-[540px] lg:h-[540px] flex items-stretch overflow-hidden bg-white">
               {/* SVG Vector Background */}
               <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
                 <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
@@ -406,7 +406,7 @@ export default function Home() {
               {/* Content Overlay */}
               <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
                 {/* Left Column (Details) */}
-                <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
+                <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-14 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
                     VALUATIONS
                   </h2>
@@ -429,7 +429,7 @@ export default function Home() {
                 </div>
 
                 {/* Right Column (Categories) */}
-                <div className="lg:col-span-5 flex flex-col justify-center bg-tertiary lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16">
+                <div className="lg:col-span-5 flex flex-col justify-center bg-tertiary lg:bg-transparent px-8 py-10 lg:py-10 lg:pl-20 lg:pr-16">
                   <div className="w-full max-w-[320px] lg:max-w-[360px] mx-auto flex flex-col h-full justify-between divide-y divide-white/30 border-y border-white/30">
                     {[
                       "Commercial",
@@ -444,7 +444,7 @@ export default function Home() {
                     ].map((category, idx) => (
                       <div
                         key={idx}
-                        className="flex items-center justify-start py-2.5 pl-6 sm:pl-10 lg:pl-16"
+                        className="flex items-center justify-start py-2 pl-6 sm:pl-10 lg:pl-16"
                       >
                         <span className="text-base sm:text-lg lg:text-xl font-montserrat font-bold italic text-sfa-navy tracking-wider uppercase">
                           {category}
@@ -460,7 +460,7 @@ export default function Home() {
           {activeService === 1 && (
             <>
             {/* 8. Occupier Services (Page 10) */}
-            <section className="relative min-h-[500px] flex items-stretch overflow-hidden bg-white">
+            <section className="relative min-h-[540px] lg:h-[540px] flex items-stretch overflow-hidden bg-white">
               {/* Full-width building background image on desktop (clipped by overlay) */}
               <div className="absolute inset-0 z-0 hidden lg:block">
                 <Image
@@ -490,15 +490,15 @@ export default function Home() {
               </div>
 
               {/* Content Overlay */}
-              <div className="relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
                 {/* Left Text Detail */}
-                <div className="lg:col-span-7 py-12 lg:py-16 lg:pr-24 flex flex-col justify-center space-y-6 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
-                  <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-white">
+                <div className="lg:col-span-7 p-12 lg:py-14 lg:pl-16 lg:pr-24 flex flex-col justify-between bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+                  <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
                     OCCUPIER
                     <span className="block mt-1">SERVICES</span>
                   </h2>
 
-                  <div className="space-y-4 text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-justify max-w-2xl">
+                  <div className="space-y-3.5 my-8 lg:my-0 text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-justify max-w-xl">
                     <p className="font-avenir font-semibold text-sfa-navy">
                       Strategic advisory for organisations leasing, expanding, or relocating space aligned with your operational and financial goals.
                     </p>
@@ -515,7 +515,7 @@ export default function Home() {
 
                   <button
                     onClick={() => setContactOpen(true)}
-                    className="inline-flex items-center gap-2 text-xs font-avenir font-bold tracking-widest text-[#2684be] uppercase hover:underline cursor-pointer w-fit"
+                    className="inline-flex items-center gap-2 text-xs font-avenir font-bold tracking-widest text-[#2684be] uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
                   >
                     <span>LEARN MORE &rarr;</span>
                   </button>
@@ -539,7 +539,7 @@ export default function Home() {
           {activeService === 2 && (
             <>
             {/* 9. Capital Markets (Page 11) */}
-            <section className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+            <section className="relative min-h-[540px] lg:h-[540px] flex items-stretch overflow-hidden bg-white">
               {/* SVG Vector Background */}
               <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
                 <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
@@ -569,7 +569,7 @@ export default function Home() {
               {/* Content Overlay */}
               <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
                 {/* Left Column (Details) */}
-                <div className="lg:col-span-5 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
+                <div className="lg:col-span-5 flex flex-col justify-between p-12 lg:py-14 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
                     CAPITAL
                     <span className="block mt-1">MARKETS</span>
@@ -588,8 +588,8 @@ export default function Home() {
                 </div>
 
                 {/* Right Column (Details) */}
-                <div className="lg:col-span-7 flex flex-col justify-center bg-primary lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16 text-white space-y-8">
-                  <div className="space-y-4">
+                <div className="lg:col-span-7 flex flex-col justify-center bg-primary lg:bg-transparent px-8 py-10 lg:py-10 lg:pl-20 lg:pr-16 text-white space-y-6">
+                  <div className="space-y-3">
                     <h3 className="text-sm sm:text-base lg:text-lg font-montserrat font-bold tracking-wider text-white">
                       WE FOCUS ON PROVIDING UNIQUE AND PERSONALIZED ADVICE TO
                     </h3>
@@ -608,7 +608,7 @@ export default function Home() {
                     We focus on providing unique and personalized advice, adding value through a combination of unparalleled access to capital, financing expertise, real estate market intelligence and thought leadership. Our services are solidified with real estate expertise together with innovative capital solutions.
                   </p>
 
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     <h3 className="text-sm sm:text-base lg:text-lg font-montserrat font-bold tracking-wider text-white">
                       OUR SERVICES EXTEND ACROSS A RANGE OF STRATEGIC TRANSACTIONS INCLUDING
                     </h3>
@@ -625,7 +625,7 @@ export default function Home() {
           {activeService === 3 && (
             <>
             {/* 9.1 Research Services (Page 11.5) */}
-            <section className="relative min-h-[500px] flex items-stretch overflow-hidden bg-white">
+            <section className="relative min-h-[540px] lg:h-[540px] flex items-stretch overflow-hidden bg-white">
               {/* Full-width research workspace architecture background image on desktop (clipped by overlay) */}
               <div className="absolute inset-0 z-0 hidden lg:block">
                 <Image
@@ -655,9 +655,9 @@ export default function Home() {
               </div>
 
               {/* Content Overlay */}
-              <div className="relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
                 {/* Left Column (Details) */}
-                <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+                <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-14 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
                     RESEARCH
                     <span className="block mt-1">SERVICES</span>
