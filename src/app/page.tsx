@@ -625,9 +625,19 @@ export default function Home() {
           {activeService === 3 && (
             <>
             {/* 9.1 Research Services (Page 11.5) */}
-            <section className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+            <section className="relative min-h-[500px] flex items-stretch overflow-hidden bg-white">
+              {/* Full-width research workspace architecture background image on desktop (clipped by overlay) */}
+              <div className="absolute inset-0 z-0 hidden lg:block">
+                <Image
+                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600"
+                  alt="Modern research workspace and architectural interior"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
               {/* SVG Vector Background */}
-              <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
+              <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block z-10">
                 <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="research-left-grad" x1="0" y1="0" x2="0" y2="1">
@@ -635,9 +645,6 @@ export default function Home() {
                       <stop offset="100%" stopColor="#e2e8f0" />
                     </linearGradient>
                   </defs>
-
-                  {/* Right Side Soft Muted Slate-Blue Background */}
-                  <rect y="-20" width="1000" height="440" fill="#e2e8f0" />
 
                   {/* Left Side Gradient Background */}
                   <path d="M 0,-20 L 512,-20 C 572,-20 610,30 630,80 L 758,420 L 0,420 Z" fill="url(#research-left-grad)" />
@@ -648,7 +655,7 @@ export default function Home() {
               </div>
 
               {/* Content Overlay */}
-              <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
+              <div className="relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Left Column (Details) */}
                 <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-light tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
@@ -673,8 +680,17 @@ export default function Home() {
                   </button>
                 </div>
 
-                {/* Right Column Spacer */}
-                <div className="lg:col-span-5 relative min-h-[100px] lg:min-h-full" />
+                {/* Right Column Spacer / Mobile Image */}
+                <div className="lg:col-span-5 relative min-h-[350px] lg:min-h-full">
+                  <div className="absolute inset-0 lg:hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200"
+                      alt="Modern research workspace and architectural interior"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
               </div>
             </section>
             </>
