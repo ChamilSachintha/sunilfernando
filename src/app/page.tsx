@@ -673,39 +673,8 @@ export default function Home() {
                   </button>
                 </div>
 
-                {/* Right Column (Highlights & Capabilities) */}
-                <div className="lg:col-span-5 flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16 text-sfa-navy space-y-6">
-                  <div className="space-y-3">
-                    <h3 className="text-xs sm:text-sm font-montserrat font-bold tracking-widest text-primary uppercase">
-                      STRATEGIC MARKET INTELLIGENCE
-                    </h3>
-                    <p className="text-xs sm:text-sm font-avenir text-sfa-navy/80 leading-relaxed text-justify">
-                      Delivering actionable data-driven insights, in-depth feasibility studies, and bespoke sector analytics across emerging and established asset classes.
-                    </p>
-                  </div>
-
-                  <div className="w-full h-[1px] bg-sfa-navy/10" />
-
-                  <div className="space-y-3">
-                    <h3 className="text-xs sm:text-sm font-montserrat font-bold tracking-widest text-secondary uppercase">
-                      TAILORED PUBLICATIONS & REPORTS
-                    </h3>
-                    <ul className="space-y-2 text-xs sm:text-sm font-avenir font-medium text-sfa-navy/90 uppercase tracking-wide">
-                      <li className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        Quarterly Market Overviews
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        Custom Sector & Demographic Studies
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        Development Feasibility Assessments
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                {/* Right Column Spacer */}
+                <div className="lg:col-span-5 relative min-h-[100px] lg:min-h-full" />
               </div>
             </section>
             </>
