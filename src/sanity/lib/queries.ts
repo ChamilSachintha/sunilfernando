@@ -3,6 +3,7 @@ import { sanityClient } from "./client";
 import {
   DEFAULT_SITE_CONTENT,
   type SanitySiteContent,
+  type StatItem,
 } from "./defaultData";
 
 export function optimizeSanityImageUrl(
@@ -32,7 +33,13 @@ export const SITE_CONTENT_QUERY = groq`{
       phoneDisplay,
       phoneHref
     },
-    stats,
+    "stats": stats[]{
+      value,
+      subtitleLine1,
+      subtitleLine2,
+      accentColor,
+      "logoUrl": coalesce(logoImage.asset->url, logoUrl)
+    },
     whatWeDoHeadingLine1,
     whatWeDoHeadingLine2,
     whatWeDoHeadingLine3,
@@ -150,7 +157,14 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
             : DEFAULT_SITE_CONTENT.settings.regionalOffices,
         stats:
           Array.isArray(s.stats) && s.stats.length === 4
-            ? s.stats
+            ? s.stats.map((st: StatItem, i: number) => ({
+                ...st,
+                logoUrl:
+                  st.logoUrl ||
+                  (st.value?.trim().toUpperCase() === "RICS"
+                    ? "/logos/rics.png"
+                    : DEFAULT_SITE_CONTENT.settings.stats[i]?.logoUrl),
+              }))
             : DEFAULT_SITE_CONTENT.settings.stats,
         whatWeDoHeadingLine1:
           s.whatWeDoHeadingLine1 || DEFAULT_SITE_CONTENT.settings.whatWeDoHeadingLine1,

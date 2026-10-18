@@ -115,6 +115,12 @@ export const siteSettingsType = defineType({
               },
               initialValue: "navy",
             }),
+            defineField({
+              name: "logoImage",
+              title: "Logo Image (Optional, e.g. for RICS)",
+              type: "image",
+              options: { hotspot: true },
+            }),
           ],
         },
       ],

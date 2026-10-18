@@ -354,6 +354,9 @@ export default function HomeClient({
             {cms.settings.stats.map((stat, idx) => {
               const isLeft = idx % 2 === 0;
               const isBlue = stat.accentColor === "blue";
+              const logoSrc =
+                stat.logoUrl ||
+                (stat.value?.trim().toUpperCase() === "RICS" ? "/logos/rics.png" : undefined);
               return (
                 <div
                   key={idx}
@@ -363,13 +366,29 @@ export default function HomeClient({
                       : "text-center md:text-left flex flex-col md:items-start justify-center z-10 md:pl-24 lg:pl-28"
                   }
                 >
-                  <span
-                    className={`text-5xl sm:text-7xl font-montserrat font-black tracking-tight ${
-                      isBlue ? "text-sfa-blue" : "text-sfa-navy"
-                    }`}
-                  >
-                    {stat.value}
-                  </span>
+                  {logoSrc ? (
+                    <div
+                      className={`flex items-center ${
+                        isLeft ? "justify-center md:justify-end" : "justify-center md:justify-start"
+                      }`}
+                    >
+                      <Image
+                        src={logoSrc}
+                        alt={stat.value || "RICS Logo"}
+                        width={280}
+                        height={100}
+                        className="h-12 sm:h-16 md:h-20 w-auto object-contain max-w-[200px] sm:max-w-[260px]"
+                      />
+                    </div>
+                  ) : (
+                    <span
+                      className={`text-5xl sm:text-7xl font-montserrat font-black tracking-tight ${
+                        isBlue ? "text-sfa-blue" : "text-sfa-navy"
+                      }`}
+                    >
+                      {stat.value}
+                    </span>
+                  )}
                   {stat.subtitleLine1 && (
                     <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">
                       {stat.subtitleLine1}

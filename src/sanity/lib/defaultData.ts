@@ -11,6 +11,7 @@ export interface StatItem {
   subtitleLine1?: string;
   subtitleLine2?: string;
   accentColor?: "blue" | "navy";
+  logoUrl?: string;
 }
 
 export interface LogoItem {
@@ -177,6 +178,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       },
       {
         value: "RICS",
+        logoUrl: "/logos/rics.png",
         accentColor: "blue",
       },
     ],
