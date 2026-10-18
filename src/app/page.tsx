@@ -281,8 +281,8 @@ export default function Home() {
         </div>
 
         {/* Regional Offices Row: Dubai, Maldives, and Sri Lanka (Semi-transparent dark tint over hero background) */}
-        <div className="relative z-20 w-full bg-[#0c2340]/55 text-white py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 lg:gap-24 xl:gap-36 text-center md:text-left">
+        <div className="relative z-20 w-full bg-[#0c2340]/55 text-white py-4 sm:py-6">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 lg:gap-24 xl:gap-36 text-center md:text-left">
             {/* Dubai */}
             <div className="flex flex-col justify-start max-w-[260px] mx-auto md:mx-0">
               <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
@@ -475,9 +475,9 @@ export default function Home() {
               </div>
 
               {/* Content Overlay */}
-              <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
+              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
                 {/* Left Column (Details) */}
-                <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
+                <div className="lg:col-span-7 flex flex-col justify-between py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-24 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
                     VALUATIONS
                   </h2>
@@ -500,7 +500,7 @@ export default function Home() {
                 </div>
 
                 {/* Right Column (Categories) */}
-                <div className="lg:col-span-5 flex flex-col justify-center bg-tertiary lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16">
+                <div className="lg:col-span-5 flex flex-col justify-center bg-tertiary lg:bg-transparent px-6 sm:px-8 py-10 lg:py-12 lg:pl-20 lg:pr-0">
                   <div className="w-full max-w-[320px] lg:max-w-[360px] mx-auto flex flex-col h-full justify-between divide-y divide-white/30 border-y border-white/30">
                     {[
                       "Commercial",
@@ -565,9 +565,9 @@ export default function Home() {
               </div>
 
               {/* Content Overlay */}
-              <div className="relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
+              <div className="relative z-20 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
                 {/* Left Text Detail */}
-                <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+                <div className="lg:col-span-7 flex flex-col justify-between py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
                     OCCUPIER
                     <span className="block mt-1">SERVICES</span>
@@ -641,9 +641,9 @@ export default function Home() {
               </div>
 
               {/* Content Overlay */}
-              <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
+              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
                 {/* Left Column (Details) */}
-                <div className="lg:col-span-5 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
+                <div className="lg:col-span-5 flex flex-col justify-between py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-12 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
                     CAPITAL
                     <span className="block mt-1">MARKETS</span>
@@ -657,7 +657,7 @@ export default function Home() {
                 </div>
 
                 {/* Right Column (Details) */}
-                <div className="lg:col-span-7 flex flex-col justify-center bg-primary lg:bg-transparent px-8 py-10 lg:py-12 lg:pl-20 lg:pr-16 text-white space-y-8">
+                <div className="lg:col-span-7 flex flex-col justify-center bg-primary lg:bg-transparent px-6 sm:px-8 py-10 lg:py-12 lg:pl-20 lg:pr-0 text-white space-y-8">
                   <div className="space-y-4">
                     <h3 className="text-sm sm:text-base lg:text-lg font-montserrat font-bold tracking-wider text-white">
                       WE FOCUS ON PROVIDING UNIQUE AND PERSONALIZED ADVICE TO
@@ -728,9 +728,9 @@ export default function Home() {
               </div>
 
               {/* Content Overlay */}
-              <div className="relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
+              <div className="relative z-20 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
                 {/* Left Column (Details) */}
-                <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+                <div className="lg:col-span-7 flex flex-col justify-between py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
                     RESEARCH
                     <span className="block mt-1">SERVICES</span>
@@ -796,18 +796,18 @@ export default function Home() {
         </div>
 
         {/* Content Overlay */}
-        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12">
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
           {/* Left Column (WHAT WE DO + End-to-End text) */}
           <div className="lg:col-span-7 flex flex-col justify-between bg-white lg:bg-transparent">
             {/* Header Banner Text */}
-            <div className="h-[51px] sm:h-[54px] flex items-center pl-8 sm:pl-12 lg:pl-16 bg-secondary lg:bg-transparent">
+            <div className="h-[51px] sm:h-[54px] flex items-center px-6 sm:px-8 lg:px-0 bg-secondary lg:bg-transparent">
               <span className="text-xs sm:text-sm font-avenir font-semibold tracking-[0.4em] text-white uppercase">
                 WHAT WE DO
               </span>
             </div>
             
             {/* Main Left Content */}
-            <div className="flex-1 flex flex-col justify-center px-8 sm:px-12 lg:pl-16 lg:pr-8 py-10 lg:py-12">
+            <div className="flex-1 flex flex-col justify-center px-6 sm:px-8 lg:pl-0 lg:pr-8 py-10 lg:py-12">
               <div className="w-fit flex flex-col items-center text-center">
                 <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.08] text-secondary">
                   END-TO-END
@@ -822,7 +822,7 @@ export default function Home() {
           </div>
 
           {/* Right Column (From Complex Portfolio Valuations...) */}
-          <div className="lg:col-span-5 flex flex-col justify-center px-8 sm:px-12 lg:pl-32 xl:pl-40 lg:pr-8 py-16 lg:py-24 text-white bg-primary lg:bg-transparent">
+          <div className="lg:col-span-5 flex flex-col justify-center px-6 sm:px-8 lg:pl-24 xl:pl-32 lg:pr-0 py-16 lg:py-24 text-white bg-primary lg:bg-transparent">
             <div className="font-avenir font-normal text-xs sm:text-sm lg:text-[13px] uppercase tracking-[0.18em] leading-[2.1] text-white lg:max-w-[400px]">
               <span className="block">FROM COMPLEX PORTFOLIO</span>
               <span className="block">VALUATIONS TO STRATEGIC</span>
@@ -861,9 +861,9 @@ export default function Home() {
         </div>
 
         {/* Content Overlay */}
-        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12">
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
           {/* Left Column (INSIGHTS Header Details) */}
-          <div className="lg:col-span-5 flex flex-col justify-between p-12 lg:py-16 lg:pl-24 lg:pr-12 bg-transparent">
+          <div className="lg:col-span-5 flex flex-col justify-between py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-12 bg-transparent">
             <span className="text-sm font-avenir font-semibold tracking-[0.2em] text-primary uppercase mb-6 lg:mb-0">
               INSIGHTS
             </span>
@@ -883,7 +883,7 @@ export default function Home() {
           </div>
 
           {/* Right Column (Reports & Commentaries) */}
-          <div className="lg:col-span-7 flex flex-col justify-center p-12 lg:py-16 lg:pl-32 lg:pr-24 bg-tertiary lg:bg-transparent text-sfa-navy">
+          <div className="lg:col-span-7 flex flex-col justify-center py-12 px-6 sm:px-8 lg:py-16 lg:pl-24 lg:pr-0 bg-tertiary lg:bg-transparent text-sfa-navy">
             <div className="space-y-10 lg:space-y-12">
               {cms.reports.map((report) =>
                 report.isFeatured ? (
@@ -1049,9 +1049,9 @@ export default function Home() {
         </div>
 
         {/* Content Overlay */}
-        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-[45%_55%] max-w-[1440px] mx-auto">
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[45%_55%]">
           {/* Left Column (Details - 45%) */}
-          <div className="flex flex-col justify-center p-8 sm:p-12 lg:py-16 lg:pl-16 lg:pr-10 xl:pl-20 xl:pr-14 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+          <div className="flex flex-col justify-center py-8 px-6 sm:p-10 lg:py-16 lg:pl-0 lg:pr-10 xl:pr-14 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
             <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white">
               OUR
               <span className="block mt-1">CLIENTS</span>
@@ -1068,7 +1068,7 @@ export default function Home() {
           </div>
 
           {/* Right Column (Logos - 55%) */}
-          <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent px-6 sm:px-10 lg:py-14 lg:pl-10 lg:pr-12 xl:pl-14 xl:pr-20">
+          <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-14 lg:pl-10 xl:pl-14 lg:pr-0">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 sm:gap-x-8 lg:gap-x-10 gap-y-8 sm:gap-y-10 items-center justify-items-center w-full">
               <HsbcLogo />
               <StandardCharteredLogo />
@@ -1131,9 +1131,9 @@ export default function Home() {
       </div>
 
       {/* Content Overlay */}
-      <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-[45%_55%] max-w-[1440px] mx-auto">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[45%_55%]">
         {/* Left Column (Details - 45%) */}
-        <div className="flex flex-col justify-center p-8 sm:p-12 lg:py-16 lg:pl-16 lg:pr-10 xl:pl-20 xl:pr-14 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
+        <div className="flex flex-col justify-center py-8 px-6 sm:p-10 lg:py-16 lg:pl-0 lg:pr-10 xl:pr-14 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
           <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-[#133852]">
             OUR
             <span className="block mt-1">PARTNERS</span>
@@ -1149,7 +1149,7 @@ export default function Home() {
         </div>
 
         {/* Right Column (Logos - 55%, strictly contained to the right of divider boundary) */}
-        <div className="flex flex-col justify-center bg-[#194866] lg:bg-transparent px-6 sm:px-10 lg:py-14 lg:pl-28 xl:pl-36 2xl:pl-44 lg:pr-8 xl:pr-12">
+        <div className="flex flex-col justify-center bg-[#194866] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-14 lg:pl-24 xl:pl-32 lg:pr-0">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 sm:gap-x-10 lg:gap-x-12 gap-y-6 sm:gap-y-8 items-center justify-items-center w-full max-w-[620px]">
             <KpmgLogo />
             <KnightFrankLogo />
@@ -1199,9 +1199,9 @@ export default function Home() {
         </div>
 
         {/* Content Overlay */}
-        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
           {/* Left Column (Details) */}
-          <div className="lg:col-span-6 flex flex-col justify-center p-12 lg:py-16 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+          <div className="lg:col-span-6 flex flex-col justify-center py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-12 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
             <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white">
               OUR
               <span className="block mt-1">LEADERSHIP</span>
@@ -1232,7 +1232,7 @@ export default function Home() {
           </defs>
         </svg>
 
-        <div className="w-full max-w-[1320px] ml-auto mr-0 pl-4 sm:pl-8 lg:pl-12 pr-0 overflow-hidden">
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-4 sm:gap-y-0 gap-x-0">
             {cms.teamMembers.map((director, idx) => (
               <div
@@ -1293,7 +1293,7 @@ export default function Home() {
 
       {/* 12. Get In Touch Banner (Page 15) */}
       <section id="contact" className="bg-secondary text-white py-16 text-center relative overflow-hidden">
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-montserrat font-normal tracking-[0.3em] uppercase leading-tight text-white">
             {cms.settings.contactTitle}
           </h2>
