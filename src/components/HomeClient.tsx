@@ -1321,7 +1321,7 @@ export default function HomeClient({
           <div className="pt-6 flex justify-center">
             <button
               onClick={() => setContactOpen(true)}
-              className="cursor-pointer px-10 sm:px-12 py-3 sm:py-3.5 bg-[#1e4e72] hover:bg-[#153a53] text-white text-xs sm:text-sm lg:text-base font-avenir font-normal tracking-widest uppercase rounded-xl transition duration-300 shadow-md"
+              className="cursor-pointer px-10 py-2.5 border border-[#2684be] text-white text-sm sm:text-[15px] font-avenir font-medium tracking-wide transition duration-300 bg-transparent hover:bg-white/10"
             >
               REQUEST A CALL BACK
             </button>
