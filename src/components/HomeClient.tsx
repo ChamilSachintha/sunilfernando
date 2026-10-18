@@ -286,10 +286,10 @@ export default function HomeClient({
               className="mt-5 sm:mt-6 flex justify-end gap-4"
             >
               <button
-                onClick={() => setValuationOpen(true)}
+                onClick={() => setContactOpen(true)}
                 className="cursor-pointer px-10 sm:px-12 py-3 sm:py-3.5 bg-[#1e4e72] hover:bg-[#153a53] text-white text-xs sm:text-sm lg:text-base font-avenir font-normal tracking-widest uppercase rounded-xl transition duration-300 shadow-md"
               >
-                Request a Valuation
+                REQUEST A CALL BACK
               </button>
             </motion.div>
           </div>
