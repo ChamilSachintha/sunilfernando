@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useSyncExternalStore } from "react";
+import { useState, useCallback, useSyncExternalStore } from "react";
 import { StudioProvider, StudioLayout, useClient, type SanityClient } from "sanity";
 import config from "../../../../sanity.config";
 import { isSanityConfigured, projectId, dataset } from "@/sanity/env";
