@@ -6,8 +6,27 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { SfaLogo, HsbcLogo, StandardCharteredLogo, DeloitteLogo, CbiLogo, CinnamonLogo, LoadstarLogo, ShangriLaLogo, HiltonLogo, KpmgLogo, KnightFrankLogo, KrestonLogo, BdoLogo, MakeeluChambersLogo, BakerTillyLogo, WarrenVicksLogo, DesignAdvocacyLogo, AcquestLogo, NdbLogo, CoenergiLogo, SudathPereraLogo } from "@/components/Logos";
 import { RequestValuationModal, ContactModal } from "@/components/Forms";
+import { DEFAULT_SITE_CONTENT, type SanitySiteContent } from "@/sanity/lib/defaultData";
+import { isSanityConfigured } from "@/sanity/env";
 
 export default function Home() {
+  // CMS Content State (starts with default SFA content, updates live from Sanity CMS when configured)
+  const [cms, setCms] = useState<SanitySiteContent>(DEFAULT_SITE_CONTENT);
+
+  useEffect(() => {
+    if (!isSanityConfigured) return;
+    fetch("/api/site-content")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data: SanitySiteContent | null) => {
+        if (data && data.settings) {
+          setCms(data);
+        }
+      })
+      .catch(() => {
+        // Fallback to DEFAULT_SITE_CONTENT silently
+      });
+  }, []);
+
   // Navigation & Menu State
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -221,17 +240,17 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-montserrat font-medium tracking-widest leading-none text-white">
-                TRUSTED
+                {cms.settings.heroTitleLine1}
               </h1>
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-montserrat font-medium tracking-widest leading-none text-white mt-1">
-                VALUATIONS
+                {cms.settings.heroTitleLine2}
               </h1>
               <div className="mt-3 sm:mt-4 space-y-1 sm:space-y-2">
                 <span className="block text-lg sm:text-xl lg:text-2xl font-montserrat font-normal tracking-widest text-white uppercase">
-                  INFORMED DECISIONS
+                  {cms.settings.heroSubtitle}
                 </span>
                 <span className="block text-base sm:text-lg lg:text-xl font-avenir font-light tracking-widest text-white/90">
-                  SINCE 1999
+                  {cms.settings.heroTagline}
                 </span>
               </div>
             </motion.div>
@@ -242,7 +261,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xs sm:text-sm font-avenir tracking-wide leading-relaxed font-normal text-white mt-4 sm:mt-6 max-w-xl ml-auto"
             >
-              SUNIL FERNANDO & ASSOCIATES DELIVERS INTERNATIONALLY ACCEPTED VALUATION AND REAL ESTATE ADVISORY SERVICES ACROSS SRI LANKA AND THE MALDIVES, BACKED BY 25 YEARS OF EXPERTISE, RICS COMPLIANCE, AND A GLOBAL PARTNER NETWORK.
+              {cms.settings.heroDescription}
             </motion.p>
 
             <motion.div
@@ -866,47 +885,54 @@ export default function Home() {
           {/* Right Column (Reports & Commentaries) */}
           <div className="lg:col-span-7 flex flex-col justify-center p-12 lg:py-16 lg:pl-32 lg:pr-24 bg-tertiary lg:bg-transparent text-sfa-navy">
             <div className="space-y-10 lg:space-y-12">
-              {/* Report 1 */}
-              <div className="space-y-3 pb-8 border-b border-sfa-navy/15 last:border-0 last:pb-0">
-                <h3 className="text-lg lg:text-xl font-avenir font-bold tracking-wide uppercase leading-snug">
-                  SRI LANKA REAL ESTATE MARKET OUTLOOK 2026
-                </h3>
-                <p className="text-xs lg:text-sm font-avenir font-normal text-sfa-navy/80 uppercase tracking-wider leading-relaxed">
-                  AN INDEPENDENT ASSESSMENT OF SRI LANKA&apos;S COMMERCIAL, RESIDENTIAL, AND LEISURE PROPERTY MARKETS — WITH A FOCUS ON COLOMBO, PORT CITY, AND THE RECOVERING TOURISM CORRIDOR.
-                </p>
-                <button
-                  onClick={() => alert("Downloading Report: Sri Lanka Real Estate Market Outlook 2026 (Mock File)")}
-                  className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest uppercase hover:underline cursor-pointer"
-                >
-                  <span>DOWNLOAD REPORT &rarr;</span>
-                </button>
-              </div>
-
-              {/* Report 2 */}
-              <div className="space-y-2 pb-8 border-b border-sfa-navy/15 last:border-0 last:pb-0">
-                <span className="text-[10px] font-montserrat font-bold text-secondary uppercase tracking-widest">
-                  MARKET COMMENTARY
-                </span>
-                <h3 className="text-base lg:text-lg font-avenir font-bold tracking-wide uppercase leading-snug">
-                  PORT CITY COLOMBO: WHAT THE FIRST WAVE OF COMPLETIONS MEANS FOR COMMERCIAL VALUES
-                </h3>
-                <span className="block text-xs font-avenir font-normal text-sfa-navy/70 uppercase tracking-wider">
-                  APRIL 2026
-                </span>
-              </div>
-
-              {/* Report 3 */}
-              <div className="space-y-2">
-                <span className="text-[10px] font-montserrat font-bold text-secondary uppercase tracking-widest">
-                  MALDIVES
-                </span>
-                <h3 className="text-base lg:text-lg font-avenir font-bold tracking-wide uppercase leading-snug">
-                  RESORT ASSET VALUATIONS IN THE MALDIVES: KEY METHODOLOGIES AND LENDER REQUIREMENTS
-                </h3>
-                <span className="block text-xs font-avenir font-normal text-sfa-navy/70 uppercase tracking-wider">
-                  MARCH 2026
-                </span>
-              </div>
+              {cms.reports.map((report) =>
+                report.isFeatured ? (
+                  <div
+                    key={report._id}
+                    className="space-y-3 pb-8 border-b border-sfa-navy/15 last:border-0 last:pb-0"
+                  >
+                    <h3 className="text-lg lg:text-xl font-avenir font-bold tracking-wide uppercase leading-snug">
+                      {report.title}
+                    </h3>
+                    {report.summary && (
+                      <p className="text-xs lg:text-sm font-avenir font-normal text-sfa-navy/80 uppercase tracking-wider leading-relaxed">
+                        {report.summary}
+                      </p>
+                    )}
+                    <button
+                      onClick={() => {
+                        if (report.fileUrl) {
+                          window.open(report.fileUrl, "_blank", "noopener,noreferrer");
+                        } else {
+                          alert(`Downloading Report: ${report.title}`);
+                        }
+                      }}
+                      className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest uppercase hover:underline cursor-pointer"
+                    >
+                      <span>DOWNLOAD REPORT &rarr;</span>
+                    </button>
+                  </div>
+                ) : (
+                  <div
+                    key={report._id}
+                    className="space-y-2 pb-8 border-b border-sfa-navy/15 last:border-0 last:pb-0"
+                  >
+                    {report.category && (
+                      <span className="text-[10px] font-montserrat font-bold text-secondary uppercase tracking-widest">
+                        {report.category}
+                      </span>
+                    )}
+                    <h3 className="text-base lg:text-lg font-avenir font-bold tracking-wide uppercase leading-snug">
+                      {report.title}
+                    </h3>
+                    {report.date && (
+                      <span className="block text-xs font-avenir font-normal text-sfa-navy/70 uppercase tracking-wider">
+                        {report.date}
+                      </span>
+                    )}
+                  </div>
+                )
+              )}
             </div>
           </div>
         </div>
@@ -956,69 +982,33 @@ export default function Home() {
             <div className="h-[2px] w-5/6 bg-white/20 mb-12" />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-              {/* Column 1 */}
-              <div className="flex flex-col justify-between h-full space-y-6">
-                <div className="space-y-4">
-                  <span className="text-[10px] font-montserrat font-bold tracking-widest text-[#194866] uppercase block">
-                    FINANCIAL INSTITUTION · PORTFOLIO VALUATION
-                  </span>
-                  <h3 className="text-2xl lg:text-3xl font-montserrat font-normal tracking-tight text-sfa-navy uppercase leading-tight">
-                    LARGE-SCALE
-                    <span className="block">BANK COLLATERAL</span>
-                    <span className="block">PORTFOLIO</span>
-                  </h3>
-                  <p className="text-xs lg:text-sm font-avenir font-normal text-sfa-navy/80 tracking-wider leading-relaxed text-justify uppercase">
-                    A LEADING SRI LANKAN COMMERCIAL BANK REQUIRED INDEPENDENT RICS-COMPLIANT VALUATIONS ACROSS A MIXED COMMERCIAL AND RESIDENTIAL PORTFOLIO FOR INTERNAL RISK ASSESSMENT AND REGULATORY REPORTING.
-                  </p>
+              {cms.caseStudies.map((cs) => (
+                <div
+                  key={cs._id}
+                  className="flex flex-col justify-between h-full space-y-6"
+                >
+                  <div className="space-y-4">
+                    <span className="text-[10px] font-montserrat font-bold tracking-widest text-[#194866] uppercase block">
+                      {cs.categoryTag}
+                    </span>
+                    <h3 className="text-2xl lg:text-3xl font-montserrat font-normal tracking-tight text-sfa-navy uppercase leading-tight">
+                      {cs.titleLines.map((line, lIdx) => (
+                        <span key={lIdx} className="block">
+                          {line}
+                        </span>
+                      ))}
+                    </h3>
+                    <p className="text-xs lg:text-sm font-avenir font-normal text-sfa-navy/80 tracking-wider leading-relaxed text-justify uppercase">
+                      {cs.description}
+                    </p>
+                  </div>
+                  <div className="pt-4 border-t border-sfa-navy/10 lg:border-t-0 lg:pt-0">
+                    <span className="text-[10px] font-avenir font-black italic tracking-wide text-sfa-navy/90 uppercase block leading-relaxed">
+                      {cs.outcomeFootnote}
+                    </span>
+                  </div>
                 </div>
-                <div className="pt-4 border-t border-sfa-navy/10 lg:border-t-0 lg:pt-0">
-                  <span className="text-[10px] font-avenir font-black italic tracking-wide text-sfa-navy/90 uppercase block leading-relaxed">
-                    47 ASSETS VALUED · 30-DAY DELIVERY · REPORTS ACCEPTED BY INTERNATIONAL AUDIT PARTNER
-                  </span>
-                </div>
-              </div>
-
-              {/* Column 2 */}
-              <div className="flex flex-col justify-between h-full space-y-6">
-                <div className="space-y-4">
-                  <span className="text-[10px] font-montserrat font-bold tracking-widest text-[#194866] uppercase block">
-                    HOSPITALITY · MALDIVES · CROSS-BORDER FINANCING
-                  </span>
-                  <h3 className="text-2xl lg:text-3xl font-montserrat font-normal tracking-tight text-sfa-navy uppercase leading-tight">
-                    MALDIVES RESORT
-                    <span className="block">ISLAND REFINANCING</span>
-                  </h3>
-                  <p className="text-xs lg:text-sm font-avenir font-normal text-sfa-navy/80 tracking-wider leading-relaxed text-justify uppercase">
-                    AN INTERNATIONAL HOSPITALITY GROUP SOUGHT INDEPENDENT VALUATION OF A MALDIVES RESORT FOR REFINANCING WITH A EUROPEAN LENDER REQUIRING RICS-COMPLIANT METHODOLOGY AND INTERNATIONAL HOTEL VALUATION STANDARDS.
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-sfa-navy/10 lg:border-t-0 lg:pt-0">
-                  <span className="text-[10px] font-avenir font-black italic tracking-wide text-sfa-navy/90 uppercase block leading-relaxed">
-                    RICS HOTEL VALUATION METHODOLOGY · ACCEPTED BY EUROPEAN FINANCIAL INSTITUTION
-                  </span>
-                </div>
-              </div>
-
-              {/* Column 3 */}
-              <div className="flex flex-col justify-between h-full space-y-6">
-                <div className="space-y-4">
-                  <span className="text-[10px] font-montserrat font-bold tracking-widest text-[#194866] uppercase block">
-                    AGRICULTURAL · ESTATE SETTLEMENT · LEGAL
-                  </span>
-                  <h3 className="text-2xl lg:text-3xl font-montserrat font-normal tracking-tight text-sfa-navy uppercase leading-tight">
-                    HILL COUNTRY TEA
-                    <span className="block">ESTATE VALUATION</span>
-                  </h3>
-                  <p className="text-xs lg:text-sm font-avenir font-normal text-sfa-navy/80 tracking-wider leading-relaxed text-justify uppercase">
-                    A FAMILY REQUIRED INDEPENDENT VALUATION OF A 250-ACRE TEA ESTATE IN SRI LANKA&apos;S HILL COUNTRY FOR ESTATE SETTLEMENT AND INHERITANCE PROCEEDINGS, INCORPORATING LAND, CROP VALUE, AND INFRASTRUCTURE.
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-sfa-navy/10 lg:border-t-0 lg:pt-0">
-                  <span className="text-[10px] font-avenir font-black italic tracking-wide text-sfa-navy/90 uppercase block leading-relaxed">
-                    ACCEPTED IN FORMAL LEGAL PROCEEDINGS · EXPERT WITNESS SUPPORT PROVIDED
-                  </span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -1219,7 +1209,7 @@ export default function Home() {
             </h2>
 
             <p className="text-xs sm:text-sm lg:text-[15px] font-avenir leading-relaxed text-justify text-white lg:text-sfa-navy my-6 max-w-xl uppercase font-semibold">
-              SFA EMPLOYS PROFESSIONALS WITH SPECIALIZED EXPERTISE IN VARIOUS REAL ESTATE SECTORS. BASED ON THE NATURE AND SCOPE OF EACH ASSIGNMENT, THE APPROPRIATE EXPERTS ARE INTEGRATED INTO THE LEADERSHIP TEAM.
+              {cms.settings.teamDescription}
             </p>
           </div>
 
@@ -1244,46 +1234,9 @@ export default function Home() {
 
         <div className="w-full max-w-[1320px] ml-auto mr-0 pl-4 sm:pl-8 lg:pl-12 pr-0 overflow-hidden">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-4 sm:gap-y-0 gap-x-0">
-            {[
-              {
-                name: "Sunil Fernando",
-                designation: "Founder/Chairman",
-                credentials: "FIV(SL), FRICS",
-                image: "/sunil-fernando.png",
-              },
-              {
-                name: "Manju Fernando",
-                designation: "Group Managing Director",
-                credentials: "M.B.A.(Aus), MRICS",
-                image: "/manju-fernando.png",
-              },
-              {
-                name: "Dilshan Perera",
-                designation: "Director Valuation & Advisory",
-                credentials: "M.B.A.(Aus)",
-                image: "/dilshan-perera.png",
-              },
-              {
-                name: "Vicks Vickneswaran",
-                designation: "Director UAE",
-                credentials: "M.B.A.(UK), MRICS, FCMA, FCCA, FCIM",
-                image: "/vicks-vickneswaran.png",
-              },
-              {
-                name: "Nalin Seneviratne",
-                designation: "Director / Advisor",
-                credentials: "BSc.LM, FRICS",
-                image: "/nalin-seneviratne.png",
-              },
-              {
-                name: "Mohamed Hilmy",
-                designation: "Director - Maldives",
-                credentials: "L.B.M.(Mal), A.I.V",
-                image: "/avatar-placeholder.svg",
-              },
-            ].map((director, idx) => (
+            {cms.teamMembers.map((director, idx) => (
               <div
-                key={idx}
+                key={director._id || idx}
                 className="relative h-[280px] sm:h-[290px] xl:h-[310px] w-full overflow-visible"
               >
                 {/* Solid White Curved-Top Diagonal Divider Ribbon */}
@@ -1298,7 +1251,7 @@ export default function Home() {
                   {/* Portrait Photo in Upper 78% of Bay */}
                   <div
                     className={`absolute top-0 bottom-[22%] ${
-                      idx === 5
+                      idx === cms.teamMembers.length - 1
                         ? "left-0 sm:left-[4.8%] w-full sm:w-[76%]"
                         : "left-0 sm:left-[4.8%] w-full sm:w-[95.2%]"
                     }`}
@@ -1315,7 +1268,7 @@ export default function Home() {
                   <div className="absolute bottom-0 left-0 right-0 h-[22%] bg-[#123c56] z-20 flex items-center">
                     <div
                       className={`flex flex-col items-center justify-center text-center px-1.5 ${
-                        idx === 5
+                        idx === cms.teamMembers.length - 1
                           ? "w-full sm:ml-[7.5%] sm:w-[66.5%]"
                           : "w-full sm:ml-[7.5%] sm:w-[69%]"
                       }`}
@@ -1342,13 +1295,13 @@ export default function Home() {
       <section id="contact" className="bg-secondary text-white py-16 text-center relative overflow-hidden">
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-montserrat font-normal tracking-[0.3em] uppercase leading-tight text-white">
-            GET IN TOUCH
+            {cms.settings.contactTitle}
           </h2>
           <div className="text-sm sm:text-base lg:text-lg font-montserrat font-medium tracking-[0.15em] uppercase text-white/90">
-            READY TO START?
+            {cms.settings.contactSubtitle}
           </div>
           <p className="text-xs sm:text-sm lg:text-[15px] font-avenir text-white/90 leading-relaxed max-w-2xl mx-auto">
-            Whether for a financial transaction, an acquisition, IFRS reporting, or legal proceedings. Our valuation team is ready to help.
+            {cms.settings.contactDescription}
           </p>
 
           <div className="pt-6 flex flex-col sm:flex-row justify-center gap-6">

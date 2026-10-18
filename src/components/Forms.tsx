@@ -53,11 +53,27 @@ export const RequestValuationModal: React.FC<ModalProps> = ({ isOpen, onClose })
 
   const onSubmit = async (data: ValuationInput) => {
     setIsSubmitting(true);
-    // Simulate network request
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    console.log("Valuation Request submitted:", data);
+    try {
+      await fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          inquiryType: "valuation",
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          company: data.company,
+          propertyType: data.sector,
+          location: data.country,
+          message: data.message,
+        }),
+      });
+    } catch (err) {
+      console.error("Failed to submit valuation inquiry:", err);
+    } finally {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+    }
   };
 
   const handleClose = () => {
@@ -234,10 +250,25 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
   const onSubmit = async (data: ContactInput) => {
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    console.log("Contact Message submitted:", data);
+    try {
+      await fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          inquiryType: "contact",
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          subject: data.subject,
+          message: data.message,
+        }),
+      });
+    } catch (err) {
+      console.error("Failed to submit contact inquiry:", err);
+    } finally {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+    }
   };
 
   const handleClose = () => {
