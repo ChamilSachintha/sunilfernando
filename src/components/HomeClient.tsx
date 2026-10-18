@@ -748,7 +748,7 @@ export default function HomeClient({
       </section>
 
       {/* 4. What We Do (Page 6) */}
-      <section className="relative min-h-[400px] flex items-stretch overflow-hidden bg-white">
+      <section className="relative min-h-[480px] lg:min-h-[540px] xl:min-h-[580px] flex items-stretch overflow-hidden bg-white">
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1000 400" className="w-full h-full" preserveAspectRatio="none">
@@ -782,14 +782,14 @@ export default function HomeClient({
           {/* Left Column (WHAT WE DO + End-to-End text) */}
           <div className="lg:col-span-7 flex flex-col justify-between bg-white lg:bg-transparent">
             {/* Header Banner Text */}
-            <div className="h-[51px] sm:h-[54px] flex items-center px-6 sm:px-8 lg:px-0 bg-secondary lg:bg-transparent">
+            <div className="h-[54px] lg:h-[64px] flex items-center px-6 sm:px-8 lg:px-0 bg-secondary lg:bg-transparent">
               <span className="text-xs sm:text-sm font-avenir font-semibold tracking-[0.4em] text-white uppercase">
                 WHAT WE DO
               </span>
             </div>
             
             {/* Main Left Content */}
-            <div className="flex-1 flex flex-col justify-center px-6 sm:px-8 lg:pl-0 lg:pr-8 py-10 lg:py-12">
+            <div className="flex-1 flex flex-col justify-center px-6 sm:px-8 lg:pl-0 lg:pr-8 py-12 sm:py-16 lg:py-20">
               <div className="w-fit flex flex-col items-center text-center">
                 <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.08] text-secondary">
                   {cms.settings.whatWeDoHeadingLine1}
@@ -804,7 +804,7 @@ export default function HomeClient({
           </div>
 
           {/* Right Column (From Complex Portfolio Valuations...) */}
-          <div className="lg:col-span-5 flex flex-col justify-center px-6 sm:px-8 lg:pl-24 xl:pl-32 lg:pr-0 py-16 lg:py-24 text-white bg-primary lg:bg-transparent">
+          <div className="lg:col-span-5 flex flex-col justify-center px-6 sm:px-8 lg:pl-24 xl:pl-32 lg:pr-0 py-16 sm:py-20 lg:py-28 xl:py-32 text-white bg-primary lg:bg-transparent">
             <div className="font-avenir font-normal text-xs sm:text-sm lg:text-[13px] uppercase tracking-[0.18em] leading-[2.1] text-white lg:max-w-[400px]">
               {cms.settings.whatWeDoRightLines.map((line, idx) => (
                 <span key={idx} className="block">
