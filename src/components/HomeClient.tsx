@@ -328,26 +328,26 @@ export default function HomeClient({
       </section>
 
       {/* 2.8 Four-Column Figures / Stats Section (26+, IVSL, RARE, RICS) */}
-      <section className="py-16 md:py-24 bg-white relative">
+      <section className="py-8 sm:py-10 md:py-12 bg-white relative">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Grid Stats Layout with Ampersand in center */}
-          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-24 md:gap-y-32 items-center md:py-16">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-x-20 md:gap-y-16 lg:gap-x-24 lg:gap-y-20 items-center py-4 md:py-6">
             {/* Center ampersand and dividers background logo */}
             <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
               {/* Horizontal dividers */}
               <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center gap-6 px-4 md:px-8">
                 <div className="flex-1 h-[3px] bg-sfa-grey/10 hidden md:block" />
-                <div className="w-[100px] sm:w-[170px] shrink-0 h-[3px] opacity-0" />
+                <div className="w-[100px] sm:w-[150px] shrink-0 h-[3px] opacity-0" />
                 <div className="flex-1 h-[3px] bg-sfa-grey/10 hidden md:block" />
               </div>
 
               {/* Vertical dividers & ampersand */}
               <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center gap-0 py-0 h-full">
-                <div className="w-[3px] flex-1 bg-sfa-grey/10 hidden md:block mb-[-12px] sm:mb-[-22px]" />
-                <span className="font-serif text-[150px] sm:text-[250px] font-bold text-sfa-grey/10 leading-none">
+                <div className="w-[3px] flex-1 bg-sfa-grey/10 hidden md:block mb-[-10px] sm:mb-[-16px]" />
+                <span className="font-serif text-[120px] sm:text-[180px] font-bold text-sfa-grey/10 leading-none">
                   &
                 </span>
-                <div className="w-[3px] flex-1 bg-sfa-grey/10 hidden md:block mt-[-12px] sm:mt-[-22px]" />
+                <div className="w-[3px] flex-1 bg-sfa-grey/10 hidden md:block mt-[-10px] sm:mt-[-16px]" />
               </div>
             </div>
 
