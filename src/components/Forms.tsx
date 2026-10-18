@@ -89,6 +89,7 @@ export const RequestValuationModal: React.FC<ModalProps> = ({ isOpen, onClose })
           message: data.message,
           subject: `Valuation Request - ${data.company} (${data.sector})`,
           form_type: "Valuation Request",
+          time: new Date().toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" }),
         },
         publicKey
       );
@@ -314,6 +315,7 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           subject: data.subject,
           message: data.message,
           form_type: "Call Back Request / General Contact",
+          time: new Date().toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" }),
         },
         publicKey
       );
