@@ -220,14 +220,14 @@ export default function Home() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-montserrat font-semibold tracking-widest leading-none text-white">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-montserrat font-medium tracking-widest leading-none text-white">
                 TRUSTED
               </h1>
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-montserrat font-semibold tracking-widest leading-none text-white mt-1">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-montserrat font-medium tracking-widest leading-none text-white mt-1">
                 VALUATIONS
               </h1>
               <div className="mt-3 sm:mt-4 space-y-1 sm:space-y-2">
-                <span className="block text-lg sm:text-xl lg:text-2xl font-montserrat font-medium tracking-widest text-white uppercase">
+                <span className="block text-lg sm:text-xl lg:text-2xl font-montserrat font-normal tracking-widest text-white uppercase">
                   INFORMED DECISIONS
                 </span>
                 <span className="block text-base sm:text-lg lg:text-xl font-avenir font-light tracking-widest text-white/90">
@@ -396,7 +396,7 @@ export default function Home() {
         {/* Banner Bar "Explore Our Services" */}
         <div
           onClick={() => scrollTo("offer")}
-          className="w-full bg-secondary cursor-pointer py-5 text-center text-white tracking-[0.4em] text-xl sm:text-2xl lg:text-3xl font-avenir font-medium uppercase transition duration-300 hover:bg-[#133852]"
+          className="w-full bg-secondary cursor-pointer py-5 text-center text-white tracking-[0.4em] text-xl sm:text-2xl lg:text-3xl font-avenir font-normal uppercase transition duration-300 hover:bg-[#133852]"
         >
           EXPLORE OUR SERVICES
         </div>
@@ -459,7 +459,7 @@ export default function Home() {
               <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
                 {/* Left Column (Details) */}
                 <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
-                  <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-semibold tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
+                  <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
                     VALUATIONS
                   </h2>
 
@@ -549,7 +549,7 @@ export default function Home() {
               <div className="relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
                 {/* Left Text Detail */}
                 <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
-                  <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-semibold tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
+                  <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
                     OCCUPIER
                     <span className="block mt-1">SERVICES</span>
                   </h2>
@@ -630,7 +630,7 @@ export default function Home() {
               <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
                 {/* Left Column (Details) */}
                 <div className="lg:col-span-5 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
-                  <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-semibold tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
+                  <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
                     CAPITAL
                     <span className="block mt-1">MARKETS</span>
                   </h2>
@@ -722,7 +722,7 @@ export default function Home() {
               <div className="relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
                 {/* Left Column (Details) */}
                 <div className="lg:col-span-7 flex flex-col justify-between p-12 lg:py-16 lg:pl-16 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
-                  <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-semibold tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
+                  <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
                     RESEARCH
                     <span className="block mt-1">SERVICES</span>
                   </h2>
@@ -805,7 +805,7 @@ export default function Home() {
             {/* Main Left Content */}
             <div className="flex-1 flex flex-col justify-center px-8 sm:px-12 lg:pl-16 lg:pr-8 py-10 lg:py-12">
               <div className="w-fit flex flex-col items-center text-center">
-                <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-semibold tracking-tight uppercase leading-[1.08] text-secondary">
+                <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.08] text-secondary">
                   END-TO-END
                   <span className="block mt-1">REAL ESTATE</span>
                   <span className="block mt-1">ADVISORY</span>
@@ -865,17 +865,11 @@ export default function Home() {
             </span>
             
             <div className="flex-1 flex flex-col justify-center my-8 lg:my-0">
-              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-semibold tracking-tight uppercase leading-[1.05] text-sfa-navy">
+              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-sfa-navy">
                 MARKET
-              </h2>
-              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-semibold tracking-tight uppercase leading-[1.05] text-sfa-navy">
-                INTELLIGENCE
-              </h2>
-              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-semibold tracking-tight uppercase leading-[1.05] text-sfa-navy">
-                FOR INFORMED
-              </h2>
-              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-semibold tracking-tight uppercase leading-[1.05] text-sfa-navy">
-                DECISIONS.
+                <span className="block mt-1">INTELLIGENCE</span>
+                <span className="block mt-1">FOR INFORMED</span>
+                <span className="block mt-1">DECISIONS.</span>
               </h2>
             </div>
 
@@ -967,7 +961,7 @@ export default function Home() {
               <span className="text-sm font-avenir font-semibold tracking-[0.2em] text-[#00bdf1] uppercase">
                 CASE STUDIES
               </span>
-              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-semibold tracking-tight uppercase leading-[1.1] text-white">
+              <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.1] text-white">
                 WHAT WE&apos;VE DELIVERED.
                 <span className="block mt-2">HOW IT HELPED.</span>
               </h2>
@@ -983,7 +977,7 @@ export default function Home() {
                   <span className="text-[10px] font-montserrat font-bold tracking-widest text-[#194866] uppercase block">
                     FINANCIAL INSTITUTION · PORTFOLIO VALUATION
                   </span>
-                  <h3 className="text-2xl lg:text-3xl font-montserrat font-medium tracking-tight text-sfa-navy uppercase leading-tight">
+                  <h3 className="text-2xl lg:text-3xl font-montserrat font-normal tracking-tight text-sfa-navy uppercase leading-tight">
                     LARGE-SCALE
                     <span className="block">BANK COLLATERAL</span>
                     <span className="block">PORTFOLIO</span>
@@ -1005,7 +999,7 @@ export default function Home() {
                   <span className="text-[10px] font-montserrat font-bold tracking-widest text-[#194866] uppercase block">
                     HOSPITALITY · MALDIVES · CROSS-BORDER FINANCING
                   </span>
-                  <h3 className="text-2xl lg:text-3xl font-montserrat font-medium tracking-tight text-sfa-navy uppercase leading-tight">
+                  <h3 className="text-2xl lg:text-3xl font-montserrat font-normal tracking-tight text-sfa-navy uppercase leading-tight">
                     MALDIVES RESORT
                     <span className="block">ISLAND REFINANCING</span>
                   </h3>
@@ -1026,7 +1020,7 @@ export default function Home() {
                   <span className="text-[10px] font-montserrat font-bold tracking-widest text-[#194866] uppercase block">
                     AGRICULTURAL · ESTATE SETTLEMENT · LEGAL
                   </span>
-                  <h3 className="text-2xl lg:text-3xl font-montserrat font-medium tracking-tight text-sfa-navy uppercase leading-tight">
+                  <h3 className="text-2xl lg:text-3xl font-montserrat font-normal tracking-tight text-sfa-navy uppercase leading-tight">
                     HILL COUNTRY TEA
                     <span className="block">ESTATE VALUATION</span>
                   </h3>
@@ -1083,7 +1077,7 @@ export default function Home() {
         <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-[45%_55%] max-w-[1440px] mx-auto">
           {/* Left Column (Details - 45%) */}
           <div className="flex flex-col justify-center p-8 sm:p-12 lg:py-16 lg:pl-16 lg:pr-10 xl:pl-20 xl:pr-14 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
-            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-semibold tracking-tight uppercase leading-[1.05] text-white">
+            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white">
               OUR
               <span className="block mt-1">CLIENTS</span>
             </h2>
@@ -1165,7 +1159,7 @@ export default function Home() {
       <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-[45%_55%] max-w-[1440px] mx-auto">
         {/* Left Column (Details - 45%) */}
         <div className="flex flex-col justify-center p-8 sm:p-12 lg:py-16 lg:pl-16 lg:pr-10 xl:pl-20 xl:pr-14 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
-          <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-semibold tracking-tight uppercase leading-[1.05] text-[#133852]">
+          <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-[#133852]">
             OUR
             <span className="block mt-1">PARTNERS</span>
           </h2>
@@ -1240,7 +1234,7 @@ export default function Home() {
         <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 max-w-[1400px] mx-auto">
           {/* Left Column (Details) */}
           <div className="lg:col-span-6 flex flex-col justify-center p-12 lg:py-16 lg:pl-16 lg:pr-12 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
-            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-semibold tracking-tight uppercase leading-[1.05] text-white">
+            <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white">
               OUR
               <span className="block mt-1">LEADERSHIP</span>
               <span className="block mt-1">TEAM</span>
@@ -1369,7 +1363,7 @@ export default function Home() {
       {/* 12. Get In Touch Banner (Page 15) */}
       <section id="contact" className="bg-secondary text-white py-16 text-center relative overflow-hidden">
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-montserrat font-semibold tracking-[0.3em] uppercase leading-tight text-white">
+          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-montserrat font-normal tracking-[0.3em] uppercase leading-tight text-white">
             GET IN TOUCH
           </h2>
           <div className="text-sm sm:text-base lg:text-lg font-montserrat font-medium tracking-[0.15em] uppercase text-white/90">
