@@ -5,8 +5,19 @@ import {
   type SanitySiteContent,
 } from "./defaultData";
 
+export function optimizeSanityImageUrl(
+  url?: string | null,
+  maxWidth = 2000
+): string {
+  if (!url) return "";
+  if (url.includes("cdn.sanity.io") && !url.includes("?")) {
+    return `${url}?w=${maxWidth}&auto=format&q=85`;
+  }
+  return url;
+}
+
 export const SITE_CONTENT_QUERY = groq`{
-  "settings": *[_type == "siteSettings"][0]{
+  "settings": *[_type == "siteSettings"] | order(_updatedAt desc)[0]{
     "logoUrl": logoImage.asset->url,
     heroTitleLine1,
     heroTitleLine2,
@@ -128,7 +139,9 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
         heroDescription: s.heroDescription || DEFAULT_SITE_CONTENT.settings.heroDescription,
         heroImages:
           Array.isArray(s.heroImages) && s.heroImages.filter(Boolean).length > 0
-            ? s.heroImages.filter(Boolean)
+            ? s.heroImages
+                .filter(Boolean)
+                .map((url: string) => optimizeSanityImageUrl(url, 2000))
             : DEFAULT_SITE_CONTENT.settings.heroImages,
         regionalOffices:
           Array.isArray(s.regionalOffices) && s.regionalOffices.length > 0
@@ -150,8 +163,10 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
           Array.isArray(s.whatWeDoRightLines) && s.whatWeDoRightLines.length > 0
             ? s.whatWeDoRightLines
             : DEFAULT_SITE_CONTENT.settings.whatWeDoRightLines,
-        whatWeDoImageUrl:
+        whatWeDoImageUrl: optimizeSanityImageUrl(
           s.whatWeDoImageUrl || DEFAULT_SITE_CONTENT.settings.whatWeDoImageUrl,
+          1600
+        ),
         clientsDescription1:
           s.clientsDescription1 || DEFAULT_SITE_CONTENT.settings.clientsDescription1,
         clientsDescription2:
@@ -170,8 +185,10 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
             : DEFAULT_SITE_CONTENT.settings.partnerLogos,
         teamDescription:
           s.teamDescription || DEFAULT_SITE_CONTENT.settings.teamDescription,
-        teamHeaderImageUrl:
+        teamHeaderImageUrl: optimizeSanityImageUrl(
           s.teamHeaderImageUrl || DEFAULT_SITE_CONTENT.settings.teamHeaderImageUrl,
+          1920
+        ),
         contactTitle: s.contactTitle || DEFAULT_SITE_CONTENT.settings.contactTitle,
         contactSubtitle:
           s.contactSubtitle || DEFAULT_SITE_CONTENT.settings.contactSubtitle,
@@ -208,8 +225,10 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
             srv.occupierParagraphs.length > 0
               ? srv.occupierParagraphs
               : DEFAULT_SITE_CONTENT.services.occupier.paragraphs,
-          imageUrl:
+          imageUrl: optimizeSanityImageUrl(
             srv.occupierImageUrl || DEFAULT_SITE_CONTENT.services.occupier.imageUrl,
+            1600
+          ),
         },
         capitalMarkets: {
           titleLine1:
@@ -250,8 +269,10 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
             srv.researchParagraph1 || DEFAULT_SITE_CONTENT.services.research.paragraph1,
           paragraph2:
             srv.researchParagraph2 || DEFAULT_SITE_CONTENT.services.research.paragraph2,
-          imageUrl:
+          imageUrl: optimizeSanityImageUrl(
             srv.researchImageUrl || DEFAULT_SITE_CONTENT.services.research.imageUrl,
+            1600
+          ),
         },
       },
       reports:
@@ -264,7 +285,10 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
           : DEFAULT_SITE_CONTENT.caseStudies,
       teamMembers:
         Array.isArray(raw.teamMembers) && raw.teamMembers.length > 0
-          ? raw.teamMembers
+          ? raw.teamMembers.map((m: { _id: string; name: string; designation: string; credentials?: string; image: string; order: number }) => ({
+              ...m,
+              image: optimizeSanityImageUrl(m.image, 600),
+            }))
           : DEFAULT_SITE_CONTENT.teamMembers,
     };
   } catch (err) {
