@@ -282,7 +282,7 @@ function StudioAdminBar() {
   }, [client]);
 
   return (
-    <div className="bg-[#0c2340] text-white px-4 py-2 flex flex-wrap items-center justify-between gap-3 text-xs border-b border-white/10 z-50">
+    <div className="shrink-0 bg-[#0c2340] text-white px-4 py-2 flex flex-wrap items-center justify-between gap-3 text-xs border-b border-white/10 z-50">
       <div className="flex items-center gap-3">
         <span className="font-montserrat font-semibold tracking-wider uppercase text-[#00bdf1]">
           SFA Sanity CMS
@@ -347,16 +347,21 @@ export default function StudioPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="fixed inset-0 w-screen h-screen flex flex-col bg-[#101112] overflow-hidden z-50">
       {mounted ? (
         <StudioProvider config={config} unstable_globalStyles>
           <StudioAdminBar />
-          <div id="sanity" className="flex-1 h-[calc(100vh-41px)] overflow-auto">
+          <div
+            id="sanity"
+            data-ui="NextStudioLayout"
+            className="flex-1 min-h-0 w-full h-full relative overflow-hidden bg-[#101112]"
+            style={{ height: "100%", maxHeight: "100%" }}
+          >
             <StudioLayout />
           </div>
         </StudioProvider>
       ) : (
-        <div className="min-h-screen bg-[#0c2340] text-white/70 flex items-center justify-center text-sm font-avenir tracking-wider">
+        <div className="fixed inset-0 bg-[#0c2340] text-white/70 flex items-center justify-center text-sm font-avenir tracking-wider">
           Loading Sanity Studio...
         </div>
       )}
