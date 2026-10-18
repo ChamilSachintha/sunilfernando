@@ -1270,100 +1270,102 @@ export default function Home() {
           </defs>
         </svg>
 
-        <div className="w-full overflow-hidden">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-4 sm:gap-y-0 gap-x-0">
-            {[
-              {
-                name: "Sunil Fernando",
-                designation: "Founder/Chairman",
-                credentials: "FIV(SL), FRICS",
-                image: "/sunil-fernando.png",
-              },
-              {
-                name: "Manju Fernando",
-                designation: "Group Managing Director",
-                credentials: "M.B.A.(Aus), MRICS",
-                image: "/manju-fernando.png",
-              },
-              {
-                name: "Dilshan Perera",
-                designation: "Director Valuation & Advisory",
-                credentials: "M.B.A.(Aus)",
-                image: "/dilshan-perera.png",
-              },
-              {
-                name: "Vicks Vickneswaran",
-                designation: "Director UAE",
-                credentials: "M.B.A.(UK), MRICS, FCMA, FCCA, FCIM",
-                image: "/vicks-vickneswaran.png",
-              },
-              {
-                name: "Nalin Seneviratne",
-                designation: "Director / Advisor",
-                credentials: "BSc.LM, FRICS",
-                image: "/nalin-seneviratne.png",
-              },
-              {
-                name: "Mohamed Hilmy",
-                designation: "Director - Maldives",
-                credentials: "L.B.M.(Mal), A.I.V",
-                image: "/avatar-placeholder.svg",
-              },
-            ].map((director, idx) => (
-              <div
-                key={idx}
-                className="relative h-[360px] xl:h-[380px] w-full overflow-visible"
-              >
-                {/* Far-left corner gradient wedge (left of the first white diagonal ribbon) */}
-                {idx === 0 && (
-                  <div
-                    className="hidden sm:block absolute inset-y-0 left-0 w-[135%] bg-gradient-to-b from-[#f1f5f9] via-[#8fa3b5] to-[#1e435e] pointer-events-none z-10 [clip-path:url(#team-left-wedge-clip)]"
-                  />
-                )}
-
-                {/* Curved-Top Parallelogram Card Bay (extends 135% width to interlock with next card's diagonal) */}
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full overflow-hidden">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-4 sm:gap-y-0 gap-x-0">
+              {[
+                {
+                  name: "Sunil Fernando",
+                  designation: "Founder/Chairman",
+                  credentials: "FIV(SL), FRICS",
+                  image: "/sunil-fernando.png",
+                },
+                {
+                  name: "Manju Fernando",
+                  designation: "Group Managing Director",
+                  credentials: "M.B.A.(Aus), MRICS",
+                  image: "/manju-fernando.png",
+                },
+                {
+                  name: "Dilshan Perera",
+                  designation: "Director Valuation & Advisory",
+                  credentials: "M.B.A.(Aus)",
+                  image: "/dilshan-perera.png",
+                },
+                {
+                  name: "Vicks Vickneswaran",
+                  designation: "Director UAE",
+                  credentials: "M.B.A.(UK), MRICS, FCMA, FCCA, FCIM",
+                  image: "/vicks-vickneswaran.png",
+                },
+                {
+                  name: "Nalin Seneviratne",
+                  designation: "Director / Advisor",
+                  credentials: "BSc.LM, FRICS",
+                  image: "/nalin-seneviratne.png",
+                },
+                {
+                  name: "Mohamed Hilmy",
+                  designation: "Director - Maldives",
+                  credentials: "L.B.M.(Mal), A.I.V",
+                  image: "/avatar-placeholder.svg",
+                },
+              ].map((director, idx) => (
                 <div
-                  className="relative sm:absolute sm:inset-y-0 sm:left-0 w-full sm:w-[135%] h-full bg-gradient-to-br from-[#b8c7d4] via-[#4e7088] to-[#163a54] [clip-path:none] sm:[clip-path:url(#team-bay-clip)]"
+                  key={idx}
+                  className="relative h-[280px] sm:h-[290px] xl:h-[310px] w-full overflow-visible"
                 >
-                  {/* Portrait Photo in Upper 78% of Bay */}
-                  <div
-                    className={`absolute top-0 bottom-[22%] ${
-                      idx === 5
-                        ? "left-0 sm:left-[4.8%] w-full sm:w-[76%]"
-                        : "left-0 sm:left-[4.8%] w-full sm:w-[95.2%]"
-                    }`}
-                  >
-                    <Image
-                      src={director.image}
-                      alt={director.name}
-                      fill
-                      className="object-cover object-top"
-                    />
-                  </div>
-
-                  {/* Parallelogram Bottom Text Banner (Clipped automatically on left & right by #team-bay-clip) */}
-                  <div className="absolute bottom-0 left-0 right-0 h-[22%] bg-[#123c56] z-20 flex items-center">
+                  {/* Far-left corner gradient wedge (left of the first white diagonal ribbon) */}
+                  {idx === 0 && (
                     <div
-                      className={`flex flex-col items-center justify-center text-center px-2 ${
+                      className="hidden sm:block absolute inset-y-0 left-0 w-[135%] bg-gradient-to-b from-[#f1f5f9] via-[#8fa3b5] to-[#1e435e] pointer-events-none z-10 [clip-path:url(#team-left-wedge-clip)]"
+                    />
+                  )}
+
+                  {/* Curved-Top Parallelogram Card Bay (extends 135% width to interlock with next card's diagonal) */}
+                  <div
+                    className="relative sm:absolute sm:inset-y-0 sm:left-0 w-full sm:w-[135%] h-full bg-gradient-to-br from-[#b8c7d4] via-[#4e7088] to-[#163a54] [clip-path:none] sm:[clip-path:url(#team-bay-clip)]"
+                  >
+                    {/* Portrait Photo in Upper 78% of Bay */}
+                    <div
+                      className={`absolute top-0 bottom-[22%] ${
                         idx === 5
-                          ? "w-full sm:ml-[7.5%] sm:w-[66.5%]"
-                          : "w-full sm:ml-[7.5%] sm:w-[69%]"
+                          ? "left-0 sm:left-[4.8%] w-full sm:w-[76%]"
+                          : "left-0 sm:left-[4.8%] w-full sm:w-[95.2%]"
                       }`}
                     >
-                      <h3 className="text-white font-avenir font-medium text-sm xl:text-[15px] tracking-normal leading-tight">
-                        {director.name}
-                      </h3>
-                      <p className="text-white/80 font-avenir font-normal text-[8px] xl:text-[9px] uppercase tracking-wider mt-0.5 leading-tight">
-                        {director.credentials}
-                      </p>
-                      <p className="text-[#00aeef] font-avenir font-medium text-[11px] xl:text-xs tracking-normal mt-0.5 leading-tight">
-                        {director.designation}
-                      </p>
+                      <Image
+                        src={director.image}
+                        alt={director.name}
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+
+                    {/* Parallelogram Bottom Text Banner (Clipped automatically on left & right by #team-bay-clip) */}
+                    <div className="absolute bottom-0 left-0 right-0 h-[22%] bg-[#123c56] z-20 flex items-center">
+                      <div
+                        className={`flex flex-col items-center justify-center text-center px-1.5 ${
+                          idx === 5
+                            ? "w-full sm:ml-[7.5%] sm:w-[66.5%]"
+                            : "w-full sm:ml-[7.5%] sm:w-[69%]"
+                        }`}
+                      >
+                        <h3 className="text-white font-avenir font-medium text-xs xl:text-[13px] tracking-normal leading-tight">
+                          {director.name}
+                        </h3>
+                        <p className="text-white/80 font-avenir font-normal text-[7.5px] xl:text-[8px] uppercase tracking-wider mt-0.5 leading-tight">
+                          {director.credentials}
+                        </p>
+                        <p className="text-[#00aeef] font-avenir font-medium text-[9.5px] xl:text-[10.5px] tracking-normal mt-0.5 leading-tight">
+                          {director.designation}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
