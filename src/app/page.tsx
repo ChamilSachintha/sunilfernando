@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { SfaLogo, HsbcLogo, StandardCharteredLogo, DeloitteLogo, CbiLogo, CinnamonLogo, LoadstarLogo, ShangriLaLogo, HiltonLogo, KpmgLogo, KnightFrankLogo, KrestonLogo, BdoLogo, MakeeluChambersLogo, BakerTillyLogo, WarrenVicksLogo, DesignAdvocacyLogo, AcquestLogo, NdbLogo, CoenergiLogo, SudathPereraLogo } from "@/components/Logos";
+import { KnightFrankLogo, MakeeluChambersLogo } from "@/components/Logos";
 import { RequestValuationModal, ContactModal } from "@/components/Forms";
 import { DEFAULT_SITE_CONTENT, type SanitySiteContent } from "@/sanity/lib/defaultData";
 import { getSiteContent } from "@/sanity/lib/queries";
@@ -113,7 +113,11 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-sfa-grey/10 shadow-sm transition-all">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex justify-between items-center">
           <div className="cursor-pointer flex items-center" onClick={() => scrollTo("home")}>
-            <SfaLogo className="h-16 sm:h-20 py-0 block object-contain" />
+            <img
+              src={cms.settings.logoUrl || "/logo.png"}
+              alt="Sunil Fernando & Associates Logo"
+              className="h-16 sm:h-20 py-0 block object-contain"
+            />
           </div>
 
           {/* Desktop Nav */}
@@ -733,7 +737,7 @@ export default function Home() {
             <polygon points="537,50 1000,50 1000,400 684,400" fill="#2684be" />
 
             {/* 3D Semi-transparent 'A' Graphic (Apex starts strictly below banner at y=50) */}
-            <image href="/what-we-do-a.png" x="366" y="50" width="313" height="350" preserveAspectRatio="none" />
+            <image href={cms.settings.whatWeDoImageUrl || "/what-we-do-a.png"} x="366" y="50" width="313" height="350" preserveAspectRatio="none" />
 
             {/* Continuous Top Dark Blue Tab (#194866) and Diagonal Divider with Drop Shadow */}
             <path
@@ -1016,14 +1020,23 @@ export default function Home() {
           {/* Right Column (Logos - 55%) */}
           <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-14 lg:pl-10 xl:pl-14 lg:pr-0">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 sm:gap-x-8 lg:gap-x-10 gap-y-8 sm:gap-y-10 items-center justify-items-center w-full">
-              <HsbcLogo />
-              <StandardCharteredLogo />
-              <DeloitteLogo />
-              <CbiLogo />
-              <CinnamonLogo />
-              <LoadstarLogo />
-              <ShangriLaLogo />
-              <HiltonLogo />
+              {cms.settings.clientLogos.map((client, idx) => (
+                <div key={idx} className="flex items-center justify-center">
+                  {client.imageUrl ? (
+                    <Image
+                      src={client.imageUrl}
+                      alt={client.name}
+                      width={500}
+                      height={180}
+                      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${client.className || "h-7 sm:h-8"}`}
+                    />
+                  ) : (
+                    <span className="text-xs font-montserrat font-bold text-sfa-navy uppercase">
+                      {client.name}
+                    </span>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -1097,18 +1110,27 @@ export default function Home() {
         {/* Right Column (Logos - 55%, strictly contained to the right of divider boundary) */}
         <div className="flex flex-col justify-center bg-[#194866] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-14 lg:pl-24 xl:pl-32 lg:pr-0">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 sm:gap-x-10 lg:gap-x-12 gap-y-6 sm:gap-y-8 items-center justify-items-center w-full max-w-[620px]">
-            <KpmgLogo />
-            <KnightFrankLogo />
-            <KrestonLogo />
-            <BdoLogo />
-            <MakeeluChambersLogo />
-            <BakerTillyLogo />
-            <WarrenVicksLogo />
-            <DesignAdvocacyLogo />
-            <AcquestLogo />
-            <NdbLogo />
-            <CoenergiLogo />
-            <SudathPereraLogo />
+            {cms.settings.partnerLogos.map((partner, idx) => (
+              <div key={idx} className="flex items-center justify-center">
+                {partner.imageUrl ? (
+                  <Image
+                    src={partner.imageUrl}
+                    alt={partner.name}
+                    width={500}
+                    height={180}
+                    className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${partner.className || "h-7 sm:h-8"}`}
+                  />
+                ) : partner.name === "Knight Frank" ? (
+                  <KnightFrankLogo />
+                ) : partner.name === "Makeelu Chambers" ? (
+                  <MakeeluChambersLogo />
+                ) : (
+                  <span className="text-xs font-montserrat font-bold text-sfa-navy uppercase">
+                    {partner.name}
+                  </span>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -1119,7 +1141,7 @@ export default function Home() {
         {/* Background Building Image */}
         <div className="absolute top-0 bottom-0 right-0 left-0 lg:left-1/3 z-0 pointer-events-none select-none">
           <Image
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab"
+            src={cms.settings.teamHeaderImageUrl || "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600"}
             alt="Office building architecture"
             fill
             className="object-cover object-center opacity-40 lg:opacity-100"

@@ -13,7 +13,14 @@ export interface StatItem {
   accentColor?: "blue" | "navy";
 }
 
+export interface LogoItem {
+  name: string;
+  imageUrl?: string;
+  className?: string;
+}
+
 export interface SiteSettingsData {
+  logoUrl: string;
   heroTitleLine1: string;
   heroTitleLine2: string;
   heroSubtitle: string;
@@ -27,11 +34,15 @@ export interface SiteSettingsData {
   whatWeDoHeadingLine3: string;
   whatWeDoSubheading: string;
   whatWeDoRightLines: string[];
+  whatWeDoImageUrl: string;
   clientsDescription1: string;
   clientsDescription2: string;
+  clientLogos: LogoItem[];
   partnersSubtitle: string;
   partnersDescription: string;
+  partnerLogos: LogoItem[];
   teamDescription: string;
+  teamHeaderImageUrl: string;
   contactTitle: string;
   contactSubtitle: string;
   contactDescription: string;
@@ -110,6 +121,7 @@ export interface SanitySiteContent {
 
 export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
   settings: {
+    logoUrl: "/logo.png",
     heroTitleLine1: "TRUSTED",
     heroTitleLine2: "VALUATIONS",
     heroSubtitle: "INFORMED DECISIONS",
@@ -117,11 +129,10 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
     heroDescription:
       "SUNIL FERNANDO & ASSOCIATES DELIVERS INTERNATIONALLY ACCEPTED VALUATION AND REAL ESTATE ADVISORY SERVICES ACROSS SRI LANKA AND THE MALDIVES, BACKED BY 25 YEARS OF EXPERTISE, RICS COMPLIANCE, AND A GLOBAL PARTNER NETWORK.",
     heroImages: [
-      "/hero_colombo_1_1776105749164.png",
-      "/hero_colombo_2_1776105766810.png",
-      "/hero_colombo_3_1776105784592.png",
-      "/hero_colombo_4_1776105804029.png",
-      "/hero_colombo_5_1776105824056.png",
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600",
+      "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1600",
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1600",
+      "https://images.unsplash.com/photo-1485081669829-bacb8c7bb1f3?q=80&w=1600",
     ],
     regionalOffices: [
       {
@@ -183,15 +194,42 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       "FIRMS, AND LAW FIRMS ACROSS",
       "THE GLOBE.",
     ],
+    whatWeDoImageUrl: "/what-we-do-a.png",
     clientsDescription1:
       "Our diverse client portfolio, spanning individuals to multinational corporations, is a testament to our success.",
     clientsDescription2:
       "Each year, we complete thousands of valuation assignments across various sectors. With tailored methodologies and deep expertise, we consistently meet client needs and deliver exceptional value.",
+    clientLogos: [
+      { name: "HSBC", imageUrl: "/logos/hsbc.png", className: "h-7 sm:h-8" },
+      { name: "Standard Chartered", imageUrl: "/logos/standard-chartered.png", className: "h-8 sm:h-9" },
+      { name: "Deloitte", imageUrl: "/logos/deloitte.png", className: "h-6 sm:h-7" },
+      { name: "Commercial Bank International", imageUrl: "/logos/cbi.png", className: "h-9 sm:h-11" },
+      { name: "Cinnamon Hotels & Resorts", imageUrl: "/logos/cinnamon.png", className: "h-8 sm:h-9" },
+      { name: "Loadstar", imageUrl: "/logos/loadstar.png", className: "h-6 sm:h-7" },
+      { name: "Shangri-La Hotels and Resorts", imageUrl: "/logos/shangri-la.png", className: "h-9 sm:h-11" },
+      { name: "Hilton", imageUrl: "/logos/hilton.png", className: "h-8 sm:h-9" },
+    ],
     partnersSubtitle: "A GLOBAL NETWORK. • A LOCAL ADVANTAGE.",
     partnersDescription:
       "Our partnerships extend local expertise through a network of world-class professional organisations — so every report meets the rigour international clients require.",
+    partnerLogos: [
+      { name: "KPMG", imageUrl: "/logos/kpmg.png", className: "h-7 sm:h-8" },
+      { name: "Knight Frank" },
+      { name: "Kreston", imageUrl: "/logos/kreston.png", className: "h-7 sm:h-8" },
+      { name: "BDO", imageUrl: "/logos/bdo.png", className: "h-7 sm:h-8" },
+      { name: "Makeelu Chambers" },
+      { name: "Baker Tilly", imageUrl: "/logos/baker-tilly.png", className: "h-7 sm:h-8" },
+      { name: "Warren Vicks Management Consultancies LLC", imageUrl: "/logos/warren-vicks.png", className: "h-11 sm:h-12" },
+      { name: "Design Advocacy", imageUrl: "/logos/design-advocacy.png", className: "h-8 sm:h-9" },
+      { name: "Acquest", imageUrl: "/logos/acquest.png", className: "h-6 sm:h-7" },
+      { name: "NDB Investment Bank", imageUrl: "/logos/ndb.png", className: "h-7 sm:h-8" },
+      { name: "Coenergi", imageUrl: "/logos/coenergi.png", className: "h-10 sm:h-12" },
+      { name: "Sudath Perera Associates", imageUrl: "/logos/sudath-perera.png", className: "h-11 sm:h-12" },
+    ],
     teamDescription:
       "SFA EMPLOYS PROFESSIONALS WITH SPECIALIZED EXPERTISE IN VARIOUS REAL ESTATE SECTORS. BASED ON THE NATURE AND SCOPE OF EACH ASSIGNMENT, THE APPROPRIATE EXPERTS ARE INTEGRATED INTO THE LEADERSHIP TEAM.",
+    teamHeaderImageUrl:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600",
     contactTitle: "GET IN TOUCH",
     contactSubtitle: "READY TO START?",
     contactDescription:

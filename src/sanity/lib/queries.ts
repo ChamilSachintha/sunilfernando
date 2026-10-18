@@ -7,24 +7,43 @@ import {
 
 export const SITE_CONTENT_QUERY = groq`{
   "settings": *[_type == "siteSettings"][0]{
+    "logoUrl": logoImage.asset->url,
     heroTitleLine1,
     heroTitleLine2,
     heroSubtitle,
     heroTagline,
     heroDescription,
     "heroImages": heroSlides[].asset->url,
-    regionalOffices,
+    "regionalOffices": regionalOffices[]{
+      country,
+      "flagUrl": coalesce(flagImage.asset->url, flagUrl),
+      address,
+      phoneDisplay,
+      phoneHref
+    },
     stats,
     whatWeDoHeadingLine1,
     whatWeDoHeadingLine2,
     whatWeDoHeadingLine3,
     whatWeDoSubheading,
     whatWeDoRightLines,
+    "whatWeDoImageUrl": whatWeDoImage.asset->url,
     clientsDescription1,
     clientsDescription2,
+    "clientLogos": clientLogos[]{
+      name,
+      "imageUrl": coalesce(logo.asset->url, imageUrl),
+      className
+    },
     partnersSubtitle,
     partnersDescription,
+    "partnerLogos": partnerLogos[]{
+      name,
+      "imageUrl": coalesce(logo.asset->url, imageUrl),
+      className
+    },
     teamDescription,
+    "teamHeaderImageUrl": teamHeaderImage.asset->url,
     contactTitle,
     contactSubtitle,
     contactDescription
@@ -101,6 +120,7 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
 
     return {
       settings: {
+        logoUrl: s.logoUrl || DEFAULT_SITE_CONTENT.settings.logoUrl,
         heroTitleLine1: s.heroTitleLine1 || DEFAULT_SITE_CONTENT.settings.heroTitleLine1,
         heroTitleLine2: s.heroTitleLine2 || DEFAULT_SITE_CONTENT.settings.heroTitleLine2,
         heroSubtitle: s.heroSubtitle || DEFAULT_SITE_CONTENT.settings.heroSubtitle,
@@ -130,16 +150,28 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
           Array.isArray(s.whatWeDoRightLines) && s.whatWeDoRightLines.length > 0
             ? s.whatWeDoRightLines
             : DEFAULT_SITE_CONTENT.settings.whatWeDoRightLines,
+        whatWeDoImageUrl:
+          s.whatWeDoImageUrl || DEFAULT_SITE_CONTENT.settings.whatWeDoImageUrl,
         clientsDescription1:
           s.clientsDescription1 || DEFAULT_SITE_CONTENT.settings.clientsDescription1,
         clientsDescription2:
           s.clientsDescription2 || DEFAULT_SITE_CONTENT.settings.clientsDescription2,
+        clientLogos:
+          Array.isArray(s.clientLogos) && s.clientLogos.length > 0
+            ? s.clientLogos
+            : DEFAULT_SITE_CONTENT.settings.clientLogos,
         partnersSubtitle:
           s.partnersSubtitle || DEFAULT_SITE_CONTENT.settings.partnersSubtitle,
         partnersDescription:
           s.partnersDescription || DEFAULT_SITE_CONTENT.settings.partnersDescription,
+        partnerLogos:
+          Array.isArray(s.partnerLogos) && s.partnerLogos.length > 0
+            ? s.partnerLogos
+            : DEFAULT_SITE_CONTENT.settings.partnerLogos,
         teamDescription:
           s.teamDescription || DEFAULT_SITE_CONTENT.settings.teamDescription,
+        teamHeaderImageUrl:
+          s.teamHeaderImageUrl || DEFAULT_SITE_CONTENT.settings.teamHeaderImageUrl,
         contactTitle: s.contactTitle || DEFAULT_SITE_CONTENT.settings.contactTitle,
         contactSubtitle:
           s.contactSubtitle || DEFAULT_SITE_CONTENT.settings.contactSubtitle,

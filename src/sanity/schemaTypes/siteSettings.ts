@@ -5,12 +5,19 @@ export const siteSettingsType = defineType({
   title: "Site & Hero Settings",
   type: "document",
   groups: [
-    { name: "hero", title: "Hero & Offices", default: true },
+    { name: "hero", title: "Hero, Logo & Offices", default: true },
     { name: "stats", title: "Figures / Stats" },
     { name: "whatWeDo", title: "What We Do" },
     { name: "sections", title: "Clients, Partners, Team & Contact" },
   ],
   fields: [
+    defineField({
+      name: "logoImage",
+      title: "Navbar Brand Logo",
+      type: "image",
+      options: { hotspot: true },
+      group: "hero",
+    }),
     defineField({
       name: "heroTitleLine1",
       title: "Hero Title Line 1",
@@ -48,7 +55,7 @@ export const siteSettingsType = defineType({
     }),
     defineField({
       name: "heroSlides",
-      title: "Hero Carousel Images",
+      title: "Hero Carousel Images (4 Slides)",
       type: "array",
       group: "hero",
       of: [{ type: "image", options: { hotspot: true } }],
@@ -63,11 +70,24 @@ export const siteSettingsType = defineType({
           type: "object",
           fields: [
             defineField({ name: "country", title: "Country / City Heading", type: "string" }),
-            defineField({ name: "flagUrl", title: "Flag Image Path", type: "string" }),
+            defineField({
+              name: "flagImage",
+              title: "Flag Image (Upload)",
+              type: "image",
+              options: { hotspot: true },
+            }),
+            defineField({ name: "flagUrl", title: "Fallback Flag Path", type: "string" }),
             defineField({ name: "address", title: "Office Address", type: "string" }),
             defineField({ name: "phoneDisplay", title: "Phone Display Text", type: "string" }),
             defineField({ name: "phoneHref", title: "Phone Dial Number", type: "string" }),
           ],
+          preview: {
+            select: {
+              title: "country",
+              subtitle: "phoneDisplay",
+              media: "flagImage",
+            },
+          },
         },
       ],
     }),
@@ -135,6 +155,13 @@ export const siteSettingsType = defineType({
       of: [{ type: "string" }],
     }),
     defineField({
+      name: "whatWeDoImage",
+      title: "What We Do 3D 'A' Graphic Image",
+      type: "image",
+      options: { hotspot: true },
+      group: "whatWeDo",
+    }),
+    defineField({
       name: "clientsDescription1",
       title: "Our Clients - Paragraph 1",
       type: "text",
@@ -147,6 +174,34 @@ export const siteSettingsType = defineType({
       type: "text",
       rows: 3,
       group: "sections",
+    }),
+    defineField({
+      name: "clientLogos",
+      title: "Our Clients - Logos",
+      type: "array",
+      group: "sections",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({ name: "name", title: "Client Name", type: "string" }),
+            defineField({
+              name: "logo",
+              title: "Client Logo Image",
+              type: "image",
+              options: { hotspot: true },
+            }),
+            defineField({ name: "imageUrl", title: "Fallback Logo Path", type: "string" }),
+            defineField({ name: "className", title: "Height CSS Classes", type: "string" }),
+          ],
+          preview: {
+            select: {
+              title: "name",
+              media: "logo",
+            },
+          },
+        },
+      ],
     }),
     defineField({
       name: "partnersSubtitle",
@@ -162,10 +217,45 @@ export const siteSettingsType = defineType({
       group: "sections",
     }),
     defineField({
+      name: "partnerLogos",
+      title: "Our Partners - Logos",
+      type: "array",
+      group: "sections",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({ name: "name", title: "Partner Name", type: "string" }),
+            defineField({
+              name: "logo",
+              title: "Partner Logo Image",
+              type: "image",
+              options: { hotspot: true },
+            }),
+            defineField({ name: "imageUrl", title: "Fallback Logo Path", type: "string" }),
+            defineField({ name: "className", title: "Height CSS Classes", type: "string" }),
+          ],
+          preview: {
+            select: {
+              title: "name",
+              media: "logo",
+            },
+          },
+        },
+      ],
+    }),
+    defineField({
       name: "teamDescription",
       title: "Our Leadership Team - Description",
       type: "text",
       rows: 3,
+      group: "sections",
+    }),
+    defineField({
+      name: "teamHeaderImage",
+      title: "Our Leadership Team - Header Background Image",
+      type: "image",
+      options: { hotspot: true },
       group: "sections",
     }),
     defineField({
@@ -192,7 +282,7 @@ export const siteSettingsType = defineType({
     prepare() {
       return {
         title: "Site & Hero Settings",
-        subtitle: "Global website configuration, Hero, Figures & Section copy",
+        subtitle: "Global website configuration, Hero, Figures, Images & Section copy",
       };
     },
   },
