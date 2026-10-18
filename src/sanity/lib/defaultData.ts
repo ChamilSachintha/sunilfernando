@@ -1,0 +1,379 @@
+export interface RegionalOffice {
+  country: string;
+  flagUrl: string;
+  address: string;
+  phoneDisplay: string;
+  phoneHref: string;
+}
+
+export interface StatItem {
+  value: string;
+  subtitleLine1?: string;
+  subtitleLine2?: string;
+  accentColor?: "blue" | "navy";
+}
+
+export interface SiteSettingsData {
+  heroTitleLine1: string;
+  heroTitleLine2: string;
+  heroSubtitle: string;
+  heroTagline: string;
+  heroDescription: string;
+  heroImages: string[];
+  regionalOffices: RegionalOffice[];
+  stats: StatItem[];
+  whatWeDoHeadingLine1: string;
+  whatWeDoHeadingLine2: string;
+  whatWeDoHeadingLine3: string;
+  whatWeDoSubheading: string;
+  whatWeDoRightLines: string[];
+  clientsDescription1: string;
+  clientsDescription2: string;
+  partnersSubtitle: string;
+  partnersDescription: string;
+  teamDescription: string;
+  contactTitle: string;
+  contactSubtitle: string;
+  contactDescription: string;
+}
+
+export interface ReportItem {
+  _id: string;
+  title: string;
+  category?: string;
+  date?: string;
+  summary?: string;
+  isFeatured?: boolean;
+  fileUrl?: string;
+  order: number;
+}
+
+export interface CaseStudyItem {
+  _id: string;
+  categoryTag: string;
+  titleLines: string[];
+  description: string;
+  outcomeFootnote: string;
+  order: number;
+}
+
+export interface TeamMemberItem {
+  _id: string;
+  name: string;
+  designation: string;
+  credentials: string;
+  image: string;
+  order: number;
+}
+
+export interface ServiceContentData {
+  valuations: {
+    title: string;
+    paragraph1: string;
+    paragraph2: string;
+    ctaText: string;
+    categories: string[];
+  };
+  occupier: {
+    titleLine1: string;
+    titleLine2: string;
+    leadParagraph: string;
+    paragraphs: string[];
+    imageUrl: string;
+  };
+  capitalMarkets: {
+    titleLine1: string;
+    titleLine2: string;
+    leftSummary: string;
+    rightHeading1: string;
+    clientTypes: string[];
+    rightBody: string;
+    rightHeading2: string;
+    transactionLines: string[];
+  };
+  research: {
+    titleLine1: string;
+    titleLine2: string;
+    paragraph1: string;
+    paragraph2: string;
+    imageUrl: string;
+  };
+}
+
+export interface SanitySiteContent {
+  settings: SiteSettingsData;
+  services: ServiceContentData;
+  reports: ReportItem[];
+  caseStudies: CaseStudyItem[];
+  teamMembers: TeamMemberItem[];
+}
+
+export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
+  settings: {
+    heroTitleLine1: "TRUSTED",
+    heroTitleLine2: "VALUATIONS",
+    heroSubtitle: "INFORMED DECISIONS",
+    heroTagline: "SINCE 1999",
+    heroDescription:
+      "SUNIL FERNANDO & ASSOCIATES DELIVERS INTERNATIONALLY ACCEPTED VALUATION AND REAL ESTATE ADVISORY SERVICES ACROSS SRI LANKA AND THE MALDIVES, BACKED BY 25 YEARS OF EXPERTISE, RICS COMPLIANCE, AND A GLOBAL PARTNER NETWORK.",
+    heroImages: [
+      "/hero_colombo_1_1776105749164.png",
+      "/hero_colombo_2_1776105766810.png",
+      "/hero_colombo_3_1776105784592.png",
+      "/hero_colombo_4_1776105804029.png",
+      "/hero_colombo_5_1776105824056.png",
+    ],
+    regionalOffices: [
+      {
+        country: "DUBAI, UAE",
+        flagUrl: "/flag-ae.png",
+        address:
+          "Office #1029, Building B-2, Level 1, Dubai CommerCity, Umm Ramool, Dubai",
+        phoneDisplay: "+971 4 894 2444",
+        phoneHref: "+97148942444",
+      },
+      {
+        country: "MALDIVES",
+        flagUrl: "/flag-mv.png",
+        address:
+          "Sunil Fernando & Associates Maldives Pvt Ltd, Malé City, Republic of Maldives",
+        phoneDisplay: "+960 330 8829 / +94 11 2887829",
+        phoneHref: "+9603308829",
+      },
+      {
+        country: "SRI LANKA",
+        flagUrl: "/flag-lk.png",
+        address:
+          "No. 505, Nawala Road, Rajagiriya / Level 24, One Galle Face Tower, Colombo 02",
+        phoneDisplay: "+94 11 2887829",
+        phoneHref: "+94112887829",
+      },
+    ],
+    stats: [
+      {
+        value: "26+",
+        subtitleLine1: "Years of Advisory",
+        subtitleLine2: "Excellence",
+        accentColor: "blue",
+      },
+      {
+        value: "IVSL",
+        accentColor: "navy",
+      },
+      {
+        value: "RARE",
+        accentColor: "navy",
+      },
+      {
+        value: "RICS",
+        accentColor: "blue",
+      },
+    ],
+    whatWeDoHeadingLine1: "END-TO-END",
+    whatWeDoHeadingLine2: "REAL ESTATE",
+    whatWeDoHeadingLine3: "ADVISORY",
+    whatWeDoSubheading: "BUILT FOR INSTITUTIONS",
+    whatWeDoRightLines: [
+      "FROM COMPLEX PORTFOLIO",
+      "VALUATIONS TO STRATEGIC",
+      "OCCUPIER DECISIONS, EVERY",
+      "SERVICE AT SFA IS DELIVERED",
+      "TO INTERNATIONAL STANDARDS",
+      "ACCEPTED BY BANKS, AUDIT",
+      "FIRMS, AND LAW FIRMS ACROSS",
+      "THE GLOBE.",
+    ],
+    clientsDescription1:
+      "Our diverse client portfolio, spanning individuals to multinational corporations, is a testament to our success.",
+    clientsDescription2:
+      "Each year, we complete thousands of valuation assignments across various sectors. With tailored methodologies and deep expertise, we consistently meet client needs and deliver exceptional value.",
+    partnersSubtitle: "A GLOBAL NETWORK. • A LOCAL ADVANTAGE.",
+    partnersDescription:
+      "Our partnerships extend local expertise through a network of world-class professional organisations — so every report meets the rigour international clients require.",
+    teamDescription:
+      "SFA EMPLOYS PROFESSIONALS WITH SPECIALIZED EXPERTISE IN VARIOUS REAL ESTATE SECTORS. BASED ON THE NATURE AND SCOPE OF EACH ASSIGNMENT, THE APPROPRIATE EXPERTS ARE INTEGRATED INTO THE LEADERSHIP TEAM.",
+    contactTitle: "GET IN TOUCH",
+    contactSubtitle: "READY TO START?",
+    contactDescription:
+      "Whether for a financial transaction, an acquisition, IFRS reporting, or legal proceedings. Our valuation team is ready to help.",
+  },
+  services: {
+    valuations: {
+      title: "VALUATIONS",
+      paragraph1:
+        "Comprehensive valuation across commercial, residential, agricultural, leisure, industrial, retail, warehousing, plant & machinery, and vessels conducted in strict conformity with RICS and IVSL standards.",
+      paragraph2:
+        "We serve financial institutions, private equity funds, property companies, and individuals — delivering reports that stand up to international scrutiny.",
+      ctaText: "EXPLORE VALUATION SERVICES",
+      categories: [
+        "Commercial",
+        "Residential",
+        "Agriculture",
+        "Leisure",
+        "Retail",
+        "Industrial",
+        "Warehousing",
+        "Plant & Machinery",
+        "Vessels",
+      ],
+    },
+    occupier: {
+      titleLine1: "OCCUPIER",
+      titleLine2: "SERVICES",
+      leadParagraph:
+        "Strategic advisory for organisations leasing, expanding, or relocating space aligned with your operational and financial goals.",
+      paragraphs: [
+        "Whatever property you may need, our team will be able to provide you just the right assistance you need to move into optimum space.",
+        "Through a wide range of consultancy and transactional services, we are able to understand the critical success factors for our clients’ benefit.",
+        "Our dedicated team of experienced professionals with the right balance of local and international knowledge will match varying client requirements, leverage our relationship with occupiers and decision makers, empower clients to attain their desired goals by creating value, addressing trends and superseding the competition.",
+      ],
+      imageUrl:
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600",
+    },
+    capitalMarkets: {
+      titleLine1: "CAPITAL",
+      titleLine2: "MARKETS",
+      leftSummary:
+        "Expert support for property acquisitions, disposals, and investment transactions in evolving market.",
+      rightHeading1:
+        "WE FOCUS ON PROVIDING UNIQUE AND PERSONALIZED ADVICE TO",
+      clientTypes: [
+        "INSTITUTIONAL FUNDS",
+        "PRIVATE EQUITY",
+        "STATE & PUBLIC SECTOR ENTITIES",
+        "PROPERTY COMPANIES & DEVELOPERS",
+        "CORPORATES",
+        "FAMILY OFFICES",
+        "PRIVATE INDIVIDUALS",
+      ],
+      rightBody:
+        "We focus on providing unique and personalized advice, adding value through a combination of unparalleled access to capital, financing expertise, real estate market intelligence and thought leadership. Our services are solidified with real estate expertise together with innovative capital solutions.",
+      rightHeading2:
+        "OUR SERVICES EXTEND ACROSS A RANGE OF STRATEGIC TRANSACTIONS INCLUDING",
+      transactionLines: [
+        "• DEBT ADVISORY • CAPITAL RAISING • JOINT VENTURES",
+        "• M&A SOLUTIONS • SALES & LEASEBACKS • RESTRUCTURING",
+      ],
+    },
+    research: {
+      titleLine1: "RESEARCH",
+      titleLine2: "SERVICES",
+      paragraph1:
+        "We offer comprehensive local and regional market intelligence on real estate trends as well as tailored publications addressing the specific requirements of our clients.",
+      paragraph2:
+        "Our research team collaborates with all sectors of our organization, leveraging over 21 years of Sunil Fernando & Associates real estate intelligence.",
+      imageUrl:
+        "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600",
+    },
+  },
+  reports: [
+    {
+      _id: "report-1",
+      title: "SRI LANKA REAL ESTATE MARKET OUTLOOK 2026",
+      summary:
+        "AN INDEPENDENT ASSESSMENT OF SRI LANKA'S COMMERCIAL, RESIDENTIAL, AND LEISURE PROPERTY MARKETS — WITH A FOCUS ON COLOMBO, PORT CITY, AND THE RECOVERING TOURISM CORRIDOR.",
+      isFeatured: true,
+      order: 1,
+    },
+    {
+      _id: "report-2",
+      category: "MARKET COMMENTARY",
+      title:
+        "PORT CITY COLOMBO: WHAT THE FIRST WAVE OF COMPLETIONS MEANS FOR COMMERCIAL VALUES",
+      date: "APRIL 2026",
+      isFeatured: false,
+      order: 2,
+    },
+    {
+      _id: "report-3",
+      category: "MALDIVES",
+      title:
+        "RESORT ASSET VALUATIONS IN THE MALDIVES: KEY METHODOLOGIES AND LENDER REQUIREMENTS",
+      date: "MARCH 2026",
+      isFeatured: false,
+      order: 3,
+    },
+  ],
+  caseStudies: [
+    {
+      _id: "case-study-1",
+      categoryTag: "FINANCIAL INSTITUTION · PORTFOLIO VALUATION",
+      titleLines: ["LARGE-SCALE", "BANK COLLATERAL", "PORTFOLIO"],
+      description:
+        "A LEADING SRI LANKAN COMMERCIAL BANK REQUIRED INDEPENDENT RICS-COMPLIANT VALUATIONS ACROSS A MIXED COMMERCIAL AND RESIDENTIAL PORTFOLIO FOR INTERNAL RISK ASSESSMENT AND REGULATORY REPORTING.",
+      outcomeFootnote:
+        "47 ASSETS VALUED · 30-DAY DELIVERY · REPORTS ACCEPTED BY INTERNATIONAL AUDIT PARTNER",
+      order: 1,
+    },
+    {
+      _id: "case-study-2",
+      categoryTag: "HOSPITALITY · MALDIVES · CROSS-BORDER FINANCING",
+      titleLines: ["MALDIVES RESORT", "ISLAND REFINANCING"],
+      description:
+        "AN INTERNATIONAL HOSPITALITY GROUP SOUGHT INDEPENDENT VALUATION OF A MALDIVES RESORT FOR REFINANCING WITH A EUROPEAN LENDER REQUIRING RICS-COMPLIANT METHODOLOGY AND INTERNATIONAL HOTEL VALUATION STANDARDS.",
+      outcomeFootnote:
+        "RICS HOTEL VALUATION METHODOLOGY · ACCEPTED BY EUROPEAN FINANCIAL INSTITUTION",
+      order: 2,
+    },
+    {
+      _id: "case-study-3",
+      categoryTag: "AGRICULTURAL · ESTATE SETTLEMENT · LEGAL",
+      titleLines: ["HILL COUNTRY TEA", "ESTATE VALUATION"],
+      description:
+        "A FAMILY REQUIRED INDEPENDENT VALUATION OF A 250-ACRE TEA ESTATE IN SRI LANKA'S HILL COUNTRY FOR ESTATE SETTLEMENT AND INHERITANCE PROCEEDINGS, INCORPORATING LAND, CROP VALUE, AND INFRASTRUCTURE.",
+      outcomeFootnote:
+        "ACCEPTED IN FORMAL LEGAL PROCEEDINGS · EXPERT WITNESS SUPPORT PROVIDED",
+      order: 3,
+    },
+  ],
+  teamMembers: [
+    {
+      _id: "team-1",
+      name: "Sunil Fernando",
+      designation: "Founder/Chairman",
+      credentials: "FIV(SL), FRICS",
+      image: "/sunil-fernando.png",
+      order: 1,
+    },
+    {
+      _id: "team-2",
+      name: "Manju Fernando",
+      designation: "Group Managing Director",
+      credentials: "M.B.A.(Aus), MRICS",
+      image: "/manju-fernando.png",
+      order: 2,
+    },
+    {
+      _id: "team-3",
+      name: "Dilshan Perera",
+      designation: "Director Valuation & Advisory",
+      credentials: "M.B.A.(Aus)",
+      image: "/dilshan-perera.png",
+      order: 3,
+    },
+    {
+      _id: "team-4",
+      name: "Vicks Vickneswaran",
+      designation: "Director UAE",
+      credentials: "M.B.A.(UK), MRICS, FCMA, FCCA, FCIM",
+      image: "/vicks-vickneswaran.png",
+      order: 4,
+    },
+    {
+      _id: "team-5",
+      name: "Nalin Seneviratne",
+      designation: "Director / Advisor",
+      credentials: "BSc.LM, FRICS",
+      image: "/nalin-seneviratne.png",
+      order: 5,
+    },
+    {
+      _id: "team-6",
+      name: "Mohamed Hilmy",
+      designation: "Director - Maldives",
+      credentials: "L.B.M.(Mal), A.I.V",
+      image: "/avatar-placeholder.svg",
+      order: 6,
+    },
+  ],
+};
