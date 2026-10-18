@@ -140,7 +140,7 @@ export const RequestValuationModal: React.FC<ModalProps> = ({ isOpen, onClose })
                   <CheckCircle2 className="w-16 h-16 text-sfa-cyan mb-4 animate-bounce" />
                   <h4 className="text-2xl font-bold text-sfa-navy">Submission Received!</h4>
                   <p className="text-sfa-grey max-w-sm mt-2 text-sm leading-relaxed">
-                    Thank you. A Sunil Fernando & Associates representative will contact you shortly to discuss your valuation requirements.
+                    Thank you. Your message has been sent. One of our valuation consultant will contact you soon.
                   </p>
                   <button
                     onClick={handleClose}
@@ -366,7 +366,7 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                   <CheckCircle2 className="w-16 h-16 text-sfa-blue mb-4 animate-bounce" />
                   <h4 className="text-2xl font-bold text-sfa-navy">Message Sent!</h4>
                   <p className="text-sfa-grey max-w-sm mt-2 text-sm leading-relaxed">
-                    Thank you. Your message has been sent. Our team will get back to you as soon as possible.
+                    Thank you. Your message has been sent. One of our valuation consultant will contact you soon.
                   </p>
                   <button
                     onClick={handleClose}
