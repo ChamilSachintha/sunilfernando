@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { KnightFrankLogo, MakeeluChambersLogo } from "@/components/Logos";
 import { RequestValuationModal, ContactModal } from "@/components/Forms";
 import { DEFAULT_SITE_CONTENT, type SanitySiteContent } from "@/sanity/lib/defaultData";
@@ -283,7 +283,7 @@ export default function HomeClient({
               initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-5 sm:mt-6 flex flex-col items-end gap-3"
+              className="mt-5 sm:mt-6 flex justify-end gap-4"
             >
               <button
                 onClick={() => setValuationOpen(true)}
@@ -291,49 +291,6 @@ export default function HomeClient({
               >
                 Request a Valuation
               </button>
-
-              {/* Hero Carousel Navigation & Indicator Controls */}
-              {heroSlides.length > 1 && (
-                <div className="flex items-center gap-2 pt-1">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setHeroIndex(
-                        (prev) => (prev - 1 + heroSlides.length) % heroSlides.length
-                      )
-                    }
-                    aria-label="Previous hero background"
-                    className="cursor-pointer p-1 rounded-full text-white/60 hover:text-white hover:bg-white/10 transition"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                  </button>
-                  <div className="flex items-center gap-1.5">
-                    {heroSlides.map((_, dotIdx) => (
-                      <button
-                        key={dotIdx}
-                        type="button"
-                        onClick={() => setHeroIndex(dotIdx)}
-                        aria-label={`Switch to hero background slide ${dotIdx + 1}`}
-                        className={`cursor-pointer transition-all duration-300 rounded-full ${
-                          dotIdx === heroIndex
-                            ? "w-7 h-1.5 bg-[#00bdf1]"
-                            : "w-2 h-1.5 bg-white/40 hover:bg-white/70"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setHeroIndex((prev) => (prev + 1) % heroSlides.length)
-                    }
-                    aria-label="Next hero background"
-                    className="cursor-pointer p-1 rounded-full text-white/60 hover:text-white hover:bg-white/10 transition"
-                  >
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
-              )}
             </motion.div>
           </div>
         </div>
