@@ -24,11 +24,20 @@ const valuationSchema = zod.object({
 });
 
 const contactSchema = zod.object({
-  name: zod.string().min(2, "Name must be at least 2 characters"),
-  email: zod.string().email("Invalid email address"),
-  phone: zod.string().min(8, "Phone number must be at least 8 digits"),
-  subject: zod.string().min(4, "Subject must be at least 4 characters"),
-  message: zod.string().min(10, "Message must be at least 10 characters"),
+  name: zod.string().optional(),
+  email: zod
+    .string()
+    .min(1, "Email address is required")
+    .email("Please enter a valid email address"),
+  phone: zod
+    .string()
+    .min(1, "Phone number is required")
+    .refine((val) => {
+      const digits = val.replace(/\D/g, "");
+      return digits.length >= 7 && digits.length <= 15;
+    }, "Please enter a valid phone number (at least 7 digits)"),
+  subject: zod.string().optional(),
+  message: zod.string().optional(),
 });
 
 type ValuationInput = zod.infer<typeof valuationSchema>;
@@ -306,14 +315,14 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         serviceId,
         templateId,
         {
-          name: data.name,
-          from_name: data.name,
+          name: data.name?.trim() || "Website Visitor",
+          from_name: data.name?.trim() || "Website Visitor",
           email: data.email,
           from_email: data.email,
           phone: data.phone,
           phone_number: data.phone,
-          subject: data.subject,
-          message: data.message,
+          subject: data.subject?.trim() || "Call Back Request",
+          message: data.message?.trim() || "(No message provided)",
           form_type: "Call Back Request / General Contact",
           time: new Date().toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" }),
         },
@@ -384,12 +393,13 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                       className="w-full px-3 py-2 border border-sfa-grey/30 text-sm focus:outline-none focus:border-sfa-cyan text-sfa-navy"
                       placeholder="Jane Doe"
                     />
-                    {errors.name && <p className="text-red-500 text-[10px] mt-1 font-semibold">{errors.name.message}</p>}
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-sfa-navy mb-1">Email Address</label>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-sfa-navy mb-1">
+                        Email Address <span className="text-red-500">*</span>
+                      </label>
                       <input
                         {...register("email")}
                         type="email"
@@ -399,7 +409,9 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                       {errors.email && <p className="text-red-500 text-[10px] mt-1 font-semibold">{errors.email.message}</p>}
                     </div>
                     <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-sfa-navy mb-1">Phone Number</label>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-sfa-navy mb-1">
+                        Phone Number <span className="text-red-500">*</span>
+                      </label>
                       <input
                         {...register("phone")}
                         className="w-full px-3 py-2 border border-sfa-grey/30 text-sm focus:outline-none focus:border-sfa-cyan text-sfa-navy"
@@ -416,7 +428,6 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                       className="w-full px-3 py-2 border border-sfa-grey/30 text-sm focus:outline-none focus:border-sfa-cyan text-sfa-navy"
                       placeholder="General Inquiry / Partner Proposal"
                     />
-                    {errors.subject && <p className="text-red-500 text-[10px] mt-1 font-semibold">{errors.subject.message}</p>}
                   </div>
 
                   <div>
@@ -427,7 +438,6 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                       className="w-full px-3 py-2 border border-sfa-grey/30 text-sm focus:outline-none focus:border-sfa-cyan text-sfa-navy"
                       placeholder="How can we help you?"
                     />
-                    {errors.message && <p className="text-red-500 text-[10px] mt-1 font-semibold">{errors.message.message}</p>}
                   </div>
 
                   {errorMessage && (
