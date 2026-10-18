@@ -1207,56 +1207,100 @@ export default function HomeClient({
           </defs>
         </svg>
 
-        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 sm:w-[82.8%] md:w-[87.8%] lg:w-[93.5%] gap-y-4 sm:gap-y-0 gap-x-0">
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex justify-center overflow-visible">
+          {/* Mobile View: Clean centered vertical stack */}
+          <div className="sm:hidden w-full max-w-[280px] mx-auto flex flex-col gap-4">
             {cms.teamMembers.map((director, idx) => (
               <div
                 key={director._id || idx}
-                className="relative h-[280px] sm:h-[290px] xl:h-[310px] w-full overflow-visible"
+                className="relative h-[280px] w-full overflow-hidden rounded-lg shadow-md bg-gradient-to-br from-[#b8c7d4] via-[#4e7088] to-[#163a54]"
               >
-                {/* Solid White Curved-Top Diagonal Divider Ribbon (Left Side) */}
-                <div
-                  className="hidden sm:block absolute inset-y-0 left-0 w-[135%] bg-white pointer-events-none z-30 [clip-path:url(#team-ribbon-clip)]"
-                />
-
-                {/* Solid White Curved-Top Diagonal Divider Ribbon (Right Side of Last Card) */}
-                {idx === cms.teamMembers.length - 1 && (
-                  <div
-                    className="hidden sm:block absolute inset-y-0 left-full w-[135%] bg-white pointer-events-none z-30 [clip-path:url(#team-ribbon-clip)]"
+                <div className="absolute top-0 bottom-[24%] left-0 right-0">
+                  <Image
+                    src={director.image}
+                    alt={director.name}
+                    fill
+                    className="object-cover object-top"
                   />
-                )}
-
-                {/* Curved-Top Parallelogram Card Bay (extends 135% width to interlock with next card's diagonal) */}
-                <div
-                  className="relative sm:absolute sm:inset-y-0 sm:left-0 w-full sm:w-[135%] h-full bg-gradient-to-br from-[#b8c7d4] via-[#4e7088] to-[#163a54] z-10 [clip-path:none] sm:[clip-path:url(#team-bay-clip)]"
-                >
-                  {/* Portrait Photo in Upper 78% of Bay */}
-                  <div className="absolute top-0 bottom-[22%] left-0 sm:left-[4.8%] w-full sm:w-[95.2%]">
-                    <Image
-                      src={director.image}
-                      alt={director.name}
-                      fill
-                      className="object-cover object-top"
-                    />
-                  </div>
-
-                  {/* Parallelogram Bottom Text Banner (Clipped automatically on left & right by #team-bay-clip) */}
-                  <div className="absolute bottom-0 left-0 right-0 h-[22%] bg-[#123c56] z-20 flex items-center">
-                    <div className="flex flex-col items-center justify-center text-center px-1.5 w-full sm:ml-[7.5%] sm:w-[69%]">
-                      <h3 className="text-white font-avenir font-medium text-xs xl:text-[13px] tracking-normal leading-tight">
-                        {director.name}
-                      </h3>
-                      <p className="text-white/80 font-avenir font-normal text-[7.5px] xl:text-[8px] uppercase tracking-wider mt-0.5 leading-tight">
-                        {director.credentials}
-                      </p>
-                      <p className="text-[#00aeef] font-avenir font-medium text-[9.5px] xl:text-[10.5px] tracking-normal mt-0.5 leading-tight">
-                        {director.designation}
-                      </p>
-                    </div>
-                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-[24%] bg-[#123c56] flex flex-col items-center justify-center text-center px-2">
+                  <h3 className="text-white font-avenir font-medium text-xs tracking-normal leading-tight">
+                    {director.name}
+                  </h3>
+                  <p className="text-white/80 font-avenir font-normal text-[8px] uppercase tracking-wider mt-0.5 leading-tight">
+                    {director.credentials}
+                  </p>
+                  <p className="text-[#00aeef] font-avenir font-medium text-[10px] tracking-normal mt-0.5 leading-tight">
+                    {director.designation}
+                  </p>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Tablet & Desktop View: Seamless interlocking parallelogram ribbon, dynamically centered for any card count */}
+          <div
+            className="hidden sm:flex justify-start mx-auto overflow-visible"
+            style={{
+              width: `min(100%, calc((${Math.max(1, cms.teamMembers.length)} + 0.35) * 215px))`,
+            }}
+          >
+            <div
+              className="w-full grid gap-0 overflow-visible"
+              style={{
+                width: `calc(100% * ${Math.max(1, cms.teamMembers.length)} / (${Math.max(1, cms.teamMembers.length)} + 0.35))`,
+                gridTemplateColumns: `repeat(${Math.max(1, cms.teamMembers.length)}, minmax(0, 1fr))`,
+              }}
+            >
+              {cms.teamMembers.map((director, idx) => (
+                <div
+                  key={director._id || idx}
+                  className="relative h-[290px] xl:h-[310px] w-full overflow-visible"
+                >
+                  {/* Solid White Curved-Top Diagonal Divider Ribbon (Left Side) */}
+                  <div
+                    className="absolute inset-y-0 left-0 w-[135%] bg-white pointer-events-none z-30 [clip-path:url(#team-ribbon-clip)]"
+                  />
+
+                  {/* Solid White Curved-Top Diagonal Divider Ribbon (Right Side of Last Card) */}
+                  {idx === cms.teamMembers.length - 1 && (
+                    <div
+                      className="absolute inset-y-0 left-full w-[135%] bg-white pointer-events-none z-30 [clip-path:url(#team-ribbon-clip)]"
+                    />
+                  )}
+
+                  {/* Curved-Top Parallelogram Card Bay (extends 135% width to interlock with next card's diagonal) */}
+                  <div
+                    className="absolute inset-y-0 left-0 w-[135%] h-full bg-gradient-to-br from-[#b8c7d4] via-[#4e7088] to-[#163a54] z-10 [clip-path:url(#team-bay-clip)]"
+                  >
+                    {/* Portrait Photo in Upper 78% of Bay */}
+                    <div className="absolute top-0 bottom-[22%] left-[4.8%] w-[95.2%]">
+                      <Image
+                        src={director.image}
+                        alt={director.name}
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+
+                    {/* Parallelogram Bottom Text Banner */}
+                    <div className="absolute bottom-0 left-0 right-0 h-[22%] bg-[#123c56] z-20 flex items-center">
+                      <div className="flex flex-col items-center justify-center text-center px-1.5 w-full ml-[7.5%] w-[69%]">
+                        <h3 className="text-white font-avenir font-medium text-xs xl:text-[13px] tracking-normal leading-tight">
+                          {director.name}
+                        </h3>
+                        <p className="text-white/80 font-avenir font-normal text-[7.5px] xl:text-[8px] uppercase tracking-wider mt-0.5 leading-tight">
+                          {director.credentials}
+                        </p>
+                        <p className="text-[#00aeef] font-avenir font-medium text-[9.5px] xl:text-[10.5px] tracking-normal mt-0.5 leading-tight">
+                          {director.designation}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
