@@ -2,6 +2,10 @@ import { NextResponse } from "next/server";
 import { getSanityWriteClient } from "@/sanity/lib/client";
 import { DEFAULT_SITE_CONTENT } from "@/sanity/lib/defaultData";
 
+export async function GET() {
+  return POST();
+}
+
 export async function POST() {
   const client = getSanityWriteClient();
 
