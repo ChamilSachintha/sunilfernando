@@ -1257,9 +1257,21 @@ export default function Home() {
       </section>
 
       {/* 12. Leadership Team Profiles (Page 15) */}
-      <section className="relative overflow-hidden bg-gradient-to-t from-[#194866] to-[#e2e8f0] py-6">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-0 border-t lg:border-t-0 border-sfa-grey/10">
+      <section className="relative overflow-hidden bg-white pb-2">
+        {/* Shared SVG ClipPath Definition for the Curved-Top Parallelogram Bays */}
+        <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
+          <defs>
+            <clipPath id="team-bay-clip" clipPathUnits="objectBoundingBox">
+              <path d="M 0.305,0 C 0.252,0.02 0.222,0.09 0.202,0.22 L 0.048,1 L 0.741,1 L 0.895,0.22 C 0.915,0.09 0.945,0.02 0.998,0 Z" />
+            </clipPath>
+            <clipPath id="team-left-wedge-clip" clipPathUnits="objectBoundingBox">
+              <path d="M 0,0 L 0.257,0 C 0.204,0.02 0.174,0.09 0.154,0.22 L 0,1 Z" />
+            </clipPath>
+          </defs>
+        </svg>
+
+        <div className="w-full overflow-hidden">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-4 sm:gap-y-0 gap-x-0">
             {[
               {
                 name: "Sunil Fernando",
@@ -1300,42 +1312,55 @@ export default function Home() {
             ].map((director, idx) => (
               <div
                 key={idx}
-                className="relative group overflow-hidden h-[360px] w-full bg-transparent"
+                className="relative h-[360px] xl:h-[380px] w-full overflow-visible"
               >
-                {/* SVG Divider & Clip Definition */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none select-none z-20 hidden lg:block" viewBox="0 0 200 400" preserveAspectRatio="none">
-                  <defs>
-                    <clipPath id={`team-clip-${idx}`} clipPathUnits="objectBoundingBox">
-                      <path d="M 0.3,-0.05 C 0.2,-0.05 0.1,0.075 0.075,0.2 L -0.125,1.05 L 1.25,1.05 L 1.25,-0.05 Z" />
-                    </clipPath>
-                  </defs>
-                  {/* White Curved Divider Stroke */}
-                  <path d="M 60,-20 C 40,-20 20,30 15,80 L -25,420" fill="none" stroke="#ffffff" strokeWidth="8" />
-                </svg>
-
-                {/* Clipped Photo */}
-                <div 
-                  className={`absolute inset-0 w-full h-full [clip-path:none] lg:[clip-path:url(#team-clip-${idx})]`}
-                >
-                  <Image
-                    src={director.image}
-                    alt={director.name}
-                    fill
-                    className="object-cover object-center"
+                {/* Far-left corner gradient wedge (left of the first white diagonal ribbon) */}
+                {idx === 0 && (
+                  <div
+                    className="hidden sm:block absolute inset-y-0 left-0 w-[135%] bg-gradient-to-b from-[#f1f5f9] via-[#8fa3b5] to-[#1e435e] pointer-events-none z-10 [clip-path:url(#team-left-wedge-clip)]"
                   />
-                </div>
+                )}
 
-                {/* Bottom Text Banner */}
-                <div className="absolute bottom-0 left-0 right-0 bg-[#0c2340]/90 text-center py-4 px-2 z-30 min-h-[90px] flex flex-col justify-center">
-                  <h3 className="text-white font-montserrat font-bold text-xs sm:text-[13px] tracking-wide uppercase leading-tight">
-                    {director.name}
-                  </h3>
-                  <p className="text-[#00bdf1] font-avenir font-black text-[9px] uppercase tracking-wider mt-1">
-                    {director.credentials}
-                  </p>
-                  <p className="text-white/80 font-avenir font-medium text-[9px] sm:text-[10px] uppercase tracking-wide mt-0.5 leading-tight">
-                    {director.designation}
-                  </p>
+                {/* Curved-Top Parallelogram Card Bay (extends 135% width to interlock with next card's diagonal) */}
+                <div
+                  className="relative sm:absolute sm:inset-y-0 sm:left-0 w-full sm:w-[135%] h-full bg-gradient-to-br from-[#b8c7d4] via-[#4e7088] to-[#163a54] [clip-path:none] sm:[clip-path:url(#team-bay-clip)]"
+                >
+                  {/* Portrait Photo in Upper 78% of Bay */}
+                  <div
+                    className={`absolute top-0 bottom-[22%] ${
+                      idx === 5
+                        ? "left-0 sm:left-[4.8%] w-full sm:w-[76%]"
+                        : "left-0 sm:left-[4.8%] w-full sm:w-[95.2%]"
+                    }`}
+                  >
+                    <Image
+                      src={director.image}
+                      alt={director.name}
+                      fill
+                      className="object-cover object-top"
+                    />
+                  </div>
+
+                  {/* Parallelogram Bottom Text Banner (Clipped automatically on left & right by #team-bay-clip) */}
+                  <div className="absolute bottom-0 left-0 right-0 h-[22%] bg-[#123c56] z-20 flex items-center">
+                    <div
+                      className={`flex flex-col items-center justify-center text-center px-2 ${
+                        idx === 5
+                          ? "w-full sm:ml-[7.5%] sm:w-[66.5%]"
+                          : "w-full sm:ml-[7.5%] sm:w-[69%]"
+                      }`}
+                    >
+                      <h3 className="text-white font-avenir font-medium text-sm xl:text-[15px] tracking-normal leading-tight">
+                        {director.name}
+                      </h3>
+                      <p className="text-white/80 font-avenir font-normal text-[8px] xl:text-[9px] uppercase tracking-wider mt-0.5 leading-tight">
+                        {director.credentials}
+                      </p>
+                      <p className="text-[#00aeef] font-avenir font-medium text-[11px] xl:text-xs tracking-normal mt-0.5 leading-tight">
+                        {director.designation}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
