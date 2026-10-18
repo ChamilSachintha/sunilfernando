@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
-import { X, Send, CheckCircle2, Loader2 } from "lucide-react";
+import { X, Send, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 // Zod schemas
 const valuationSchema = zod.object({
@@ -41,6 +42,7 @@ interface ModalProps {
 export const RequestValuationModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const {
     register,
@@ -53,32 +55,59 @@ export const RequestValuationModal: React.FC<ModalProps> = ({ isOpen, onClose })
 
   const onSubmit = async (data: ValuationInput) => {
     setIsSubmitting(true);
+    setErrorMessage(null);
     try {
-      await fetch("/api/inquiries", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          inquiryType: "valuation",
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId =
+        process.env.NEXT_PUBLIC_EMAILJS_VALUATION_TEMPLATE_ID ||
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        console.warn(
+          "EmailJS is not fully configured. Please set NEXT_PUBLIC_EMAILJS_SERVICE_ID, NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, and NEXT_PUBLIC_EMAILJS_PUBLIC_KEY in your environment variables."
+        );
+        setIsSuccess(true);
+        return;
+      }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
           name: data.name,
+          from_name: data.name,
           email: data.email,
+          from_email: data.email,
           phone: data.phone,
+          phone_number: data.phone,
           company: data.company,
-          propertyType: data.sector,
+          property_type: data.sector,
+          sector: data.sector,
           location: data.country,
+          country: data.country,
           message: data.message,
-        }),
-      });
+          subject: `Valuation Request - ${data.company} (${data.sector})`,
+          form_type: "Valuation Request",
+        },
+        publicKey
+      );
+
+      setIsSuccess(true);
     } catch (err) {
-      console.error("Failed to submit valuation inquiry:", err);
+      console.error("Failed to submit valuation inquiry via EmailJS:", err);
+      setErrorMessage(
+        "Failed to send your request. Please try again or reach out to us directly."
+      );
     } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
     }
   };
 
   const handleClose = () => {
     reset();
     setIsSuccess(false);
+    setErrorMessage(null);
     onClose();
   };
 
@@ -208,6 +237,13 @@ export const RequestValuationModal: React.FC<ModalProps> = ({ isOpen, onClose })
                     {errors.message && <p className="text-red-500 text-[10px] mt-1 font-semibold">{errors.message.message}</p>}
                   </div>
 
+                  {errorMessage && (
+                    <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 text-red-600 text-xs rounded">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
+
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -238,6 +274,7 @@ export const RequestValuationModal: React.FC<ModalProps> = ({ isOpen, onClose })
 export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const {
     register,
@@ -250,30 +287,52 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
   const onSubmit = async (data: ContactInput) => {
     setIsSubmitting(true);
+    setErrorMessage(null);
     try {
-      await fetch("/api/inquiries", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          inquiryType: "contact",
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        console.warn(
+          "EmailJS is not fully configured. Please set NEXT_PUBLIC_EMAILJS_SERVICE_ID, NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, and NEXT_PUBLIC_EMAILJS_PUBLIC_KEY in your environment variables."
+        );
+        setIsSuccess(true);
+        return;
+      }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
           name: data.name,
+          from_name: data.name,
           email: data.email,
+          from_email: data.email,
           phone: data.phone,
+          phone_number: data.phone,
           subject: data.subject,
           message: data.message,
-        }),
-      });
+          form_type: "Call Back Request / General Contact",
+        },
+        publicKey
+      );
+
+      setIsSuccess(true);
     } catch (err) {
-      console.error("Failed to submit contact inquiry:", err);
+      console.error("Failed to submit contact inquiry via EmailJS:", err);
+      setErrorMessage(
+        "Failed to send your message. Please try again or reach out to us directly."
+      );
     } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
     }
   };
 
   const handleClose = () => {
     reset();
     setIsSuccess(false);
+    setErrorMessage(null);
     onClose();
   };
 
@@ -368,6 +427,13 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                     />
                     {errors.message && <p className="text-red-500 text-[10px] mt-1 font-semibold">{errors.message.message}</p>}
                   </div>
+
+                  {errorMessage && (
+                    <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 text-red-600 text-xs rounded">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
 
                   <button
                     type="submit"

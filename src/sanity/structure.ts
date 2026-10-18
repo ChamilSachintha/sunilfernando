@@ -26,6 +26,4 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem("report").title("3. Newsroom Reports & Commentary"),
       S.documentTypeListItem("caseStudy").title("4. Case Studies"),
       S.documentTypeListItem("teamMember").title("5. Leadership Team Profiles"),
-      S.divider(),
-      S.documentTypeListItem("inquiry").title("6. Form Inquiries (Valuation & Contact)"),
     ]);
