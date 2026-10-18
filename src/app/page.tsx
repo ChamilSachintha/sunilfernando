@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { SfaLogo, HsbcLogo, StandardCharteredLogo, DeloitteLogo, CbiLogo, CinnamonLogo, LoadstarLogo, ShangriLaLogo, HiltonLogo, KpmgLogo, KnightFrankLogo, KrestonLogo, BdoLogo, MakeeluChambersLogo, BakerTillyLogo, WarrenVicksLogo, DesignAdvocacyLogo, AcquestLogo, NdbLogo, CoenergiLogo, SudathPereraLogo } from "@/components/Logos";
 import { RequestValuationModal, ContactModal } from "@/components/Forms";
 import { DEFAULT_SITE_CONTENT, type SanitySiteContent } from "@/sanity/lib/defaultData";
+import { getSiteContent } from "@/sanity/lib/queries";
 import { isSanityConfigured } from "@/sanity/env";
 
 export default function Home() {
@@ -15,16 +16,30 @@ export default function Home() {
 
   useEffect(() => {
     if (!isSanityConfigured) return;
-    fetch("/api/site-content")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data: SanitySiteContent | null) => {
-        if (data && data.settings) {
-          setCms(data);
-        }
-      })
-      .catch(() => {
-        // Fallback to DEFAULT_SITE_CONTENT silently
-      });
+
+    const loadCmsContent = () => {
+      getSiteContent()
+        .then((data) => {
+          if (data && data.settings) {
+            setCms(data);
+          }
+        })
+        .catch(() => {
+          // Fallback to /api/site-content if direct browser query is blocked by CORS
+          fetch("/api/site-content", { cache: "no-store" })
+            .then((res) => (res.ok ? res.json() : null))
+            .then((data: SanitySiteContent | null) => {
+              if (data && data.settings) {
+                setCms(data);
+              }
+            })
+            .catch(() => {});
+        });
+    };
+
+    loadCmsContent();
+    window.addEventListener("focus", loadCmsContent);
+    return () => window.removeEventListener("focus", loadCmsContent);
   }, []);
 
   // Navigation & Menu State
@@ -33,24 +48,13 @@ export default function Home() {
 
   // Carousel State
   const [heroIndex, setHeroIndex] = useState(0);
-  const heroSlides = [
-    {
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600",
-      alt: "Corporate modern glass building",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1600",
-      alt: "Modern facade architecture with orange lighting grid",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1600",
-      alt: "White modern geometric structure angles",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1485081669829-bacb8c7bb1f3?q=80&w=1600",
-      alt: "Curved metal abstract architecture details",
-    },
-  ];
+  const heroSlides = (cms.settings.heroImages?.length
+    ? cms.settings.heroImages
+    : DEFAULT_SITE_CONTENT.settings.heroImages
+  ).map((image, idx) => ({
+    image,
+    alt: `Sunil Fernando & Associates hero architecture slide ${idx + 1}`,
+  }));
 
   // Forms / Modals state
   const [valuationOpen, setValuationOpen] = useState(false);
@@ -283,80 +287,31 @@ export default function Home() {
         {/* Regional Offices Row: Dubai, Maldives, and Sri Lanka (Semi-transparent dark tint over hero background) */}
         <div className="relative z-20 w-full bg-[#0c2340]/55 text-white py-4 sm:py-6">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 lg:gap-24 xl:gap-36 text-center md:text-left">
-            {/* Dubai */}
-            <div className="flex flex-col justify-start max-w-[260px] mx-auto md:mx-0">
-              <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
-                <Image
-                  src="/flag-ae.png"
-                  alt="UAE Flag"
-                  width={28}
-                  height={18}
-                  className="w-6 sm:w-7 h-auto rounded-[2px] shadow-sm object-cover shrink-0"
-                />
-                <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white drop-shadow-sm">
-                  DUBAI, UAE
-                </h3>
+            {cms.settings.regionalOffices.map((office, idx) => (
+              <div key={idx} className="flex flex-col justify-start max-w-[260px] mx-auto md:mx-0">
+                <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
+                  <Image
+                    src={office.flagUrl || "/flag-lk.png"}
+                    alt={`${office.country} Flag`}
+                    width={28}
+                    height={18}
+                    className="w-6 sm:w-7 h-auto rounded-[2px] shadow-sm object-cover shrink-0"
+                  />
+                  <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white drop-shadow-sm">
+                    {office.country}
+                  </h3>
+                </div>
+                <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/85 leading-relaxed drop-shadow-sm">
+                  {office.address}
+                </p>
+                <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
+                  <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold drop-shadow-sm">Tel:</span>
+                  <a href={`tel:${office.phoneHref}`} className="cursor-pointer text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
+                    {office.phoneDisplay}
+                  </a>
+                </div>
               </div>
-              <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/85 leading-relaxed drop-shadow-sm">
-                Office #1029, Building B-2, Level 1, Dubai CommerCity, Umm Ramool, Dubai
-              </p>
-              <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
-                <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold drop-shadow-sm">Tel:</span>
-                <a href="tel:+97148942444" className="cursor-pointer text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
-                  +971 4 894 2444
-                </a>
-              </div>
-            </div>
-
-            {/* Maldives */}
-            <div className="flex flex-col justify-start max-w-[260px] mx-auto md:mx-0">
-              <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
-                <Image
-                  src="/flag-mv.png"
-                  alt="Maldives Flag"
-                  width={28}
-                  height={18}
-                  className="w-6 sm:w-7 h-auto rounded-[2px] shadow-sm object-cover shrink-0"
-                />
-                <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white drop-shadow-sm">
-                  MALDIVES
-                </h3>
-              </div>
-              <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/85 leading-relaxed drop-shadow-sm">
-                Sunil Fernando &amp; Associates Maldives Pvt Ltd, Malé City, Republic of Maldives
-              </p>
-              <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
-                <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold drop-shadow-sm">Tel:</span>
-                <a href="tel:+9603308829" className="cursor-pointer text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
-                  +960 330 8829 / +94 11 2887829
-                </a>
-              </div>
-            </div>
-
-            {/* Sri Lanka */}
-            <div className="flex flex-col justify-start max-w-[260px] mx-auto md:mx-0">
-              <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
-                <Image
-                  src="/flag-lk.png"
-                  alt="Sri Lanka Flag"
-                  width={28}
-                  height={18}
-                  className="w-6 sm:w-7 h-auto rounded-[2px] shadow-sm object-cover shrink-0"
-                />
-                <h3 className="text-sm sm:text-base font-montserrat font-bold tracking-widest uppercase text-white drop-shadow-sm">
-                  SRI LANKA
-                </h3>
-              </div>
-              <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/85 leading-relaxed drop-shadow-sm">
-                No. 505, Nawala Road, Rajagiriya / Level 24, One Galle Face Tower, Colombo 02
-              </p>
-              <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
-                <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold drop-shadow-sm">Tel:</span>
-                <a href="tel:+94112887829" className="cursor-pointer text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
-                  +94 11 2887829
-                </a>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -385,27 +340,38 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Top Left */}
-            <div className="text-center md:text-right flex flex-col md:items-end justify-center z-10 md:pr-24 lg:pr-28">
-              <span className="text-5xl sm:text-7xl font-montserrat font-black tracking-tight text-sfa-blue">26+</span>
-              <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">Years of Advisory</span>
-              <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">Excellence</span>
-            </div>
-
-            {/* Top Right */}
-            <div className="text-center md:text-left flex flex-col md:items-start justify-center z-10 md:pl-24 lg:pl-28">
-              <span className="text-5xl sm:text-7xl font-montserrat font-black tracking-tight text-sfa-navy">IVSL</span>
-            </div>
-
-            {/* Bottom Left */}
-            <div className="text-center md:text-right flex flex-col md:items-end justify-center z-10 md:pr-24 lg:pr-28">
-              <span className="text-5xl sm:text-7xl font-montserrat font-black tracking-tight text-sfa-navy">RARE</span>
-            </div>
-
-            {/* Bottom Right */}
-            <div className="text-center md:text-left flex flex-col md:items-start justify-center z-10 md:pl-24 lg:pl-28">
-              <span className="text-5xl sm:text-7xl font-montserrat font-black tracking-tight text-sfa-blue">RICS</span>
-            </div>
+            {cms.settings.stats.map((stat, idx) => {
+              const isLeft = idx % 2 === 0;
+              const isBlue = stat.accentColor === "blue";
+              return (
+                <div
+                  key={idx}
+                  className={
+                    isLeft
+                      ? "text-center md:text-right flex flex-col md:items-end justify-center z-10 md:pr-24 lg:pr-28"
+                      : "text-center md:text-left flex flex-col md:items-start justify-center z-10 md:pl-24 lg:pl-28"
+                  }
+                >
+                  <span
+                    className={`text-5xl sm:text-7xl font-montserrat font-black tracking-tight ${
+                      isBlue ? "text-sfa-blue" : "text-sfa-navy"
+                    }`}
+                  >
+                    {stat.value}
+                  </span>
+                  {stat.subtitleLine1 && (
+                    <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">
+                      {stat.subtitleLine1}
+                    </span>
+                  )}
+                  {stat.subtitleLine2 && (
+                    <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">
+                      {stat.subtitleLine2}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -479,15 +445,15 @@ export default function Home() {
                 {/* Left Column (Details) */}
                 <div className="lg:col-span-7 flex flex-col justify-between py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-24 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
-                    VALUATIONS
+                    {cms.services.valuations.title}
                   </h2>
 
                   <div className="space-y-6 my-8 lg:my-0 lg:max-w-xl">
                     <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95">
-                      Comprehensive valuation across commercial, residential, agricultural, leisure, industrial, retail, warehousing, plant & machinery, and vessels conducted in strict conformity with RICS and IVSL standards.
+                      {cms.services.valuations.paragraph1}
                     </p>
                     <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95">
-                      We serve financial institutions, private equity funds, property companies, and individuals — delivering reports that stand up to international scrutiny.
+                      {cms.services.valuations.paragraph2}
                     </p>
                   </div>
 
@@ -495,24 +461,14 @@ export default function Home() {
                     onClick={() => setValuationOpen(true)}
                     className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-[#00bdf1] uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
                   >
-                    <span>EXPLORE VALUATION SERVICES &rarr;</span>
+                    <span>{cms.services.valuations.ctaText} &rarr;</span>
                   </button>
                 </div>
 
                 {/* Right Column (Categories) */}
                 <div className="lg:col-span-5 flex flex-col justify-center bg-tertiary lg:bg-transparent px-6 sm:px-8 py-10 lg:py-12 lg:pl-20 lg:pr-0">
                   <div className="w-full max-w-[320px] lg:max-w-[360px] mx-auto flex flex-col h-full justify-between divide-y divide-white/30 border-y border-white/30">
-                    {[
-                      "Commercial",
-                      "Residential",
-                      "Agriculture",
-                      "Leisure",
-                      "Retail",
-                      "Industrial",
-                      "Warehousing",
-                      "Plant & Machinery",
-                      "Vessels",
-                    ].map((category, idx) => (
+                    {cms.services.valuations.categories.map((category, idx) => (
                       <div
                         key={idx}
                         className="flex items-center justify-start py-2.5 pl-6 sm:pl-10 lg:pl-16"
@@ -539,7 +495,7 @@ export default function Home() {
               {/* Full-width building background image on desktop (clipped by overlay) */}
               <div className="absolute inset-0 z-0 hidden lg:block">
                 <Image
-                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600"
+                  src={cms.services.occupier.imageUrl}
                   alt="High-rise modern workspace architecture"
                   fill
                   className="object-cover"
@@ -569,23 +525,19 @@ export default function Home() {
                 {/* Left Text Detail */}
                 <div className="lg:col-span-7 flex flex-col justify-between py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
-                    OCCUPIER
-                    <span className="block mt-1">SERVICES</span>
+                    {cms.services.occupier.titleLine1}
+                    <span className="block mt-1">{cms.services.occupier.titleLine2}</span>
                   </h2>
 
                   <div className="space-y-4 my-8 lg:my-0 text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-justify max-w-2xl">
                     <p className="font-avenir font-semibold text-sfa-navy">
-                      Strategic advisory for organisations leasing, expanding, or relocating space aligned with your operational and financial goals.
+                      {cms.services.occupier.leadParagraph}
                     </p>
-                    <p className="text-sfa-navy/90">
-                      Whatever property you may need, our team will be able to provide you just the right assistance you need to move into optimum space.
-                    </p>
-                    <p className="text-sfa-navy/90">
-                      Through a wide range of consultancy and transactional services, we are able to understand the critical success factors for our clients’ benefit.
-                    </p>
-                    <p className="text-sfa-navy/90">
-                      Our dedicated team of experienced professionals with the right balance of local and international knowledge will match varying client requirements, leverage our relationship with occupiers and decision makers, empower clients to attain their desired goals by creating value, addressing trends and superseding the competition.
-                    </p>
+                    {cms.services.occupier.paragraphs.map((para, idx) => (
+                      <p key={idx} className="text-sfa-navy/90">
+                        {para}
+                      </p>
+                    ))}
                   </div>
 
                   <div aria-hidden="true" />
@@ -595,7 +547,7 @@ export default function Home() {
                 <div className="lg:col-span-5 relative min-h-[350px] lg:min-h-full">
                   <div className="absolute inset-0 lg:hidden">
                     <Image
-                      src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200"
+                      src={cms.services.occupier.imageUrl}
                       alt="High-rise modern workspace architecture"
                       fill
                       className="object-cover"
@@ -645,12 +597,12 @@ export default function Home() {
                 {/* Left Column (Details) */}
                 <div className="lg:col-span-5 flex flex-col justify-between py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-12 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
-                    CAPITAL
-                    <span className="block mt-1">MARKETS</span>
+                    {cms.services.capitalMarkets.titleLine1}
+                    <span className="block mt-1">{cms.services.capitalMarkets.titleLine2}</span>
                   </h2>
 
                   <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95 my-8 lg:my-0 lg:max-w-[320px] uppercase">
-                    Expert support for property acquisitions, disposals, and investment transactions in evolving market.
+                    {cms.services.capitalMarkets.leftSummary}
                   </p>
 
                   <div aria-hidden="true" />
@@ -660,30 +612,27 @@ export default function Home() {
                 <div className="lg:col-span-7 flex flex-col justify-center bg-primary lg:bg-transparent px-6 sm:px-8 py-10 lg:py-12 lg:pl-20 lg:pr-0 text-white space-y-8">
                   <div className="space-y-4">
                     <h3 className="text-sm sm:text-base lg:text-lg font-montserrat font-bold tracking-wider text-white">
-                      WE FOCUS ON PROVIDING UNIQUE AND PERSONALIZED ADVICE TO
+                      {cms.services.capitalMarkets.rightHeading1}
                     </h3>
                     <ul className="space-y-1.5 text-xs lg:text-sm font-avenir font-normal tracking-wide text-white/90 uppercase">
-                      <li>• INSTITUTIONAL FUNDS</li>
-                      <li>• PRIVATE EQUITY</li>
-                      <li>• STATE & PUBLIC SECTOR ENTITIES</li>
-                      <li>• PROPERTY COMPANIES & DEVELOPERS</li>
-                      <li>• CORPORATES</li>
-                      <li>• FAMILY OFFICES</li>
-                      <li>• PRIVATE INDIVIDUALS</li>
+                      {cms.services.capitalMarkets.clientTypes.map((ct, idx) => (
+                        <li key={idx}>• {ct}</li>
+                      ))}
                     </ul>
                   </div>
 
                   <p className="text-xs sm:text-sm font-avenir text-white/80 leading-relaxed text-justify tracking-wide">
-                    We focus on providing unique and personalized advice, adding value through a combination of unparalleled access to capital, financing expertise, real estate market intelligence and thought leadership. Our services are solidified with real estate expertise together with innovative capital solutions.
+                    {cms.services.capitalMarkets.rightBody}
                   </p>
 
                   <div className="space-y-4">
                     <h3 className="text-sm sm:text-base lg:text-lg font-montserrat font-bold tracking-wider text-white">
-                      OUR SERVICES EXTEND ACROSS A RANGE OF STRATEGIC TRANSACTIONS INCLUDING
+                      {cms.services.capitalMarkets.rightHeading2}
                     </h3>
                     <ul className="space-y-1.5 text-xs lg:text-sm font-avenir font-semibold tracking-wide text-white/95 uppercase">
-                      <li>• DEBT ADVISORY • CAPITAL RAISING • JOINT VENTURES</li>
-                      <li>• M&A SOLUTIONS • SALES & LEASEBACKS • RESTRUCTURING</li>
+                      {cms.services.capitalMarkets.transactionLines.map((line, idx) => (
+                        <li key={idx}>{line}</li>
+                      ))}
                     </ul>
                   </div>
                 </div>
@@ -702,7 +651,7 @@ export default function Home() {
               {/* Full-width research workspace architecture background image on desktop (clipped by overlay) */}
               <div className="absolute inset-0 z-0 hidden lg:block">
                 <Image
-                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600"
+                  src={cms.services.research.imageUrl}
                   alt="Modern research workspace and architectural interior"
                   fill
                   className="object-cover"
@@ -732,16 +681,16 @@ export default function Home() {
                 {/* Left Column (Details) */}
                 <div className="lg:col-span-7 flex flex-col justify-between py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
-                    RESEARCH
-                    <span className="block mt-1">SERVICES</span>
+                    {cms.services.research.titleLine1}
+                    <span className="block mt-1">{cms.services.research.titleLine2}</span>
                   </h2>
 
                   <div className="space-y-6 my-8 lg:my-0 lg:max-w-xl">
                     <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-sfa-navy lg:text-sfa-navy font-medium">
-                      We offer comprehensive local and regional market intelligence on real estate trends as well as tailored publications addressing the specific requirements of our clients.
+                      {cms.services.research.paragraph1}
                     </p>
                     <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-sfa-navy/90 lg:text-sfa-navy/90">
-                      Our research team collaborates with all sectors of our organization, leveraging over 21 years of Sunil Fernando & Associates real estate intelligence.
+                      {cms.services.research.paragraph2}
                     </p>
                   </div>
 
@@ -752,7 +701,7 @@ export default function Home() {
                 <div className="lg:col-span-5 relative min-h-[350px] lg:min-h-full">
                   <div className="absolute inset-0 lg:hidden">
                     <Image
-                      src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200"
+                      src={cms.services.research.imageUrl}
                       alt="Modern research workspace and architectural interior"
                       fill
                       className="object-cover"
@@ -810,12 +759,12 @@ export default function Home() {
             <div className="flex-1 flex flex-col justify-center px-6 sm:px-8 lg:pl-0 lg:pr-8 py-10 lg:py-12">
               <div className="w-fit flex flex-col items-center text-center">
                 <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.08] text-secondary">
-                  END-TO-END
-                  <span className="block mt-1">REAL ESTATE</span>
-                  <span className="block mt-1">ADVISORY</span>
+                  {cms.settings.whatWeDoHeadingLine1}
+                  <span className="block mt-1">{cms.settings.whatWeDoHeadingLine2}</span>
+                  <span className="block mt-1">{cms.settings.whatWeDoHeadingLine3}</span>
                 </h2>
                 <p className="text-base sm:text-lg font-avenir font-semibold tracking-[0.18em] text-[#2885bf] mt-6 uppercase text-center">
-                  BUILT FOR INSTITUTIONS
+                  {cms.settings.whatWeDoSubheading}
                 </p>
               </div>
             </div>
@@ -824,14 +773,11 @@ export default function Home() {
           {/* Right Column (From Complex Portfolio Valuations...) */}
           <div className="lg:col-span-5 flex flex-col justify-center px-6 sm:px-8 lg:pl-24 xl:pl-32 lg:pr-0 py-16 lg:py-24 text-white bg-primary lg:bg-transparent">
             <div className="font-avenir font-normal text-xs sm:text-sm lg:text-[13px] uppercase tracking-[0.18em] leading-[2.1] text-white lg:max-w-[400px]">
-              <span className="block">FROM COMPLEX PORTFOLIO</span>
-              <span className="block">VALUATIONS TO STRATEGIC</span>
-              <span className="block">OCCUPIER DECISIONS, EVERY</span>
-              <span className="block">SERVICE AT SFA IS DELIVERED</span>
-              <span className="block">TO INTERNATIONAL STANDARDS</span>
-              <span className="block">ACCEPTED BY BANKS, AUDIT</span>
-              <span className="block">FIRMS, AND LAW FIRMS ACROSS</span>
-              <span className="block">THE GLOBE.</span>
+              {cms.settings.whatWeDoRightLines.map((line, idx) => (
+                <span key={idx} className="block">
+                  {line}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -1059,10 +1005,10 @@ export default function Home() {
 
             <div className="space-y-4 text-xs sm:text-sm lg:text-[15px] font-avenir leading-relaxed text-left my-6 text-white lg:text-[#1a384c]">
               <p className="font-avenir font-normal">
-                Our diverse client portfolio, spanning individuals to multinational corporations, is a testament to our success.
+                {cms.settings.clientsDescription1}
               </p>
               <p className="font-avenir font-normal">
-                Each year, we complete thousands of valuation assignments across various sectors. With tailored methodologies and deep expertise, we consistently meet client needs and deliver exceptional value.
+                {cms.settings.clientsDescription2}
               </p>
             </div>
           </div>
@@ -1140,11 +1086,11 @@ export default function Home() {
           </h2>
 
           <span className="block text-xs lg:text-sm font-montserrat font-semibold text-white/80 uppercase tracking-widest mt-6">
-            A GLOBAL NETWORK. • A LOCAL ADVANTAGE.
+            {cms.settings.partnersSubtitle}
           </span>
 
           <p className="text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-left text-white/95 my-4">
-            Our partnerships extend local expertise through a network of world-class professional organisations — so every report meets the rigour international clients require.
+            {cms.settings.partnersDescription}
           </p>
         </div>
 

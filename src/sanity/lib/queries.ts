@@ -91,7 +91,7 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
     const raw = await sanityClient.fetch(
       SITE_CONTENT_QUERY,
       {},
-      { next: { revalidate: 30 } }
+      { cache: "no-store" }
     );
 
     if (!raw) return DEFAULT_SITE_CONTENT;
