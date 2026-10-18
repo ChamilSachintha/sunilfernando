@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { SfaLogo, HsbcLogo, StandardCharteredLogo, DeloitteLogo, CbiLogo, CinnamonLogo, LoadstarLogo, ShangriLaLogo, HiltonLogo, KpmgLogo, KnightFrankLogo, KrestonLogo, BdoLogo, MakeeluChambersLogo, BakerTillyLogo, WarrenVicksLogo, DesignAdvocacyLogo, AcquestLogo, NdbLogo, CoenergiLogo, SudathPereraLogo } from "@/components/Logos";
@@ -131,6 +132,12 @@ export default function Home() {
             >
               REACH US
             </button>
+            <Link
+              href="/new-site"
+              className="cursor-pointer hover:text-sfa-blue transition"
+            >
+              NEW SITE
+            </Link>
           </nav>
 
           {/* Mobile hamburger menu */}
@@ -172,6 +179,13 @@ export default function Home() {
                 <button onClick={() => scrollTo("contact")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   REACH US
                 </button>
+                <Link
+                  href="/new-site"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue"
+                >
+                  NEW SITE
+                </Link>
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
