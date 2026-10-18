@@ -1,19 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { Studio } from "sanity";
 import config from "../../../../sanity.config";
 import { isSanityConfigured, projectId, dataset } from "@/sanity/env";
 import Link from "next/link";
 
+const subscribeNoop = () => () => {};
+
 export default function StudioPage() {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    subscribeNoop,
+    () => true,
+    () => false
+  );
   const [seeding, setSeeding] = useState(false);
   const [seedMessage, setSeedMessage] = useState<string | null>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleSeed = async () => {
     setSeeding(true);
