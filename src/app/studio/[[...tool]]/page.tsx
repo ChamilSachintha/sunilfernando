@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback, useSyncExternalStore } from "react";
+import { useState, useEffect, useCallback, useSyncExternalStore } from "react";
 import { StudioProvider, StudioLayout, useClient, type SanityClient } from "sanity";
 import config from "../../../../sanity.config";
 import { isSanityConfigured, projectId, dataset } from "@/sanity/env";
@@ -43,7 +43,6 @@ function StudioAdminBar() {
   const client = useClient({ apiVersion: "2025-01-01" });
   const [seeding, setSeeding] = useState(false);
   const [seedMessage, setSeedMessage] = useState<string | null>(null);
-  const autoCheckedRef = useRef(false);
 
   const handleSeed = useCallback(async () => {
     setSeeding(true);
@@ -189,8 +188,6 @@ function StudioAdminBar() {
           contactTitle: DEFAULT_SITE_CONTENT.settings.contactTitle,
           contactSubtitle: DEFAULT_SITE_CONTENT.settings.contactSubtitle,
           contactDescription: DEFAULT_SITE_CONTENT.settings.contactDescription,
-        })
-        .set({
           logoImage,
           heroSlides,
           regionalOffices,
@@ -283,30 +280,6 @@ function StudioAdminBar() {
       setSeeding(false);
     }
   }, [client]);
-
-  useEffect(() => {
-    if (autoCheckedRef.current) return;
-    autoCheckedRef.current = true;
-
-    client
-      .fetch<{
-        hasHeroSlides: boolean;
-        hasOccupierImg: boolean;
-        hasTeamPortrait: boolean;
-      }>(
-        `{
-          "hasHeroSlides": defined(*[_id == "siteSettings"][0].heroSlides[0]),
-          "hasOccupierImg": defined(*[_id == "serviceSection"][0].occupierImage),
-          "hasTeamPortrait": defined(*[_id == "team-1"][0].portrait)
-        }`
-      )
-      .then((res) => {
-        if (!res?.hasHeroSlides || !res?.hasOccupierImg || !res?.hasTeamPortrait) {
-          handleSeed();
-        }
-      })
-      .catch(() => {});
-  }, [client, handleSeed]);
 
   return (
     <div className="bg-[#0c2340] text-white px-4 py-2 flex flex-wrap items-center justify-between gap-3 text-xs border-b border-white/10 z-50">
