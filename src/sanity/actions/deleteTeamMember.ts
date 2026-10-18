@@ -32,3 +32,6 @@ export const DeleteTeamMemberAction: DocumentActionComponent = (
     },
   };
 };
+
+DeleteTeamMemberAction.action = "delete";
+DeleteTeamMemberAction.displayName = "Delete Member";

@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { DeleteTeamMemberField } from "../components/DeleteTeamMemberField";
 
 export const teamMemberType = defineType({
   name: "teamMember",
@@ -48,6 +49,14 @@ export const teamMemberType = defineType({
       title: "Display Order (1 to 6)",
       type: "number",
       initialValue: 1,
+    }),
+    defineField({
+      name: "deleteAction",
+      title: "Delete Member",
+      type: "string",
+      components: {
+        input: DeleteTeamMemberField,
+      },
     }),
   ],
   orderings: [
