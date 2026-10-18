@@ -24,7 +24,7 @@ export function DeleteTeamMemberField() {
       await client.delete(`drafts.${cleanId}`).catch(() => {});
       setDeleted(true);
       setTimeout(() => {
-        router.push("/studio/structure/teamMember");
+        router.push("/admin/structure/teamMember");
       }, 500);
     } catch (err) {
       alert(

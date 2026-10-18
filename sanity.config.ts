@@ -8,7 +8,7 @@ import { schema } from "./src/sanity/schemaTypes";
 import { structure } from "./src/sanity/structure";
 
 export default defineConfig({
-  basePath: "/studio",
+  basePath: "/admin",
   name: "sunil_fernando_cms",
   title: "Sunil Fernando & Associates — CMS",
   projectId: projectId || "placeholder",
