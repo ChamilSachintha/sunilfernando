@@ -36,6 +36,14 @@ export const teamMemberType = defineType({
       initialValue: "/avatar-placeholder.svg",
     }),
     defineField({
+      name: "isActive",
+      title: "Display on Website",
+      description:
+        "Toggle OFF to remove / hide this member from the live website without deleting their CMS profile.",
+      type: "boolean",
+      initialValue: true,
+    }),
+    defineField({
       name: "order",
       title: "Display Order (1 to 6)",
       type: "number",
@@ -54,6 +62,17 @@ export const teamMemberType = defineType({
       title: "name",
       subtitle: "designation",
       media: "portrait",
+      isActive: "isActive",
+    },
+    prepare({ title, subtitle, media, isActive }) {
+      return {
+        title: title || "Untitled Member",
+        subtitle:
+          isActive === false
+            ? `⛔ [HIDDEN FROM SITE] ${subtitle || ""}`
+            : subtitle || "No designation",
+        media,
+      };
     },
   },
 });

@@ -102,13 +102,14 @@ export const SITE_CONTENT_QUERY = groq`{
     outcomeFootnote,
     order
   },
-  "teamMembers": *[_type == "teamMember"] | order(order asc){
+  "teamMembers": *[_type == "teamMember" && isActive != false] | order(order asc){
     _id,
     name,
     designation,
     credentials,
     "image": coalesce(portrait.asset->url, fallbackImagePath, "/avatar-placeholder.svg"),
-    order
+    order,
+    isActive
   }
 }`;
 

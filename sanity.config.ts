@@ -6,6 +6,7 @@ import { visionTool } from "@sanity/vision";
 import { apiVersion, dataset, projectId } from "./src/sanity/env";
 import { schema } from "./src/sanity/schemaTypes";
 import { structure } from "./src/sanity/structure";
+import { DeleteTeamMemberAction } from "./src/sanity/actions/deleteTeamMember";
 
 export default defineConfig({
   basePath: "/studio",
@@ -18,4 +19,12 @@ export default defineConfig({
     structureTool({ structure }),
     visionTool({ defaultApiVersion: apiVersion }),
   ],
+  document: {
+    actions: (prev, context) => {
+      if (context.schemaType === "teamMember") {
+        return [...prev, DeleteTeamMemberAction];
+      }
+      return prev;
+    },
+  },
 });
