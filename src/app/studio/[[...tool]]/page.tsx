@@ -1,14 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import { NextStudio } from "next-sanity/studio";
+import { useState, useEffect } from "react";
+import { Studio } from "sanity";
 import config from "../../../../sanity.config";
 import { isSanityConfigured, projectId, dataset } from "@/sanity/env";
 import Link from "next/link";
 
 export default function StudioPage() {
+  const [mounted, setMounted] = useState(false);
   const [seeding, setSeeding] = useState(false);
   const [seedMessage, setSeedMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSeed = async () => {
     setSeeding(true);
@@ -141,7 +146,15 @@ SANITY_API_WRITE_TOKEN="your_sanity_editor_or_write_token"`}
         </div>
       </div>
       <div className="flex-1">
-        <NextStudio config={config} />
+        {mounted ? (
+          <div id="sanity" className="h-[calc(100vh-41px)] overflow-auto">
+            <Studio config={config} unstable_globalStyles />
+          </div>
+        ) : (
+          <div className="min-h-[calc(100vh-41px)] bg-[#0c2340] text-white/70 flex items-center justify-center text-sm font-avenir tracking-wider">
+            Loading Sanity Studio...
+          </div>
+        )}
       </div>
     </div>
   );
