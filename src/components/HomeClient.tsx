@@ -1223,14 +1223,14 @@ export default function HomeClient({
                     className="object-cover object-top"
                   />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 h-[24%] bg-[#123c56] flex flex-col items-start justify-center text-left px-4">
-                  <h3 className="text-white font-avenir font-medium text-xs tracking-normal leading-tight text-left">
+                <div className="absolute bottom-0 left-0 right-0 h-[24%] bg-[#123c56] flex flex-col items-center justify-center text-center px-2">
+                  <h3 className="text-white font-avenir font-medium text-xs tracking-normal leading-tight">
                     {director.name}
                   </h3>
-                  <p className="text-white/80 font-avenir font-normal text-[8px] uppercase tracking-wider mt-0.5 leading-tight text-left">
+                  <p className="text-white/80 font-avenir font-normal text-[8px] uppercase tracking-wider mt-0.5 leading-tight">
                     {director.credentials}
                   </p>
-                  <p className="text-[#00aeef] font-avenir font-medium text-[10px] tracking-normal mt-0.5 leading-tight text-left">
+                  <p className="text-[#00aeef] font-avenir font-medium text-[10px] tracking-normal mt-0.5 leading-tight">
                     {director.designation}
                   </p>
                 </div>
@@ -1285,14 +1285,14 @@ export default function HomeClient({
 
                     {/* Parallelogram Bottom Text Banner */}
                     <div className="absolute bottom-0 left-0 right-0 h-[22%] bg-[#123c56] z-20 flex items-center">
-                      <div className="flex flex-col items-start justify-center text-left px-1.5 ml-[10%] w-[63%]">
-                        <h3 className="text-white font-avenir font-medium text-xs xl:text-[13px] tracking-normal leading-tight text-left">
+                      <div className="absolute left-[9.5%] w-[64%] flex flex-col items-center justify-center text-center px-1">
+                        <h3 className="text-white font-avenir font-medium text-xs xl:text-[13px] tracking-normal leading-tight w-full">
                           {director.name}
                         </h3>
-                        <p className="text-white/80 font-avenir font-normal text-[7.5px] xl:text-[8px] uppercase tracking-wider mt-0.5 leading-tight text-left">
+                        <p className="text-white/80 font-avenir font-normal text-[7.5px] xl:text-[8px] uppercase tracking-wider mt-0.5 leading-tight w-full">
                           {director.credentials}
                         </p>
-                        <p className="text-[#00aeef] font-avenir font-medium text-[9.5px] xl:text-[10.5px] tracking-normal mt-0.5 leading-tight text-left">
+                        <p className="text-[#00aeef] font-avenir font-medium text-[9.5px] xl:text-[10.5px] tracking-normal mt-0.5 leading-tight w-full">
                           {director.designation}
                         </p>
                       </div>
