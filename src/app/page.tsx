@@ -569,12 +569,7 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <button
-                    onClick={() => setContactOpen(true)}
-                    className="inline-flex items-center gap-2 text-xs font-avenir font-bold tracking-widest text-[#2684be] uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
-                  >
-                    <span>LEARN MORE &rarr;</span>
-                  </button>
+                  <div aria-hidden="true" />
                 </div>
 
                 {/* Right Column Spacer / Mobile Image */}
@@ -639,12 +634,7 @@ export default function Home() {
                     Expert support for property acquisitions, disposals, and investment transactions in evolving market.
                   </p>
 
-                  <button
-                    onClick={() => setContactOpen(true)}
-                    className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-white uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
-                  >
-                    <span>LEARN MORE &rarr;</span>
-                  </button>
+                  <div aria-hidden="true" />
                 </div>
 
                 {/* Right Column (Details) */}
@@ -736,12 +726,7 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <button
-                    onClick={() => setContactOpen(true)}
-                    className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-[#2684be] uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
-                  >
-                    <span>LEARN MORE &rarr;</span>
-                  </button>
+                  <div aria-hidden="true" />
                 </div>
 
                 {/* Right Column Spacer / Mobile Image */}
@@ -1171,13 +1156,6 @@ export default function Home() {
           <p className="text-xs sm:text-sm lg:text-base font-avenir leading-relaxed text-left text-white/95 my-4">
             Our partnerships extend local expertise through a network of world-class professional organisations — so every report meets the rigour international clients require.
           </p>
-
-          <button
-            onClick={() => setContactOpen(true)}
-            className="inline-flex items-center gap-2 text-xs font-avenir font-bold tracking-widest text-white uppercase hover:underline cursor-pointer w-fit mt-2"
-          >
-            <span>LEARN MORE</span>
-          </button>
         </div>
 
         {/* Right Column (Logos - 55%, strictly contained to the right of divider boundary) */}
