@@ -255,10 +255,8 @@ export default function HomeClient({
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-montserrat font-medium tracking-widest leading-none text-white">
-                {cms.settings.heroTitleLine1}
-              </h1>
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-montserrat font-medium tracking-widest leading-none text-white mt-1">
-                {cms.settings.heroTitleLine2}
+                <span className="block">{cms.settings.heroTitleLine1}</span>
+                <span className="block mt-1">{cms.settings.heroTitleLine2}</span>
               </h1>
               <div className="mt-3 sm:mt-4 space-y-1 sm:space-y-2">
                 <span className="block text-lg sm:text-xl lg:text-2xl font-montserrat font-normal tracking-widest text-white uppercase">
