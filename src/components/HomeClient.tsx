@@ -331,7 +331,7 @@ export default function HomeClient({
       <section className="py-8 sm:py-10 md:py-12 bg-white relative">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Grid Stats Layout with Ampersand in center */}
-          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-x-20 md:gap-y-16 lg:gap-x-24 lg:gap-y-20 items-center py-4 md:py-6">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-32 md:gap-y-20 lg:gap-x-44 lg:gap-y-24 xl:gap-x-52 items-center py-4 md:py-6">
             {/* Center ampersand and dividers background logo */}
             <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
               {/* Horizontal dividers */}
@@ -353,6 +353,7 @@ export default function HomeClient({
 
             {cms.settings.stats.map((stat, idx) => {
               const isLeft = idx % 2 === 0;
+              const isTop = idx < 2;
               const isBlue = stat.accentColor === "blue";
               const logoSrc =
                 stat.logoUrl ||
@@ -360,11 +361,13 @@ export default function HomeClient({
               return (
                 <div
                   key={idx}
-                  className={
+                  className={`text-center flex flex-col justify-center z-10 ${
                     isLeft
-                      ? "text-center md:text-right flex flex-col md:items-end justify-center z-10 md:pr-24 lg:pr-28"
-                      : "text-center md:text-left flex flex-col md:items-start justify-center z-10 md:pl-24 lg:pl-28"
-                  }
+                      ? "md:text-right md:items-end md:pr-16 lg:pr-24 xl:pr-32"
+                      : "md:text-left md:items-start md:pl-16 lg:pl-24 xl:pl-32"
+                  } ${
+                    isTop ? "pb-2 md:pb-6 lg:pb-8" : "pt-2 md:pt-6 lg:pt-8"
+                  }`}
                 >
                   {logoSrc ? (
                     <div
