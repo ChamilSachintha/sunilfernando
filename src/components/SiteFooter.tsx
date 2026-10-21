@@ -108,12 +108,8 @@ export default function SiteFooter({
               <p className="leading-relaxed">Rajagiriya</p>
             </div>
             <div>
-              <p className="leading-relaxed">Level 24, One Galle Face Tower,</p>
-              <p className="leading-relaxed">Colombo 02</p>
-            </div>
-            <div>
               <a href="tel:+94112887829" className="leading-relaxed hover:text-white transition block">
-                Tel: +94 11 288 7829
+                Tel: 011 2887829
               </a>
             </div>
           </div>

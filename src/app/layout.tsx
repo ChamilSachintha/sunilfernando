@@ -113,7 +113,7 @@ const jsonLd = {
   "address": [
     {
       "@type": "PostalAddress",
-      "streetAddress": "No. 505, Nawala Road, Rajagiriya / Level 24, One Galle Face Tower",
+      "streetAddress": "No. 505, Nawala Road, Rajagiriya",
       "addressLocality": "Colombo",
       "addressCountry": "LK",
     },
