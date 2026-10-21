@@ -1029,7 +1029,7 @@ export default function HomeClient({
 
 
       {/* 10. Clients (Page 12) */}
-      <section id="clients" className="relative min-h-[560px] lg:min-h-[620px] xl:min-h-[680px] flex items-stretch overflow-hidden bg-white">
+      <section id="clients" className="relative min-h-[480px] lg:min-h-[520px] xl:min-h-[580px] flex items-stretch overflow-hidden bg-white">
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1024 287" className="w-full h-full overflow-visible" preserveAspectRatio="none">
@@ -1064,7 +1064,7 @@ export default function HomeClient({
         {/* Content Overlay */}
         <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[45%_55%]">
           {/* Left Column (Details - 45%) */}
-          <div className="flex flex-col justify-center py-12 px-6 sm:p-12 lg:py-24 xl:py-28 lg:pl-0 lg:pr-10 xl:pr-14 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+          <div className="flex flex-col justify-center py-10 px-6 sm:p-10 lg:py-16 xl:py-20 lg:pl-0 lg:pr-10 xl:pr-14 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
             <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white">
               OUR
               <span className="block mt-1">CLIENTS</span>
@@ -1081,8 +1081,8 @@ export default function HomeClient({
           </div>
 
           {/* Right Column (Logos - 55%) */}
-          <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent py-14 px-6 sm:px-10 lg:py-24 xl:py-28 lg:pl-10 xl:pl-14 lg:pr-0">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 sm:gap-x-12 lg:gap-x-14 xl:gap-x-16 gap-y-10 sm:gap-y-14 lg:gap-y-16 items-center justify-items-center w-full">
+          <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-16 xl:py-20 lg:pl-10 xl:pl-14 lg:pr-0">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 sm:gap-x-12 lg:gap-x-14 xl:gap-x-16 gap-y-8 sm:gap-y-10 lg:gap-y-12 items-center justify-items-center w-full">
               {cms.settings.clientLogos.map((client, idx) => (
                 <div key={idx} className="flex items-center justify-center">
                   {client.imageUrl ? (
@@ -1106,7 +1106,7 @@ export default function HomeClient({
       </section>
 
       {/* 11. Partners (Page 13) */}
-      <section id="network" className="relative min-h-[560px] lg:min-h-[620px] xl:min-h-[680px] flex items-stretch overflow-hidden bg-white">
+      <section id="network" className="relative min-h-[480px] lg:min-h-[520px] xl:min-h-[580px] flex items-stretch overflow-hidden bg-white">
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1024 287" className="w-full h-full overflow-visible" preserveAspectRatio="none">
@@ -1155,7 +1155,7 @@ export default function HomeClient({
       {/* Content Overlay */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[45%_55%]">
         {/* Left Column (Details - 45%) */}
-        <div className="flex flex-col justify-center py-12 px-6 sm:p-12 lg:py-24 xl:py-28 lg:pl-0 lg:pr-10 xl:pr-14 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
+        <div className="flex flex-col justify-center py-10 px-6 sm:p-10 lg:py-16 xl:py-20 lg:pl-0 lg:pr-10 xl:pr-14 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
           <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-[#133852]">
             OUR
             <span className="block mt-1">PARTNERS</span>
@@ -1171,9 +1171,9 @@ export default function HomeClient({
         </div>
 
         {/* Right Column (Logos - 55%, strictly contained to the right of divider boundary) */}
-        <div className="flex flex-col justify-center bg-[#194866] lg:bg-transparent py-14 px-6 sm:px-10 lg:py-24 xl:py-28 lg:pl-24 xl:pl-32 lg:pr-0 space-y-10 sm:space-y-14">
+        <div className="flex flex-col justify-center bg-[#194866] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-16 xl:py-20 lg:pl-24 xl:pl-32 lg:pr-0 space-y-6 sm:space-y-8">
           {/* Part 1 Logos */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-10 sm:gap-y-12 lg:gap-y-14 xl:gap-y-16 items-center justify-items-center w-full max-w-[700px]">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-7 sm:gap-y-8 lg:gap-y-9 xl:gap-y-10 items-center justify-items-center w-full max-w-[700px]">
             {(
               Array.isArray(cms.settings.partnerLogosPart1) && cms.settings.partnerLogosPart1.length > 0
                 ? cms.settings.partnerLogosPart1
@@ -1207,7 +1207,7 @@ export default function HomeClient({
               ? cms.settings.partnerLogosPart2
               : cms.settings.partnerLogos?.slice(6) || []
           ).length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-10 sm:gap-y-12 lg:gap-y-14 xl:gap-y-16 items-center justify-items-center w-full max-w-[700px]">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-7 sm:gap-y-8 lg:gap-y-9 xl:gap-y-10 items-center justify-items-center w-full max-w-[700px]">
               {(
                 Array.isArray(cms.settings.partnerLogosPart2) && cms.settings.partnerLogosPart2.length > 0
                   ? cms.settings.partnerLogosPart2
