@@ -158,45 +158,31 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [valuationOpen, setValuationOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
-  const [activeSubNav, setActiveSubNav] = useState<"insights" | "case-studies">("insights");
+  const [activeTab, setActiveTab] = useState<"insights" | "case-studies">("insights");
 
-  // Track active sub nav section on scroll
+  // Handle URL hash anchor tab selection & scrolling smoothly after mount
   useEffect(() => {
-    const handleScroll = () => {
-      const caseStudiesEl = document.getElementById("case-studies");
-      if (caseStudiesEl) {
-        const top = caseStudiesEl.getBoundingClientRect().top;
-        if (top <= 200) {
-          setActiveSubNav("case-studies");
-          return;
+    const timer = setTimeout(() => {
+      if (typeof window !== "undefined" && window.location.hash) {
+        const hash = window.location.hash.toLowerCase();
+        if (hash.includes("case-study")) {
+          setActiveTab("case-studies");
+        } else if (hash.includes("insight")) {
+          setActiveTab("insights");
+        }
+        const id = window.location.hash.replace("#", "");
+        if (id) {
+          setTimeout(() => {
+            const el = document.getElementById(id);
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          }, 150);
         }
       }
-      setActiveSubNav("insights");
-    };
+    }, 50);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (id: "insights" | "case-studies") => {
-    setActiveSubNav(id);
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  // Handle URL hash anchor scrolling smoothly after mount
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.location.hash) {
-      const id = window.location.hash.replace("#", "");
-      setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 300);
-    }
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -277,33 +263,37 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
         </AnimatePresence>
       </header>
 
-      {/* 2. Sub Navbar under main navbar */}
+      {/* 2. Sub Navbar behaving as interactive tabs */}
       <div className="fixed top-16 sm:top-20 left-0 right-0 z-30 bg-white/95 backdrop-blur-md border-b border-sfa-grey/15 shadow-[0_2px_4px_rgba(0,0,0,0.02)]">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between">
           <div className="flex items-center gap-8 sm:gap-12 text-xs sm:text-sm font-avenir font-semibold tracking-[0.2em] uppercase">
             <button
-              onClick={() => scrollToSection("insights")}
+              onClick={() => setActiveTab("insights")}
               className={`cursor-pointer transition flex items-center gap-2 py-3 border-b-2 ${
-                activeSubNav === "insights"
+                activeTab === "insights"
                   ? "border-sfa-blue text-sfa-blue font-bold"
                   : "border-transparent text-sfa-navy/70 hover:text-sfa-blue"
               }`}
             >
               <span>INSIGHTS</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-sfa-navy/70 font-sans">
+              <span className={`text-[10px] px-2 py-0.5 rounded-full font-sans transition ${
+                activeTab === "insights" ? "bg-sfa-blue/10 text-sfa-blue" : "bg-slate-100 text-sfa-navy/70"
+              }`}>
                 {cms.reports.length}
               </span>
             </button>
             <button
-              onClick={() => scrollToSection("case-studies")}
+              onClick={() => setActiveTab("case-studies")}
               className={`cursor-pointer transition flex items-center gap-2 py-3 border-b-2 ${
-                activeSubNav === "case-studies"
+                activeTab === "case-studies"
                   ? "border-sfa-blue text-sfa-blue font-bold"
                   : "border-transparent text-sfa-navy/70 hover:text-sfa-blue"
               }`}
             >
               <span>CASE STUDIES</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-sfa-navy/70 font-sans">
+              <span className={`text-[10px] px-2 py-0.5 rounded-full font-sans transition ${
+                activeTab === "case-studies" ? "bg-sfa-blue/10 text-sfa-blue" : "bg-slate-100 text-sfa-navy/70"
+              }`}>
                 {cms.caseStudies.length}
               </span>
             </button>
@@ -314,270 +304,293 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
         </div>
       </div>
 
-      <main className="pt-28 sm:pt-32 pb-20">
-        {/* Editorial Newsroom Hero (without filter pills) */}
+      <main className="pt-28 sm:pt-32 pb-0">
+        {/* Editorial Newsroom Hero */}
         <section className="bg-gradient-to-b from-white via-white to-[#f1f5f9] border-b border-slate-200">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
             <div className="max-w-4xl space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/10 border border-secondary/20 text-secondary text-[11px] font-montserrat font-bold uppercase tracking-widest">
-                <span>INSIGHTS &amp; CASE STUDIES</span>
+                <span>{activeTab === "insights" ? "MARKET INSIGHTS & REPORTS" : "ADVISORY CASE STUDIES"}</span>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat font-normal tracking-tight uppercase text-sfa-navy leading-[1.1]">
                 NEWSROOM &amp;
-                <span className="block font-medium text-secondary">MARKET INTELLIGENCE</span>
+                <span className="block font-medium text-secondary">
+                  {activeTab === "insights" ? "MARKET INTELLIGENCE" : "CASE ARCHIVES"}
+                </span>
               </h1>
               <p className="text-base sm:text-lg text-sfa-navy/70 font-avenir leading-relaxed max-w-3xl pt-2">
-                Independent real estate intelligence, technical valuation commentary, and verified
-                institutional transaction case studies across Sri Lanka, the Maldives, and the UAE.
+                {activeTab === "insights"
+                  ? "Independent real estate intelligence, technical valuation commentary, and macroeconomic property outlooks across Sri Lanka, the Maldives, and the UAE."
+                  : "Verified institutional transactions, bank collateral appraisals, and cross-border resort valuation outcomes delivered by Sunil Fernando & Associates."}
               </p>
             </div>
           </div>
         </section>
 
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-20">
-          {/* SECTION 1: MARKET INSIGHTS & REPORTS */}
-          <section id="insights" className="space-y-8 scroll-mt-36">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b-2 border-secondary pb-4 gap-2">
-              <div>
-                <span className="text-xs font-avenir font-bold tracking-[0.2em] text-[#00bdf1] uppercase">
-                  RESEARCH PUBLICATIONS
-                </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-medium text-sfa-navy uppercase tracking-tight">
-                  MARKET INSIGHTS &amp; REPORTS
-                </h2>
-              </div>
-              <span className="text-xs font-montserrat font-bold text-sfa-navy/60 uppercase tracking-widest">
-                {cms.reports.length} {cms.reports.length === 1 ? "ARTICLE" : "ARTICLES"}
-              </span>
-            </div>
-
-            {/* Full Article Entries */}
-            <div className="space-y-12">
-              {cms.reports.map((report) => {
-                const fallback = FALLBACK_REPORT_ARTICLES[report._id];
-                return (
-                  <article
-                    key={report._id}
-                    id={`insight-${report._id}`}
-                    className="bg-white border border-slate-200 shadow-sm p-6 sm:p-10 lg:p-12 scroll-mt-36 transition hover:border-secondary/40"
-                  >
-                    {/* Meta header */}
-                    <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100">
-                      <div className="flex flex-wrap items-center gap-3">
-                        {report.category ? (
-                          <span className="px-3 py-1 bg-secondary/10 text-secondary text-[11px] font-montserrat font-bold tracking-widest uppercase">
-                            {report.category}
-                          </span>
-                        ) : (
-                          <span className="px-3 py-1 bg-secondary/10 text-secondary text-[11px] font-montserrat font-bold tracking-widest uppercase">
-                            MARKET REPORT
-                          </span>
-                        )}
-                        {report.isFeatured && (
-                          <span className="px-3 py-1 bg-[#00bdf1]/15 text-[#008db5] text-[11px] font-montserrat font-bold tracking-widest uppercase">
-                            FEATURED PUBLICATION
-                          </span>
-                        )}
-                      </div>
-
-                      {report.date && (
-                        <div className="flex items-center gap-1.5 text-xs font-avenir font-semibold text-sfa-navy/60 uppercase tracking-wider">
-                          <Calendar className="w-4 h-4 text-secondary" />
-                          <span>{report.date}</span>
-                        </div>
-                      )}
+        <div id="newsroom-content" className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20 scroll-mt-36">
+          <AnimatePresence mode="wait">
+            {activeTab === "insights" ? (
+              <motion.div
+                key="tab-insights"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* TAB 1: MARKET INSIGHTS & REPORTS */}
+                <section id="insights" className="space-y-8 scroll-mt-36">
+                  <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b-2 border-secondary pb-4 gap-2">
+                    <div>
+                      <span className="text-xs font-avenir font-bold tracking-[0.2em] text-[#00bdf1] uppercase">
+                        RESEARCH PUBLICATIONS
+                      </span>
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-medium text-sfa-navy uppercase tracking-tight">
+                        MARKET INSIGHTS &amp; REPORTS
+                      </h2>
                     </div>
+                    <span className="text-xs font-montserrat font-bold text-sfa-navy/60 uppercase tracking-widest">
+                      {cms.reports.length} {cms.reports.length === 1 ? "ARTICLE" : "ARTICLES"}
+                    </span>
+                  </div>
 
-                    {/* Title */}
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-normal text-sfa-navy uppercase tracking-tight leading-tight mt-6 mb-6">
-                      {report.title}
-                    </h3>
+                  {/* Full Article Entries */}
+                  <div className="space-y-12">
+                    {cms.reports.map((report) => {
+                      const fallback = FALLBACK_REPORT_ARTICLES[report._id];
+                      return (
+                        <article
+                          key={report._id}
+                          id={`insight-${report._id}`}
+                          className="bg-white border border-slate-200 shadow-sm p-6 sm:p-10 lg:p-12 scroll-mt-36 transition hover:border-secondary/40"
+                        >
+                          {/* Meta header */}
+                          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100">
+                            <div className="flex flex-wrap items-center gap-3">
+                              {report.category ? (
+                                <span className="px-3 py-1 bg-secondary/10 text-secondary text-[11px] font-montserrat font-bold tracking-widest uppercase">
+                                  {report.category}
+                                </span>
+                              ) : (
+                                <span className="px-3 py-1 bg-secondary/10 text-secondary text-[11px] font-montserrat font-bold tracking-widest uppercase">
+                                  MARKET REPORT
+                                </span>
+                              )}
+                              {report.isFeatured && (
+                                <span className="px-3 py-1 bg-[#00bdf1]/15 text-[#008db5] text-[11px] font-montserrat font-bold tracking-widest uppercase">
+                                  FEATURED PUBLICATION
+                                </span>
+                              )}
+                            </div>
 
-                    {/* Primary Executive Summary */}
-                    {report.summary && (
-                      <div className="p-5 sm:p-6 bg-slate-50 border-l-4 border-secondary my-6">
-                        <span className="block text-[11px] font-montserrat font-bold tracking-widest uppercase text-secondary mb-1">
-                          EXECUTIVE SUMMARY
-                        </span>
-                        <p className="text-sm sm:text-base font-avenir text-sfa-navy/90 leading-relaxed uppercase tracking-wide">
-                          {report.summary}
-                        </p>
-                      </div>
-                    )}
+                            {report.date && (
+                              <div className="flex items-center gap-1.5 text-xs font-avenir font-semibold text-sfa-navy/60 uppercase tracking-wider">
+                                <Calendar className="w-4 h-4 text-secondary" />
+                                <span>{report.date}</span>
+                              </div>
+                            )}
+                          </div>
 
-                    {/* Full Article Body (PortableText from Sanity or fallback detailed analysis) */}
-                    <div className="prose max-w-none text-sfa-navy/80 pt-2 pb-6">
-                      {report.body && Array.isArray(report.body) && report.body.length > 0 ? (
-                        <PortableText value={report.body} components={portableTextComponents} />
-                      ) : fallback ? (
-                        <div className="space-y-4">
-                          {fallback.paragraphs.map((p, pIdx) => (
-                            <p
-                              key={pIdx}
-                              className="text-sm sm:text-base text-sfa-navy/80 leading-relaxed font-avenir"
-                            >
-                              {p}
-                            </p>
-                          ))}
+                          {/* Title */}
+                          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-normal text-sfa-navy uppercase tracking-tight leading-tight mt-6 mb-6">
+                            {report.title}
+                          </h3>
 
-                          {fallback.keyTakeaways && fallback.keyTakeaways.length > 0 && (
-                            <div className="mt-6 pt-6 border-t border-slate-100">
-                              <h4 className="text-xs font-montserrat font-bold text-secondary uppercase tracking-widest mb-3">
-                                KEY STRATEGIC TAKEAWAYS
-                              </h4>
-                              <ul className="space-y-2">
-                                {fallback.keyTakeaways.map((point, kIdx) => (
-                                  <li
-                                    key={kIdx}
-                                    className="flex items-start gap-2.5 text-xs sm:text-sm text-sfa-navy/85 font-avenir"
-                                  >
-                                    <CheckCircle2 className="w-4 h-4 text-[#00bdf1] shrink-0 mt-0.5" />
-                                    <span>{point}</span>
-                                  </li>
-                                ))}
-                              </ul>
+                          {/* Primary Executive Summary */}
+                          {report.summary && (
+                            <div className="p-5 sm:p-6 bg-slate-50 border-l-4 border-secondary my-6">
+                              <span className="block text-[11px] font-montserrat font-bold tracking-widest uppercase text-secondary mb-1">
+                                EXECUTIVE SUMMARY
+                              </span>
+                              <p className="text-sm sm:text-base font-avenir text-sfa-navy/90 leading-relaxed uppercase tracking-wide">
+                                {report.summary}
+                              </p>
                             </div>
                           )}
-                        </div>
-                      ) : null}
-                    </div>
 
-                    {/* Footer Actions / Download Button */}
-                    <div className="pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
-                      {report.fileUrl ? (
-                        <a
-                          href={report.fileUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2.5 px-6 py-3 bg-secondary text-white text-xs font-montserrat font-bold tracking-widest uppercase hover:bg-[#133852] transition shadow-sm"
-                        >
-                          <Download className="w-4 h-4" />
-                          <span>DOWNLOAD FULL REPORT (PDF)</span>
-                        </a>
-                      ) : (
-                        <button
-                          onClick={() => setContactOpen(true)}
-                          className="inline-flex items-center gap-2.5 px-6 py-3 bg-secondary text-white text-xs font-montserrat font-bold tracking-widest uppercase hover:bg-[#133852] transition shadow-sm"
-                        >
-                          <FileText className="w-4 h-4" />
-                          <span>REQUEST CUSTOM RESEARCH REPORT</span>
-                        </button>
-                      )}
+                          {/* Full Article Body (PortableText from Sanity or fallback detailed analysis) */}
+                          <div className="prose max-w-none text-sfa-navy/80 pt-2 pb-6">
+                            {report.body && Array.isArray(report.body) && report.body.length > 0 ? (
+                              <PortableText value={report.body} components={portableTextComponents} />
+                            ) : fallback ? (
+                              <div className="space-y-4">
+                                {fallback.paragraphs.map((p, pIdx) => (
+                                  <p
+                                    key={pIdx}
+                                    className="text-sm sm:text-base text-sfa-navy/80 leading-relaxed font-avenir"
+                                  >
+                                    {p}
+                                  </p>
+                                ))}
 
-                      <span className="text-[11px] font-avenir text-sfa-navy/50 uppercase tracking-widest">
-                        SUNIL FERNANDO &amp; ASSOCIATES REAL ESTATE INTELLIGENCE
+                                {fallback.keyTakeaways && fallback.keyTakeaways.length > 0 && (
+                                  <div className="mt-6 pt-6 border-t border-slate-100">
+                                    <h4 className="text-xs font-montserrat font-bold text-secondary uppercase tracking-widest mb-3">
+                                      KEY STRATEGIC TAKEAWAYS
+                                    </h4>
+                                    <ul className="space-y-2">
+                                      {fallback.keyTakeaways.map((point, kIdx) => (
+                                        <li
+                                          key={kIdx}
+                                          className="flex items-start gap-2.5 text-xs sm:text-sm text-sfa-navy/85 font-avenir"
+                                        >
+                                          <CheckCircle2 className="w-4 h-4 text-[#00bdf1] shrink-0 mt-0.5" />
+                                          <span>{point}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                )}
+                              </div>
+                            ) : null}
+                          </div>
+
+                          {/* Footer Actions / Download Button */}
+                          <div className="pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+                            {report.fileUrl ? (
+                              <a
+                                href={report.fileUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2.5 px-6 py-3 bg-secondary text-white text-xs font-montserrat font-bold tracking-widest uppercase hover:bg-[#133852] transition shadow-sm"
+                              >
+                                <Download className="w-4 h-4" />
+                                <span>DOWNLOAD FULL REPORT (PDF)</span>
+                              </a>
+                            ) : (
+                              <button
+                                onClick={() => setContactOpen(true)}
+                                className="inline-flex items-center gap-2.5 px-6 py-3 bg-secondary text-white text-xs font-montserrat font-bold tracking-widest uppercase hover:bg-[#133852] transition shadow-sm"
+                              >
+                                <FileText className="w-4 h-4" />
+                                <span>REQUEST CUSTOM RESEARCH REPORT</span>
+                              </button>
+                            )}
+
+                            <span className="text-[11px] font-avenir text-sfa-navy/50 uppercase tracking-widest">
+                              SUNIL FERNANDO &amp; ASSOCIATES REAL ESTATE INTELLIGENCE
+                            </span>
+                          </div>
+                        </article>
+                      );
+                    })}
+                  </div>
+                </section>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="tab-case-studies"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* TAB 2: ADVISORY CASE STUDIES */}
+                <section id="case-studies" className="space-y-8 scroll-mt-36">
+                  <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b-2 border-secondary pb-4 gap-2">
+                    <div>
+                      <span className="text-xs font-avenir font-bold tracking-[0.2em] text-[#00bdf1] uppercase">
+                        PROVEN INSTITUTIONAL RESULTS
                       </span>
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-medium text-sfa-navy uppercase tracking-tight">
+                        ADVISORY CASE STUDIES
+                      </h2>
                     </div>
-                  </article>
-                );
-              })}
-            </div>
-          </section>
+                    <span className="text-xs font-montserrat font-bold text-sfa-navy/60 uppercase tracking-widest">
+                      {cms.caseStudies.length} {cms.caseStudies.length === 1 ? "MANDATE" : "MANDATES"}
+                    </span>
+                  </div>
 
-          {/* SECTION 2: CASE STUDIES */}
-          <section id="case-studies" className="space-y-8 scroll-mt-36">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b-2 border-secondary pb-4 gap-2">
-              <div>
-                <span className="text-xs font-avenir font-bold tracking-[0.2em] text-[#00bdf1] uppercase">
-                  PROVEN INSTITUTIONAL RESULTS
-                </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-medium text-sfa-navy uppercase tracking-tight">
-                  ADVISORY CASE STUDIES
-                </h2>
-              </div>
-              <span className="text-xs font-montserrat font-bold text-sfa-navy/60 uppercase tracking-widest">
-                {cms.caseStudies.length} {cms.caseStudies.length === 1 ? "MANDATE" : "MANDATES"}
-              </span>
-            </div>
+                  {/* Full Case Study Cards */}
+                  <div className="space-y-12">
+                    {cms.caseStudies.map((cs) => {
+                      const fallback = FALLBACK_CASE_STUDIES[cs._id];
+                      return (
+                        <article
+                          key={cs._id}
+                          id={`case-study-${cs._id}`}
+                          className="bg-white border border-slate-200 shadow-sm p-6 sm:p-10 lg:p-12 scroll-mt-36 transition hover:border-secondary/40"
+                        >
+                          {/* Meta header */}
+                          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100">
+                            <div className="flex items-center gap-2 text-secondary">
+                              <Briefcase className="w-4 h-4" />
+                              <span className="text-xs font-montserrat font-bold tracking-widest uppercase">
+                                {cs.categoryTag}
+                              </span>
+                            </div>
+                            <span className="text-[11px] font-avenir font-bold text-sfa-navy/50 uppercase tracking-widest">
+                              VALUATION &amp; TRANSACTION ADVISORY
+                            </span>
+                          </div>
 
-            {/* Full Case Study Cards */}
-            <div className="space-y-12">
-              {cms.caseStudies.map((cs) => {
-                const fallback = FALLBACK_CASE_STUDIES[cs._id];
-                return (
-                  <article
-                    key={cs._id}
-                    id={`case-study-${cs._id}`}
-                    className="bg-white border border-slate-200 shadow-sm p-6 sm:p-10 lg:p-12 scroll-mt-36 transition hover:border-secondary/40"
-                  >
-                    {/* Meta header */}
-                    <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100">
-                      <div className="flex items-center gap-2 text-secondary">
-                        <Briefcase className="w-4 h-4" />
-                        <span className="text-xs font-montserrat font-bold tracking-widest uppercase">
-                          {cs.categoryTag}
-                        </span>
-                      </div>
-                      <span className="text-[11px] font-avenir font-bold text-sfa-navy/50 uppercase tracking-widest">
-                        VALUATION &amp; TRANSACTION ADVISORY
-                      </span>
-                    </div>
+                          {/* Title */}
+                          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-normal text-sfa-navy uppercase tracking-tight leading-tight my-6">
+                            {cs.titleLines.map((line, lIdx) => (
+                              <span key={lIdx} className="block">
+                                {line}
+                              </span>
+                            ))}
+                          </h3>
 
-                    {/* Title */}
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-normal text-sfa-navy uppercase tracking-tight leading-tight my-6">
-                      {cs.titleLines.map((line, lIdx) => (
-                        <span key={lIdx} className="block">
-                          {line}
-                        </span>
-                      ))}
-                    </h3>
+                          {/* Case Study Details Grid */}
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
+                            <div className="space-y-2 p-6 bg-slate-50 border border-slate-100">
+                              <span className="text-xs font-montserrat font-bold text-secondary uppercase tracking-widest flex items-center gap-2">
+                                <span>01. THE MANDATE &amp; CHALLENGE</span>
+                              </span>
+                              <p className="text-sm font-avenir text-sfa-navy/85 leading-relaxed pt-2">
+                                {fallback?.challenge || cs.description}
+                              </p>
+                            </div>
 
-                    {/* Case Study Details Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
-                      <div className="space-y-2 p-6 bg-slate-50 border border-slate-100">
-                        <span className="text-xs font-montserrat font-bold text-secondary uppercase tracking-widest flex items-center gap-2">
-                          <span>01. THE MANDATE &amp; CHALLENGE</span>
-                        </span>
-                        <p className="text-sm font-avenir text-sfa-navy/85 leading-relaxed pt-2">
-                          {fallback?.challenge || cs.description}
-                        </p>
-                      </div>
+                            <div className="space-y-2 p-6 bg-slate-50 border border-slate-100">
+                              <span className="text-xs font-montserrat font-bold text-secondary uppercase tracking-widest flex items-center gap-2">
+                                <span>02. ADVISORY APPROACH &amp; EXECUTION</span>
+                              </span>
+                              <p className="text-sm font-avenir text-sfa-navy/85 leading-relaxed pt-2">
+                                {fallback?.approach ||
+                                  "Leveraged certified RICS & IVSL methodology, specialized market data, and proprietary transactional comps to establish rigorous, lender-compliant asset values."}
+                              </p>
+                            </div>
+                          </div>
 
-                      <div className="space-y-2 p-6 bg-slate-50 border border-slate-100">
-                        <span className="text-xs font-montserrat font-bold text-secondary uppercase tracking-widest flex items-center gap-2">
-                          <span>02. ADVISORY APPROACH &amp; EXECUTION</span>
-                        </span>
-                        <p className="text-sm font-avenir text-sfa-navy/85 leading-relaxed pt-2">
-                          {fallback?.approach ||
-                            "Leveraged certified RICS & IVSL methodology, specialized market data, and proprietary transactional comps to establish rigorous, lender-compliant asset values."}
-                        </p>
-                      </div>
-                    </div>
+                          {/* Full Case Study Body (PortableText if set in Sanity) */}
+                          {cs.body && Array.isArray(cs.body) && cs.body.length > 0 && (
+                            <div className="prose max-w-none text-sfa-navy/80 py-4">
+                              <PortableText value={cs.body} components={portableTextComponents} />
+                            </div>
+                          )}
 
-                    {/* Full Case Study Body (PortableText if set in Sanity) */}
-                    {cs.body && Array.isArray(cs.body) && cs.body.length > 0 && (
-                      <div className="prose max-w-none text-sfa-navy/80 py-4">
-                        <PortableText value={cs.body} components={portableTextComponents} />
-                      </div>
-                    )}
-
-                    {/* Outcome Footnote Banner */}
-                    <div className="p-6 bg-gradient-to-r from-secondary to-[#133852] text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-6">
-                      <div className="space-y-1">
-                        <span className="text-[10px] font-montserrat font-bold tracking-widest uppercase text-[#00bdf1]">
-                          QUANTIFIED INSTITUTIONAL OUTCOME
-                        </span>
-                        <p className="text-sm sm:text-base font-avenir font-semibold tracking-wide uppercase">
-                          {cs.outcomeFootnote}
-                        </p>
-                      </div>
-                      <button
-                        onClick={() => setValuationOpen(true)}
-                        className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 bg-white text-secondary text-xs font-montserrat font-bold tracking-widest uppercase hover:bg-slate-100 transition"
-                      >
-                        <span>DISCUSS SIMILAR MANDATE</span>
-                        <ArrowUpRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </section>
+                          {/* Outcome Footnote Banner */}
+                          <div className="p-6 bg-gradient-to-r from-secondary to-[#133852] text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-6">
+                            <div className="space-y-1">
+                              <span className="text-[10px] font-montserrat font-bold tracking-widest uppercase text-[#00bdf1]">
+                                QUANTIFIED INSTITUTIONAL OUTCOME
+                              </span>
+                              <p className="text-sm sm:text-base font-avenir font-semibold tracking-wide uppercase">
+                                {cs.outcomeFootnote}
+                              </p>
+                            </div>
+                            <button
+                              onClick={() => setValuationOpen(true)}
+                              className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 bg-white text-secondary text-xs font-montserrat font-bold tracking-widest uppercase hover:bg-slate-100 transition"
+                            >
+                              <span>DISCUSS SIMILAR MANDATE</span>
+                              <ArrowUpRight className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </article>
+                      );
+                    })}
+                  </div>
+                </section>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Get In Touch Section (identical to Homepage) */}
-        <section id="contact" className="bg-secondary text-white py-16 text-center relative overflow-hidden mt-20">
+        <section id="contact" className="bg-secondary text-white py-16 text-center relative overflow-hidden">
           <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
             <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-montserrat font-normal tracking-[0.3em] uppercase leading-tight text-white">
               {cms.settings.contactTitle}
