@@ -1074,7 +1074,7 @@ export default function HomeClient({
 
           {/* Right Column (Logos - 55%) */}
           <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent py-14 px-6 sm:px-10 lg:py-24 xl:py-28 lg:pl-10 xl:pl-14 lg:pr-0">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 sm:gap-x-8 lg:gap-x-10 gap-y-8 sm:gap-y-10 items-center justify-items-center w-full">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 sm:gap-x-12 lg:gap-x-14 xl:gap-x-16 gap-y-10 sm:gap-y-14 lg:gap-y-16 items-center justify-items-center w-full">
               {cms.settings.clientLogos.map((client, idx) => (
                 <div key={idx} className="flex items-center justify-center">
                   {client.imageUrl ? (
@@ -1164,7 +1164,7 @@ export default function HomeClient({
 
         {/* Right Column (Logos - 55%, strictly contained to the right of divider boundary) */}
         <div className="flex flex-col justify-center bg-[#194866] lg:bg-transparent py-14 px-6 sm:px-10 lg:py-24 xl:py-28 lg:pl-24 xl:pl-32 lg:pr-0">
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 sm:gap-x-10 lg:gap-x-12 gap-y-6 sm:gap-y-8 items-center justify-items-center w-full max-w-[620px]">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-10 sm:gap-y-12 lg:gap-y-14 xl:gap-y-16 items-center justify-items-center w-full max-w-[700px]">
             {cms.settings.partnerLogos.map((partner, idx) => (
               <div key={idx} className="flex items-center justify-center">
                 {partner.imageUrl ? (
