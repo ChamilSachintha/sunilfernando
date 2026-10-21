@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Barlow, Poppins } from "next/font/google";
+import LoadingScreen from "@/components/LoadingScreen";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -158,6 +159,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <LoadingScreen />
         {children}
       </body>
     </html>
