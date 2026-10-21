@@ -298,9 +298,6 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
               </span>
             </button>
           </div>
-          <div className="hidden md:flex items-center text-[10px] font-montserrat font-semibold tracking-widest uppercase text-sfa-navy/40">
-            <span>SUNIL FERNANDO &amp; ASSOCIATES NEWSROOM</span>
-          </div>
         </div>
       </div>
 
