@@ -58,6 +58,8 @@ export interface SiteSettingsData {
   clientLogos: LogoItem[];
   partnersSubtitle: string;
   partnersDescription: string;
+  partnerLogosPart1?: LogoItem[];
+  partnerLogosPart2?: LogoItem[];
   partnerLogos: LogoItem[];
   teamDescription: string;
   teamHeaderImageUrl: string;
@@ -237,6 +239,22 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
     partnersSubtitle: "A GLOBAL NETWORK. • A LOCAL ADVANTAGE.",
     partnersDescription:
       "Our partnerships extend local expertise through a network of world-class professional organisations — so every report meets the rigour international clients require.",
+    partnerLogosPart1: [
+      { name: "KPMG", imageUrl: "/logos/kpmg.png", className: "h-7 sm:h-8" },
+      { name: "Knight Frank" },
+      { name: "Kreston", imageUrl: "/logos/kreston.png", className: "h-7 sm:h-8" },
+      { name: "BDO", imageUrl: "/logos/bdo.png", className: "h-7 sm:h-8" },
+      { name: "Makeelu Chambers" },
+      { name: "Baker Tilly", imageUrl: "/logos/baker-tilly.png", className: "h-7 sm:h-8" },
+    ],
+    partnerLogosPart2: [
+      { name: "Warren Vicks Management Consultancies LLC", imageUrl: "/logos/warren-vicks.png", className: "h-11 sm:h-12" },
+      { name: "Design Advocacy", imageUrl: "/logos/design-advocacy.png", className: "h-8 sm:h-9" },
+      { name: "Acquest", imageUrl: "/logos/acquest.png", className: "h-6 sm:h-7" },
+      { name: "NDB Investment Bank", imageUrl: "/logos/ndb.png", className: "h-7 sm:h-8" },
+      { name: "Coenergi", imageUrl: "/logos/coenergi.png", className: "h-10 sm:h-12" },
+      { name: "Sudath Perera Associates", imageUrl: "/logos/sudath-perera.png", className: "h-11 sm:h-12" },
+    ],
     partnerLogos: [
       { name: "KPMG", imageUrl: "/logos/kpmg.png", className: "h-7 sm:h-8" },
       { name: "Knight Frank" },

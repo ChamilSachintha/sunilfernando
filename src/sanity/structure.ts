@@ -22,8 +22,17 @@ export const structure: StructureResolver = (S) =>
             .documentId("serviceSection")
             .title("Explore Our Services (4 Tabs)")
         ),
+      S.listItem()
+        .title("3. Network (Clients & Partners)")
+        .id("networkSection")
+        .child(
+          S.document()
+            .schemaType("networkSection")
+            .documentId("networkSection")
+            .title("Network")
+        ),
       S.divider(),
-      S.documentTypeListItem("report").title("3. Newsroom Reports & Commentary"),
-      S.documentTypeListItem("caseStudy").title("4. Case Studies"),
-      S.documentTypeListItem("teamMember").title("5. Leadership Team Profiles"),
+      S.documentTypeListItem("report").title("4. Newsroom Reports & Commentary"),
+      S.documentTypeListItem("caseStudy").title("5. Case Studies"),
+      S.documentTypeListItem("teamMember").title("6. Leadership Team Profiles"),
     ]);

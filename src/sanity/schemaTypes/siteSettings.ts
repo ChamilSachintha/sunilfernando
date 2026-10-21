@@ -223,8 +223,64 @@ export const siteSettingsType = defineType({
       group: "sections",
     }),
     defineField({
+      name: "partnerLogosPart1",
+      title: "Our Partners - Logos (Part 1 / First Part)",
+      type: "array",
+      group: "sections",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({ name: "name", title: "Partner Name", type: "string" }),
+            defineField({
+              name: "logo",
+              title: "Partner Logo Image",
+              type: "image",
+              options: { hotspot: true },
+            }),
+            defineField({ name: "imageUrl", title: "Fallback Logo Path", type: "string" }),
+            defineField({ name: "className", title: "Height CSS Classes", type: "string" }),
+          ],
+          preview: {
+            select: {
+              title: "name",
+              media: "logo",
+            },
+          },
+        },
+      ],
+    }),
+    defineField({
+      name: "partnerLogosPart2",
+      title: "Our Partners - Logos (Part 2 / Second Part)",
+      type: "array",
+      group: "sections",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({ name: "name", title: "Partner Name", type: "string" }),
+            defineField({
+              name: "logo",
+              title: "Partner Logo Image",
+              type: "image",
+              options: { hotspot: true },
+            }),
+            defineField({ name: "imageUrl", title: "Fallback Logo Path", type: "string" }),
+            defineField({ name: "className", title: "Height CSS Classes", type: "string" }),
+          ],
+          preview: {
+            select: {
+              title: "name",
+              media: "logo",
+            },
+          },
+        },
+      ],
+    }),
+    defineField({
       name: "partnerLogos",
-      title: "Our Partners - Logos",
+      title: "Our Partners - Logos (Legacy / Fallback)",
       type: "array",
       group: "sections",
       of: [

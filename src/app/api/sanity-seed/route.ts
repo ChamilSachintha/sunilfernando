@@ -91,6 +91,32 @@ export async function POST() {
       researchParagraph2: DEFAULT_SITE_CONTENT.services.research.paragraph2,
     });
 
+    // 2.5 Network (Clients & Partners) Singleton
+    transaction.createOrReplace({
+      _id: "networkSection",
+      _type: "networkSection",
+      clientsDescription1: DEFAULT_SITE_CONTENT.settings.clientsDescription1,
+      clientsDescription2: DEFAULT_SITE_CONTENT.settings.clientsDescription2,
+      clientLogos: DEFAULT_SITE_CONTENT.settings.clientLogos.map((c, idx) => ({
+        _key: `client-${idx + 1}`,
+        ...c,
+      })),
+      partnersSubtitle: DEFAULT_SITE_CONTENT.settings.partnersSubtitle,
+      partnersDescription: DEFAULT_SITE_CONTENT.settings.partnersDescription,
+      partnerLogosPart1: (DEFAULT_SITE_CONTENT.settings.partnerLogosPart1 || []).map((p, idx) => ({
+        _key: `partner-p1-${idx + 1}`,
+        ...p,
+      })),
+      partnerLogosPart2: (DEFAULT_SITE_CONTENT.settings.partnerLogosPart2 || []).map((p, idx) => ({
+        _key: `partner-p2-${idx + 1}`,
+        ...p,
+      })),
+      partnerLogos: DEFAULT_SITE_CONTENT.settings.partnerLogos.map((p, idx) => ({
+        _key: `partner-${idx + 1}`,
+        ...p,
+      })),
+    });
+
     // 3. Newsroom Reports
     for (const report of DEFAULT_SITE_CONTENT.reports) {
       transaction.createOrReplace({

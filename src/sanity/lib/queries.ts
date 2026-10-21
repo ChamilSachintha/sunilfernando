@@ -56,6 +56,16 @@ export const SITE_CONTENT_QUERY = groq`{
     },
     partnersSubtitle,
     partnersDescription,
+    "partnerLogosPart1": partnerLogosPart1[]{
+      name,
+      "imageUrl": coalesce(logo.asset->url, imageUrl),
+      className
+    },
+    "partnerLogosPart2": partnerLogosPart2[]{
+      name,
+      "imageUrl": coalesce(logo.asset->url, imageUrl),
+      className
+    },
     "partnerLogos": partnerLogos[]{
       name,
       "imageUrl": coalesce(logo.asset->url, imageUrl),
@@ -91,6 +101,32 @@ export const SITE_CONTENT_QUERY = groq`{
     researchParagraph1,
     researchParagraph2,
     "researchImageUrl": researchImage.asset->url
+  },
+  "network": *[_type == "networkSection"][0]{
+    clientsDescription1,
+    clientsDescription2,
+    "clientLogos": clientLogos[]{
+      name,
+      "imageUrl": coalesce(logo.asset->url, imageUrl),
+      className
+    },
+    partnersSubtitle,
+    partnersDescription,
+    "partnerLogosPart1": partnerLogosPart1[]{
+      name,
+      "imageUrl": coalesce(logo.asset->url, imageUrl),
+      className
+    },
+    "partnerLogosPart2": partnerLogosPart2[]{
+      name,
+      "imageUrl": coalesce(logo.asset->url, imageUrl),
+      className
+    },
+    "partnerLogos": partnerLogos[]{
+      name,
+      "imageUrl": coalesce(logo.asset->url, imageUrl),
+      className
+    }
   },
   "reports": *[_type == "report"] | order(order asc){
     _id,
@@ -139,6 +175,37 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
 
     const s = raw.settings || {};
     const srv = raw.services || {};
+    const net = raw.network || {};
+
+    const clientLogos =
+      Array.isArray(net.clientLogos) && net.clientLogos.length > 0
+        ? net.clientLogos
+        : Array.isArray(s.clientLogos) && s.clientLogos.length > 0
+        ? s.clientLogos
+        : DEFAULT_SITE_CONTENT.settings.clientLogos;
+
+    const partnerLogosPart1 =
+      Array.isArray(net.partnerLogosPart1) && net.partnerLogosPart1.length > 0
+        ? net.partnerLogosPart1
+        : Array.isArray(s.partnerLogosPart1) && s.partnerLogosPart1.length > 0
+        ? s.partnerLogosPart1
+        : DEFAULT_SITE_CONTENT.settings.partnerLogosPart1 || [];
+
+    const partnerLogosPart2 =
+      Array.isArray(net.partnerLogosPart2) && net.partnerLogosPart2.length > 0
+        ? net.partnerLogosPart2
+        : Array.isArray(s.partnerLogosPart2) && s.partnerLogosPart2.length > 0
+        ? s.partnerLogosPart2
+        : DEFAULT_SITE_CONTENT.settings.partnerLogosPart2 || [];
+
+    const partnerLogos =
+      partnerLogosPart1.length > 0 || partnerLogosPart2.length > 0
+        ? [...partnerLogosPart1, ...partnerLogosPart2]
+        : Array.isArray(net.partnerLogos) && net.partnerLogos.length > 0
+        ? net.partnerLogos
+        : Array.isArray(s.partnerLogos) && s.partnerLogos.length > 0
+        ? s.partnerLogos
+        : DEFAULT_SITE_CONTENT.settings.partnerLogos;
 
     return {
       settings: {
@@ -182,21 +249,17 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
           1600
         ),
         clientsDescription1:
-          s.clientsDescription1 || DEFAULT_SITE_CONTENT.settings.clientsDescription1,
+          net.clientsDescription1 || s.clientsDescription1 || DEFAULT_SITE_CONTENT.settings.clientsDescription1,
         clientsDescription2:
-          s.clientsDescription2 || DEFAULT_SITE_CONTENT.settings.clientsDescription2,
-        clientLogos:
-          Array.isArray(s.clientLogos) && s.clientLogos.length > 0
-            ? s.clientLogos
-            : DEFAULT_SITE_CONTENT.settings.clientLogos,
+          net.clientsDescription2 || s.clientsDescription2 || DEFAULT_SITE_CONTENT.settings.clientsDescription2,
+        clientLogos,
         partnersSubtitle:
-          s.partnersSubtitle || DEFAULT_SITE_CONTENT.settings.partnersSubtitle,
+          net.partnersSubtitle || s.partnersSubtitle || DEFAULT_SITE_CONTENT.settings.partnersSubtitle,
         partnersDescription:
-          s.partnersDescription || DEFAULT_SITE_CONTENT.settings.partnersDescription,
-        partnerLogos:
-          Array.isArray(s.partnerLogos) && s.partnerLogos.length > 0
-            ? s.partnerLogos
-            : DEFAULT_SITE_CONTENT.settings.partnerLogos,
+          net.partnersDescription || s.partnersDescription || DEFAULT_SITE_CONTENT.settings.partnersDescription,
+        partnerLogosPart1,
+        partnerLogosPart2,
+        partnerLogos,
         teamDescription:
           s.teamDescription || DEFAULT_SITE_CONTENT.settings.teamDescription,
         teamHeaderImageUrl: optimizeSanityImageUrl(

@@ -193,10 +193,25 @@ function StudioAdminBar() {
           regionalOffices,
           whatWeDoImage,
           clientLogos,
+          partnerLogosPart1: partnerLogos.slice(0, 6),
+          partnerLogosPart2: partnerLogos.slice(6),
           partnerLogos,
           teamHeaderImage,
         })
         .commit();
+
+      await client.createOrReplace({
+        _id: "networkSection",
+        _type: "networkSection",
+        clientsDescription1: DEFAULT_SITE_CONTENT.settings.clientsDescription1,
+        clientsDescription2: DEFAULT_SITE_CONTENT.settings.clientsDescription2,
+        clientLogos,
+        partnersSubtitle: DEFAULT_SITE_CONTENT.settings.partnersSubtitle,
+        partnersDescription: DEFAULT_SITE_CONTENT.settings.partnersDescription,
+        partnerLogosPart1: partnerLogos.slice(0, 6),
+        partnerLogosPart2: partnerLogos.slice(6),
+        partnerLogos,
+      });
 
       await client.createOrReplace({
         _id: "serviceSection",

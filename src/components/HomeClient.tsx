@@ -1171,9 +1171,14 @@ export default function HomeClient({
         </div>
 
         {/* Right Column (Logos - 55%, strictly contained to the right of divider boundary) */}
-        <div className="flex flex-col justify-center bg-[#194866] lg:bg-transparent py-14 px-6 sm:px-10 lg:py-24 xl:py-28 lg:pl-24 xl:pl-32 lg:pr-0">
+        <div className="flex flex-col justify-center bg-[#194866] lg:bg-transparent py-14 px-6 sm:px-10 lg:py-24 xl:py-28 lg:pl-24 xl:pl-32 lg:pr-0 space-y-10 sm:space-y-14">
+          {/* Part 1 Logos */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-10 sm:gap-y-12 lg:gap-y-14 xl:gap-y-16 items-center justify-items-center w-full max-w-[700px]">
-            {cms.settings.partnerLogos.map((partner, idx) => (
+            {(
+              Array.isArray(cms.settings.partnerLogosPart1) && cms.settings.partnerLogosPart1.length > 0
+                ? cms.settings.partnerLogosPart1
+                : cms.settings.partnerLogos?.slice(0, 6) || []
+            ).map((partner, idx) => (
               <div key={idx} className="flex items-center justify-center">
                 {partner.imageUrl ? (
                   <Image
@@ -1195,6 +1200,41 @@ export default function HomeClient({
               </div>
             ))}
           </div>
+
+          {/* Part 2 Logos */}
+          {(
+            Array.isArray(cms.settings.partnerLogosPart2) && cms.settings.partnerLogosPart2.length > 0
+              ? cms.settings.partnerLogosPart2
+              : cms.settings.partnerLogos?.slice(6) || []
+          ).length > 0 && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-10 sm:gap-y-12 lg:gap-y-14 xl:gap-y-16 items-center justify-items-center w-full max-w-[700px]">
+              {(
+                Array.isArray(cms.settings.partnerLogosPart2) && cms.settings.partnerLogosPart2.length > 0
+                  ? cms.settings.partnerLogosPart2
+                  : cms.settings.partnerLogos?.slice(6) || []
+              ).map((partner, idx) => (
+                <div key={idx} className="flex items-center justify-center">
+                  {partner.imageUrl ? (
+                    <Image
+                      src={partner.imageUrl}
+                      alt={partner.name}
+                      width={500}
+                      height={180}
+                      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${partner.className || "h-7 sm:h-8"}`}
+                    />
+                  ) : partner.name === "Knight Frank" ? (
+                    <KnightFrankLogo />
+                  ) : partner.name === "Makeelu Chambers" ? (
+                    <MakeeluChambersLogo />
+                  ) : (
+                    <span className="text-xs font-montserrat font-bold text-sfa-navy uppercase">
+                      {partner.name}
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       </section>
