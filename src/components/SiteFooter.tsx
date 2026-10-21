@@ -10,9 +10,9 @@ const SERVICES = [
 const SECTORS = [
   "Tourism & Hospitality",
   "Commercial & Office",
-  "Residential & Mixed-Use",
-  "Industrial & Logistics",
-  "Plant, Machinery & Agriculture",
+  "Residential",
+  "Agricultural",
+  "Industrial",
 ];
 
 const MARKETS = [
