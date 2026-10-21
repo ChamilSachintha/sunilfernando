@@ -436,7 +436,15 @@ export default function HomeClient({
                 aria-selected={activeService === idx}
                 aria-controls="service-panel"
                 onClick={() => setActiveService(idx)}
-                className={`py-4 font-avenir text-sm sm:text-base tracking-[0.15em] border-sfa-grey/10 cursor-pointer transition-colors duration-300 border-r-[3px] border-b-[3px] odd:border-r-[3px] even:border-r-0 md:even:border-r-[3px] md:last:border-r-0 md:border-b-0 [&:nth-child(3)]:border-b-0 [&:nth-child(4)]:border-b-0 ${
+                className={`py-4 font-avenir text-sm sm:text-base tracking-[0.15em] border-sfa-grey/10 cursor-pointer transition-colors duration-300 ${
+                  idx === 0
+                    ? "border-r-[3px] border-b-[3px] md:border-b-0"
+                    : idx === 1
+                    ? "border-b-[3px] md:border-r-[3px] md:border-b-0"
+                    : idx === 2
+                    ? "border-r-[3px] md:border-b-0"
+                    : "border-r-0 border-b-0 md:border-r-0 md:border-b-0"
+                } ${
                   activeService === idx
                     ? "bg-sfa-light-blue text-primary font-semibold"
                     : "bg-white text-primary font-medium hover:bg-sfa-light-blue/60"
