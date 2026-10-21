@@ -14,6 +14,21 @@ export interface StatItem {
   logoUrl?: string;
 }
 
+/** Built-in accreditation logos used when a stat has no uploaded logo in the CMS. */
+export function getBuiltInStatLogo(value?: string): string | undefined {
+  switch (value?.trim().toUpperCase()) {
+    case "RICS":
+      return "/logos/rics.png";
+    case "RERA":
+    case "RARE":
+      return "/logos/rera.png";
+    case "IVSL":
+      return "/logos/ivsl.jpg";
+    default:
+      return undefined;
+  }
+}
+
 export interface LogoItem {
   name: string;
   imageUrl?: string;
@@ -163,22 +178,24 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
     ],
     stats: [
       {
-        value: "26+",
-        subtitleLine1: "Years of Advisory",
-        subtitleLine2: "Excellence",
+        value: "RICS",
+        logoUrl: "/logos/rics.png",
         accentColor: "blue",
       },
       {
+        value: "RERA",
+        logoUrl: "/logos/rera.png",
+        accentColor: "navy",
+      },
+      {
         value: "IVSL",
+        logoUrl: "/logos/ivsl.jpg",
         accentColor: "navy",
       },
       {
-        value: "RARE",
-        accentColor: "navy",
-      },
-      {
-        value: "RICS",
-        logoUrl: "/logos/rics.png",
+        value: "26+",
+        subtitleLine1: "Years of Advisory",
+        subtitleLine2: "Excellence",
         accentColor: "blue",
       },
     ],

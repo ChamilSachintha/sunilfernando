@@ -2,6 +2,7 @@ import { groq } from "next-sanity";
 import { sanityClient } from "./client";
 import {
   DEFAULT_SITE_CONTENT,
+  getBuiltInStatLogo,
   type SanitySiteContent,
   type StatItem,
 } from "./defaultData";
@@ -157,13 +158,9 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
             : DEFAULT_SITE_CONTENT.settings.regionalOffices,
         stats:
           Array.isArray(s.stats) && s.stats.length === 4
-            ? s.stats.map((st: StatItem, i: number) => ({
+            ? s.stats.map((st: StatItem) => ({
                 ...st,
-                logoUrl:
-                  st.logoUrl ||
-                  (st.value?.trim().toUpperCase() === "RICS"
-                    ? "/logos/rics.png"
-                    : DEFAULT_SITE_CONTENT.settings.stats[i]?.logoUrl),
+                logoUrl: st.logoUrl || getBuiltInStatLogo(st.value),
               }))
             : DEFAULT_SITE_CONTENT.settings.stats,
         whatWeDoHeadingLine1:

@@ -6,7 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { KnightFrankLogo, MakeeluChambersLogo } from "@/components/Logos";
 import { RequestValuationModal, ContactModal } from "@/components/Forms";
-import { DEFAULT_SITE_CONTENT, type SanitySiteContent } from "@/sanity/lib/defaultData";
+import {
+  DEFAULT_SITE_CONTENT,
+  getBuiltInStatLogo,
+  type SanitySiteContent,
+} from "@/sanity/lib/defaultData";
 import { getSiteContent } from "@/sanity/lib/queries";
 import { isSanityConfigured } from "@/sanity/env";
 
@@ -325,7 +329,7 @@ export default function HomeClient({
         </div>
       </section>
 
-      {/* 2.8 Four-Column Figures / Stats Section (26+, IVSL, RARE, RICS) */}
+      {/* 2.8 Four-Column Figures / Stats Section (RICS, RERA, IVSL, 26+) */}
       <section className="py-8 sm:py-10 md:py-12 bg-white relative">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Grid Stats Layout with Ampersand in center */}
@@ -355,7 +359,9 @@ export default function HomeClient({
               const isBlue = stat.accentColor === "blue";
               const logoSrc =
                 stat.logoUrl ||
-                (stat.value?.trim().toUpperCase() === "RICS" ? "/logos/rics.png" : undefined);
+                getBuiltInStatLogo(stat.value);
+              // RERA's logo is nearly square with small text, so give it extra height to balance visually
+              const isRera = ["RERA", "RARE"].includes(stat.value?.trim().toUpperCase() ?? "");
               return (
                 <div
                   key={idx}
@@ -375,10 +381,10 @@ export default function HomeClient({
                     >
                       <Image
                         src={logoSrc}
-                        alt={stat.value || "RICS Logo"}
+                        alt={stat.value ? `${stat.value} Logo` : "Accreditation Logo"}
                         width={280}
                         height={100}
-                        className="h-12 sm:h-16 md:h-20 w-auto object-contain max-w-[200px] sm:max-w-[260px]"
+                        className={`w-auto object-contain ${isRera ? "h-20 sm:h-24 md:h-28 max-w-[160px] sm:max-w-[200px]" : "h-12 sm:h-16 md:h-20 max-w-[200px] sm:max-w-[260px]"}`}
                       />
                     </div>
                   ) : (
