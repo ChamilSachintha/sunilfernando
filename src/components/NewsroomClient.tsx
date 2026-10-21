@@ -21,7 +21,7 @@ import type {
 } from "@/sanity/lib/defaultData";
 
 const NAV_LINKS = [
-  { label: "HOME", href: "/" },
+  { label: "HOME", href: "/#home" },
   { label: "WHAT WE OFFER", href: "/#offer" },
   { label: "NEWSROOM", href: "/newsroom", active: true },
   { label: "OUR NETWORK", href: "/#network" },
@@ -194,24 +194,13 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                 key={link.label}
                 href={link.href}
                 className={`cursor-pointer hover:text-sfa-blue transition ${
-                  link.active ? "text-sfa-blue font-bold border-b-2 border-sfa-blue pb-1" : ""
+                  link.active ? "text-sfa-blue font-semibold" : ""
                 }`}
               >
                 {link.label}
               </Link>
             ))}
           </nav>
-
-          {/* Action button */}
-          <div className="hidden lg:flex items-center">
-            <button
-              onClick={() => setValuationOpen(true)}
-              className="cursor-pointer px-5 py-2.5 bg-secondary text-white text-xs font-montserrat font-bold tracking-widest uppercase hover:bg-[#133852] transition shadow-sm"
-            >
-              REQUEST A VALUATION
-            </button>
-          </div>
-
           {/* Mobile hamburger menu */}
           <div className="flex lg:hidden items-center gap-4">
             <button
@@ -240,7 +229,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={`cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue ${
-                      link.active ? "text-sfa-blue font-bold" : ""
+                      link.active ? "text-sfa-blue font-semibold" : ""
                     }`}
                   >
                     {link.label}
@@ -251,7 +240,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                     setMobileMenuOpen(false);
                     setValuationOpen(true);
                   }}
-                  className="cursor-pointer w-full text-center py-3 bg-secondary text-white hover:bg-[#133852] transition font-bold"
+                  className="cursor-pointer w-full text-center py-3 bg-sfa-navy text-white hover:bg-sfa-blue transition font-bold"
                 >
                   REQUEST A VALUATION
                 </button>
