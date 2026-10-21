@@ -1,3 +1,5 @@
+import type { PortableTextBlock } from "next-sanity";
+
 export interface RegionalOffice {
   country: string;
   flagUrl: string;
@@ -70,6 +72,8 @@ export interface ReportItem {
   category?: string;
   date?: string;
   summary?: string;
+  /** Full rich-text article shown on the newsroom page */
+  body?: PortableTextBlock[];
   isFeatured?: boolean;
   fileUrl?: string;
   order: number;
@@ -81,6 +85,8 @@ export interface CaseStudyItem {
   titleLines: string[];
   description: string;
   outcomeFootnote: string;
+  /** Full rich-text case study shown on the newsroom page */
+  body?: PortableTextBlock[];
   order: number;
 }
 

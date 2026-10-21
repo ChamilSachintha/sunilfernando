@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { articleBodyField } from "./articleBody";
 
 export const reportType = defineType({
   name: "report",
@@ -27,6 +28,9 @@ export const reportType = defineType({
       type: "text",
       rows: 3,
     }),
+    articleBodyField(
+      "The complete report / commentary text. If left empty, the summary is shown instead."
+    ),
     defineField({
       name: "isFeatured",
       title: "Featured Report (Shows Download Button)",

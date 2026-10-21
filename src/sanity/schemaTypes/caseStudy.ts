@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { articleBodyField } from "./articleBody";
 
 export const caseStudyType = defineType({
   name: "caseStudy",
@@ -25,6 +26,9 @@ export const caseStudyType = defineType({
       rows: 4,
       validation: (rule) => rule.required(),
     }),
+    articleBodyField(
+      "The complete case study (background, approach, results). If left empty, the description is shown instead."
+    ),
     defineField({
       name: "outcomeFootnote",
       title: "Outcome Footnote (Bottom Highlight Line)",

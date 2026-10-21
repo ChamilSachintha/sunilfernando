@@ -147,12 +147,12 @@ export default function HomeClient({
             >
               WHAT WE OFFER
             </button>
-            <button
-              onClick={() => scrollTo("newsroom")}
-              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "newsroom" ? "text-sfa-blue font-semibold" : ""}`}
+            <Link
+              href="/newsroom"
+              className="cursor-pointer hover:text-sfa-blue transition"
             >
               NEWSROOM
-            </button>
+            </Link>
             <button
               onClick={() => scrollTo("network")}
               className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
@@ -200,9 +200,9 @@ export default function HomeClient({
                 <button onClick={() => scrollTo("offer")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   WHAT WE OFFER
                 </button>
-                <button onClick={() => scrollTo("newsroom")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <Link href="/newsroom" onClick={() => setMobileMenuOpen(false)} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   NEWSROOM
-                </button>
+                </Link>
                 <button onClick={() => scrollTo("network")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR NETWORK
                 </button>

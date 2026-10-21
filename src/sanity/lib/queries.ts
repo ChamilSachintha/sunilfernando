@@ -98,6 +98,7 @@ export const SITE_CONTENT_QUERY = groq`{
     category,
     date,
     summary,
+    body,
     isFeatured,
     "fileUrl": coalesce(pdfFile.asset->url, externalUrl),
     order
@@ -108,6 +109,7 @@ export const SITE_CONTENT_QUERY = groq`{
     titleLines,
     description,
     outcomeFootnote,
+    body,
     order
   },
   "teamMembers": *[_type == "teamMember" && isActive != false] | order(order asc){
