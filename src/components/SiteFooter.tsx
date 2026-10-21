@@ -16,9 +16,39 @@ const SECTORS = [
 ];
 
 const MARKETS = [
-  "Sri Lanka",
-  "Maldives",
   "United Arab Emirates",
+  "Maldives",
+  "Sri Lanka",
+];
+
+const CONTACT_OFFICES = [
+  {
+    country: "UAE",
+    addressLines: [
+      "Office #1029, Building B-2, Level 1,",
+      "Dubai CommerCity, Umm Ramool, Dubai",
+    ],
+    phone: "Tel: +971 4 894 2444",
+    phoneHref: "tel:+97148942444",
+  },
+  {
+    country: "Maldives",
+    addressLines: [
+      "Sunil Fernando & Associates Maldives Pvt Ltd,",
+      "Malé City, Republic of Maldives",
+    ],
+    phone: "Tel: +960 330 8829",
+    phoneHref: "tel:+9603308829",
+  },
+  {
+    country: "Sri Lanka",
+    addressLines: [
+      "No. 505, Nawala Road,",
+      "Rajagiriya",
+    ],
+    phone: "Tel: 011 2887829",
+    phoneHref: "tel:+94112887829",
+  },
 ];
 
 /**
@@ -35,7 +65,7 @@ export default function SiteFooter({
     <footer className="bg-primary text-white pt-16 pb-8 border-t border-white/10">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-0 items-start mb-12">
         {/* Column 1: SFA identity & Reg info */}
-        <div className="lg:col-span-4 space-y-6 lg:pr-8">
+        <div className="lg:col-span-3 space-y-6 lg:pr-6">
           <h3 className="text-xl sm:text-2xl font-montserrat font-medium tracking-[0.15em] uppercase leading-tight text-white">
             SUNIL FERNANDO &amp;
             <span className="block mt-1">ASSOCIATES</span>
@@ -100,18 +130,27 @@ export default function SiteFooter({
         </div>
 
         {/* Column 5: Contact Info */}
-        <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4 text-sm">
+        <div className="lg:col-span-3 lg:border-l lg:border-white/20 lg:pl-6 space-y-4 text-xs sm:text-sm">
           <h4 className="text-base font-montserrat font-medium text-white">Contact</h4>
           <div className="space-y-4 font-avenir font-medium text-[#0c2340] text-left">
-            <div>
-              <p className="leading-relaxed">No. 505, Nawala Road,</p>
-              <p className="leading-relaxed">Rajagiriya</p>
-            </div>
-            <div>
-              <a href="tel:+94112887829" className="leading-relaxed hover:text-white transition block">
-                Tel: 011 2887829
-              </a>
-            </div>
+            {CONTACT_OFFICES.map((office) => (
+              <div key={office.country} className="space-y-0.5">
+                <p className="font-montserrat font-semibold text-white text-xs tracking-wider uppercase">
+                  {office.country}
+                </p>
+                {office.addressLines.map((line) => (
+                  <p key={line} className="leading-snug">
+                    {line}
+                  </p>
+                ))}
+                <a
+                  href={office.phoneHref}
+                  className="leading-snug hover:text-white transition block pt-0.5"
+                >
+                  {office.phone}
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </div>
