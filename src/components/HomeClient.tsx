@@ -384,7 +384,7 @@ export default function HomeClient({
                         alt={stat.value ? `${stat.value} Logo` : "Accreditation Logo"}
                         width={280}
                         height={100}
-                        className={`w-auto object-contain ${isRera ? "h-20 sm:h-24 md:h-28 max-w-[160px] sm:max-w-[200px]" : "h-12 sm:h-16 md:h-20 max-w-[200px] sm:max-w-[260px]"}`}
+                        className={`w-auto object-contain ${isRera ? "h-28 sm:h-32 md:h-40 max-w-[200px] sm:max-w-[260px]" : "h-12 sm:h-16 md:h-20 max-w-[200px] sm:max-w-[260px]"}`}
                       />
                     </div>
                   ) : (
