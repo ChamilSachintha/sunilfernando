@@ -88,24 +88,13 @@ export default function LoadingScreen() {
                 <img
                   src="/logo.png"
                   alt="Sunil Fernando & Associates Logo"
-                  className="h-20 sm:h-24 md:h-28 w-auto object-contain block"
-                  priority-load="true"
+                  className="h-28 sm:h-36 md:h-44 w-auto object-contain block max-w-[280px] sm:max-w-[360px] md:max-w-[420px]"
                 />
               </motion.div>
             </motion.div>
 
-            {/* Tagline */}
-            <motion.p
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mt-4 text-[10px] sm:text-[11px] font-montserrat font-semibold tracking-[0.3em] uppercase text-sfa-navy/60 text-center"
-            >
-              Real Estate Advisory &amp; Valuation
-            </motion.p>
-
             {/* Sleek Progress Bar Track */}
-            <div className="w-56 sm:w-64 h-[3px] bg-slate-100 rounded-full overflow-hidden mt-8 relative">
+            <div className="w-64 sm:w-80 h-[3px] bg-slate-100 rounded-full overflow-hidden mt-8 sm:mt-10 relative">
               <div
                 className="h-full bg-gradient-to-r from-secondary via-sfa-blue to-[#00bdf1] rounded-full transition-all duration-75 ease-out shadow-[0_0_12px_rgba(0,189,241,0.5)]"
                 style={{ width: `${progress}%` }}
@@ -113,7 +102,7 @@ export default function LoadingScreen() {
             </div>
 
             {/* Percentage Animation Counter */}
-            <div className="flex items-center justify-between w-56 sm:w-64 mt-3">
+            <div className="flex items-center justify-between w-64 sm:w-80 mt-3">
               <span className="text-[10px] font-avenir font-semibold tracking-[0.2em] uppercase text-sfa-navy/50">
                 Loading
               </span>
