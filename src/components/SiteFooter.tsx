@@ -4,7 +4,21 @@ const SERVICES = [
   "Valuation & Advisory",
   "Occupier Services",
   "Capital Markets",
-  "Research & Analytics",
+  "Research Services",
+];
+
+const SECTORS = [
+  "Tourism & Hospitality",
+  "Commercial & Office",
+  "Residential & Mixed-Use",
+  "Industrial & Logistics",
+  "Plant, Machinery & Agriculture",
+];
+
+const MARKETS = [
+  "Sri Lanka",
+  "Maldives",
+  "United Arab Emirates",
 ];
 
 /**
@@ -23,7 +37,7 @@ export default function SiteFooter({
         {/* Column 1: SFA identity & Reg info */}
         <div className="lg:col-span-4 space-y-6 lg:pr-8">
           <h3 className="text-xl sm:text-2xl font-montserrat font-medium tracking-[0.15em] uppercase leading-tight text-white">
-            SUNIL FERNANDO &
+            SUNIL FERNANDO &amp;
             <span className="block mt-1">ASSOCIATES</span>
           </h3>
 
@@ -32,7 +46,7 @@ export default function SiteFooter({
           </p>
 
           <p className="text-sm font-avenir leading-relaxed text-[#0c2340] text-justify font-medium">
-            Sri Lanka&apos;s largest independent real estate consultancy delivering internationally accepted valuation and advisory services across Sri Lanka and the Maldives.
+            Sri Lanka&apos;s largest independent real estate consultancy delivering internationally accepted valuation and advisory services across Sri Lanka, the Maldives, and the UAE.
           </p>
 
           <div className="flex gap-2 pt-2">
@@ -48,7 +62,7 @@ export default function SiteFooter({
             {SERVICES.map((label, idx) => (
               <li key={label}>
                 {onServiceClick ? (
-                  <button onClick={() => onServiceClick(idx)} className="hover:text-white transition cursor-pointer">
+                  <button onClick={() => onServiceClick(idx)} className="hover:text-white transition cursor-pointer text-left">
                     {label}
                   </button>
                 ) : (
@@ -65,11 +79,9 @@ export default function SiteFooter({
         <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4">
           <h4 className="text-base font-montserrat font-medium text-white">Sectors</h4>
           <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
-            <li>Tourism &amp; Hospitality</li>
-            <li>Commercial &amp; Office</li>
-            <li>Residential</li>
-            <li>Agricultural</li>
-            <li>Industrial</li>
+            {SECTORS.map((sector) => (
+              <li key={sector}>{sector}</li>
+            ))}
           </ul>
         </div>
 
@@ -77,9 +89,13 @@ export default function SiteFooter({
         <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4">
           <h4 className="text-base font-montserrat font-medium text-white">Markets</h4>
           <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
-            <li>Sri Lanka</li>
-            <li>Maldives</li>
-            <li>Properties</li>
+            {MARKETS.map((market) => (
+              <li key={market}>
+                <Link href="/#home" className="hover:text-white transition cursor-pointer">
+                  {market}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -88,7 +104,7 @@ export default function SiteFooter({
           <h4 className="text-base font-montserrat font-medium text-white">Contact</h4>
           <div className="space-y-4 font-avenir font-medium text-[#0c2340] text-left">
             <div>
-              <p className="leading-relaxed">No 505, Nawala Road,</p>
+              <p className="leading-relaxed">No. 505, Nawala Road,</p>
               <p className="leading-relaxed">Rajagiriya</p>
             </div>
             <div>
@@ -96,7 +112,9 @@ export default function SiteFooter({
               <p className="leading-relaxed">Colombo 02</p>
             </div>
             <div>
-              <p className="leading-relaxed">Tel: 011 2887829</p>
+              <a href="tel:+94112887829" className="leading-relaxed hover:text-white transition block">
+                Tel: +94 11 288 7829
+              </a>
             </div>
           </div>
         </div>
