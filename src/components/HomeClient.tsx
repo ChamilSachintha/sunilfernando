@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { KnightFrankLogo, MakeeluChambersLogo } from "@/components/Logos";
 import { RequestValuationModal, ContactModal } from "@/components/Forms";
+import SiteFooter from "@/components/SiteFooter";
 import {
   DEFAULT_SITE_CONTENT,
   getBuiltInStatLogo,
@@ -882,18 +884,26 @@ export default function HomeClient({
                         {report.summary}
                       </p>
                     )}
-                    <button
-                      onClick={() => {
-                        if (report.fileUrl) {
-                          window.open(report.fileUrl, "_blank", "noopener,noreferrer");
-                        } else {
-                          alert(`Downloading Report: ${report.title}`);
-                        }
-                      }}
-                      className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest uppercase hover:underline cursor-pointer"
-                    >
-                      <span>DOWNLOAD REPORT &rarr;</span>
-                    </button>
+                    <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
+                      <button
+                        onClick={() => {
+                          if (report.fileUrl) {
+                            window.open(report.fileUrl, "_blank", "noopener,noreferrer");
+                          } else {
+                            alert(`Downloading Report: ${report.title}`);
+                          }
+                        }}
+                        className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest uppercase hover:underline cursor-pointer"
+                      >
+                        <span>DOWNLOAD REPORT &rarr;</span>
+                      </button>
+                      <Link
+                        href={`/newsroom#insight-${report._id}`}
+                        className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest uppercase hover:underline"
+                      >
+                        READ MORE &rarr;
+                      </Link>
+                    </div>
                   </div>
                 ) : (
                   <div
@@ -913,6 +923,12 @@ export default function HomeClient({
                         {report.date}
                       </span>
                     )}
+                    <Link
+                      href={`/newsroom#insight-${report._id}`}
+                      className="inline-block pt-1 text-xs font-avenir font-black tracking-widest uppercase hover:underline"
+                    >
+                      READ MORE &rarr;
+                    </Link>
                   </div>
                 )
               )}
@@ -989,6 +1005,12 @@ export default function HomeClient({
                     <span className="text-[10px] font-avenir font-black italic tracking-wide text-sfa-navy/90 uppercase block leading-relaxed">
                       {cs.outcomeFootnote}
                     </span>
+                    <Link
+                      href={`/newsroom#case-study-${cs._id}`}
+                      className="inline-block mt-4 text-xs font-avenir font-black tracking-widest text-sfa-navy uppercase hover:underline"
+                    >
+                      READ MORE &rarr;
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -1356,108 +1378,7 @@ export default function HomeClient({
       </section>
 
       {/* 13. Footer & Contact Details (Page 16) */}
-      {/* 13. Footer & Contact Details (Page 16) */}
-      <footer className="bg-primary text-white pt-16 pb-8 border-t border-white/10">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-0 items-start mb-12">
-          {/* Column 1: SFA identity & Reg info */}
-          <div className="lg:col-span-4 space-y-6 lg:pr-8">
-            <h3 className="text-xl sm:text-2xl font-montserrat font-medium tracking-[0.15em] uppercase leading-tight text-white">
-              SUNIL FERNANDO &
-              <span className="block mt-1">ASSOCIATES</span>
-            </h3>
-
-            <p className="text-sm font-avenir tracking-wide text-white uppercase">
-              Real Estate Advisory Since 1999
-            </p>
-
-            <p className="text-sm font-avenir leading-relaxed text-[#0c2340] text-justify font-medium">
-              Sri Lanka&apos;s largest independent real estate consultancy delivering internationally accepted valuation and advisory services across Sri Lanka and the Maldives.
-            </p>
-
-            <div className="flex gap-2 pt-2">
-              <span className="border border-white/40 px-3 py-1 text-[10px] font-barlow font-normal tracking-widest text-white">RICS</span>
-              <span className="border border-white/40 px-3 py-1 text-[10px] font-barlow font-normal tracking-widest text-white">IVSL</span>
-            </div>
-          </div>
-
-          {/* Column 2: Services links */}
-          <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4">
-            <h4 className="text-base font-montserrat font-medium text-white">Services</h4>
-            <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
-              <li>
-                <button onClick={() => openService(0)} className="hover:text-white transition cursor-pointer">
-                  Valuation & Advisory
-                </button>
-              </li>
-              <li>
-                <button onClick={() => openService(1)} className="hover:text-white transition cursor-pointer">
-                  Occupier Services
-                </button>
-              </li>
-              <li>
-                <button onClick={() => openService(2)} className="hover:text-white transition cursor-pointer">
-                  Capital Markets
-                </button>
-              </li>
-              <li>
-                <button onClick={() => openService(3)} className="hover:text-white transition cursor-pointer">
-                  Research & Analytics
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Sectors */}
-          <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4">
-            <h4 className="text-base font-montserrat font-medium text-white">Sectors</h4>
-            <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
-              <li>Tourism & Hospitality</li>
-              <li>Commercial & Office</li>
-              <li>Residential</li>
-              <li>Agricultural</li>
-              <li>Industrial</li>
-            </ul>
-          </div>
-
-          {/* Column 4: Markets */}
-          <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4">
-            <h4 className="text-base font-montserrat font-medium text-white">Markets</h4>
-            <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
-              <li>Sri Lanka</li>
-              <li>Maldives</li>
-              <li>Properties</li>
-            </ul>
-          </div>
-
-          {/* Column 5: Contact Info */}
-          <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4 text-sm">
-            <h4 className="text-base font-montserrat font-medium text-white">Contact</h4>
-            <div className="space-y-4 font-avenir font-medium text-[#0c2340] text-left">
-              <div>
-                <p className="leading-relaxed">No 505, Nawala Road,</p>
-                <p className="leading-relaxed">Rajagiriya</p>
-              </div>
-              <div>
-                <p className="leading-relaxed">Level 24, One Galle Face Tower,</p>
-                <p className="leading-relaxed">Colombo 02</p>
-              </div>
-              <div>
-                <p className="leading-relaxed">Tel: 011 2887829</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom copyright line */}
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/20 pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] font-avenir font-bold tracking-widest text-[#0c2340] uppercase">
-          <span>
-            © 2026 SUNIL FERNANDO & ASSOCIATES (PVT) LTD. ALL RIGHTS RESERVED.
-          </span>
-          <span className="mt-2 sm:mt-0">
-            REGULATED BY RICS & IVSL
-          </span>
-        </div>
-      </footer>
+      <SiteFooter onServiceClick={openService} />
 
       {/* Interactive Form Modals */}
       <RequestValuationModal isOpen={valuationOpen} onClose={() => setValuationOpen(false)} />
