@@ -177,7 +177,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
         country: "SRI LANKA",
         flagUrl: "/flag-lk.png",
         address:
-          "No. 505, Nawala Road, Rajagiriya",
+          "No. 505, Nawala Road, Rajagiriya, Sri Lanka",
         phoneDisplay: "+94 11 2887829",
         phoneHref: "+94112887829",
       },

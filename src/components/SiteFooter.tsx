@@ -44,7 +44,7 @@ const CONTACT_OFFICES = [
     country: "Sri Lanka",
     addressLines: [
       "No. 505, Nawala Road,",
-      "Rajagiriya",
+      "Rajagiriya, Sri Lanka",
     ],
     phone: "Tel: 011 2887829",
     phoneHref: "tel:+94112887829",
