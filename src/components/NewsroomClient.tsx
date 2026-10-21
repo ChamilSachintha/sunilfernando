@@ -574,35 +574,32 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
               })}
             </div>
           </section>
-
-          {/* Advisory Call-to-Action Bar */}
-          <section className="bg-secondary text-white p-8 sm:p-12 text-center relative overflow-hidden">
-            <div className="max-w-2xl mx-auto space-y-4">
-              <h3 className="text-2xl sm:text-3xl font-montserrat font-normal tracking-wide uppercase">
-                REQUIRE BESPOKE RESEARCH OR VALUATION?
-              </h3>
-              <p className="text-sm text-white/85 font-avenir leading-relaxed">
-                Connect with Sunil Fernando &amp; Associates to discuss portfolio reviews,
-                independent appraisals, or custom real estate intelligence across Sri Lanka, the
-                Maldives, and the UAE.
-              </p>
-              <div className="pt-4 flex flex-wrap justify-center gap-4">
-                <button
-                  onClick={() => setValuationOpen(true)}
-                  className="cursor-pointer px-8 py-3 bg-white text-secondary text-xs font-montserrat font-bold tracking-widest uppercase hover:bg-slate-100 transition shadow-sm"
-                >
-                  REQUEST A VALUATION
-                </button>
-                <button
-                  onClick={() => setContactOpen(true)}
-                  className="cursor-pointer px-8 py-3 border border-white/40 text-white text-xs font-montserrat font-bold tracking-widest uppercase hover:bg-white/10 transition"
-                >
-                  CONTACT OUR PARTNERS
-                </button>
-              </div>
-            </div>
-          </section>
         </div>
+
+        {/* Get In Touch Section (identical to Homepage) */}
+        <section id="contact" className="bg-secondary text-white py-16 text-center relative overflow-hidden mt-20">
+          <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-montserrat font-normal tracking-[0.3em] uppercase leading-tight text-white">
+              {cms.settings.contactTitle}
+            </h2>
+            <div className="text-sm sm:text-base lg:text-lg font-montserrat font-medium tracking-[0.15em] uppercase text-white/90">
+              {cms.settings.contactSubtitle}
+            </div>
+            <p className="text-xs sm:text-sm lg:text-[15px] font-avenir text-white/90 leading-relaxed max-w-2xl mx-auto">
+              {cms.settings.contactDescription}
+            </p>
+
+            <div className="pt-6 flex justify-center">
+              <button
+                onClick={() => setContactOpen(true)}
+                className="cursor-pointer px-10 py-2.5 border border-[#2684be] text-white text-sm sm:text-[15px] font-avenir font-medium tracking-wide transition duration-300 bg-transparent hover:bg-white/10"
+              >
+                REQUEST A CALL BACK
+              </button>
+            </div>
+          </div>
+        </section>
+
       </main>
 
       {/* Shared Site Footer */}
