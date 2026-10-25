@@ -238,7 +238,7 @@ export default function HomeClient({
       </header>
 
       {/* 2. Hero Section & Carousel (Page 1-4) */}
-      <section id="home" className="relative min-h-screen w-full flex flex-col justify-between pt-16 sm:pt-20 overflow-hidden bg-black">
+      <section id="home" className="relative w-full flex flex-col justify-start md:justify-between md:min-h-screen pt-16 sm:pt-20 overflow-hidden bg-black">
         {/* Background images transitioning */}
         {heroSlides.map((slide, idx) => (
           <motion.div
@@ -262,8 +262,8 @@ export default function HomeClient({
         {/* Diagonal Light Overlay Effect */}
         <div className="absolute inset-0 bg-gradient-to-tr from-sfa-navy/85 via-sfa-navy/50 to-transparent z-10 pointer-events-none" />
 
-        {/* Content */}
-        <div className="relative z-20 max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 text-white flex-1 flex flex-col justify-center py-4 sm:py-6">
+        {/* Content: on mobile, takes full viewport height so view ends right after the primary button */}
+        <div className="relative z-20 max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 text-white min-h-[calc(100vh-4rem)] min-h-[calc(100svh-4rem)] md:min-h-0 md:flex-1 flex flex-col justify-center py-6 sm:py-8">
           <div className="max-w-3xl self-end text-right">
             <motion.div
               initial={{ y: 30, opacity: 0 }}
@@ -309,8 +309,8 @@ export default function HomeClient({
           </div>
         </div>
 
-        {/* Regional Offices Row: Dubai, Maldives, and Sri Lanka (Semi-transparent dark tint over hero background) */}
-        <div className="relative z-20 w-full bg-[#0c2340]/55 text-white py-4 sm:py-6">
+        {/* Regional Offices Row: Dubai, Maldives, and Sri Lanka (Shown after the hero view on mobile, bottom of hero on desktop) */}
+        <div id="markets" className="relative z-20 w-full bg-[#0c2340]/80 md:bg-[#0c2340]/55 text-white py-10 sm:py-6 backdrop-blur-[2px] border-t border-white/10 md:border-t-0">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 lg:gap-24 xl:gap-36 text-center md:text-left">
             {cms.settings.regionalOffices.map((office, idx) => (
               <div key={idx} className="flex flex-col justify-start max-w-[260px] mx-auto md:mx-0">

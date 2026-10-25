@@ -121,7 +121,7 @@ export default function SiteFooter({
           <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
             {MARKETS.map((market) => (
               <li key={market}>
-                <Link href="/#home" className="hover:text-white transition cursor-pointer">
+                <Link href="/#markets" className="hover:text-white transition cursor-pointer">
                   {market}
                 </Link>
               </li>
