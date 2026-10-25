@@ -78,6 +78,16 @@ export default function HomeClient({
 
   const openService = (idx: number) => {
     setActiveService(idx);
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      const ids = [
+        "service-valuations",
+        "service-occupier",
+        "service-capital",
+        "service-research",
+      ];
+      scrollTo(ids[idx]);
+      return;
+    }
     scrollTo("offer");
   };
 
@@ -425,9 +435,9 @@ export default function HomeClient({
           EXPLORE OUR SERVICES
         </div>
 
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header tabs row */}
-          <div role="tablist" className="grid grid-cols-2 md:grid-cols-4 text-center border-b border-sfa-grey/10 md:border-b-0">
+        <div className="hidden md:block max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header tabs row (desktop & tablet) */}
+          <div role="tablist" className="grid grid-cols-4 text-center border-b border-sfa-grey/10 md:border-b-0">
             {["VALUATION & ADVISORY", "OCCUPIER SERVICES", "CAPITAL MARKETS", "RESEARCH SERVICES"].map((tab, idx) => (
               <button
                 key={idx}
@@ -438,12 +448,12 @@ export default function HomeClient({
                 onClick={() => setActiveService(idx)}
                 className={`py-4 font-avenir text-sm sm:text-base tracking-[0.15em] border-sfa-grey/10 cursor-pointer transition-colors duration-300 ${
                   idx === 0
-                    ? "border-r-[3px] border-b-[3px] md:border-b-0"
+                    ? "border-r-[3px]"
                     : idx === 1
-                    ? "border-b-[3px] md:border-r-[3px] md:border-b-0"
+                    ? "border-r-[3px]"
                     : idx === 2
-                    ? "border-r-[3px] md:border-b-0"
-                    : "border-r-0 border-b-0 md:border-r-0 md:border-b-0"
+                    ? "border-r-[3px]"
+                    : "border-r-0"
                 } ${
                   activeService === idx
                     ? "bg-sfa-light-blue text-primary font-semibold"
@@ -456,14 +466,16 @@ export default function HomeClient({
           </div>
         </div>
 
-        {/* Service Tab Panels: content of the selected tab */}
-        <div id="service-panel" className="w-full grid grid-cols-1">
+        {/* Service Panels: stacked on mobile, tabbed on desktop */}
+        <div id="service-panel" className="w-full flex flex-col md:grid md:grid-cols-1">
           {/* 7. Valuations Section (Page 9) */}
           <div
-            className={`col-start-1 row-start-1 w-full h-full flex flex-col ${
-              activeService === 0 ? "visible z-10" : "invisible pointer-events-none z-0"
+            id="service-valuations"
+            className={`w-full flex flex-col md:col-start-1 md:row-start-1 md:h-full ${
+              activeService === 0
+                ? "md:visible md:z-10 md:pointer-events-auto"
+                : "md:invisible md:pointer-events-none md:z-0"
             }`}
-            aria-hidden={activeService !== 0}
           >
             <section className="relative flex-1 h-full min-h-[540px] flex items-stretch overflow-hidden bg-white">
               {/* SVG Vector Background */}
@@ -533,10 +545,12 @@ export default function HomeClient({
 
           {/* 8. Occupier Services (Page 10) */}
           <div
-            className={`col-start-1 row-start-1 w-full h-full flex flex-col ${
-              activeService === 1 ? "visible z-10" : "invisible pointer-events-none z-0"
+            id="service-occupier"
+            className={`w-full flex flex-col md:col-start-1 md:row-start-1 md:h-full ${
+              activeService === 1
+                ? "md:visible md:z-10 md:pointer-events-auto"
+                : "md:invisible md:pointer-events-none md:z-0"
             }`}
-            aria-hidden={activeService !== 1}
           >
             <section className="relative flex-1 h-full min-h-[540px] flex items-stretch overflow-hidden bg-white">
               {/* Full-width building background image on desktop (clipped by overlay) */}
@@ -607,10 +621,12 @@ export default function HomeClient({
 
           {/* 9. Capital Markets (Page 11) */}
           <div
-            className={`col-start-1 row-start-1 w-full h-full flex flex-col ${
-              activeService === 2 ? "visible z-10" : "invisible pointer-events-none z-0"
+            id="service-capital"
+            className={`w-full flex flex-col md:col-start-1 md:row-start-1 md:h-full ${
+              activeService === 2
+                ? "md:visible md:z-10 md:pointer-events-auto"
+                : "md:invisible md:pointer-events-none md:z-0"
             }`}
-            aria-hidden={activeService !== 2}
           >
             <section className="relative flex-1 h-full min-h-[540px] flex items-stretch overflow-hidden bg-white">
               {/* SVG Vector Background */}
@@ -689,10 +705,12 @@ export default function HomeClient({
 
           {/* 9.1 Research Services (Page 11.5) */}
           <div
-            className={`col-start-1 row-start-1 w-full h-full flex flex-col ${
-              activeService === 3 ? "visible z-10" : "invisible pointer-events-none z-0"
+            id="service-research"
+            className={`w-full flex flex-col md:col-start-1 md:row-start-1 md:h-full ${
+              activeService === 3
+                ? "md:visible md:z-10 md:pointer-events-auto"
+                : "md:invisible md:pointer-events-none md:z-0"
             }`}
-            aria-hidden={activeService !== 3}
           >
             <section className="relative flex-1 h-full min-h-[540px] flex items-stretch overflow-hidden bg-white">
               {/* Full-width research workspace architecture background image on desktop (clipped by overlay) */}
