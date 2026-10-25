@@ -63,9 +63,9 @@ export default function SiteFooter({
 }) {
   return (
     <footer className="bg-primary text-white pt-16 pb-8 border-t border-white/10">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-0 items-start mb-12">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-0 items-start mb-12 text-center md:text-left">
         {/* Column 1: SFA identity & Reg info */}
-        <div className="lg:col-span-3 space-y-6 lg:pr-6">
+        <div className="lg:col-span-3 space-y-6 lg:pr-6 flex flex-col items-center md:items-start">
           <h3 className="text-xl sm:text-2xl font-montserrat font-medium tracking-[0.15em] uppercase leading-tight text-white">
             SUNIL FERNANDO &amp;
             <span className="block mt-1">ASSOCIATES</span>
@@ -75,11 +75,11 @@ export default function SiteFooter({
             Real Estate Advisory Since 1999
           </p>
 
-          <p className="text-sm font-avenir leading-relaxed text-[#0c2340] text-justify font-medium">
+          <p className="text-sm font-avenir leading-relaxed text-[#0c2340] text-center md:text-left md:text-justify font-medium max-w-md md:max-w-none">
             Sri Lanka&apos;s largest independent real estate consultancy delivering internationally accepted valuation and advisory services across Sri Lanka, the Maldives, and the UAE.
           </p>
 
-          <div className="flex gap-2 pt-2">
+          <div className="flex justify-center md:justify-start gap-2 pt-2">
             <span className="border border-white/40 px-3 py-1 text-[10px] font-barlow font-normal tracking-widest text-white">RICS</span>
             <span className="border border-white/40 px-3 py-1 text-[10px] font-barlow font-normal tracking-widest text-white">IVSL</span>
           </div>
@@ -92,7 +92,7 @@ export default function SiteFooter({
             {SERVICES.map((label, idx) => (
               <li key={label}>
                 {onServiceClick ? (
-                  <button onClick={() => onServiceClick(idx)} className="hover:text-white transition cursor-pointer text-left">
+                  <button onClick={() => onServiceClick(idx)} className="hover:text-white transition cursor-pointer text-center md:text-left">
                     {label}
                   </button>
                 ) : (
@@ -132,7 +132,7 @@ export default function SiteFooter({
         {/* Column 5: Contact Info */}
         <div className="lg:col-span-3 lg:border-l lg:border-white/20 lg:pl-6 space-y-4 text-xs sm:text-sm">
           <h4 className="text-base font-montserrat font-medium text-white">Contact</h4>
-          <div className="space-y-4 font-avenir font-medium text-[#0c2340] text-left">
+          <div className="space-y-4 font-avenir font-medium text-[#0c2340] text-center md:text-left">
             {CONTACT_OFFICES.map((office) => (
               <div key={office.country} className="space-y-0.5">
                 <p className="font-montserrat font-semibold text-white text-xs tracking-wider uppercase">
@@ -156,7 +156,7 @@ export default function SiteFooter({
       </div>
 
       {/* Bottom copyright line */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/20 pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] font-avenir font-bold tracking-widest text-[#0c2340] uppercase">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/20 pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] font-avenir font-bold tracking-widest text-[#0c2340] uppercase text-center sm:text-left">
         <span>
           © 2026 SUNIL FERNANDO &amp; ASSOCIATES (PVT) LTD. ALL RIGHTS RESERVED.
         </span>
