@@ -500,7 +500,7 @@ export default function HomeClient({
               </div>
 
               {/* Content Overlay */}
-              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
+              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-0 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
                 {/* Left Column (Details) */}
                 <div className="lg:col-span-7 flex flex-col justify-between py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-24 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
@@ -582,7 +582,7 @@ export default function HomeClient({
               </div>
 
               {/* Content Overlay */}
-              <div className="relative z-20 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
+              <div className="relative z-20 w-full max-w-[1400px] mx-auto px-0 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
                 {/* Left Text Detail */}
                 <div className="lg:col-span-7 flex flex-col justify-between py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
@@ -656,7 +656,7 @@ export default function HomeClient({
               </div>
 
               {/* Content Overlay */}
-              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
+              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-0 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
                 {/* Left Column (Details) */}
                 <div className="lg:col-span-5 flex flex-col justify-between py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-12 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-sfa-navy mb-6 lg:mb-0">
@@ -742,7 +742,7 @@ export default function HomeClient({
               </div>
 
               {/* Content Overlay */}
-              <div className="relative z-20 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
+              <div className="relative z-20 w-full max-w-[1400px] mx-auto px-0 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
                 {/* Left Column (Details) */}
                 <div className="lg:col-span-7 flex flex-col justify-between py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-24 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
                   <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white mb-6 lg:mb-0">
@@ -810,7 +810,7 @@ export default function HomeClient({
         </div>
 
         {/* Content Overlay */}
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-0 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
           {/* Left Column (WHAT WE DO + End-to-End text) */}
           <div className="lg:col-span-7 flex flex-col justify-between bg-white lg:bg-transparent">
             {/* Header Banner Text */}
@@ -872,7 +872,7 @@ export default function HomeClient({
         </div>
 
         {/* Content Overlay */}
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-0 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
           {/* Left Column (INSIGHTS Header Details) */}
           <div className="lg:col-span-5 flex flex-col justify-between py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-12 bg-transparent">
             <span className="text-sm font-avenir font-semibold tracking-[0.2em] text-primary uppercase mb-6 lg:mb-0">
@@ -964,7 +964,7 @@ export default function HomeClient({
       </section>
 
       {/* 6. Case Studies (Page 8) */}
-      <section className="relative overflow-hidden bg-white">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-white">
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
@@ -991,7 +991,7 @@ export default function HomeClient({
         </div>
 
         {/* Content Overlay */}
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none">
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-8 py-20 bg-transparent lg:bg-none">
           <div className="max-w-[1050px]">
             <div className="pb-6 mb-8 space-y-4">
               <span className="text-sm font-avenir font-semibold tracking-[0.2em] text-[#00bdf1] uppercase">
@@ -1080,7 +1080,7 @@ export default function HomeClient({
         </div>
 
         {/* Content Overlay */}
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[45%_55%]">
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-0 lg:px-8 grid grid-cols-1 lg:grid-cols-[45%_55%]">
           {/* Left Column (Details - 45%) */}
           <div className="flex flex-col justify-center py-10 px-6 sm:p-10 lg:py-16 xl:py-20 lg:pl-0 lg:pr-10 xl:pr-14 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
             <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white">
@@ -1171,7 +1171,7 @@ export default function HomeClient({
       </div>
 
       {/* Content Overlay */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[45%_55%]">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-0 lg:px-8 grid grid-cols-1 lg:grid-cols-[45%_55%]">
         {/* Left Column (Details - 45%) */}
         <div className="flex flex-col justify-center py-10 px-6 sm:p-10 lg:py-16 xl:py-20 lg:pl-0 lg:pr-10 xl:pr-14 bg-gradient-to-b from-[#e2e8f0] to-[#194866] lg:bg-none text-white">
           <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-[#133852]">
@@ -1288,7 +1288,7 @@ export default function HomeClient({
         </div>
 
         {/* Content Overlay */}
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-0 lg:px-8 grid grid-cols-1 lg:grid-cols-12">
           {/* Left Column (Details) */}
           <div className="lg:col-span-6 flex flex-col justify-center py-12 px-6 sm:px-8 lg:py-16 lg:pl-0 lg:pr-12 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
             <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white">
