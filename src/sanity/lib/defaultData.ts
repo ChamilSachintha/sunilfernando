@@ -251,6 +251,8 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
     partnerLogosPart2: [
       { name: "HSBC", imageUrl: "/logos/hsbc.png", className: "h-7 sm:h-8" },
       { name: "Standard Chartered", imageUrl: "/logos/standard-chartered.png", className: "h-8 sm:h-9" },
+      { name: "Commercial Bank of Ceylon", imageUrl: "/logos/commercial-bank.png", className: "h-8 sm:h-9" },
+      { name: "Hatton National Bank (HNB)", imageUrl: "/logos/hnb.png", className: "h-8 sm:h-9" },
       { name: "Commercial Bank International", imageUrl: "/logos/cbi.png", className: "h-9 sm:h-11" },
     ],
     partnerLogos: [
@@ -263,6 +265,8 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       { name: "NDB Investment Bank", imageUrl: "/logos/ndb.png", className: "h-7 sm:h-8" },
       { name: "HSBC", imageUrl: "/logos/hsbc.png", className: "h-7 sm:h-8" },
       { name: "Standard Chartered", imageUrl: "/logos/standard-chartered.png", className: "h-8 sm:h-9" },
+      { name: "Commercial Bank of Ceylon", imageUrl: "/logos/commercial-bank.png", className: "h-8 sm:h-9" },
+      { name: "Hatton National Bank (HNB)", imageUrl: "/logos/hnb.png", className: "h-8 sm:h-9" },
       { name: "Commercial Bank International", imageUrl: "/logos/cbi.png", className: "h-9 sm:h-11" },
     ],
     teamDescription:
