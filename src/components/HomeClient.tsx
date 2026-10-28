@@ -1099,7 +1099,7 @@ export default function HomeClient({
           </div>
 
           {/* Right Column (Logos - 55%) */}
-          <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-16 xl:py-20 lg:pl-10 xl:pl-14 lg:pr-0">
+          <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-16 xl:py-20 lg:pl-20 xl:pl-28 lg:pr-0">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 sm:gap-x-12 lg:gap-x-14 xl:gap-x-16 gap-y-8 sm:gap-y-10 lg:gap-y-12 items-center justify-items-center w-full">
               {cms.settings.clientLogos.map((client, idx) => (
                 <div key={idx} className="flex items-center justify-center">
@@ -1158,22 +1158,22 @@ export default function HomeClient({
 
           {/* Left Side with Depth Gradient (bounded strictly by divider left edge) */}
           <path
-            d="M 0,-15 L 652,-15 C 597,-15 553,35 537,70 L 429,310 L 0,310 Z"
+            d="M 0,-15 L 562,-15 C 512,-15 480,35 467,70 L 369,310 L 0,310 Z"
             fill="url(#partners-left-depth)"
           />
 
           {/* Exact Central Diagonal Divider: sweeping curve at top, perfectly straight and uniform in width downward */}
           <path
-            d="M 690,-15 C 635,-15 591,35 575,70 L 467,310 L 429,310 L 537,70 C 553,35 597,-15 652,-15 Z"
+            d="M 600,-15 C 550,-15 518,35 505,70 L 407,310 L 369,310 L 467,70 C 480,35 512,-15 562,-15 Z"
             fill="url(#partners-divider-grad)"
           />
         </svg>
       </div>
 
       {/* Content Overlay */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-0 lg:px-8 grid grid-cols-1 lg:grid-cols-[45%_55%]">
-        {/* Left Column (Details - 45%) */}
-        <div className="flex flex-col justify-center py-10 px-6 sm:p-10 lg:py-16 xl:py-20 lg:pl-0 lg:pr-10 xl:pr-14 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-0 lg:px-8 grid grid-cols-1 lg:grid-cols-[38%_62%]">
+        {/* Left Column (Details - 38%) */}
+        <div className="flex flex-col justify-center py-10 px-6 sm:p-10 lg:py-16 xl:py-20 lg:pl-0 lg:pr-8 xl:pr-12 bg-gradient-to-b from-[#194866] to-[#e2e8f0] lg:bg-none text-white">
           <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-montserrat font-normal tracking-tight uppercase leading-[1.05] text-white lg:text-[#133852]">
             OUR
             <span className="block mt-1">PARTNERS</span>
@@ -1188,10 +1188,10 @@ export default function HomeClient({
           </p>
         </div>
 
-        {/* Right Column (Logos - 55%, strictly contained to the right of divider boundary) */}
-        <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-16 xl:py-20 lg:pl-24 xl:pl-32 lg:pr-0 space-y-8 sm:space-y-10 lg:space-y-12">
+        {/* Right Column (Logos - 62%, strictly contained to the right of divider boundary) */}
+        <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-16 xl:py-20 lg:pl-36 xl:pl-48 lg:pr-0 space-y-12 sm:space-y-14 lg:space-y-16">
           {/* First Section: Banking Partners Logos */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-6 sm:gap-y-7 lg:gap-y-8 items-center justify-items-center w-full max-w-[700px]">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 sm:gap-x-12 lg:gap-x-14 xl:gap-x-16 gap-y-6 sm:gap-y-7 lg:gap-y-8 items-center justify-items-center w-full max-w-[680px] ml-auto">
             {(
               Array.isArray(cms.settings.partnerLogosPart1) && cms.settings.partnerLogosPart1.length > 0
                 ? cms.settings.partnerLogosPart1
@@ -1221,7 +1221,7 @@ export default function HomeClient({
               ? cms.settings.partnerLogosPart2
               : cms.settings.partnerLogos?.slice(5) || []
           ).filter((partner) => Boolean(partner.imageUrl) || partner.name === "Knight Frank").length > 0 && (
-            <div className="pt-8 sm:pt-10 lg:pt-12 border-t border-sfa-navy/15 grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-6 sm:gap-y-7 lg:gap-y-8 items-center justify-items-center w-full max-w-[700px]">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 sm:gap-x-12 lg:gap-x-14 xl:gap-x-16 gap-y-6 sm:gap-y-7 lg:gap-y-8 items-center justify-items-center w-full max-w-[680px] ml-auto">
               {(
                 Array.isArray(cms.settings.partnerLogosPart2) && cms.settings.partnerLogosPart2.length > 0
                   ? cms.settings.partnerLogosPart2
