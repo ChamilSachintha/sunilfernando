@@ -114,20 +114,39 @@ function StudioAdminBar() {
         });
       }
 
-      const partnerLogos = [];
-      for (let i = 0; i < DEFAULT_SITE_CONTENT.settings.partnerLogos.length; i++) {
-        const pl = DEFAULT_SITE_CONTENT.settings.partnerLogos[i];
+      const partnerLogosPart1 = [];
+      const defaultPart1 = DEFAULT_SITE_CONTENT.settings.partnerLogosPart1 || [];
+      for (let i = 0; i < defaultPart1.length; i++) {
+        const pl = defaultPart1[i];
         const logo = pl.imageUrl
-          ? await uploadImageAsset(client, pl.imageUrl, `sfa-partner-logo-${i + 1}.png`)
+          ? await uploadImageAsset(client, pl.imageUrl, `sfa-partner-part1-logo-${i + 1}.png`)
           : undefined;
-        partnerLogos.push({
-          _key: `partner-logo-${i + 1}`,
+        partnerLogosPart1.push({
+          _key: `partner-part1-logo-${i + 1}`,
           name: pl.name,
           imageUrl: pl.imageUrl,
           className: pl.className,
           ...(logo ? { logo } : {}),
         });
       }
+
+      const partnerLogosPart2 = [];
+      const defaultPart2 = DEFAULT_SITE_CONTENT.settings.partnerLogosPart2 || [];
+      for (let i = 0; i < defaultPart2.length; i++) {
+        const pl = defaultPart2[i];
+        const logo = pl.imageUrl
+          ? await uploadImageAsset(client, pl.imageUrl, `sfa-partner-part2-logo-${i + 1}.png`)
+          : undefined;
+        partnerLogosPart2.push({
+          _key: `partner-part2-logo-${i + 1}`,
+          name: pl.name,
+          imageUrl: pl.imageUrl,
+          className: pl.className,
+          ...(logo ? { logo } : {}),
+        });
+      }
+
+      const partnerLogos = [...partnerLogosPart1, ...partnerLogosPart2];
 
       // 3. Upload Occupier & Research Service Background Images
       setSeedMessage("Uploading Services background images (3/5)...");
@@ -193,8 +212,8 @@ function StudioAdminBar() {
           regionalOffices,
           whatWeDoImage,
           clientLogos,
-          partnerLogosPart1: partnerLogos.slice(0, 6),
-          partnerLogosPart2: partnerLogos.slice(6),
+          partnerLogosPart1,
+          partnerLogosPart2,
           partnerLogos,
           teamHeaderImage,
         })
@@ -208,8 +227,8 @@ function StudioAdminBar() {
         clientLogos,
         partnersSubtitle: DEFAULT_SITE_CONTENT.settings.partnersSubtitle,
         partnersDescription: DEFAULT_SITE_CONTENT.settings.partnersDescription,
-        partnerLogosPart1: partnerLogos.slice(0, 6),
-        partnerLogosPart2: partnerLogos.slice(6),
+        partnerLogosPart1,
+        partnerLogosPart2,
         partnerLogos,
       });
 

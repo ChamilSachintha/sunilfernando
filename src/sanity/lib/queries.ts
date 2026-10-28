@@ -184,27 +184,48 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
         ? s.clientLogos
         : DEFAULT_SITE_CONTENT.settings.clientLogos;
 
-    const partnerLogosPart1 =
+    const REMOVED_PARTNER_NAMES = new Set([
+      "Makeelu Chambers",
+      "Warren Vicks Management Consultancies LLC",
+      "Design Advocacy",
+      "Acquest",
+      "Coenergi",
+      "Sudath Perera Associates",
+    ]);
+
+    const rawPart1 =
       Array.isArray(net.partnerLogosPart1) && net.partnerLogosPart1.length > 0
         ? net.partnerLogosPart1
         : Array.isArray(s.partnerLogosPart1) && s.partnerLogosPart1.length > 0
         ? s.partnerLogosPart1
-        : DEFAULT_SITE_CONTENT.settings.partnerLogosPart1 || [];
+        : [];
 
-    const partnerLogosPart2 =
+    const rawPart2 =
       Array.isArray(net.partnerLogosPart2) && net.partnerLogosPart2.length > 0
         ? net.partnerLogosPart2
         : Array.isArray(s.partnerLogosPart2) && s.partnerLogosPart2.length > 0
         ? s.partnerLogosPart2
-        : DEFAULT_SITE_CONTENT.settings.partnerLogosPart2 || [];
+        : [];
+
+    const hasLegacySeed =
+      rawPart1.some((p: { name?: string }) => p?.name && REMOVED_PARTNER_NAMES.has(p.name)) ||
+      rawPart2.some((p: { name?: string }) => p?.name && REMOVED_PARTNER_NAMES.has(p.name));
+
+    const partnerLogosPart1 = hasLegacySeed
+      ? DEFAULT_SITE_CONTENT.settings.partnerLogosPart1 || []
+      : rawPart1.length > 0
+      ? rawPart1.filter((p: { name?: string }) => !p?.name || !REMOVED_PARTNER_NAMES.has(p.name))
+      : DEFAULT_SITE_CONTENT.settings.partnerLogosPart1 || [];
+
+    const partnerLogosPart2 = hasLegacySeed
+      ? DEFAULT_SITE_CONTENT.settings.partnerLogosPart2 || []
+      : rawPart2.length > 0
+      ? rawPart2.filter((p: { name?: string }) => !p?.name || !REMOVED_PARTNER_NAMES.has(p.name))
+      : DEFAULT_SITE_CONTENT.settings.partnerLogosPart2 || [];
 
     const partnerLogos =
       partnerLogosPart1.length > 0 || partnerLogosPart2.length > 0
         ? [...partnerLogosPart1, ...partnerLogosPart2]
-        : Array.isArray(net.partnerLogos) && net.partnerLogos.length > 0
-        ? net.partnerLogos
-        : Array.isArray(s.partnerLogos) && s.partnerLogos.length > 0
-        ? s.partnerLogos
         : DEFAULT_SITE_CONTENT.settings.partnerLogos;
 
     return {

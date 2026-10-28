@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { KnightFrankLogo, MakeeluChambersLogo } from "@/components/Logos";
+import { KnightFrankLogo } from "@/components/Logos";
 import { RequestValuationModal, ContactModal } from "@/components/Forms";
 import SiteFooter from "@/components/SiteFooter";
 import {
@@ -1189,48 +1189,16 @@ export default function HomeClient({
         </div>
 
         {/* Right Column (Logos - 55%, strictly contained to the right of divider boundary) */}
-        <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-16 xl:py-20 lg:pl-24 xl:pl-32 lg:pr-0 space-y-6 sm:space-y-8">
-          {/* Part 1 Logos */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-7 sm:gap-y-8 lg:gap-y-9 xl:gap-y-10 items-center justify-items-center w-full max-w-[700px]">
+        <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-16 xl:py-20 lg:pl-24 xl:pl-32 lg:pr-0 space-y-8 sm:space-y-10 lg:space-y-12">
+          {/* First Section: Strategic Partners Logos */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-6 sm:gap-y-7 lg:gap-y-8 items-center justify-items-center w-full max-w-[700px]">
             {(
               Array.isArray(cms.settings.partnerLogosPart1) && cms.settings.partnerLogosPart1.length > 0
                 ? cms.settings.partnerLogosPart1
-                : cms.settings.partnerLogos?.slice(0, 6) || []
-            ).map((partner, idx) => (
-              <div key={idx} className="flex items-center justify-center">
-                {partner.imageUrl ? (
-                  <Image
-                    src={partner.imageUrl}
-                    alt={partner.name}
-                    width={500}
-                    height={180}
-                    className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${partner.className || "h-7 sm:h-8"}`}
-                  />
-                ) : partner.name === "Knight Frank" ? (
-                  <KnightFrankLogo />
-                ) : partner.name === "Makeelu Chambers" ? (
-                  <MakeeluChambersLogo />
-                ) : (
-                  <span className="text-xs font-montserrat font-bold text-sfa-navy uppercase">
-                    {partner.name}
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Part 2 Logos */}
-          {(
-            Array.isArray(cms.settings.partnerLogosPart2) && cms.settings.partnerLogosPart2.length > 0
-              ? cms.settings.partnerLogosPart2
-              : cms.settings.partnerLogos?.slice(6) || []
-          ).length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-7 sm:gap-y-8 lg:gap-y-9 xl:gap-y-10 items-center justify-items-center w-full max-w-[700px]">
-              {(
-                Array.isArray(cms.settings.partnerLogosPart2) && cms.settings.partnerLogosPart2.length > 0
-                  ? cms.settings.partnerLogosPart2
-                  : cms.settings.partnerLogos?.slice(6) || []
-              ).map((partner, idx) => (
+                : cms.settings.partnerLogos?.slice(0, 7) || []
+            )
+              .filter((partner) => Boolean(partner.imageUrl) || partner.name === "Knight Frank")
+              .map((partner, idx) => (
                 <div key={idx} className="flex items-center justify-center">
                   {partner.imageUrl ? (
                     <Image
@@ -1242,15 +1210,39 @@ export default function HomeClient({
                     />
                   ) : partner.name === "Knight Frank" ? (
                     <KnightFrankLogo />
-                  ) : partner.name === "Makeelu Chambers" ? (
-                    <MakeeluChambersLogo />
-                  ) : (
-                    <span className="text-xs font-montserrat font-bold text-sfa-navy uppercase">
-                      {partner.name}
-                    </span>
-                  )}
+                  ) : null}
                 </div>
               ))}
+          </div>
+
+          {/* Second Section: Banking Partners Logos */}
+          {(
+            Array.isArray(cms.settings.partnerLogosPart2) && cms.settings.partnerLogosPart2.length > 0
+              ? cms.settings.partnerLogosPart2
+              : cms.settings.partnerLogos?.slice(7) || []
+          ).filter((partner) => Boolean(partner.imageUrl) || partner.name === "Knight Frank").length > 0 && (
+            <div className="pt-8 sm:pt-10 lg:pt-12 border-t border-sfa-navy/15 grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-6 sm:gap-y-7 lg:gap-y-8 items-center justify-items-center w-full max-w-[700px]">
+              {(
+                Array.isArray(cms.settings.partnerLogosPart2) && cms.settings.partnerLogosPart2.length > 0
+                  ? cms.settings.partnerLogosPart2
+                  : cms.settings.partnerLogos?.slice(7) || []
+              )
+                .filter((partner) => Boolean(partner.imageUrl) || partner.name === "Knight Frank")
+                .map((partner, idx) => (
+                  <div key={idx} className="flex items-center justify-center">
+                    {partner.imageUrl ? (
+                      <Image
+                        src={partner.imageUrl}
+                        alt={partner.name}
+                        width={500}
+                        height={180}
+                        className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${partner.className || "h-7 sm:h-8"}`}
+                      />
+                    ) : partner.name === "Knight Frank" ? (
+                      <KnightFrankLogo />
+                    ) : null}
+                  </div>
+                ))}
             </div>
           )}
         </div>

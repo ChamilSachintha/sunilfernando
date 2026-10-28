@@ -70,8 +70,8 @@ export const networkSectionType = defineType({
     }),
     defineField({
       name: "partnerLogosPart1",
-      title: "Partner Logos - First Part",
-      description: "First part of the partner network logos (e.g. KPMG, Knight Frank, Kreston, BDO, Makeelu Chambers, Baker Tilly)",
+      title: "Partner Logos - First Section (Strategic Partners)",
+      description: "First section of partner logos: Strategic Partners (e.g. Knight Frank, Deloitte, KPMG, Baker Tilly, BDO, Kreston, NDB Investment Bank)",
       type: "array",
       group: "partners",
       of: [
@@ -99,8 +99,8 @@ export const networkSectionType = defineType({
     }),
     defineField({
       name: "partnerLogosPart2",
-      title: "Partner Logos - Second Part",
-      description: "Second part of the partner network logos (e.g. Warren Vicks, Design Advocacy, Acquest, NDB, Coenergi, Sudath Perera)",
+      title: "Partner Logos - Second Section (Banking Partners)",
+      description: "Second section of partner logos: Banking Partners (e.g. HSBC, Standard Chartered, Commercial Bank of Ceylon, HNB, CBI)",
       type: "array",
       group: "partners",
       of: [
