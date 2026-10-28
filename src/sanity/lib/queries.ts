@@ -209,7 +209,8 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
 
     const hasLegacySeed =
       rawPart1.some((p: { name?: string }) => p?.name && REMOVED_PARTNER_NAMES.has(p.name)) ||
-      rawPart2.some((p: { name?: string }) => p?.name && REMOVED_PARTNER_NAMES.has(p.name));
+      rawPart2.some((p: { name?: string }) => p?.name && REMOVED_PARTNER_NAMES.has(p.name)) ||
+      rawPart1.some((p: { name?: string }) => p?.name === "Knight Frank" || p?.name === "KPMG");
 
     const partnerLogosPart1 = hasLegacySeed
       ? DEFAULT_SITE_CONTENT.settings.partnerLogosPart1 || []

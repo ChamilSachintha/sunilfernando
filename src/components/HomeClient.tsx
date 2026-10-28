@@ -1190,12 +1190,12 @@ export default function HomeClient({
 
         {/* Right Column (Logos - 55%, strictly contained to the right of divider boundary) */}
         <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-16 xl:py-20 lg:pl-24 xl:pl-32 lg:pr-0 space-y-8 sm:space-y-10 lg:space-y-12">
-          {/* First Section: Strategic Partners Logos */}
+          {/* First Section: Banking Partners Logos */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-6 sm:gap-y-7 lg:gap-y-8 items-center justify-items-center w-full max-w-[700px]">
             {(
               Array.isArray(cms.settings.partnerLogosPart1) && cms.settings.partnerLogosPart1.length > 0
                 ? cms.settings.partnerLogosPart1
-                : cms.settings.partnerLogos?.slice(0, 7) || []
+                : cms.settings.partnerLogos?.slice(0, 5) || []
             )
               .filter((partner) => Boolean(partner.imageUrl) || partner.name === "Knight Frank")
               .map((partner, idx) => (
@@ -1215,17 +1215,17 @@ export default function HomeClient({
               ))}
           </div>
 
-          {/* Second Section: Banking Partners Logos */}
+          {/* Second Section: Strategic Partners Logos */}
           {(
             Array.isArray(cms.settings.partnerLogosPart2) && cms.settings.partnerLogosPart2.length > 0
               ? cms.settings.partnerLogosPart2
-              : cms.settings.partnerLogos?.slice(7) || []
+              : cms.settings.partnerLogos?.slice(5) || []
           ).filter((partner) => Boolean(partner.imageUrl) || partner.name === "Knight Frank").length > 0 && (
             <div className="pt-8 sm:pt-10 lg:pt-12 border-t border-sfa-navy/15 grid grid-cols-2 sm:grid-cols-3 gap-x-10 sm:gap-x-14 lg:gap-x-16 xl:gap-x-20 gap-y-6 sm:gap-y-7 lg:gap-y-8 items-center justify-items-center w-full max-w-[700px]">
               {(
                 Array.isArray(cms.settings.partnerLogosPart2) && cms.settings.partnerLogosPart2.length > 0
                   ? cms.settings.partnerLogosPart2
-                  : cms.settings.partnerLogos?.slice(7) || []
+                  : cms.settings.partnerLogos?.slice(5) || []
               )
                 .filter((partner) => Boolean(partner.imageUrl) || partner.name === "Knight Frank")
                 .map((partner, idx) => (
