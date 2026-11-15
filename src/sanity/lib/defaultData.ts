@@ -227,7 +227,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
     clientsDescription2:
       "Each year, we complete thousands of valuation assignments across various sectors. With tailored methodologies and deep expertise, we consistently meet client needs and deliver exceptional value.",
     clientLogos: [
-      { name: "SMIB", imageUrl: "/logos/smib.jpg", className: "h-10 sm:h-12" },
+      { name: "SMIB", imageUrl: "/logos/smib.png", className: "h-10 sm:h-12" },
       { name: "Bank of Ceylon", imageUrl: "/logos/boc.png", className: "h-9 sm:h-11" },
       { name: "Housing Development Corporation", imageUrl: "/logos/hdc.png", className: "h-8 sm:h-10" },
       { name: "Port City Colombo", imageUrl: "/logos/port-city-colombo.png", className: "h-10 sm:h-12" },
