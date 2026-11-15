@@ -7,13 +7,13 @@ import {
   Menu,
   X,
   FileText,
-  Download,
-  Calendar,
+  // Download,
+  // Calendar,
   Briefcase,
-  CheckCircle2,
+  // CheckCircle2,
   ArrowUpRight,
 } from "lucide-react";
-import { PortableText, type PortableTextComponents } from "@portabletext/react";
+// import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import { RequestValuationModal, ContactModal } from "@/components/Forms";
 import SiteFooter from "@/components/SiteFooter";
 import type {
@@ -29,6 +29,7 @@ const NAV_LINKS = [
   { label: "REACH US", href: "/#contact" },
 ];
 
+/*
 // Fallback comprehensive article content when body is not yet populated via Sanity CMS
 const FALLBACK_REPORT_ARTICLES: Record<string, { paragraphs: string[]; keyTakeaways?: string[] }> = {
   "report-1": {
@@ -152,6 +153,7 @@ const portableTextComponents: PortableTextComponents = {
     ),
   },
 };
+*/
 
 export default function NewsroomClient({ content }: { content: SanitySiteContent }) {
   const cms = content;
@@ -276,10 +278,15 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
               }`}
             >
               <span>INSIGHTS</span>
-              <span className={`text-[10px] px-2 py-0.5 rounded-full font-sans transition ${
+              {/* <span className={`text-[10px] px-2 py-0.5 rounded-full font-sans transition ${
                 activeTab === "insights" ? "bg-sfa-blue/10 text-sfa-blue" : "bg-slate-100 text-sfa-navy/70"
               }`}>
                 {cms.reports.length}
+              </span> */}
+              <span className={`text-[10px] px-2 py-0.5 rounded-full font-sans transition ${
+                activeTab === "insights" ? "bg-sfa-blue/10 text-sfa-blue" : "bg-slate-100 text-sfa-navy/70"
+              }`}>
+                SOON
               </span>
             </button>
             <button
@@ -291,10 +298,15 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
               }`}
             >
               <span>CASE STUDIES</span>
-              <span className={`text-[10px] px-2 py-0.5 rounded-full font-sans transition ${
+              {/* <span className={`text-[10px] px-2 py-0.5 rounded-full font-sans transition ${
                 activeTab === "case-studies" ? "bg-sfa-blue/10 text-sfa-blue" : "bg-slate-100 text-sfa-navy/70"
               }`}>
                 {cms.caseStudies.length}
+              </span> */}
+              <span className={`text-[10px] px-2 py-0.5 rounded-full font-sans transition ${
+                activeTab === "case-studies" ? "bg-sfa-blue/10 text-sfa-blue" : "bg-slate-100 text-sfa-navy/70"
+              }`}>
+                SOON
               </span>
             </button>
           </div>
@@ -345,13 +357,42 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                         MARKET INSIGHTS &amp; REPORTS
                       </h2>
                     </div>
-                    <span className="text-xs font-montserrat font-bold text-sfa-navy/60 uppercase tracking-widest">
+                    {/* <span className="text-xs font-montserrat font-bold text-sfa-navy/60 uppercase tracking-widest">
                       {cms.reports.length} {cms.reports.length === 1 ? "ARTICLE" : "ARTICLES"}
+                    </span> */}
+                    <span className="text-xs font-montserrat font-bold text-sfa-navy/60 uppercase tracking-widest">
+                      COMING SOON
                     </span>
                   </div>
 
+                  {/* Coming Soon State */}
+                  <div className="bg-white border border-slate-200 shadow-sm p-8 sm:p-12 lg:p-16 text-left space-y-6">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/10 border border-secondary/20 text-secondary text-[11px] font-montserrat font-bold uppercase tracking-widest">
+                      <FileText className="w-3.5 h-3.5" />
+                      <span>UPDATING SOON</span>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-normal text-sfa-navy uppercase tracking-tight leading-tight">
+                      MARKET INSIGHTS &amp; RESEARCH REPORTS COMING SOON.
+                    </h3>
+                    <p className="text-sm sm:text-base font-avenir text-sfa-navy/75 leading-relaxed max-w-2xl">
+                      We are currently preparing our upcoming market intelligence publications, technical valuation commentaries, and regional property outlooks across Sri Lanka, the Maldives, and the UAE. Please check back soon for our latest reports.
+                    </p>
+                    <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+                      <button
+                        onClick={() => setContactOpen(true)}
+                        className="cursor-pointer inline-flex items-center gap-2.5 px-6 py-3 bg-secondary text-white text-xs font-montserrat font-bold tracking-widest uppercase hover:bg-[#133852] transition shadow-sm"
+                      >
+                        <span>REQUEST MARKET BRIEFING</span>
+                        <ArrowUpRight className="w-4 h-4" />
+                      </button>
+                      <span className="text-[11px] font-avenir text-sfa-navy/50 uppercase tracking-widest">
+                        SUNIL FERNANDO &amp; ASSOCIATES REAL ESTATE INTELLIGENCE
+                      </span>
+                    </div>
+                  </div>
+
                   {/* Full Article Entries */}
-                  <div className="space-y-12">
+                  {/* <div className="space-y-12">
                     {cms.reports.map((report) => {
                       const fallback = FALLBACK_REPORT_ARTICLES[report._id];
                       return (
@@ -360,7 +401,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                           id={`insight-${report._id}`}
                           className="bg-white border border-slate-200 shadow-sm p-6 sm:p-10 lg:p-12 scroll-mt-36 transition hover:border-secondary/40"
                         >
-                          {/* Meta header */}
+                          // Meta header
                           <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100">
                             <div className="flex flex-wrap items-center gap-3">
                               {report.category ? (
@@ -387,12 +428,12 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                             )}
                           </div>
 
-                          {/* Title */}
+                          // Title
                           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-normal text-sfa-navy uppercase tracking-tight leading-tight mt-6 mb-6">
                             {report.title}
                           </h3>
 
-                          {/* Primary Executive Summary */}
+                          // Primary Executive Summary
                           {report.summary && (
                             <div className="p-5 sm:p-6 bg-slate-50 border-l-4 border-secondary my-6">
                               <span className="block text-[11px] font-montserrat font-bold tracking-widest uppercase text-secondary mb-1">
@@ -404,7 +445,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                             </div>
                           )}
 
-                          {/* Full Article Body (PortableText from Sanity or fallback detailed analysis) */}
+                          // Full Article Body (PortableText from Sanity or fallback detailed analysis)
                           <div className="prose max-w-none text-sfa-navy/80 pt-2 pb-6">
                             {report.body && Array.isArray(report.body) && report.body.length > 0 ? (
                               <PortableText value={report.body} components={portableTextComponents} />
@@ -441,7 +482,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                             ) : null}
                           </div>
 
-                          {/* Footer Actions / Download Button */}
+                          // Footer Actions / Download Button
                           <div className="pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
                             {report.fileUrl ? (
                               <a
@@ -470,7 +511,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                         </article>
                       );
                     })}
-                  </div>
+                  </div> */}
                 </section>
               </motion.div>
             ) : (
@@ -492,13 +533,42 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                         ADVISORY CASE STUDIES
                       </h2>
                     </div>
-                    <span className="text-xs font-montserrat font-bold text-sfa-navy/60 uppercase tracking-widest">
+                    {/* <span className="text-xs font-montserrat font-bold text-sfa-navy/60 uppercase tracking-widest">
                       {cms.caseStudies.length} {cms.caseStudies.length === 1 ? "MANDATE" : "MANDATES"}
+                    </span> */}
+                    <span className="text-xs font-montserrat font-bold text-sfa-navy/60 uppercase tracking-widest">
+                      COMING SOON
                     </span>
                   </div>
 
+                  {/* Coming Soon State */}
+                  <div className="bg-white border border-slate-200 shadow-sm p-8 sm:p-12 lg:p-16 text-left space-y-6">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/10 border border-secondary/20 text-secondary text-[11px] font-montserrat font-bold uppercase tracking-widest">
+                      <Briefcase className="w-3.5 h-3.5" />
+                      <span>UPDATING SOON</span>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-normal text-sfa-navy uppercase tracking-tight leading-tight">
+                      ADVISORY CASE STUDIES COMING SOON.
+                    </h3>
+                    <p className="text-sm sm:text-base font-avenir text-sfa-navy/75 leading-relaxed max-w-2xl">
+                      We are currently curating our featured institutional valuations, bank collateral appraisals, and cross-border advisory mandates. Detailed case studies and transaction outcomes will be published here soon.
+                    </p>
+                    <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+                      <button
+                        onClick={() => setValuationOpen(true)}
+                        className="cursor-pointer inline-flex items-center gap-2.5 px-6 py-3 bg-secondary text-white text-xs font-montserrat font-bold tracking-widest uppercase hover:bg-[#133852] transition shadow-sm"
+                      >
+                        <span>DISCUSS A MANDATE WITH US</span>
+                        <ArrowUpRight className="w-4 h-4" />
+                      </button>
+                      <span className="text-[11px] font-avenir text-sfa-navy/50 uppercase tracking-widest">
+                        VALUATION &amp; TRANSACTION ADVISORY
+                      </span>
+                    </div>
+                  </div>
+
                   {/* Full Case Study Cards */}
-                  <div className="space-y-12">
+                  {/* <div className="space-y-12">
                     {cms.caseStudies.map((cs) => {
                       const fallback = FALLBACK_CASE_STUDIES[cs._id];
                       return (
@@ -507,7 +577,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                           id={`case-study-${cs._id}`}
                           className="bg-white border border-slate-200 shadow-sm p-6 sm:p-10 lg:p-12 scroll-mt-36 transition hover:border-secondary/40"
                         >
-                          {/* Meta header */}
+                          // Meta header
                           <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100">
                             <div className="flex items-center gap-2 text-secondary">
                               <Briefcase className="w-4 h-4" />
@@ -520,7 +590,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                             </span>
                           </div>
 
-                          {/* Title */}
+                          // Title
                           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-normal text-sfa-navy uppercase tracking-tight leading-tight my-6">
                             {cs.titleLines.map((line, lIdx) => (
                               <span key={lIdx} className="block">
@@ -529,7 +599,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                             ))}
                           </h3>
 
-                          {/* Case Study Details Grid */}
+                          // Case Study Details Grid
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
                             <div className="space-y-2 p-6 bg-slate-50 border border-slate-100">
                               <span className="text-xs font-montserrat font-bold text-secondary uppercase tracking-widest flex items-center gap-2">
@@ -551,14 +621,14 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                             </div>
                           </div>
 
-                          {/* Full Case Study Body (PortableText if set in Sanity) */}
+                          // Full Case Study Body (PortableText if set in Sanity)
                           {cs.body && Array.isArray(cs.body) && cs.body.length > 0 && (
                             <div className="prose max-w-none text-sfa-navy/80 py-4">
                               <PortableText value={cs.body} components={portableTextComponents} />
                             </div>
                           )}
 
-                          {/* Outcome Footnote Banner */}
+                          // Outcome Footnote Banner
                           <div className="p-6 bg-gradient-to-r from-secondary to-[#133852] text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-6">
                             <div className="space-y-1">
                               <span className="text-[10px] font-montserrat font-bold tracking-widest uppercase text-[#00bdf1]">
@@ -579,7 +649,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                         </article>
                       );
                     })}
-                  </div>
+                  </div> */}
                 </section>
               </motion.div>
             )}
