@@ -888,15 +888,44 @@ export default function HomeClient({
               </h2>
             </div>
 
-            <div className="text-sm font-avenir font-semibold tracking-[0.15em] text-primary uppercase mt-6 lg:mt-0">
+            {/* <div className="text-sm font-avenir font-semibold tracking-[0.15em] text-primary uppercase mt-6 lg:mt-0">
               LATEST REPORT • 2026
+            </div> */}
+            <div className="text-sm font-avenir font-semibold tracking-[0.15em] text-primary uppercase mt-6 lg:mt-0">
+              UPDATES COMING SOON • 2026
             </div>
           </div>
 
           {/* Right Column (Reports & Commentaries) */}
           <div className="lg:col-span-7 flex flex-col justify-center py-12 px-6 sm:px-8 lg:py-16 lg:pl-24 lg:pr-0 bg-tertiary lg:bg-transparent text-sfa-navy">
             <div className="space-y-10 lg:space-y-12">
-              {cms.reports.map((report) =>
+              <div className="space-y-4 py-4">
+                <span className="inline-block px-3 py-1 bg-sfa-navy/10 border border-sfa-navy/20 text-[10px] font-montserrat font-bold tracking-[0.2em] text-sfa-navy uppercase">
+                  COMING SOON
+                </span>
+                <h3 className="text-2xl lg:text-3xl font-montserrat font-normal tracking-tight uppercase leading-snug text-sfa-navy">
+                  MARKET INSIGHTS &amp; RESEARCH REPORTS ARE ON THE WAY.
+                </h3>
+                <p className="text-xs lg:text-sm font-avenir font-normal text-sfa-navy/85 uppercase tracking-wider leading-relaxed max-w-xl">
+                  We are currently preparing our latest market intelligence, technical valuation commentaries, and regional property outlooks. Please check back soon for upcoming publications.
+                </p>
+                <div className="pt-2 flex flex-wrap items-center gap-6">
+                  <button
+                    onClick={() => setContactOpen(true)}
+                    className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest uppercase text-sfa-navy hover:underline cursor-pointer"
+                  >
+                    <span>REQUEST MARKET BRIEFING &rarr;</span>
+                  </button>
+                  <Link
+                    href="/newsroom"
+                    className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest uppercase text-sfa-navy/80 hover:text-sfa-navy hover:underline"
+                  >
+                    <span>VISIT NEWSROOM &rarr;</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* {cms.reports.map((report) =>
                 report.isFeatured ? (
                   <div
                     key={report._id}
@@ -957,7 +986,7 @@ export default function HomeClient({
                     </Link>
                   </div>
                 )
-              )}
+              )} */}
             </div>
           </div>
         </div>
@@ -1006,7 +1035,27 @@ export default function HomeClient({
             {/* Horizontal line stops at 5/6 width (middle of column 3) */}
             <div className="h-[2px] w-5/6 bg-white/20 mb-12" />
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+            <div className="py-4 max-w-2xl space-y-5">
+              <span className="inline-block px-3 py-1 bg-[#194866]/10 border border-[#194866]/20 text-[10px] font-montserrat font-bold tracking-[0.2em] text-[#194866] uppercase">
+                UPDATING SOON
+              </span>
+              <h3 className="text-2xl lg:text-3xl font-montserrat font-normal tracking-tight text-sfa-navy uppercase leading-tight">
+                SELECTED CASE STUDIES COMING SOON.
+              </h3>
+              <p className="text-xs lg:text-sm font-avenir font-normal text-sfa-navy/80 tracking-wider leading-relaxed uppercase">
+                We are currently compiling our featured institutional valuations, bank collateral appraisals, and cross-border advisory mandates. Detailed case studies will be published here soon.
+              </p>
+              <div className="pt-2">
+                <button
+                  onClick={() => setValuationOpen(true)}
+                  className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-sfa-navy uppercase hover:underline cursor-pointer"
+                >
+                  <span>DISCUSS A MANDATE WITH US &rarr;</span>
+                </button>
+              </div>
+            </div>
+
+            {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
               {cms.caseStudies.map((cs) => (
                 <div
                   key={cs._id}
@@ -1040,7 +1089,7 @@ export default function HomeClient({
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
