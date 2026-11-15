@@ -177,12 +177,29 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
     const srv = raw.services || {};
     const net = raw.network || {};
 
-    const clientLogos =
+    const rawClientLogos =
       Array.isArray(net.clientLogos) && net.clientLogos.length > 0
         ? net.clientLogos
         : Array.isArray(s.clientLogos) && s.clientLogos.length > 0
         ? s.clientLogos
-        : DEFAULT_SITE_CONTENT.settings.clientLogos;
+        : [];
+
+    const REMOVED_CLIENT_NAMES = new Set([
+      "HSBC",
+      "Standard Chartered",
+      "Deloitte",
+      "Commercial Bank International",
+      "CBI",
+    ]);
+
+    const hasLegacyClientLogos = rawClientLogos.some(
+      (c: { name?: string }) => c?.name && REMOVED_CLIENT_NAMES.has(c.name)
+    );
+
+    const clientLogos =
+      rawClientLogos.length === 0 || hasLegacyClientLogos
+        ? DEFAULT_SITE_CONTENT.settings.clientLogos
+        : rawClientLogos;
 
     const REMOVED_PARTNER_NAMES = new Set([
       "Makeelu Chambers",

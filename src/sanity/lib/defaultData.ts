@@ -227,10 +227,10 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
     clientsDescription2:
       "Each year, we complete thousands of valuation assignments across various sectors. With tailored methodologies and deep expertise, we consistently meet client needs and deliver exceptional value.",
     clientLogos: [
-      { name: "HSBC", imageUrl: "/logos/hsbc.png", className: "h-7 sm:h-8" },
-      { name: "Standard Chartered", imageUrl: "/logos/standard-chartered.png", className: "h-8 sm:h-9" },
-      { name: "Deloitte", imageUrl: "/logos/deloitte.png", className: "h-6 sm:h-7" },
-      { name: "Commercial Bank International", imageUrl: "/logos/cbi.png", className: "h-9 sm:h-11" },
+      { name: "SMIB", imageUrl: "/logos/smib.jpg", className: "h-10 sm:h-12" },
+      { name: "Bank of Ceylon", imageUrl: "/logos/boc.png", className: "h-9 sm:h-11" },
+      { name: "Housing Development Corporation", imageUrl: "/logos/hdc.png", className: "h-8 sm:h-10" },
+      { name: "Port City Colombo", imageUrl: "/logos/port-city-colombo.png", className: "h-10 sm:h-12" },
       { name: "Cinnamon Hotels & Resorts", imageUrl: "/logos/cinnamon.png", className: "h-8 sm:h-9" },
       { name: "Loadstar", imageUrl: "/logos/loadstar.png", className: "h-6 sm:h-7" },
       { name: "Shangri-La Hotels and Resorts", imageUrl: "/logos/shangri-la.png", className: "h-9 sm:h-11" },
