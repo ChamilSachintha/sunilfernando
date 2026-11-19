@@ -3,6 +3,7 @@ import { sanityClient } from "./client";
 import {
   DEFAULT_SITE_CONTENT,
   getBuiltInStatLogo,
+  type RegionalOffice,
   type SanitySiteContent,
   type StatItem,
 } from "./defaultData";
@@ -32,7 +33,8 @@ export const SITE_CONTENT_QUERY = groq`{
       "flagUrl": coalesce(flagImage.asset->url, flagUrl),
       address,
       phoneDisplay,
-      phoneHref
+      phoneHref,
+      email
     },
     "stats": stats[]{
       value,
@@ -262,7 +264,29 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
             : DEFAULT_SITE_CONTENT.settings.heroImages,
         regionalOffices:
           Array.isArray(s.regionalOffices) && s.regionalOffices.length > 0
-            ? s.regionalOffices
+            ? s.regionalOffices.map((office: RegionalOffice) => {
+                const countryUpper = (office.country || "").toUpperCase();
+                if (countryUpper.includes("MALDIVES")) {
+                  return {
+                    ...office,
+                    phoneDisplay: undefined,
+                    phoneHref: undefined,
+                  };
+                }
+                if (countryUpper.includes("UAE") || countryUpper.includes("DUBAI")) {
+                  return {
+                    ...office,
+                    email: office.email || "enquiries@sunilfernando.com",
+                  };
+                }
+                if (countryUpper.includes("SRI LANKA")) {
+                  return {
+                    ...office,
+                    email: office.email || "info@sunilfernando.com",
+                  };
+                }
+                return office;
+              })
             : DEFAULT_SITE_CONTENT.settings.regionalOffices,
         stats:
           Array.isArray(s.stats) && s.stats.length === 4

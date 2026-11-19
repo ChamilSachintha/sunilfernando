@@ -21,7 +21,14 @@ const MARKETS = [
   "Sri Lanka",
 ];
 
-const CONTACT_OFFICES = [
+const CONTACT_OFFICES: Array<{
+  country: string;
+  addressLines: string[];
+  phone?: string;
+  phoneHref?: string;
+  email?: string;
+  emailHref?: string;
+}> = [
   {
     country: "UAE",
     addressLines: [
@@ -30,6 +37,8 @@ const CONTACT_OFFICES = [
     ],
     phone: "Tel: +971 4 894 2444",
     phoneHref: "tel:+97148942444",
+    email: "Email: enquiries@sunilfernando.com",
+    emailHref: "mailto:enquiries@sunilfernando.com",
   },
   {
     country: "Maldives",
@@ -37,8 +46,6 @@ const CONTACT_OFFICES = [
       "Sunil Fernando & Associates Maldives Pvt Ltd,",
       "Malé City, Republic of Maldives",
     ],
-    phone: "Tel: +960 330 8829",
-    phoneHref: "tel:+9603308829",
   },
   {
     country: "Sri Lanka",
@@ -48,6 +55,8 @@ const CONTACT_OFFICES = [
     ],
     phone: "Tel: 011 2887829",
     phoneHref: "tel:+94112887829",
+    email: "Email: info@sunilfernando.com",
+    emailHref: "mailto:info@sunilfernando.com",
   },
 ];
 
@@ -143,12 +152,22 @@ export default function SiteFooter({
                     {line}
                   </p>
                 ))}
-                <a
-                  href={office.phoneHref}
-                  className="leading-snug hover:text-white transition block pt-0.5"
-                >
-                  {office.phone}
-                </a>
+                {office.phone && office.phoneHref && (
+                  <a
+                    href={office.phoneHref}
+                    className="leading-snug hover:text-white transition block pt-0.5"
+                  >
+                    {office.phone}
+                  </a>
+                )}
+                {office.email && office.emailHref && (
+                  <a
+                    href={office.emailHref}
+                    className="leading-snug hover:text-white transition block pt-0.5"
+                  >
+                    {office.email}
+                  </a>
+                )}
               </div>
             ))}
           </div>

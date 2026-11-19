@@ -80,6 +80,7 @@ export const siteSettingsType = defineType({
             defineField({ name: "address", title: "Office Address", type: "string" }),
             defineField({ name: "phoneDisplay", title: "Phone Display Text", type: "string" }),
             defineField({ name: "phoneHref", title: "Phone Dial Number", type: "string" }),
+            defineField({ name: "email", title: "Office Email Address", type: "string" }),
           ],
           preview: {
             select: {

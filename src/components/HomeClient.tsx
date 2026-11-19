@@ -329,12 +329,22 @@ export default function HomeClient({
                 <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/85 leading-relaxed drop-shadow-sm">
                   {office.address}
                 </p>
-                <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
-                  <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold drop-shadow-sm">Tel:</span>
-                  <a href={`tel:${office.phoneHref}`} className="cursor-pointer text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
-                    {office.phoneDisplay}
-                  </a>
-                </div>
+                {office.phoneDisplay && (
+                  <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
+                    <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold drop-shadow-sm">Tel:</span>
+                    <a href={`tel:${office.phoneHref}`} className="cursor-pointer text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
+                      {office.phoneDisplay}
+                    </a>
+                  </div>
+                )}
+                {office.email && (
+                  <div className="mt-1 flex items-center justify-center md:justify-start gap-2">
+                    <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold drop-shadow-sm">Email:</span>
+                    <a href={`mailto:${office.email}`} className="cursor-pointer text-xs sm:text-[13px] font-avenir font-medium text-white hover:text-sfa-cyan transition drop-shadow-sm">
+                      {office.email}
+                    </a>
+                  </div>
+                )}
               </div>
             ))}
           </div>

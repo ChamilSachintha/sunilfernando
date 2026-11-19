@@ -4,8 +4,9 @@ export interface RegionalOffice {
   country: string;
   flagUrl: string;
   address: string;
-  phoneDisplay: string;
-  phoneHref: string;
+  phoneDisplay?: string;
+  phoneHref?: string;
+  email?: string;
 }
 
 export interface StatItem {
@@ -166,14 +167,13 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
           "Office #1029, Building B-2, Level 1, Dubai CommerCity, Umm Ramool, Dubai",
         phoneDisplay: "+971 4 894 2444",
         phoneHref: "+97148942444",
+        email: "enquiries@sunilfernando.com",
       },
       {
         country: "MALDIVES",
         flagUrl: "/flag-mv.png",
         address:
           "Sunil Fernando & Associates Maldives Pvt Ltd, Malé City, Republic of Maldives",
-        phoneDisplay: "+960 330 8829 / +94 11 2887829",
-        phoneHref: "+9603308829",
       },
       {
         country: "SRI LANKA",
@@ -182,6 +182,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
           "No. 505, Nawala Road, Rajagiriya, Sri Lanka",
         phoneDisplay: "+94 11 2887829",
         phoneHref: "+94112887829",
+        email: "info@sunilfernando.com",
       },
     ],
     stats: [
