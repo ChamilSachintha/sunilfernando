@@ -454,7 +454,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       name: "Mohamed Hilmy",
       designation: "Director - Maldives",
       credentials: "L.B.M.(Mal), A.I.V",
-      image: "/avatar-placeholder.svg",
+      image: "/mohamed-hilmy.png",
       order: 6,
     },
   ],

@@ -427,7 +427,11 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
         Array.isArray(raw.teamMembers) && raw.teamMembers.length > 0
           ? raw.teamMembers.map((m: { _id: string; name: string; designation: string; credentials?: string; image: string; order: number }) => ({
               ...m,
-              image: optimizeSanityImageUrl(m.image, 600),
+              image:
+                m.name?.toLowerCase().includes("hilmy") &&
+                (!m.image || m.image.includes("avatar-placeholder"))
+                  ? "/mohamed-hilmy.png"
+                  : optimizeSanityImageUrl(m.image, 600),
             }))
           : DEFAULT_SITE_CONTENT.teamMembers,
     };
