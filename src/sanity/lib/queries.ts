@@ -429,7 +429,9 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
               ...m,
               image:
                 m.name?.toLowerCase().includes("hilmy") &&
-                (!m.image || m.image.includes("avatar-placeholder"))
+                (!m.image ||
+                  m.image.includes("avatar-placeholder") ||
+                  m.image.toLowerCase().includes(".svg"))
                   ? "/mohamed-hilmy.png"
                   : optimizeSanityImageUrl(m.image, 600),
             }))
