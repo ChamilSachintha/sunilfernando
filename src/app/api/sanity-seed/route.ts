@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getSanityWriteClient } from "@/sanity/lib/client";
 import { DEFAULT_SITE_CONTENT } from "@/sanity/lib/defaultData";
 
+export const dynamic = "force-static";
+
 export async function GET() {
   return POST();
 }

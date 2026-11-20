@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { getSiteContent } from "@/sanity/lib/queries";
 import NewsroomClient from "@/components/NewsroomClient";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Newsroom",
