@@ -434,20 +434,12 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       order: 3,
     },
     {
-      _id: "team-4",
-      name: "Vicks Vickneswaran",
-      designation: "Director UAE",
-      credentials: "M.B.A.(UK), MRICS, FCMA, FCCA, FCIM",
-      image: "/vicks-vickneswaran.png",
-      order: 4,
-    },
-    {
       _id: "team-5",
       name: "Nalin Seneviratne",
       designation: "Director",
       credentials: "BSc LLB, FRICS",
       image: "/nalin-seneviratne.png",
-      order: 5,
+      order: 4,
     },
     {
       _id: "team-6",
@@ -455,7 +447,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       designation: "Director - Maldives",
       credentials: "LLB(Hons), LLM",
       image: "/mohamed-hilmy.png",
-      order: 6,
+      order: 5,
     },
   ],
 };

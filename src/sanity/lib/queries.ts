@@ -425,7 +425,12 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
           : DEFAULT_SITE_CONTENT.caseStudies,
       teamMembers:
         Array.isArray(raw.teamMembers) && raw.teamMembers.length > 0
-          ? raw.teamMembers.map((m: { _id: string; name: string; designation: string; credentials?: string; image: string; order: number }) => {
+          ? raw.teamMembers
+              .filter(
+                (m: { name?: string }) =>
+                  !(m.name || "").toLowerCase().includes("vicks")
+              )
+              .map((m: { _id: string; name: string; designation: string; credentials?: string; image: string; order: number }) => {
               const lowerName = (m.name || "").toLowerCase();
               const profileOverride = lowerName.includes("sunil fernando")
                 ? { name: "Mr. Sunil Fernando", designation: "Founder & Chairman", credentials: "FIV(SL), FRICS" }
