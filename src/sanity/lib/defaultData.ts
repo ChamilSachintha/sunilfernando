@@ -158,7 +158,6 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1600",
       "https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1600",
       "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1600",
-      "https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=1600",
     ],
     regionalOffices: [
       {
