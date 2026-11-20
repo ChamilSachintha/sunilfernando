@@ -425,16 +425,32 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
           : DEFAULT_SITE_CONTENT.caseStudies,
       teamMembers:
         Array.isArray(raw.teamMembers) && raw.teamMembers.length > 0
-          ? raw.teamMembers.map((m: { _id: string; name: string; designation: string; credentials?: string; image: string; order: number }) => ({
-              ...m,
-              image:
-                m.name?.toLowerCase().includes("hilmy") &&
-                (!m.image ||
-                  m.image.includes("avatar-placeholder") ||
-                  m.image.toLowerCase().includes(".svg"))
-                  ? "/mohamed-hilmy.png"
-                  : optimizeSanityImageUrl(m.image, 600),
-            }))
+          ? raw.teamMembers.map((m: { _id: string; name: string; designation: string; credentials?: string; image: string; order: number }) => {
+              const lowerName = (m.name || "").toLowerCase();
+              const profileOverride = lowerName.includes("sunil fernando")
+                ? { name: "Mr. Sunil Fernando", designation: "Founder & Chairman", credentials: "FIV(SL), FRICS" }
+                : lowerName.includes("manju fernando")
+                ? { name: "Manju Fernando", designation: "Co-Founder & Managing Director", credentials: "MBA (Edin), MRICS" }
+                : lowerName.includes("dilshan perera")
+                ? { name: "Dilshan Perera", designation: "Executive Director", credentials: "MBA (WSU)" }
+                : lowerName.includes("nalin seneviratne")
+                ? { name: "Nalin Seneviratne", designation: "Director", credentials: "BSc LLB, FRICS" }
+                : lowerName.includes("hilmy")
+                ? { name: "Mohamed Hilmy", designation: "Director - Maldives", credentials: "LLB(Hons), LLM" }
+                : {};
+
+              return {
+                ...m,
+                ...profileOverride,
+                image:
+                  lowerName.includes("hilmy") &&
+                  (!m.image ||
+                    m.image.includes("avatar-placeholder") ||
+                    m.image.toLowerCase().includes(".svg"))
+                    ? "/mohamed-hilmy.png"
+                    : optimizeSanityImageUrl(m.image, 600),
+              };
+            })
           : DEFAULT_SITE_CONTENT.teamMembers,
     };
   } catch (err) {
