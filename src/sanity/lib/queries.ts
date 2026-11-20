@@ -257,7 +257,7 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
         heroTagline: s.heroTagline || DEFAULT_SITE_CONTENT.settings.heroTagline,
         heroDescription: s.heroDescription || DEFAULT_SITE_CONTENT.settings.heroDescription,
         heroImages:
-          Array.isArray(s.heroImages) && s.heroImages.filter(Boolean).length > 0
+          Array.isArray(s.heroImages) && s.heroImages.filter(Boolean).length >= 5
             ? s.heroImages
                 .filter(Boolean)
                 .map((url: string) => optimizeSanityImageUrl(url, 2000))
