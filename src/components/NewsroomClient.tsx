@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
@@ -23,7 +23,7 @@ import type {
 const NAV_LINKS = [
   { label: "HOME", href: "/#home" },
   { label: "WHAT WE OFFER", href: "/#offer" },
-  { label: "NEWSROOM", href: "/newsroom", active: true },
+  { label: "NEWSROOM", href: "/#newsroom", active: true },
   { label: "OUR NETWORK", href: "/#clients" },
   { label: "OUR TEAM", href: "/#team" },
   { label: "REACH US", href: "/#contact" },
@@ -192,19 +192,19 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
       {/* 1. Main Header (identical to Homepage navbar) */}
       <header className="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-sfa-grey/10 shadow-sm transition-all">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex justify-between items-center">
-          <Link href="/" className="cursor-pointer flex items-center">
+          <a href="/" className="cursor-pointer flex items-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={cms.settings.logoUrl || "/logo.png"}
               alt="Sunil Fernando & Associates Logo"
               className="h-16 sm:h-20 py-0 block object-contain"
             />
-          </Link>
+          </a>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
             {NAV_LINKS.map((link) => (
-              <Link
+              <a
                 key={link.label}
                 href={link.href}
                 className={`cursor-pointer hover:text-sfa-blue transition ${
@@ -212,7 +212,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                 }`}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </nav>
 
@@ -239,7 +239,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
             >
               <div className="px-4 py-6 space-y-4 flex flex-col font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy">
                 {NAV_LINKS.map((link) => (
-                  <Link
+                  <a
                     key={link.label}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
@@ -248,7 +248,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
                     }`}
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 ))}
                 <button
                   onClick={() => {

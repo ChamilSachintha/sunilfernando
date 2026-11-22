@@ -122,6 +122,23 @@ export default function HomeClient({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Scroll to URL hash target on initial page load (e.g. when navigating from /newsroom)
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      const id = window.location.hash.replace("#", "");
+      if (id) {
+        setActiveSection(id);
+        const timer = setTimeout(() => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, []);
+
   const scrollTo = (id: string) => {
     setMobileMenuOpen(false);
     const element = document.getElementById(id);
