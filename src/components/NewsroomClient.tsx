@@ -24,7 +24,7 @@ const NAV_LINKS = [
   { label: "HOME", href: "/#home" },
   { label: "WHAT WE OFFER", href: "/#offer" },
   { label: "NEWSROOM", href: "/newsroom", active: true },
-  { label: "OUR NETWORK", href: "/#network" },
+  { label: "OUR NETWORK", href: "/#clients" },
   { label: "OUR TEAM", href: "/#team" },
   { label: "REACH US", href: "/#contact" },
 ];

@@ -102,7 +102,7 @@ export default function HomeClient({
   // Handle active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "offer", "newsroom", "network", "team", "contact"];
+      const sections = ["home", "offer", "newsroom", "clients", "network", "team", "contact"];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -164,8 +164,8 @@ export default function HomeClient({
               NEWSROOM
             </Link>
             <button
-              onClick={() => scrollTo("network")}
-              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
+              onClick={() => scrollTo("clients")}
+              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "clients" || activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
             >
               OUR NETWORK
             </button>
@@ -213,7 +213,7 @@ export default function HomeClient({
                 <Link href="/newsroom" onClick={() => setMobileMenuOpen(false)} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   NEWSROOM
                 </Link>
-                <button onClick={() => scrollTo("network")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <button onClick={() => scrollTo("clients")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR NETWORK
                 </button>
                 <button onClick={() => scrollTo("team")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
