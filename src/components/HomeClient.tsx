@@ -157,12 +157,12 @@ export default function HomeClient({
             >
               WHAT WE OFFER
             </button>
-            <Link
-              href="/newsroom"
-              className="cursor-pointer hover:text-sfa-blue transition"
+            <button
+              onClick={() => scrollTo("newsroom")}
+              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "newsroom" ? "text-sfa-blue font-semibold" : ""}`}
             >
               NEWSROOM
-            </Link>
+            </button>
             <button
               onClick={() => scrollTo("clients")}
               className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "clients" || activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
