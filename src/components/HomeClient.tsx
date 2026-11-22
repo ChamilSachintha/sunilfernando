@@ -129,14 +129,11 @@ export default function HomeClient({
     }
     const element = document.getElementById(id);
     if (element) {
-      const headerEl = document.querySelector("header");
-      const headerHeight = headerEl
-        ? headerEl.getBoundingClientRect().height
-        : window.innerWidth >= 640
-        ? 80
-        : 64;
+      // Use the fixed navbar bar height (h-16 = 64px on mobile, sm:h-20 = 80px on tablet/desktop)
+      // rather than header.getBoundingClientRect().height, which includes the expanded mobile menu dropdown.
+      const navbarBarHeight = window.innerWidth >= 640 ? 80 : 64;
       const targetTop =
-        element.getBoundingClientRect().top + window.scrollY - headerHeight;
+        element.getBoundingClientRect().top + window.scrollY - navbarBarHeight;
       window.scrollTo({
         top: Math.max(0, targetTop),
         behavior: "smooth",
@@ -201,8 +198,14 @@ export default function HomeClient({
   }, []);
 
   const scrollTo = (id: string) => {
-    setMobileMenuOpen(false);
-    scrollToSectionTop(id);
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+      setTimeout(() => {
+        scrollToSectionTop(id);
+      }, 60);
+    } else {
+      scrollToSectionTop(id);
+    }
   };
 
   return (
@@ -261,7 +264,10 @@ export default function HomeClient({
           {/* Mobile hamburger menu */}
           <div className="flex lg:hidden items-center gap-4">
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              type="button"
+              aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
               className="cursor-pointer p-2 text-sfa-navy hover:text-sfa-blue transition focus:outline-none"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -273,31 +279,33 @@ export default function HomeClient({
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden border-t border-sfa-grey/10 bg-white"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className="lg:hidden absolute top-full left-0 right-0 z-50 border-t border-sfa-grey/10 bg-white shadow-lg"
             >
               <div className="px-4 py-6 space-y-4 flex flex-col font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy">
-                <button onClick={() => scrollTo("home")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <button type="button" onClick={() => scrollTo("home")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   HOME
                 </button>
-                <button onClick={() => scrollTo("offer")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <button type="button" onClick={() => scrollTo("offer")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   WHAT WE OFFER
                 </button>
-                <button onClick={() => scrollTo("newsroom")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <button type="button" onClick={() => scrollTo("newsroom")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   NEWSROOM
                 </button>
-                <button onClick={() => scrollTo("clients")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <button type="button" onClick={() => scrollTo("clients")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR NETWORK
                 </button>
-                <button onClick={() => scrollTo("team")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <button type="button" onClick={() => scrollTo("team")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR TEAM
                 </button>
-                <button onClick={() => scrollTo("contact")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <button type="button" onClick={() => scrollTo("contact")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   REACH US
                 </button>
                 <button
+                  type="button"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     setValuationOpen(true);

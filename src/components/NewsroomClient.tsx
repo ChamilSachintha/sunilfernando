@@ -232,9 +232,11 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
           {/* Mobile hamburger menu */}
           <div className="flex lg:hidden items-center gap-4">
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              type="button"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
               className="cursor-pointer p-2 text-sfa-navy hover:text-sfa-blue transition focus:outline-none"
               aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -245,10 +247,11 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden border-t border-sfa-grey/10 bg-white"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className="lg:hidden absolute top-full left-0 right-0 z-50 border-t border-sfa-grey/10 bg-white shadow-lg"
             >
               <div className="px-4 py-6 space-y-4 flex flex-col font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy">
                 {NAV_LINKS.map((link) => (
