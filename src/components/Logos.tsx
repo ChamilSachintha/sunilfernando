@@ -125,8 +125,8 @@ export const KpmgLogo: React.FC<{ className?: string }> = ({ className = "h-7 sm
 );
 
 export const KnightFrankLogo = () => (
-  <div className="flex items-center gap-1.5 font-sans font-extrabold text-sm tracking-tight text-sfa-navy">
-    <div className="w-5 h-5 bg-red-600 rounded flex items-center justify-center text-white text-[10px] font-black">KF</div>
+  <div className="flex items-center gap-2 font-sans font-extrabold text-base sm:text-lg tracking-tight text-sfa-navy">
+    <div className="w-7 h-7 sm:w-8 sm:h-8 bg-red-600 rounded flex items-center justify-center text-white text-xs sm:text-sm font-black">KF</div>
     <div className="flex flex-col leading-none text-left">
       <span>Knight</span>
       <span>Frank</span>

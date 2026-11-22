@@ -1248,9 +1248,9 @@ export default function HomeClient({
         </div>
 
         {/* Right Column (Logos - 62%, strictly contained to the right of divider boundary) */}
-        <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-16 xl:py-20 lg:pl-36 xl:pl-48 lg:pr-0 space-y-12 sm:space-y-14 lg:space-y-16">
+        <div className="flex flex-col justify-center bg-[#e2e8f0] lg:bg-transparent py-10 px-6 sm:px-10 lg:py-16 xl:py-20 lg:pl-36 xl:pl-48 lg:pr-0 space-y-20 sm:space-y-24 lg:space-y-28">
           {/* First Section: Banking Partners Logos */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 sm:gap-x-12 lg:gap-x-14 xl:gap-x-16 gap-y-6 sm:gap-y-7 lg:gap-y-8 items-center justify-items-center w-full max-w-[680px] ml-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 sm:gap-x-12 lg:gap-x-14 xl:gap-x-16 gap-y-8 sm:gap-y-9 lg:gap-y-10 items-center justify-items-center w-full max-w-[680px] ml-auto">
             {(
               Array.isArray(cms.settings.partnerLogosPart1) && cms.settings.partnerLogosPart1.length > 0
                 ? cms.settings.partnerLogosPart1
@@ -1280,7 +1280,7 @@ export default function HomeClient({
               ? cms.settings.partnerLogosPart2
               : cms.settings.partnerLogos?.slice(5) || []
           ).filter((partner) => Boolean(partner.imageUrl) || partner.name === "Knight Frank").length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 sm:gap-x-12 lg:gap-x-14 xl:gap-x-16 gap-y-6 sm:gap-y-7 lg:gap-y-8 items-center justify-items-center w-full max-w-[680px] ml-auto">
+            <div className="pt-8 sm:pt-10 border-t border-sfa-navy/15 grid grid-cols-2 sm:grid-cols-3 gap-x-8 sm:gap-x-12 lg:gap-x-14 xl:gap-x-16 gap-y-8 sm:gap-y-9 lg:gap-y-10 items-center justify-items-center w-full max-w-[680px] ml-auto">
               {(
                 Array.isArray(cms.settings.partnerLogosPart2) && cms.settings.partnerLogosPart2.length > 0
                   ? cms.settings.partnerLogosPart2

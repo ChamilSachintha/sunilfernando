@@ -231,17 +231,28 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
       rawPart2.some((p: { name?: string }) => p?.name && REMOVED_PARTNER_NAMES.has(p.name)) ||
       rawPart1.some((p: { name?: string }) => p?.name === "Knight Frank" || p?.name === "KPMG");
 
-    const partnerLogosPart1 = hasLegacySeed
+    const defaultPartnerClassMap = new Map(
+      DEFAULT_SITE_CONTENT.settings.partnerLogos.map((p) => [p.name, p.className])
+    );
+
+    const normalizePartnerSize = (p: { name?: string; imageUrl?: string; className?: string }) => ({
+      ...p,
+      className: (p.name && defaultPartnerClassMap.get(p.name)) || p.className,
+    });
+
+    const partnerLogosPart1 = (hasLegacySeed
       ? DEFAULT_SITE_CONTENT.settings.partnerLogosPart1 || []
       : rawPart1.length > 0
       ? rawPart1.filter((p: { name?: string }) => !p?.name || !REMOVED_PARTNER_NAMES.has(p.name))
-      : DEFAULT_SITE_CONTENT.settings.partnerLogosPart1 || [];
+      : DEFAULT_SITE_CONTENT.settings.partnerLogosPart1 || []
+    ).map(normalizePartnerSize);
 
-    const partnerLogosPart2 = hasLegacySeed
+    const partnerLogosPart2 = (hasLegacySeed
       ? DEFAULT_SITE_CONTENT.settings.partnerLogosPart2 || []
       : rawPart2.length > 0
       ? rawPart2.filter((p: { name?: string }) => !p?.name || !REMOVED_PARTNER_NAMES.has(p.name))
-      : DEFAULT_SITE_CONTENT.settings.partnerLogosPart2 || [];
+      : DEFAULT_SITE_CONTENT.settings.partnerLogosPart2 || []
+    ).map(normalizePartnerSize);
 
     const partnerLogos =
       partnerLogosPart1.length > 0 || partnerLogosPart2.length > 0
