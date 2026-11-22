@@ -459,13 +459,18 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
               return {
                 ...m,
                 ...profileOverride,
-                image:
-                  lowerName.includes("hilmy") &&
-                  (!m.image ||
-                    m.image.includes("avatar-placeholder") ||
-                    m.image.toLowerCase().includes(".svg"))
-                    ? "/mohamed-hilmy.png"
-                    : optimizeSanityImageUrl(m.image, 600),
+                image: lowerName.includes("sunil fernando")
+                  ? "/sunil-fernando.png"
+                  : lowerName.includes("manju fernando")
+                  ? "/manju-fernando.png"
+                  : lowerName.includes("dilshan perera")
+                  ? "/dilshan-perera.png"
+                  : lowerName.includes("hilmy") &&
+                    (!m.image ||
+                      m.image.includes("avatar-placeholder") ||
+                      m.image.toLowerCase().includes(".svg"))
+                  ? "/mohamed-hilmy.png"
+                  : optimizeSanityImageUrl(m.image, 600),
               };
             })
           : DEFAULT_SITE_CONTENT.teamMembers,
