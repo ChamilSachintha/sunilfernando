@@ -431,8 +431,8 @@ export default function HomeClient({
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Grid Stats Layout with Ampersand in center */}
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-32 md:gap-y-20 lg:gap-x-44 lg:gap-y-24 xl:gap-x-52 items-center py-4 md:py-6">
-            {/* Center ampersand and dividers background logo */}
-            <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
+            {/* Center ampersand and dividers background logo (Desktop & Tablet only) */}
+            <div className="hidden md:block absolute inset-0 pointer-events-none select-none overflow-hidden">
               {/* Horizontal dividers */}
               <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center gap-6 px-4 md:px-8">
                 <div className="flex-1 h-[3px] bg-sfa-grey/10 hidden md:block" />
@@ -460,50 +460,61 @@ export default function HomeClient({
               // RERA's logo is nearly square with small text, so give it extra height to balance visually
               const isRera = ["RERA", "RARE"].includes(stat.value?.trim().toUpperCase() ?? "");
               return (
-                <div
-                  key={idx}
-                  className={`text-center flex flex-col justify-center z-10 ${
-                    isLeft
-                      ? "md:text-right md:items-end md:pr-16 lg:pr-24 xl:pr-32"
-                      : "md:text-left md:items-start md:pl-16 lg:pl-24 xl:pl-32"
-                  } ${
-                    isTop ? "pb-2 md:pb-6 lg:pb-8" : "pt-2 md:pt-6 lg:pt-8"
-                  }`}
-                >
-                  {logoSrc ? (
+                <React.Fragment key={idx}>
+                  <div
+                    className={`text-center flex flex-col justify-center z-10 ${
+                      isLeft
+                        ? "md:text-right md:items-end md:pr-16 lg:pr-24 xl:pr-32"
+                        : "md:text-left md:items-start md:pl-16 lg:pl-24 xl:pl-32"
+                    } ${
+                      isTop ? "pb-2 md:pb-6 lg:pb-8" : "pt-2 md:pt-6 lg:pt-8"
+                    }`}
+                  >
+                    {logoSrc ? (
+                      <div
+                        className={`flex items-center ${
+                          isLeft ? "justify-center md:justify-end" : "justify-center md:justify-start"
+                        }`}
+                      >
+                        <Image
+                          src={logoSrc}
+                          alt={stat.value ? `${stat.value} Logo` : "Accreditation Logo"}
+                          width={280}
+                          height={100}
+                          className={`w-auto object-contain ${isRera ? "h-28 sm:h-32 md:h-40 max-w-[200px] sm:max-w-[260px]" : "h-12 sm:h-16 md:h-20 max-w-[200px] sm:max-w-[260px]"}`}
+                        />
+                      </div>
+                    ) : (
+                      <span
+                        className={`text-5xl sm:text-7xl font-montserrat font-black tracking-tight ${
+                          isBlue ? "text-sfa-blue" : "text-sfa-navy"
+                        }`}
+                      >
+                        {stat.value}
+                      </span>
+                    )}
+                    {stat.subtitleLine1 && (
+                      <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">
+                        {stat.subtitleLine1}
+                      </span>
+                    )}
+                    {stat.subtitleLine2 && (
+                      <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">
+                        {stat.subtitleLine2}
+                      </span>
+                    )}
+                  </div>
+                  {idx === 1 && (
                     <div
-                      className={`flex items-center ${
-                        isLeft ? "justify-center md:justify-end" : "justify-center md:justify-start"
-                      }`}
+                      className="md:hidden flex items-center justify-center py-1 pointer-events-none select-none"
+                      aria-hidden="true"
                     >
-                      <Image
-                        src={logoSrc}
-                        alt={stat.value ? `${stat.value} Logo` : "Accreditation Logo"}
-                        width={280}
-                        height={100}
-                        className={`w-auto object-contain ${isRera ? "h-28 sm:h-32 md:h-40 max-w-[200px] sm:max-w-[260px]" : "h-12 sm:h-16 md:h-20 max-w-[200px] sm:max-w-[260px]"}`}
-                      />
+                      <span className="font-serif text-[110px] font-bold text-sfa-grey/10 leading-none">
+                        &amp;
+                      </span>
                     </div>
-                  ) : (
-                    <span
-                      className={`text-5xl sm:text-7xl font-montserrat font-black tracking-tight ${
-                        isBlue ? "text-sfa-blue" : "text-sfa-navy"
-                      }`}
-                    >
-                      {stat.value}
-                    </span>
                   )}
-                  {stat.subtitleLine1 && (
-                    <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/60 uppercase mt-2">
-                      {stat.subtitleLine1}
-                    </span>
-                  )}
-                  {stat.subtitleLine2 && (
-                    <span className="text-xs font-poppins font-normal tracking-widest text-sfa-navy/80 uppercase">
-                      {stat.subtitleLine2}
-                    </span>
-                  )}
-                </div>
+                </React.Fragment>
               );
             })}
           </div>
