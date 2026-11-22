@@ -46,6 +46,8 @@ const CONTACT_OFFICES: Array<{
       "Sunil Fernando & Associates Maldives Pvt Ltd,",
       "Malé City, Republic of Maldives",
     ],
+    email: "Email: info@sunilfernando.com",
+    emailHref: "mailto:info@sunilfernando.com",
   },
   {
     country: "Sri Lanka",

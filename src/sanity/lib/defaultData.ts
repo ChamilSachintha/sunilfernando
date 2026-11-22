@@ -174,6 +174,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
         flagUrl: "/flag-mv.png",
         address:
           "Sunil Fernando & Associates Maldives Pvt Ltd, Malé City, Republic of Maldives",
+        email: "info@sunilfernando.com",
       },
       {
         country: "SRI LANKA",

@@ -282,6 +282,7 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
                     ...office,
                     phoneDisplay: undefined,
                     phoneHref: undefined,
+                    email: office.email || "info@sunilfernando.com",
                   };
                 }
                 if (countryUpper.includes("UAE") || countryUpper.includes("DUBAI")) {
