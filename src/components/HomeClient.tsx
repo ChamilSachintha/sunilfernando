@@ -157,12 +157,12 @@ export default function HomeClient({
             >
               WHAT WE OFFER
             </button>
-            <Link
-              href="/newsroom"
-              className="cursor-pointer hover:text-sfa-blue transition"
+            <button
+              onClick={() => scrollTo("newsroom")}
+              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "newsroom" ? "text-sfa-blue font-semibold" : ""}`}
             >
               NEWSROOM
-            </Link>
+            </button>
             <button
               onClick={() => scrollTo("clients")}
               className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "clients" || activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
@@ -210,9 +210,9 @@ export default function HomeClient({
                 <button onClick={() => scrollTo("offer")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   WHAT WE OFFER
                 </button>
-                <Link href="/newsroom" onClick={() => setMobileMenuOpen(false)} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <button onClick={() => scrollTo("newsroom")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   NEWSROOM
-                </Link>
+                </button>
                 <button onClick={() => scrollTo("clients")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR NETWORK
                 </button>
@@ -922,6 +922,8 @@ export default function HomeClient({
                 <div className="pt-2 flex flex-wrap items-center gap-6">
                   <Link
                     href="/newsroom"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest uppercase text-sfa-navy hover:underline"
                   >
                     <span>VISIT NEWSROOM &rarr;</span>
@@ -1052,6 +1054,8 @@ export default function HomeClient({
               <div className="pt-2">
                 <Link
                   href="/newsroom#case-study"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-sfa-navy uppercase hover:underline"
                 >
                   <span>VISIT NEWSROOM &rarr;</span>
