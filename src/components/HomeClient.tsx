@@ -144,17 +144,39 @@ export default function HomeClient({
     }
   };
 
-  // Scroll to URL hash target on initial page load (e.g. when navigating from /newsroom)
+  // Scroll to target section on initial page load (from sessionStorage or URL hash) and keep URL hash-free
   useEffect(() => {
-    if (typeof window !== "undefined" && window.location.hash) {
-      const id = window.location.hash.replace("#", "");
-      if (id) {
-        setActiveSection(id);
-        const timer = setTimeout(() => {
-          scrollToSectionTop(id);
-        }, 100);
-        return () => clearTimeout(timer);
+    if (typeof window === "undefined") return;
+
+    let targetId = "";
+    try {
+      const stored = sessionStorage.getItem("sfa_scroll_target");
+      if (stored) {
+        targetId = stored;
+        sessionStorage.removeItem("sfa_scroll_target");
       }
+    } catch {
+      // Ignore storage errors
+    }
+
+    if (!targetId && window.location.hash) {
+      targetId = window.location.hash.replace("#", "");
+    }
+
+    if (window.location.hash) {
+      window.history.replaceState(
+        null,
+        "",
+        window.location.pathname + window.location.search
+      );
+    }
+
+    if (targetId) {
+      setActiveSection(targetId);
+      const timer = setTimeout(() => {
+        scrollToSectionTop(targetId);
+      }, 100);
+      return () => clearTimeout(timer);
     }
   }, []);
 

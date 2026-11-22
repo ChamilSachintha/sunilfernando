@@ -21,12 +21,12 @@ import type {
 } from "@/sanity/lib/defaultData";
 
 const NAV_LINKS = [
-  { label: "HOME", href: "/#home" },
-  { label: "WHAT WE OFFER", href: "/#offer" },
-  { label: "NEWSROOM", href: "/#newsroom", active: true },
-  { label: "OUR NETWORK", href: "/#clients" },
-  { label: "OUR TEAM", href: "/#team" },
-  { label: "REACH US", href: "/#contact" },
+  { label: "HOME", section: "home" },
+  { label: "WHAT WE OFFER", section: "offer" },
+  { label: "NEWSROOM", section: "newsroom", active: true },
+  { label: "OUR NETWORK", section: "clients" },
+  { label: "OUR TEAM", section: "team" },
+  { label: "REACH US", section: "contact" },
 ];
 
 /*
@@ -187,6 +187,18 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
     return () => clearTimeout(timer);
   }, []);
 
+  const navigateToSection = (section: string) => {
+    setMobileMenuOpen(false);
+    if (typeof window !== "undefined") {
+      try {
+        sessionStorage.setItem("sfa_scroll_target", section);
+      } catch {
+        // Ignore storage errors
+      }
+      window.location.href = "/";
+    }
+  };
+
   return (
     <div className="relative min-h-screen bg-[#f8fafc] text-sfa-navy overflow-x-hidden">
       {/* 1. Main Header (identical to Homepage navbar) */}
@@ -204,15 +216,16 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
             {NAV_LINKS.map((link) => (
-              <a
+              <button
                 key={link.label}
-                href={link.href}
-                className={`cursor-pointer hover:text-sfa-blue transition ${
+                type="button"
+                onClick={() => navigateToSection(link.section)}
+                className={`cursor-pointer hover:text-sfa-blue transition uppercase tracking-widest ${
                   link.active ? "text-sfa-blue font-semibold" : ""
                 }`}
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </nav>
 
@@ -239,16 +252,16 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
             >
               <div className="px-4 py-6 space-y-4 flex flex-col font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy">
                 {NAV_LINKS.map((link) => (
-                  <a
+                  <button
                     key={link.label}
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue ${
+                    type="button"
+                    onClick={() => navigateToSection(link.section)}
+                    className={`cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue uppercase tracking-widest ${
                       link.active ? "text-sfa-blue font-semibold" : ""
                     }`}
                   >
                     {link.label}
-                  </a>
+                  </button>
                 ))}
                 <button
                   onClick={() => {
