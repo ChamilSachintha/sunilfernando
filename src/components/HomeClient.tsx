@@ -157,12 +157,12 @@ export default function HomeClient({
             >
               WHAT WE OFFER
             </button>
-            <button
-              onClick={() => scrollTo("newsroom")}
-              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "newsroom" ? "text-sfa-blue font-semibold" : ""}`}
+            <Link
+              href="/newsroom"
+              className="cursor-pointer hover:text-sfa-blue transition"
             >
               NEWSROOM
-            </button>
+            </Link>
             <button
               onClick={() => scrollTo("clients")}
               className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "clients" || activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
@@ -920,15 +920,9 @@ export default function HomeClient({
                   We are currently preparing our latest market intelligence, technical valuation commentaries, and regional property outlooks. Please check back soon for upcoming publications.
                 </p>
                 <div className="pt-2 flex flex-wrap items-center gap-6">
-                  <button
-                    onClick={() => setContactOpen(true)}
-                    className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest uppercase text-sfa-navy hover:underline cursor-pointer"
-                  >
-                    <span>REQUEST MARKET BRIEFING &rarr;</span>
-                  </button>
                   <Link
                     href="/newsroom"
-                    className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest uppercase text-sfa-navy/80 hover:text-sfa-navy hover:underline"
+                    className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest uppercase text-sfa-navy hover:underline"
                   >
                     <span>VISIT NEWSROOM &rarr;</span>
                   </Link>
@@ -1056,12 +1050,12 @@ export default function HomeClient({
                 We are currently compiling our featured institutional valuations, bank collateral appraisals, and cross-border advisory mandates. Detailed case studies will be published here soon.
               </p>
               <div className="pt-2">
-                <button
-                  onClick={() => setValuationOpen(true)}
-                  className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-sfa-navy uppercase hover:underline cursor-pointer"
+                <Link
+                  href="/newsroom#case-study"
+                  className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-sfa-navy uppercase hover:underline"
                 >
-                  <span>DISCUSS A MANDATE WITH US &rarr;</span>
-                </button>
+                  <span>VISIT NEWSROOM &rarr;</span>
+                </Link>
               </div>
             </div>
 
