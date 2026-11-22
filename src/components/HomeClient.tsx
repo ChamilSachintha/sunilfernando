@@ -122,6 +122,28 @@ export default function HomeClient({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSectionTop = (id: string) => {
+    if (id === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    const element = document.getElementById(id);
+    if (element) {
+      const headerEl = document.querySelector("header");
+      const headerHeight = headerEl
+        ? headerEl.getBoundingClientRect().height
+        : window.innerWidth >= 640
+        ? 80
+        : 64;
+      const targetTop =
+        element.getBoundingClientRect().top + window.scrollY - headerHeight;
+      window.scrollTo({
+        top: Math.max(0, targetTop),
+        behavior: "smooth",
+      });
+    }
+  };
+
   // Scroll to URL hash target on initial page load (e.g. when navigating from /newsroom)
   useEffect(() => {
     if (typeof window !== "undefined" && window.location.hash) {
@@ -129,10 +151,7 @@ export default function HomeClient({
       if (id) {
         setActiveSection(id);
         const timer = setTimeout(() => {
-          const el = document.getElementById(id);
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth" });
-          }
+          scrollToSectionTop(id);
         }, 100);
         return () => clearTimeout(timer);
       }
@@ -141,10 +160,7 @@ export default function HomeClient({
 
   const scrollTo = (id: string) => {
     setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToSectionTop(id);
   };
 
   return (
@@ -453,7 +469,7 @@ export default function HomeClient({
       </section>
 
       {/* 3.1 Explore Our Services Section */}
-      <section id="offer" className="bg-white relative">
+      <section id="offer" className="bg-white relative scroll-mt-16 sm:scroll-mt-20">
         {/* Banner Bar "Explore Our Services" */}
         <div
           onClick={() => scrollTo("offer")}
@@ -876,7 +892,7 @@ export default function HomeClient({
       </section>
 
       {/* 5. Insights & Reports (Page 7) */}
-      <section id="newsroom" className="relative min-h-[380px] flex items-stretch overflow-hidden bg-white">
+      <section id="newsroom" className="relative min-h-[380px] flex items-stretch overflow-hidden bg-white scroll-mt-16 sm:scroll-mt-20">
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1000 400" className="w-full h-full overflow-visible" preserveAspectRatio="none">
@@ -1121,7 +1137,7 @@ export default function HomeClient({
 
 
       {/* 10. Clients (Page 12) */}
-      <section id="clients" className="relative min-h-[480px] lg:min-h-[520px] xl:min-h-[580px] flex items-stretch overflow-hidden bg-white">
+      <section id="clients" className="relative min-h-[480px] lg:min-h-[520px] xl:min-h-[580px] flex items-stretch overflow-hidden bg-white scroll-mt-16 sm:scroll-mt-20">
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1024 287" className="w-full h-full overflow-visible" preserveAspectRatio="none">
@@ -1198,7 +1214,7 @@ export default function HomeClient({
       </section>
 
       {/* 11. Partners (Page 13) */}
-      <section id="network" className="relative min-h-[480px] lg:min-h-[520px] xl:min-h-[580px] flex items-stretch overflow-hidden bg-white">
+      <section id="network" className="relative min-h-[480px] lg:min-h-[520px] xl:min-h-[580px] flex items-stretch overflow-hidden bg-white scroll-mt-16 sm:scroll-mt-20">
         {/* SVG Vector Background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none hidden lg:block">
           <svg viewBox="0 0 1024 287" className="w-full h-full overflow-visible" preserveAspectRatio="none">
@@ -1327,7 +1343,7 @@ export default function HomeClient({
       </section>
 
       {/* 11. Leadership Team Header (Page 14) */}
-      <section id="team" className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white">
+      <section id="team" className="relative min-h-[450px] flex items-stretch overflow-hidden bg-white scroll-mt-16 sm:scroll-mt-20">
         {/* Background Building Image */}
         <div className="absolute top-0 bottom-0 right-0 left-0 lg:left-1/3 z-0 pointer-events-none select-none">
           <Image
@@ -1489,7 +1505,7 @@ export default function HomeClient({
       </section>
 
       {/* 12. Get In Touch Banner (Page 15) */}
-      <section id="contact" className="bg-secondary text-white py-16 text-center relative overflow-hidden">
+      <section id="contact" className="bg-secondary text-white py-16 text-center relative overflow-hidden scroll-mt-16 sm:scroll-mt-20">
         <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-montserrat font-normal tracking-[0.3em] uppercase leading-tight text-white">
             {cms.settings.contactTitle}
