@@ -542,7 +542,7 @@ export default function HomeClient({
                 aria-selected={activeService === idx}
                 aria-controls="service-panel"
                 onClick={() => setActiveService(idx)}
-                className={`relative py-4 font-avenir text-sm sm:text-base tracking-[0.15em] border-sfa-grey/10 cursor-pointer transition-colors duration-300 overflow-hidden ${
+                className={`relative py-4 font-avenir text-sm sm:text-base tracking-[0.15em] border-sfa-grey/10 cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] overflow-hidden ${
                   idx < 3 ? "border-r-[3px]" : "border-r-0"
                 } ${
                   activeService === idx
@@ -550,21 +550,17 @@ export default function HomeClient({
                     : "bg-white text-primary font-medium hover:bg-sfa-light-blue/40"
                 }`}
               >
-                {activeService === idx && (
-                  <motion.div
-                    layoutId="active-service-tab-bg"
-                    className="absolute inset-0 bg-sfa-light-blue z-0"
-                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                  />
-                )}
+                <span
+                  aria-hidden="true"
+                  className={`absolute inset-0 bg-sfa-light-blue pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    activeService === idx
+                      ? "opacity-100 translate-x-0 scale-100"
+                      : activeService > idx
+                      ? "opacity-0 -translate-x-10 scale-[0.99]"
+                      : "opacity-0 translate-x-10 scale-[0.99]"
+                  }`}
+                />
                 <span className="relative z-10">{tab}</span>
-                {activeService === idx && (
-                  <motion.div
-                    layoutId="active-service-tab-underline"
-                    className="absolute bottom-0 left-0 right-0 h-[3px] bg-primary z-10"
-                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                  />
-                )}
               </button>
             ))}
           </div>
