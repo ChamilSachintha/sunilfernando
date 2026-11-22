@@ -153,7 +153,6 @@ export default function HomeClient({
       const stored = sessionStorage.getItem("sfa_scroll_target");
       if (stored) {
         targetId = stored;
-        sessionStorage.removeItem("sfa_scroll_target");
       }
     } catch {
       // Ignore storage errors
@@ -171,13 +170,34 @@ export default function HomeClient({
       );
     }
 
-    if (targetId) {
-      setActiveSection(targetId);
-      const timer = setTimeout(() => {
-        scrollToSectionTop(targetId);
-      }, 100);
-      return () => clearTimeout(timer);
-    }
+    if (!targetId) return;
+
+    setActiveSection(targetId);
+
+    let cancelled = false;
+    let attempts = 0;
+
+    const tryScrollWhenReady = () => {
+      if (cancelled) return;
+      attempts += 1;
+      // Wait while LoadingScreen locks body overflow ("hidden"), up to ~3s
+      if (document.body.style.overflow === "hidden" && attempts < 35) {
+        setTimeout(tryScrollWhenReady, 100);
+        return;
+      }
+      try {
+        sessionStorage.removeItem("sfa_scroll_target");
+      } catch {
+        // Ignore storage errors
+      }
+      scrollToSectionTop(targetId);
+    };
+
+    const timer = setTimeout(tryScrollWhenReady, 120);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
   }, []);
 
   const scrollTo = (id: string) => {
