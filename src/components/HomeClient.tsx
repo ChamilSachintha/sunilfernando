@@ -542,35 +542,45 @@ export default function HomeClient({
                 aria-selected={activeService === idx}
                 aria-controls="service-panel"
                 onClick={() => setActiveService(idx)}
-                className={`py-4 font-avenir text-sm sm:text-base tracking-[0.15em] border-sfa-grey/10 cursor-pointer transition-colors duration-300 ${
-                  idx === 0
-                    ? "border-r-[3px]"
-                    : idx === 1
-                    ? "border-r-[3px]"
-                    : idx === 2
-                    ? "border-r-[3px]"
-                    : "border-r-0"
+                className={`relative py-4 font-avenir text-sm sm:text-base tracking-[0.15em] border-sfa-grey/10 cursor-pointer transition-colors duration-300 overflow-hidden ${
+                  idx < 3 ? "border-r-[3px]" : "border-r-0"
                 } ${
                   activeService === idx
-                    ? "bg-sfa-light-blue text-primary font-semibold"
-                    : "bg-white text-primary font-medium hover:bg-sfa-light-blue/60"
+                    ? "text-primary font-semibold"
+                    : "bg-white text-primary font-medium hover:bg-sfa-light-blue/40"
                 }`}
               >
-                {tab}
+                {activeService === idx && (
+                  <motion.div
+                    layoutId="active-service-tab-bg"
+                    className="absolute inset-0 bg-sfa-light-blue z-0"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
+                )}
+                <span className="relative z-10">{tab}</span>
+                {activeService === idx && (
+                  <motion.div
+                    layoutId="active-service-tab-underline"
+                    className="absolute bottom-0 left-0 right-0 h-[3px] bg-primary z-10"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
+                )}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Service Panels: stacked on mobile, tabbed on desktop */}
-        <div id="service-panel" className="w-full flex flex-col md:grid md:grid-cols-1">
+        {/* Service Panels: stacked on mobile, tabbed with directional slide + crossfade on desktop */}
+        <div id="service-panel" className="w-full flex flex-col md:grid md:grid-cols-1 md:overflow-hidden">
           {/* 7. Valuations Section (Page 9) */}
           <div
             id="service-valuations"
-            className={`w-full flex flex-col md:col-start-1 md:row-start-1 md:h-full ${
+            className={`w-full flex flex-col md:col-start-1 md:row-start-1 md:h-full md:transition-all md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] ${
               activeService === 0
-                ? "md:visible md:z-10 md:pointer-events-auto"
-                : "md:invisible md:pointer-events-none md:z-0"
+                ? "md:opacity-100 md:translate-x-0 md:scale-100 md:z-10 md:pointer-events-auto"
+                : activeService > 0
+                ? "md:opacity-0 md:-translate-x-10 md:scale-[0.99] md:pointer-events-none md:z-0"
+                : "md:opacity-0 md:translate-x-10 md:scale-[0.99] md:pointer-events-none md:z-0"
             }`}
           >
             <section className="relative flex-1 h-full min-h-[540px] flex items-stretch overflow-hidden bg-white">
@@ -642,10 +652,12 @@ export default function HomeClient({
           {/* 8. Occupier Services (Page 10) */}
           <div
             id="service-occupier"
-            className={`w-full flex flex-col md:col-start-1 md:row-start-1 md:h-full ${
+            className={`w-full flex flex-col md:col-start-1 md:row-start-1 md:h-full md:transition-all md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] ${
               activeService === 1
-                ? "md:visible md:z-10 md:pointer-events-auto"
-                : "md:invisible md:pointer-events-none md:z-0"
+                ? "md:opacity-100 md:translate-x-0 md:scale-100 md:z-10 md:pointer-events-auto"
+                : activeService > 1
+                ? "md:opacity-0 md:-translate-x-10 md:scale-[0.99] md:pointer-events-none md:z-0"
+                : "md:opacity-0 md:translate-x-10 md:scale-[0.99] md:pointer-events-none md:z-0"
             }`}
           >
             <section className="relative flex-1 h-full min-h-[540px] flex items-stretch overflow-hidden bg-white">
@@ -718,10 +730,12 @@ export default function HomeClient({
           {/* 9. Capital Markets (Page 11) */}
           <div
             id="service-capital"
-            className={`w-full flex flex-col md:col-start-1 md:row-start-1 md:h-full ${
+            className={`w-full flex flex-col md:col-start-1 md:row-start-1 md:h-full md:transition-all md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] ${
               activeService === 2
-                ? "md:visible md:z-10 md:pointer-events-auto"
-                : "md:invisible md:pointer-events-none md:z-0"
+                ? "md:opacity-100 md:translate-x-0 md:scale-100 md:z-10 md:pointer-events-auto"
+                : activeService > 2
+                ? "md:opacity-0 md:-translate-x-10 md:scale-[0.99] md:pointer-events-none md:z-0"
+                : "md:opacity-0 md:translate-x-10 md:scale-[0.99] md:pointer-events-none md:z-0"
             }`}
           >
             <section className="relative flex-1 h-full min-h-[540px] flex items-stretch overflow-hidden bg-white">
@@ -802,10 +816,12 @@ export default function HomeClient({
           {/* 9.1 Research Services (Page 11.5) */}
           <div
             id="service-research"
-            className={`w-full flex flex-col md:col-start-1 md:row-start-1 md:h-full ${
+            className={`w-full flex flex-col md:col-start-1 md:row-start-1 md:h-full md:transition-all md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] ${
               activeService === 3
-                ? "md:visible md:z-10 md:pointer-events-auto"
-                : "md:invisible md:pointer-events-none md:z-0"
+                ? "md:opacity-100 md:translate-x-0 md:scale-100 md:z-10 md:pointer-events-auto"
+                : activeService > 3
+                ? "md:opacity-0 md:-translate-x-10 md:scale-[0.99] md:pointer-events-none md:z-0"
+                : "md:opacity-0 md:translate-x-10 md:scale-[0.99] md:pointer-events-none md:z-0"
             }`}
           >
             <section className="relative flex-1 h-full min-h-[540px] flex items-stretch overflow-hidden bg-white">
