@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
@@ -110,6 +110,17 @@ interface ModalProps {
   onClose: () => void;
 }
 
+function useEscapeToClose(isOpen: boolean, onClose: () => void) {
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
+}
+
 export const RequestValuationModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -183,10 +194,17 @@ export const RequestValuationModal: React.FC<ModalProps> = ({ isOpen, onClose })
     onClose();
   };
 
+  useEscapeToClose(isOpen, handleClose);
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sfa-navy/80 backdrop-blur-sm">
+        <div
+          onMouseDown={(e) => {
+            if (e.target === e.currentTarget) handleClose();
+          }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sfa-navy/80 backdrop-blur-sm"
+        >
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -409,10 +427,17 @@ export const ContactModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     onClose();
   };
 
+  useEscapeToClose(isOpen, handleClose);
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sfa-navy/80 backdrop-blur-sm">
+        <div
+          onMouseDown={(e) => {
+            if (e.target === e.currentTarget) handleClose();
+          }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sfa-navy/80 backdrop-blur-sm"
+        >
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -617,10 +642,17 @@ export const RequestCallbackModal: React.FC<ModalProps> = ({ isOpen, onClose }) 
     onClose();
   };
 
+  useEscapeToClose(isOpen, handleClose);
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sfa-navy/80 backdrop-blur-sm">
+        <div
+          onMouseDown={(e) => {
+            if (e.target === e.currentTarget) handleClose();
+          }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sfa-navy/80 backdrop-blur-sm"
+        >
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
