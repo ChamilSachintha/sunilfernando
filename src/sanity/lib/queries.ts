@@ -283,10 +283,14 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
         heroTitleLine2: s.heroTitleLine2 || DEFAULT_SITE_CONTENT.settings.heroTitleLine2,
         heroSubtitle: s.heroSubtitle || DEFAULT_SITE_CONTENT.settings.heroSubtitle,
         heroTagline: s.heroTagline || DEFAULT_SITE_CONTENT.settings.heroTagline,
-        heroDescription:
+        heroDescription: (
           s.heroDescription && !isAllCapsBlock(s.heroDescription)
             ? s.heroDescription
-            : DEFAULT_SITE_CONTENT.settings.heroDescription,
+            : DEFAULT_SITE_CONTENT.settings.heroDescription
+        ).replace(
+          /across Sri Lanka, the Maldives, and the UAE/i,
+          "across Sri Lanka, the UAE, and the Maldives"
+        ),
         heroImages:
           Array.isArray(s.heroImages) && s.heroImages.filter(Boolean).length >= 5
             ? s.heroImages

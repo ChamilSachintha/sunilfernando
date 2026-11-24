@@ -155,7 +155,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
     heroSubtitle: "INFORMED DECISIONS",
     heroTagline: "SINCE 1999",
     heroDescription:
-      "Sunil Fernando & Associates delivers internationally accepted valuation and real estate advisory services across Sri Lanka, the Maldives, and the UAE, backed by 25 years of expertise, RICS compliance, and a global partner network.",
+      "Sunil Fernando & Associates delivers internationally accepted valuation and real estate advisory services across Sri Lanka, the UAE, and the Maldives, backed by 25 years of expertise, RICS compliance, and a global partner network.",
     heroImages: [
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600",
       "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1600",
