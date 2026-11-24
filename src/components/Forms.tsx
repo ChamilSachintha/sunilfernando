@@ -89,9 +89,9 @@ const callbackSchema = zod.object({
   ),
   bestTime: zod.enum(
     [
-      "Morning (9:00 AM â€“ 12:00 PM)",
-      "Afternoon (12:00 PM â€“ 3:00 PM)",
-      "Late Afternoon (3:00 PM â€“ 6:00 PM)",
+      "Morning (9:00 AM - 12:00 PM)",
+      "Afternoon (12:00 PM - 3:00 PM)",
+      "Late Afternoon (3:00 PM - 6:00 PM)",
       "Anytime During Business Hours",
     ],
     {
@@ -591,7 +591,7 @@ export const RequestCallbackModal: React.FC<ModalProps> = ({ isOpen, onClose }) 
           country: data.market,
           property_type: data.propertyType,
           best_time_to_call: data.bestTime,
-          subject: `Call Back Request â€” ${data.service} (${data.market})`,
+          subject: `Call Back Request - ${data.service} (${data.market})`,
           message: formattedDetails,
           form_type: "Call Back Request",
           time: new Date().toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" }),
@@ -772,9 +772,9 @@ export const RequestCallbackModal: React.FC<ModalProps> = ({ isOpen, onClose }) 
                         className="cursor-pointer w-full px-3 py-2 border border-sfa-grey/30 text-sm focus:outline-none focus:border-sfa-cyan text-sfa-navy bg-white"
                       >
                         <option value="">Select Preferred Time</option>
-                        <option value="Morning (9:00 AM â€“ 12:00 PM)">Morning (9:00 AM â€“ 12:00 PM)</option>
-                        <option value="Afternoon (12:00 PM â€“ 3:00 PM)">Afternoon (12:00 PM â€“ 3:00 PM)</option>
-                        <option value="Late Afternoon (3:00 PM â€“ 6:00 PM)">Late Afternoon (3:00 PM â€“ 6:00 PM)</option>
+                        <option value="Morning (9:00 AM - 12:00 PM)">Morning (9:00 AM - 12:00 PM)</option>
+                        <option value="Afternoon (12:00 PM - 3:00 PM)">Afternoon (12:00 PM - 3:00 PM)</option>
+                        <option value="Late Afternoon (3:00 PM - 6:00 PM)">Late Afternoon (3:00 PM - 6:00 PM)</option>
                         <option value="Anytime During Business Hours">Anytime During Business Hours</option>
                       </select>
                       {errors.bestTime && <p className="text-red-500 text-[10px] mt-1 font-semibold">{errors.bestTime.message}</p>}
