@@ -109,7 +109,11 @@ const jsonLd = {
     "@type": "Person",
     "name": "Sunil Fernando",
     "jobTitle": "Founder & Chairman",
+    "sameAs": "https://www.linkedin.com/in/sunil-fernando-frics-uk-fiv-sl-miv-rsa-b2318522/",
   },
+  "sameAs": [
+    "https://www.linkedin.com/company/sunil-fernando-associates/",
+  ],
   "address": [
     {
       "@type": "PostalAddress",

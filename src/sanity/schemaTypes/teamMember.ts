@@ -37,6 +37,11 @@ export const teamMemberType = defineType({
       initialValue: "/avatar-placeholder.svg",
     }),
     defineField({
+      name: "linkedinUrl",
+      title: "LinkedIn Profile URL",
+      type: "url",
+    }),
+    defineField({
       name: "isActive",
       title: "Display on Website",
       description:

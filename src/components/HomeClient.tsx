@@ -1571,6 +1571,22 @@ export default function HomeClient({
             <p className="text-sm lg:text-base font-avenir leading-relaxed text-justify text-white lg:text-sfa-navy my-6 max-w-xl font-medium">
               {cms.settings.teamDescription}
             </p>
+
+            {cms.settings.companyLinkedinUrl && (
+              <div>
+                <a
+                  href={cms.settings.companyLinkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-4 py-2.5 bg-[#0A66C2] hover:bg-[#004182] text-white text-xs font-montserrat font-semibold tracking-[0.12em] uppercase transition-colors shadow-sm"
+                >
+                  <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                  </svg>
+                  <span>Sunil Fernando &amp; Associates on LinkedIn</span>
+                </a>
+              </div>
+            )}
           </div>
 
           {/* Right Column (Spacing for desktop layout building image to show through) */}
@@ -1607,6 +1623,20 @@ export default function HomeClient({
                     fill
                     className="object-cover object-top"
                   />
+                  {director.linkedinUrl && (
+                    <a
+                      href={director.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`View ${director.name} on LinkedIn`}
+                      title={`View ${director.name} on LinkedIn`}
+                      className="absolute top-2.5 right-2.5 z-20 w-7 h-7 rounded bg-[#0A66C2]/95 hover:bg-[#004182] text-white flex items-center justify-center shadow-md transition-transform hover:scale-105"
+                    >
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                      </svg>
+                    </a>
+                  )}
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 h-[24%] bg-[#123c56] flex flex-col items-center justify-center text-center px-2">
                   <h3 className="text-white font-avenir font-medium text-xs tracking-normal leading-tight">
@@ -1666,6 +1696,20 @@ export default function HomeClient({
                         fill
                         className="object-cover object-top"
                       />
+                      {director.linkedinUrl && (
+                        <a
+                          href={director.linkedinUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`View ${director.name} on LinkedIn`}
+                          title={`View ${director.name} on LinkedIn`}
+                          className="absolute top-3 right-[12%] z-20 w-7 h-7 rounded bg-[#0A66C2]/95 hover:bg-[#004182] text-white flex items-center justify-center shadow-md transition-transform hover:scale-105"
+                        >
+                          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                          </svg>
+                        </a>
+                      )}
                     </div>
 
                     {/* Parallelogram Bottom Text Banner */}

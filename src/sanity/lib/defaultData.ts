@@ -65,6 +65,7 @@ export interface SiteSettingsData {
   partnerLogos: LogoItem[];
   teamDescription: string;
   teamHeaderImageUrl: string;
+  companyLinkedinUrl?: string;
   contactTitle: string;
   contactSubtitle: string;
   contactDescription: string;
@@ -100,6 +101,7 @@ export interface TeamMemberItem {
   designation: string;
   credentials: string;
   image: string;
+  linkedinUrl?: string;
   order: number;
 }
 
@@ -277,6 +279,8 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       "SFA employs professionals with specialized expertise in various real estate sectors. Based on the nature and scope of each assignment, the appropriate experts are integrated into the leadership team.",
     teamHeaderImageUrl:
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600",
+    companyLinkedinUrl:
+      "https://www.linkedin.com/company/sunil-fernando-associates/",
     contactTitle: "GET IN TOUCH",
     contactSubtitle: "READY TO START?",
     contactDescription:
@@ -418,6 +422,8 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       designation: "Founder & Chairman",
       credentials: "FIV(SL), FRICS",
       image: "/sunil-fernando.png",
+      linkedinUrl:
+        "https://www.linkedin.com/in/sunil-fernando-frics-uk-fiv-sl-miv-rsa-b2318522/",
       order: 1,
     },
     {
@@ -426,6 +432,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       designation: "Co-Founder & Managing Director",
       credentials: "MBA (Edin), MRICS",
       image: "/manju-fernando.png",
+      linkedinUrl: "https://www.linkedin.com/in/manjufernando/",
       order: 2,
     },
     {
@@ -442,6 +449,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       designation: "Director",
       credentials: "BSc LLB, FRICS",
       image: "/nalin-seneviratne.png",
+      linkedinUrl: "https://www.linkedin.com/in/nalin-seneviratne-53babb18/",
       order: 4,
     },
     {

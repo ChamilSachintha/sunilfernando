@@ -75,6 +75,7 @@ export const SITE_CONTENT_QUERY = groq`{
     },
     teamDescription,
     "teamHeaderImageUrl": teamHeaderImage.asset->url,
+    companyLinkedinUrl,
     contactTitle,
     contactSubtitle,
     contactDescription
@@ -156,6 +157,7 @@ export const SITE_CONTENT_QUERY = groq`{
     designation,
     credentials,
     "image": coalesce(portrait.asset->url, fallbackImagePath, "/avatar-placeholder.svg"),
+    linkedinUrl,
     order,
     isActive
   }
@@ -354,6 +356,8 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
           s.teamHeaderImageUrl || DEFAULT_SITE_CONTENT.settings.teamHeaderImageUrl,
           1920
         ),
+        companyLinkedinUrl:
+          s.companyLinkedinUrl || DEFAULT_SITE_CONTENT.settings.companyLinkedinUrl,
         contactTitle: s.contactTitle || DEFAULT_SITE_CONTENT.settings.contactTitle,
         contactSubtitle:
           s.contactSubtitle || DEFAULT_SITE_CONTENT.settings.contactSubtitle,
@@ -455,16 +459,36 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
                 (m: { name?: string }) =>
                   !(m.name || "").toLowerCase().includes("vicks")
               )
-              .map((m: { _id: string; name: string; designation: string; credentials?: string; image: string; order: number }) => {
+              .map((m: { _id: string; name: string; designation: string; credentials?: string; image: string; linkedinUrl?: string; order: number }) => {
               const lowerName = (m.name || "").toLowerCase();
               const profileOverride = lowerName.includes("sunil fernando")
-                ? { name: "Mr. Sunil Fernando", designation: "Founder & Chairman", credentials: "FIV(SL), FRICS" }
+                ? {
+                    name: "Mr. Sunil Fernando",
+                    designation: "Founder & Chairman",
+                    credentials: "FIV(SL), FRICS",
+                    linkedinUrl:
+                      m.linkedinUrl ||
+                      "https://www.linkedin.com/in/sunil-fernando-frics-uk-fiv-sl-miv-rsa-b2318522/",
+                  }
                 : lowerName.includes("manju fernando")
-                ? { name: "Manju Fernando", designation: "Co-Founder & Managing Director", credentials: "MBA (Edin), MRICS" }
+                ? {
+                    name: "Manju Fernando",
+                    designation: "Co-Founder & Managing Director",
+                    credentials: "MBA (Edin), MRICS",
+                    linkedinUrl:
+                      m.linkedinUrl || "https://www.linkedin.com/in/manjufernando/",
+                  }
                 : lowerName.includes("dilshan perera")
                 ? { name: "Dilshan Perera", designation: "Executive Director", credentials: "MBA (WSU)" }
                 : lowerName.includes("nalin seneviratne")
-                ? { name: "Nalin Seneviratne", designation: "Director", credentials: "BSc LLB, FRICS" }
+                ? {
+                    name: "Nalin Seneviratne",
+                    designation: "Director",
+                    credentials: "BSc LLB, FRICS",
+                    linkedinUrl:
+                      m.linkedinUrl ||
+                      "https://www.linkedin.com/in/nalin-seneviratne-53babb18/",
+                  }
                 : lowerName.includes("hilmy")
                 ? { name: "Mohamed Hilmy", designation: "Director - Maldives", credentials: "LLB(Hons), LLM" }
                 : {};
