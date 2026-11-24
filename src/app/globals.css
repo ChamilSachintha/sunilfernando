@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* Activate desktop (lg:) layout starting at tablet portrait width (768px) */
   --breakpoint-lg: 48rem;
 
   --color-sfa-navy: #0c2340;
@@ -96,6 +95,20 @@ html {
 @media (min-width: 640px) {
   html {
     scroll-padding-top: 5rem;
+  }
+}
+
+/* Tablet view (768px - 1023px): render the exact desktop layout without horizontal overflow */
+@media (min-width: 768px) and (max-width: 1023px) {
+  header nav {
+    gap: 0.85rem !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.06em !important;
+    white-space: nowrap;
+  }
+
+  header img {
+    height: 3.75rem !important;
   }
 }
 
