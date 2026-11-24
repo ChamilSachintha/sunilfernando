@@ -457,7 +457,7 @@ export default function ServicePageClient({
             <div className="text-sm sm:text-base lg:text-lg font-montserrat font-medium tracking-[0.15em] uppercase text-white/90">
               {cms.settings.contactSubtitle}
             </div>
-            <p className="text-xs sm:text-sm font-avenir font-medium text-white/80 max-w-3xl mx-auto leading-relaxed uppercase tracking-wider pt-2">
+            <p className="text-sm sm:text-base font-avenir font-normal text-white/85 max-w-3xl mx-auto leading-relaxed pt-2">
               {cms.settings.contactDescription}
             </p>
             <div className="pt-6">

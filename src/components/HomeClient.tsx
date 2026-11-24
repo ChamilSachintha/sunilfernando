@@ -876,7 +876,7 @@ export default function HomeClient({
                     <span className="block mt-1">{cms.services.capitalMarkets.titleLine2}</span>
                   </h2>
 
-                  <p className="text-sm lg:text-base font-avenir leading-relaxed tracking-wider text-justify text-white/95 my-8 lg:my-0 lg:max-w-[320px] uppercase">
+                  <p className="text-sm lg:text-base font-avenir leading-relaxed text-justify text-white/95 my-8 lg:my-0 lg:max-w-[320px]">
                     {cms.services.capitalMarkets.leftSummary}
                   </p>
 
@@ -894,14 +894,14 @@ export default function HomeClient({
                     <h3 className="text-sm sm:text-base lg:text-lg font-montserrat font-bold tracking-wider text-white">
                       {cms.services.capitalMarkets.rightHeading1}
                     </h3>
-                    <ul className="space-y-1.5 text-xs lg:text-sm font-avenir font-normal tracking-wide text-white/90 uppercase">
+                    <ul className="space-y-1.5 text-sm font-avenir font-normal text-white/90">
                       {cms.services.capitalMarkets.clientTypes.map((ct, idx) => (
                         <li key={idx}>• {ct}</li>
                       ))}
                     </ul>
                   </div>
 
-                  <p className="text-xs sm:text-sm font-avenir text-white/80 leading-relaxed text-justify tracking-wide">
+                  <p className="text-sm font-avenir text-white/85 leading-relaxed text-justify">
                     {cms.services.capitalMarkets.rightBody}
                   </p>
 
@@ -909,7 +909,7 @@ export default function HomeClient({
                     <h3 className="text-sm sm:text-base lg:text-lg font-montserrat font-bold tracking-wider text-white">
                       {cms.services.capitalMarkets.rightHeading2}
                     </h3>
-                    <ul className="space-y-1.5 text-xs lg:text-sm font-avenir font-semibold tracking-wide text-white/95 uppercase">
+                    <ul className="space-y-1.5 text-sm font-avenir font-semibold text-white/95">
                       {cms.services.capitalMarkets.transactionLines.map((line, idx) => (
                         <li key={idx}>{line}</li>
                       ))}
@@ -1061,7 +1061,7 @@ export default function HomeClient({
 
           {/* Right Column (From Complex Portfolio Valuations...) */}
           <div className="lg:col-span-5 flex flex-col justify-center items-end px-6 sm:px-8 lg:pl-24 xl:pl-32 lg:pr-0 py-16 sm:py-20 lg:py-28 xl:py-32 text-white bg-primary lg:bg-transparent">
-            <div className="font-avenir font-normal text-xs sm:text-sm lg:text-[13px] uppercase tracking-[0.18em] leading-[2.1] text-white text-right lg:max-w-[400px]">
+            <div className="font-avenir font-normal text-sm sm:text-base leading-relaxed text-white text-right lg:max-w-[400px]">
               {cms.settings.whatWeDoRightLines.map((line, idx) => (
                 <span key={idx} className="block">
                   {line}
@@ -1130,7 +1130,7 @@ export default function HomeClient({
                 <h3 className="text-2xl lg:text-3xl font-montserrat font-normal tracking-tight uppercase leading-snug text-sfa-navy">
                   MARKET INSIGHTS &amp; RESEARCH REPORTS ARE ON THE WAY.
                 </h3>
-                <p className="text-xs lg:text-sm font-avenir font-normal text-sfa-navy/85 uppercase tracking-wider leading-relaxed max-w-xl">
+                <p className="text-sm lg:text-base font-avenir font-normal text-sfa-navy/85 leading-relaxed max-w-xl">
                   We are currently preparing our latest market intelligence, technical valuation commentaries, and regional property outlooks. Please check back soon for upcoming publications.
                 </p>
                 <div className="pt-2 flex flex-wrap items-center gap-6">
@@ -1262,7 +1262,7 @@ export default function HomeClient({
               <h3 className="text-2xl lg:text-3xl font-montserrat font-normal tracking-tight text-sfa-navy uppercase leading-tight">
                 SELECTED CASE STUDIES COMING SOON.
               </h3>
-              <p className="text-xs lg:text-sm font-avenir font-normal text-sfa-navy/80 tracking-wider leading-relaxed uppercase">
+              <p className="text-sm lg:text-base font-avenir font-normal text-sfa-navy/85 leading-relaxed">
                 We are currently compiling our featured institutional valuations, bank collateral appraisals, and cross-border advisory mandates. Detailed case studies will be published here soon.
               </p>
               <div className="pt-2">
@@ -1563,7 +1563,7 @@ export default function HomeClient({
               <span className="block mt-1">TEAM</span>
             </h2>
 
-            <p className="text-xs sm:text-sm lg:text-[15px] font-avenir leading-relaxed text-justify text-white lg:text-sfa-navy my-6 max-w-xl uppercase font-semibold">
+            <p className="text-sm lg:text-base font-avenir leading-relaxed text-justify text-white lg:text-sfa-navy my-6 max-w-xl font-medium">
               {cms.settings.teamDescription}
             </p>
           </div>
@@ -1700,7 +1700,7 @@ export default function HomeClient({
 
           <div className="pt-6 flex justify-center">
             <button
-              onClick={() => setContactOpen(true)}
+              onClick={() => setCallbackOpen(true)}
               className="cursor-pointer px-10 py-2.5 border border-[#2684be] text-white text-sm sm:text-[15px] font-avenir font-medium tracking-wide transition duration-300 bg-transparent hover:bg-white/10"
             >
               REQUEST A CALL BACK

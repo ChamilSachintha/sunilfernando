@@ -152,7 +152,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
     heroSubtitle: "INFORMED DECISIONS",
     heroTagline: "SINCE 1999",
     heroDescription:
-      "SUNIL FERNANDO & ASSOCIATES DELIVERS INTERNATIONALLY ACCEPTED VALUATION AND REAL ESTATE ADVISORY SERVICES ACROSS SRI LANKA AND THE MALDIVES, BACKED BY 25 YEARS OF EXPERTISE, RICS COMPLIANCE, AND A GLOBAL PARTNER NETWORK.",
+      "Sunil Fernando & Associates delivers internationally accepted valuation and real estate advisory services across Sri Lanka, the Maldives, and the UAE, backed by 25 years of expertise, RICS compliance, and a global partner network.",
     heroImages: [
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600",
       "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1600",
@@ -214,14 +214,14 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
     whatWeDoHeadingLine3: "ADVISORY",
     whatWeDoSubheading: "BUILT FOR INSTITUTIONS",
     whatWeDoRightLines: [
-      "FROM COMPLEX PORTFOLIO",
-      "VALUATIONS TO STRATEGIC",
-      "OCCUPIER DECISIONS, EVERY",
-      "SERVICE AT SFA IS DELIVERED",
-      "TO INTERNATIONAL STANDARDS",
-      "ACCEPTED BY BANKS, AUDIT",
-      "FIRMS, AND LAW FIRMS ACROSS",
-      "THE GLOBE.",
+      "From complex portfolio",
+      "valuations to strategic",
+      "occupier decisions, every",
+      "service at SFA is delivered",
+      "to international standards",
+      "accepted by banks, audit",
+      "firms, and law firms across",
+      "the globe.",
     ],
     whatWeDoImageUrl: "/what-we-do-a.png",
     clientsDescription1:
@@ -272,7 +272,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       { name: "NDB Investment Bank", imageUrl: "/logos/ndb.png", className: "h-8 sm:h-9" },
     ],
     teamDescription:
-      "SFA EMPLOYS PROFESSIONALS WITH SPECIALIZED EXPERTISE IN VARIOUS REAL ESTATE SECTORS. BASED ON THE NATURE AND SCOPE OF EACH ASSIGNMENT, THE APPROPRIATE EXPERTS ARE INTEGRATED INTO THE LEADERSHIP TEAM.",
+      "SFA employs professionals with specialized expertise in various real estate sectors. Based on the nature and scope of each assignment, the appropriate experts are integrated into the leadership team.",
     teamHeaderImageUrl:
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600",
     contactTitle: "GET IN TOUCH",
@@ -321,21 +321,21 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       rightHeading1:
         "WE FOCUS ON PROVIDING UNIQUE AND PERSONALIZED ADVICE TO",
       clientTypes: [
-        "INSTITUTIONAL FUNDS",
-        "PRIVATE EQUITY",
-        "STATE & PUBLIC SECTOR ENTITIES",
-        "PROPERTY COMPANIES & DEVELOPERS",
-        "CORPORATES",
-        "FAMILY OFFICES",
-        "PRIVATE INDIVIDUALS",
+        "Institutional Funds",
+        "Private Equity",
+        "State & Public Sector Entities",
+        "Property Companies & Developers",
+        "Corporates",
+        "Family Offices",
+        "Private Individuals",
       ],
       rightBody:
         "We focus on providing unique and personalized advice, adding value through a combination of unparalleled access to capital, financing expertise, real estate market intelligence and thought leadership. Our services are solidified with real estate expertise together with innovative capital solutions.",
       rightHeading2:
         "OUR SERVICES EXTEND ACROSS A RANGE OF STRATEGIC TRANSACTIONS INCLUDING",
       transactionLines: [
-        "• DEBT ADVISORY • CAPITAL RAISING • JOINT VENTURES",
-        "• M&A SOLUTIONS • SALES & LEASEBACKS • RESTRUCTURING",
+        "• Debt Advisory • Capital Raising • Joint Ventures",
+        "• M&A Solutions • Sales & Leasebacks • Restructuring",
       ],
     },
     research: {

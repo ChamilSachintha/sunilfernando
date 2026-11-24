@@ -261,6 +261,9 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
         ? [...partnerLogosPart1, ...partnerLogosPart2]
         : DEFAULT_SITE_CONTENT.settings.partnerLogos;
 
+    const isAllCapsBlock = (text?: string) =>
+      Boolean(text && text.length > 25 && text === text.toUpperCase() && /[A-Z]{4,}/.test(text));
+
     return {
       settings: {
         logoUrl: s.logoUrl || DEFAULT_SITE_CONTENT.settings.logoUrl,
@@ -268,7 +271,10 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
         heroTitleLine2: s.heroTitleLine2 || DEFAULT_SITE_CONTENT.settings.heroTitleLine2,
         heroSubtitle: s.heroSubtitle || DEFAULT_SITE_CONTENT.settings.heroSubtitle,
         heroTagline: s.heroTagline || DEFAULT_SITE_CONTENT.settings.heroTagline,
-        heroDescription: s.heroDescription || DEFAULT_SITE_CONTENT.settings.heroDescription,
+        heroDescription:
+          s.heroDescription && !isAllCapsBlock(s.heroDescription)
+            ? s.heroDescription
+            : DEFAULT_SITE_CONTENT.settings.heroDescription,
         heroImages:
           Array.isArray(s.heroImages) && s.heroImages.filter(Boolean).length >= 5
             ? s.heroImages
@@ -318,7 +324,9 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
         whatWeDoSubheading:
           s.whatWeDoSubheading || DEFAULT_SITE_CONTENT.settings.whatWeDoSubheading,
         whatWeDoRightLines:
-          Array.isArray(s.whatWeDoRightLines) && s.whatWeDoRightLines.length > 0
+          Array.isArray(s.whatWeDoRightLines) &&
+          s.whatWeDoRightLines.length > 0 &&
+          !isAllCapsBlock(s.whatWeDoRightLines.join(" "))
             ? s.whatWeDoRightLines
             : DEFAULT_SITE_CONTENT.settings.whatWeDoRightLines,
         whatWeDoImageUrl: optimizeSanityImageUrl(
@@ -338,7 +346,9 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
         partnerLogosPart2,
         partnerLogos,
         teamDescription:
-          s.teamDescription || DEFAULT_SITE_CONTENT.settings.teamDescription,
+          s.teamDescription && !isAllCapsBlock(s.teamDescription)
+            ? s.teamDescription
+            : DEFAULT_SITE_CONTENT.settings.teamDescription,
         teamHeaderImageUrl: optimizeSanityImageUrl(
           s.teamHeaderImageUrl || DEFAULT_SITE_CONTENT.settings.teamHeaderImageUrl,
           1920
