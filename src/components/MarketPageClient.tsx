@@ -35,6 +35,7 @@ interface MarketPageClientProps {
   focusHeading: string;
   focusAreas: string[];
   officeAddress: string;
+  branches?: string;
   phoneDisplay?: string;
   phoneHref?: string;
   email: string;
@@ -52,6 +53,7 @@ export default function MarketPageClient({
   focusHeading,
   focusAreas,
   officeAddress,
+  branches,
   phoneDisplay,
   phoneHref,
   email,
@@ -410,7 +412,14 @@ export default function MarketPageClient({
                 <div className="space-y-4 text-sm font-avenir text-sfa-navy/85">
                   <div className="flex items-start gap-3">
                     <MapPin className="w-4 h-4 text-primary shrink-0 mt-1" />
-                    <span>{officeAddress}</span>
+                    <div className="space-y-1">
+                      <span className="block">{officeAddress}</span>
+                      {branches && (
+                        <span className="block text-xs text-sfa-navy/70">
+                          <strong className="font-semibold text-sfa-navy">Branches:</strong> {branches}
+                        </span>
+                      )}
+                    </div>
                   </div>
                   {phoneDisplay && phoneHref && (
                     <div className="flex items-center gap-3">

@@ -483,6 +483,12 @@ export default function HomeClient({
                 <p className="text-xs sm:text-[13px] font-avenir font-normal text-white/85 leading-relaxed drop-shadow-sm">
                   {office.address}
                 </p>
+                {office.branches && (
+                  <p className="mt-1.5 text-[11px] sm:text-xs font-avenir font-normal text-white/80 leading-relaxed drop-shadow-sm">
+                    <span className="uppercase tracking-wider text-sfa-cyan font-bold">Branches:</span>{" "}
+                    {office.branches}
+                  </p>
+                )}
                 {office.phoneDisplay && (
                   <div className="mt-2 flex items-center justify-center md:justify-start gap-2">
                     <span className="text-[11px] font-avenir uppercase tracking-wider text-sfa-cyan font-bold drop-shadow-sm">Tel:</span>

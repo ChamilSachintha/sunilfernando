@@ -27,6 +27,7 @@ const MARKETS = [
 const CONTACT_OFFICES: Array<{
   country: string;
   addressLines: string[];
+  branches?: string;
   phone?: string;
   phoneHref?: string;
   email?: string;
@@ -58,6 +59,7 @@ const CONTACT_OFFICES: Array<{
       "No. 505, Nawala Road,",
       "Rajagiriya, Sri Lanka",
     ],
+    branches: "Matara, Kandy, Negombo & Wennappuwa",
     phone: "Tel: 011 2887829",
     phoneHref: "tel:+94112887829",
     email: "Email: info@sunilfernando.com",
@@ -173,6 +175,11 @@ export default function SiteFooter(_props: {
                     {line}
                   </p>
                 ))}
+                {office.branches && (
+                  <p className="leading-snug pt-0.5">
+                    Branches: {office.branches}
+                  </p>
+                )}
                 {office.phone && office.phoneHref && (
                   <a
                     href={office.phoneHref}

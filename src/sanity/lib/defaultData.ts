@@ -4,6 +4,7 @@ export interface RegionalOffice {
   country: string;
   flagUrl: string;
   address: string;
+  branches?: string;
   phoneDisplay?: string;
   phoneHref?: string;
   email?: string;
@@ -181,6 +182,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
         flagUrl: "/flag-lk.png",
         address:
           "No. 505, Nawala Road, Rajagiriya, Sri Lanka",
+        branches: "Matara, Kandy, Negombo & Wennappuwa",
         phoneDisplay: "+94 11 2887829",
         phoneHref: "+94112887829",
         email: "info@sunilfernando.com",

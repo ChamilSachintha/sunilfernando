@@ -302,6 +302,7 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
                 if (countryUpper.includes("SRI LANKA")) {
                   return {
                     ...office,
+                    branches: office.branches || "Matara, Kandy, Negombo & Wennappuwa",
                     email: office.email || "info@sunilfernando.com",
                   };
                 }

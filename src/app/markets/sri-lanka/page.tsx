@@ -44,6 +44,7 @@ export default async function SriLankaMarketPage() {
         "Litigation Support & Court Expert Testimony",
       ]}
       officeAddress="No. 505, Nawala Road, Rajagiriya, Sri Lanka"
+      branches="Matara, Kandy, Negombo & Wennappuwa"
       phoneDisplay="+94 11 2887829"
       phoneHref="+94112887829"
       email="info@sunilfernando.com"
