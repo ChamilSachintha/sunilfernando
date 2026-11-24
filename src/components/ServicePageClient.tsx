@@ -95,7 +95,7 @@ export default function ServicePageClient({
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-7 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
+          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-7 font-sans text-[11px] xl:text-sm font-semibold uppercase tracking-wider xl:tracking-widest whitespace-nowrap text-sfa-navy/80">
             <button
               type="button"
               onClick={() => navigateToHomeSection("home")}

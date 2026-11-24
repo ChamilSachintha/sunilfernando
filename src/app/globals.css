@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  /* Activate desktop (lg:) layout starting at tablet portrait width (768px) */
+  --breakpoint-lg: 48rem;
+
   --color-sfa-navy: #0c2340;
   --color-sfa-blue: #1d70b8;
   --color-sfa-cyan: #00aeef;
