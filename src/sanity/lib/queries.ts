@@ -251,12 +251,22 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
       : DEFAULT_SITE_CONTENT.settings.partnerLogosPart1 || []
     ).map(normalizePartnerSize);
 
-    const partnerLogosPart2 = (hasLegacySeed
+    const basePart2 = (hasLegacySeed
       ? DEFAULT_SITE_CONTENT.settings.partnerLogosPart2 || []
       : rawPart2.length > 0
       ? rawPart2.filter((p: { name?: string }) => !p?.name || !REMOVED_PARTNER_NAMES.has(p.name))
       : DEFAULT_SITE_CONTENT.settings.partnerLogosPart2 || []
     ).map(normalizePartnerSize);
+
+    const existingPart2Names = new Set(
+      basePart2.map((p: { name?: string }) => (p.name || "").toLowerCase())
+    );
+    const requiredPart2Additions = (DEFAULT_SITE_CONTENT.settings.partnerLogosPart2 || []).filter(
+      (p) =>
+        (p.name === "Eurostar" || p.name === "Azizi Developments") &&
+        !existingPart2Names.has(p.name.toLowerCase())
+    );
+    const partnerLogosPart2 = [...basePart2, ...requiredPart2Additions];
 
     const partnerLogos =
       partnerLogosPart1.length > 0 || partnerLogosPart2.length > 0

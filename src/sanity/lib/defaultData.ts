@@ -260,6 +260,8 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       { name: "BDO", imageUrl: "/logos/bdo.png", className: "h-8 sm:h-9" },
       { name: "Kreston", imageUrl: "/logos/kreston.png", className: "h-9 sm:h-10" },
       { name: "NDB Investment Bank", imageUrl: "/logos/ndb.png", className: "h-8 sm:h-9" },
+      { name: "Eurostar", imageUrl: "/logos/eurostar.png", className: "h-7 sm:h-8" },
+      { name: "Azizi Developments", imageUrl: "/logos/azizi.png", className: "h-9 sm:h-11" },
     ],
     partnerLogos: [
       { name: "HSBC", imageUrl: "/logos/hsbc.png", className: "h-7 sm:h-8" },
@@ -274,6 +276,8 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       { name: "BDO", imageUrl: "/logos/bdo.png", className: "h-8 sm:h-9" },
       { name: "Kreston", imageUrl: "/logos/kreston.png", className: "h-9 sm:h-10" },
       { name: "NDB Investment Bank", imageUrl: "/logos/ndb.png", className: "h-8 sm:h-9" },
+      { name: "Eurostar", imageUrl: "/logos/eurostar.png", className: "h-7 sm:h-8" },
+      { name: "Azizi Developments", imageUrl: "/logos/azizi.png", className: "h-9 sm:h-11" },
     ],
     teamDescription:
       "SFA employs professionals with specialized expertise in various real estate sectors. Based on the nature and scope of each assignment, the appropriate experts are integrated into the leadership team.",
