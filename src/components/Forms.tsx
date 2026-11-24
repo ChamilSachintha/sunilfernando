@@ -894,27 +894,27 @@ export const NewsletterSignup: React.FC = () => {
   return (
     <div className="w-full">
       {isSuccess ? (
-        <div className="flex items-center gap-2.5 px-4 py-3 bg-white/15 border border-white/25 text-white text-sm font-avenir">
-          <CheckCircle2 className="w-4 h-4 text-[#00bdf1] shrink-0" />
+        <div className="flex items-center gap-2.5 px-4 py-3.5 bg-[#e0f2fe] border border-primary/30 text-sfa-navy text-sm font-avenir">
+          <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
           <span>Thank you for subscribing! You will receive our upcoming market insights and reports.</span>
         </div>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-          <div className="flex flex-col sm:flex-row gap-2.5">
+          <div className="flex flex-col sm:flex-row gap-3">
             <div className="relative flex-1">
-              <Mail className="w-4 h-4 text-sfa-navy/50 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <Mail className="w-4 h-4 text-sfa-navy/45 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 {...register("email")}
                 type="email"
                 aria-label="Email address for market insights newsletter"
                 placeholder="Enter your work email"
-                className="w-full pl-10 pr-4 py-3 bg-white text-sfa-navy placeholder:text-sfa-navy/50 text-sm font-avenir focus:outline-none focus:ring-2 focus:ring-[#00bdf1]"
+                className="w-full pl-10 pr-4 py-3.5 bg-white border border-slate-300 text-sfa-navy placeholder:text-sfa-navy/45 text-sm font-avenir focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 shadow-xs"
               />
             </div>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="cursor-pointer shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0c2340] hover:bg-[#194866] text-white text-xs font-montserrat font-bold tracking-widest uppercase transition disabled:opacity-50"
+              className="cursor-pointer shrink-0 inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-secondary hover:bg-[#0c2340] text-white text-xs font-montserrat font-bold tracking-widest uppercase transition shadow-sm disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>
@@ -930,12 +930,12 @@ export const NewsletterSignup: React.FC = () => {
             </button>
           </div>
           {errors.email && (
-            <p className="text-xs text-white/95 bg-red-600/80 px-2.5 py-1 mt-2 inline-block font-avenir">
+            <p className="text-xs text-red-600 mt-2 font-avenir font-medium">
               {errors.email.message}
             </p>
           )}
           {errorMessage && (
-            <p className="text-xs text-white/95 bg-red-600/80 px-2.5 py-1 mt-2 inline-block font-avenir">
+            <p className="text-xs text-red-600 mt-2 font-avenir font-medium">
               {errorMessage}
             </p>
           )}
