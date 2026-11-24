@@ -278,12 +278,12 @@ export default function HomeClient({
                 </div>
               </div>
             </div>
-            <button
-              onClick={() => scrollTo("newsroom")}
-              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "newsroom" ? "text-sfa-blue font-semibold" : ""}`}
+            <Link
+              href="/newsroom"
+              className="cursor-pointer hover:text-sfa-blue transition"
             >
               NEWSROOM
-            </button>
+            </Link>
             <button
               onClick={() => scrollTo("clients")}
               className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "clients" || activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
@@ -363,9 +363,9 @@ export default function HomeClient({
                     Research Services
                   </Link>
                 </div>
-                <button type="button" onClick={() => scrollTo("newsroom")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                <Link href="/newsroom" onClick={() => setMobileMenuOpen(false)} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   NEWSROOM
-                </button>
+                </Link>
                 <button type="button" onClick={() => scrollTo("clients")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR NETWORK
                 </button>
@@ -1072,6 +1072,9 @@ export default function HomeClient({
         </div>
       </section>
 
+      {/* Insights & Case Studies hidden on homepage until content is ready — flip false to true to restore */}
+      {false && (
+      <>
       {/* 5. Insights & Reports (Page 7) */}
       <section id="newsroom" className="relative min-h-[380px] flex items-stretch overflow-hidden bg-white scroll-mt-16 sm:scroll-mt-20">
         {/* SVG Vector Background */}
@@ -1315,6 +1318,8 @@ export default function HomeClient({
           </div>
         </div>
       </section>
+      </>
+      )}
 
 
       {/* 10. Clients (Page 12) */}
