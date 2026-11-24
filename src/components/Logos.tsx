@@ -124,13 +124,15 @@ export const KpmgLogo: React.FC<{ className?: string }> = ({ className = "h-7 sm
   </div>
 );
 
-export const KnightFrankLogo = () => (
-  <div className="flex items-center gap-2 font-sans font-extrabold text-base sm:text-lg tracking-tight text-sfa-navy">
-    <div className="w-7 h-7 sm:w-8 sm:h-8 bg-red-600 rounded flex items-center justify-center text-white text-xs sm:text-sm font-black">KF</div>
-    <div className="flex flex-col leading-none text-left">
-      <span>Knight</span>
-      <span>Frank</span>
-    </div>
+export const KnightFrankLogo: React.FC<{ className?: string }> = ({ className = "h-8 sm:h-10" }) => (
+  <div className="flex items-center justify-center">
+    <Image
+      src="/logos/knight-frank.png"
+      alt="Knight Frank"
+      width={366}
+      height={137}
+      className={`w-auto object-contain hover:scale-105 transition-transform duration-200 ${className}`}
+    />
   </div>
 );
 

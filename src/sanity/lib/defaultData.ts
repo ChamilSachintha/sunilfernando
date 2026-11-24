@@ -249,7 +249,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       { name: "Commercial Bank International", imageUrl: "/logos/cbi.png", className: "h-10 sm:h-12" },
     ],
     partnerLogosPart2: [
-      { name: "Knight Frank" },
+      { name: "Knight Frank", imageUrl: "/logos/knight-frank.png", className: "h-8 sm:h-10" },
       { name: "Deloitte", imageUrl: "/logos/deloitte.png", className: "h-5 sm:h-6" },
       { name: "KPMG", imageUrl: "/logos/kpmg.png", className: "h-8 sm:h-10" },
       { name: "Baker Tilly", imageUrl: "/logos/baker-tilly.png", className: "h-7 sm:h-8" },
@@ -263,7 +263,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
       { name: "Commercial Bank of Ceylon", imageUrl: "/logos/commercial-bank.png", className: "h-7 sm:h-8" },
       { name: "Hatton National Bank (HNB)", imageUrl: "/logos/hnb.png", className: "h-10 sm:h-12" },
       { name: "Commercial Bank International", imageUrl: "/logos/cbi.png", className: "h-10 sm:h-12" },
-      { name: "Knight Frank" },
+      { name: "Knight Frank", imageUrl: "/logos/knight-frank.png", className: "h-8 sm:h-10" },
       { name: "Deloitte", imageUrl: "/logos/deloitte.png", className: "h-5 sm:h-6" },
       { name: "KPMG", imageUrl: "/logos/kpmg.png", className: "h-8 sm:h-10" },
       { name: "Baker Tilly", imageUrl: "/logos/baker-tilly.png", className: "h-7 sm:h-8" },

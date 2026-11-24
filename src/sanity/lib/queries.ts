@@ -237,6 +237,8 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
 
     const normalizePartnerSize = (p: { name?: string; imageUrl?: string; className?: string }) => ({
       ...p,
+      imageUrl:
+        p.name === "Knight Frank" ? "/logos/knight-frank.png" : p.imageUrl,
       className: (p.name && defaultPartnerClassMap.get(p.name)) || p.className,
     });
 
