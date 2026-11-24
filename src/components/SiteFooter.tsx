@@ -75,34 +75,31 @@ export default function SiteFooter(_props: {
 }) {
   void _props;
   return (
-    <>
-      {/* Standalone Newsletter Section (distinct light theme above the footer) */}
-      <section className="relative bg-gradient-to-r from-[#f8fafc] via-white to-[#e0f2fe]/70 border-y border-slate-200 py-14 sm:py-16">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white border border-slate-200/90 border-l-4 border-l-[#00bdf1] shadow-sm p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-6 space-y-2.5 text-center lg:text-left">
-              <span className="inline-block px-3 py-1 bg-secondary/10 border border-secondary/15 text-[11px] font-montserrat font-bold tracking-[0.2em] text-secondary uppercase">
-                MARKET INTELLIGENCE NEWSLETTER
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-montserrat font-normal tracking-tight text-sfa-navy">
-                Stay informed on Sri Lanka, Maldives &amp; UAE property markets.
-              </h3>
-              <p className="text-sm sm:text-base font-avenir text-sfa-navy/75 leading-relaxed">
-                Receive upcoming research reports, valuation commentary, and regional real estate outlooks directly in your inbox.
-              </p>
-            </div>
-            <div className="lg:col-span-6">
-              <NewsletterSignup />
-              <p className="text-xs font-avenir text-sfa-navy/50 mt-3 text-center lg:text-left">
-                Quarterly market intelligence from Sunil Fernando &amp; Associates. No spam, unsubscribe anytime.
-              </p>
-            </div>
+    <footer className="bg-primary text-white pt-14 sm:pt-16 pb-8 border-t border-white/10">
+      {/* Newsletter Card inside Footer */}
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 mb-14">
+        <div className="bg-white text-sfa-navy border border-slate-200/90 border-l-4 border-l-[#00bdf1] shadow-sm p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-6 space-y-2.5 text-center lg:text-left">
+            <span className="inline-block px-3 py-1 bg-secondary/10 border border-secondary/15 text-[11px] font-montserrat font-bold tracking-[0.2em] text-secondary uppercase">
+              MARKET INTELLIGENCE NEWSLETTER
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-montserrat font-normal tracking-tight text-sfa-navy">
+              Stay informed on Sri Lanka, Maldives &amp; UAE property markets.
+            </h3>
+            <p className="text-sm sm:text-base font-avenir text-sfa-navy/75 leading-relaxed">
+              Receive upcoming research reports, valuation commentary, and regional real estate outlooks directly in your inbox.
+            </p>
+          </div>
+          <div className="lg:col-span-6">
+            <NewsletterSignup />
+            <p className="text-xs font-avenir text-sfa-navy/50 mt-3 text-center lg:text-left">
+              Quarterly market intelligence from Sunil Fernando &amp; Associates. No spam, unsubscribe anytime.
+            </p>
           </div>
         </div>
-      </section>
+      </div>
 
-      <footer className="bg-primary text-white pt-16 pb-8 border-t border-white/10">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-0 items-start mb-12 text-center md:text-left">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-0 items-start mb-12 text-center md:text-left">
         {/* Column 1: SFA identity & Reg info */}
         <div className="lg:col-span-3 space-y-6 lg:pr-6 flex flex-col items-center md:items-start">
           <h3 className="text-xl sm:text-2xl font-montserrat font-medium tracking-[0.15em] uppercase leading-tight text-white">
@@ -208,6 +205,5 @@ export default function SiteFooter(_props: {
         </span>
       </div>
     </footer>
-    </>
   );
 }
