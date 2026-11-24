@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme {
+  /* Keep md strictly below lg (767px < 768px) so Tailwind v4 always emits lg: after md: in CSS cascade */
+  --breakpoint-md: 47.9375rem;
   --breakpoint-lg: 48rem;
 
   --color-sfa-navy: #0c2340;
