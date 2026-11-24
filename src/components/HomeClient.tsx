@@ -1054,8 +1054,8 @@ export default function HomeClient({
           </div>
 
           {/* Right Column (From Complex Portfolio Valuations...) */}
-          <div className="lg:col-span-5 flex flex-col justify-center items-end px-6 sm:px-8 lg:pl-24 xl:pl-32 lg:pr-0 py-16 sm:py-20 lg:py-28 xl:py-32 text-white bg-primary lg:bg-transparent">
-            <div className="font-avenir font-normal text-sm sm:text-base leading-relaxed text-white text-right lg:max-w-[400px]">
+          <div className="lg:col-span-5 flex flex-col justify-center items-start lg:items-end px-6 sm:px-8 lg:pl-24 xl:pl-32 lg:pr-0 py-16 sm:py-20 lg:py-28 xl:py-32 text-white bg-primary lg:bg-transparent">
+            <div className="font-avenir font-normal text-sm sm:text-base leading-relaxed text-white text-left lg:text-right lg:max-w-[400px]">
               {cms.settings.whatWeDoRightLines.map((line, idx) => (
                 <span key={idx} className="block">
                   {line}
