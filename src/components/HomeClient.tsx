@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { KnightFrankLogo } from "@/components/Logos";
-import { RequestValuationModal, ContactModal } from "@/components/Forms";
+import { RequestValuationModal, ContactModal, RequestCallbackModal } from "@/components/Forms";
 import SiteFooter from "@/components/SiteFooter";
 import {
   DEFAULT_SITE_CONTENT,
@@ -72,6 +72,7 @@ export default function HomeClient({
   // Forms / Modals state
   const [valuationOpen, setValuationOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
+  const [callbackOpen, setCallbackOpen] = useState(false);
 
   // Explore Our Services tab state (0: Valuation, 1: Occupier, 2: Capital Markets, 3: Research)
   const [activeService, setActiveService] = useState(0);
@@ -453,7 +454,7 @@ export default function HomeClient({
               className="mt-5 sm:mt-6 flex justify-end gap-4"
             >
               <button
-                onClick={() => setContactOpen(true)}
+                onClick={() => setCallbackOpen(true)}
                 className="cursor-pointer px-10 sm:px-12 py-3 sm:py-3.5 bg-[#1e4e72] hover:bg-[#153a53] text-white text-xs sm:text-sm lg:text-base font-avenir font-normal tracking-widest uppercase rounded-xl transition duration-300 shadow-md"
               >
                 REQUEST A CALL BACK
@@ -1714,6 +1715,7 @@ export default function HomeClient({
       {/* Interactive Form Modals */}
       <RequestValuationModal isOpen={valuationOpen} onClose={() => setValuationOpen(false)} />
       <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+      <RequestCallbackModal isOpen={callbackOpen} onClose={() => setCallbackOpen(false)} />
     </div>
   );
 }
