@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { NewsletterSignup } from "@/components/Forms";
 
 const SERVICES = [
   { label: "Valuation & Advisory", href: "/services/valuation-advisory" },
@@ -72,7 +75,27 @@ export default function SiteFooter(_props: {
 }) {
   void _props;
   return (
-    <footer className="bg-primary text-white pt-16 pb-8 border-t border-white/10">
+    <footer className="bg-primary text-white pt-12 pb-8 border-t border-white/10">
+      {/* Newsletter Sign-Up Strip */}
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pb-10 mb-12 border-b border-white/20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div className="lg:col-span-6 space-y-1.5 text-center lg:text-left">
+            <span className="block text-[11px] font-montserrat font-bold tracking-[0.2em] text-[#0c2340] uppercase">
+              MARKET INTELLIGENCE NEWSLETTER
+            </span>
+            <h3 className="text-xl sm:text-2xl font-montserrat font-medium tracking-tight text-white">
+              Stay updated on Sri Lanka, Maldives &amp; UAE property markets.
+            </h3>
+            <p className="text-sm font-avenir text-white/85">
+              Receive upcoming research reports, valuation insights, and regional real estate outlooks directly in your inbox.
+            </p>
+          </div>
+          <div className="lg:col-span-6">
+            <NewsletterSignup />
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-0 items-start mb-12 text-center md:text-left">
         {/* Column 1: SFA identity & Reg info */}
         <div className="lg:col-span-3 space-y-6 lg:pr-6 flex flex-col items-center md:items-start">

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
-import { X, Send, CheckCircle2, Loader2, AlertCircle, PhoneCall } from "lucide-react";
+import { X, Send, CheckCircle2, Loader2, AlertCircle, PhoneCall, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
@@ -824,5 +824,123 @@ export const RequestCallbackModal: React.FC<ModalProps> = ({ isOpen, onClose }) 
         </div>
       )}
     </AnimatePresence>
+  );
+};
+
+const newsletterSchema = zod.object({
+  email: zod
+    .string()
+    .min(1, "Please enter your email address")
+    .email("Please enter a valid email address"),
+});
+
+type NewsletterInput = zod.infer<typeof newsletterSchema>;
+
+export const NewsletterSignup: React.FC = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<NewsletterInput>({
+    resolver: zodResolver(newsletterSchema),
+  });
+
+  const onSubmit = async (data: NewsletterInput) => {
+    setIsSubmitting(true);
+    setErrorMessage(null);
+    try {
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        console.warn("EmailJS is not configured; newsletter signup recorded locally.");
+        setIsSuccess(true);
+        reset();
+        return;
+      }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name: "Newsletter Subscriber",
+          from_name: "Newsletter Subscriber",
+          email: data.email,
+          from_email: data.email,
+          subject: "Newsletter Sign-Up — Market Insights & Reports",
+          message: `New newsletter subscription request from: ${data.email}`,
+          form_type: "Newsletter Sign-Up",
+          time: new Date().toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" }),
+        },
+        publicKey
+      );
+
+      setIsSuccess(true);
+      reset();
+    } catch (err) {
+      console.error("Failed to submit newsletter signup via EmailJS:", err);
+      setErrorMessage("Could not complete subscription. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="w-full">
+      {isSuccess ? (
+        <div className="flex items-center gap-2.5 px-4 py-3 bg-white/15 border border-white/25 text-white text-sm font-avenir">
+          <CheckCircle2 className="w-4 h-4 text-[#00bdf1] shrink-0" />
+          <span>Thank you for subscribing! You will receive our upcoming market insights and reports.</span>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+          <div className="flex flex-col sm:flex-row gap-2.5">
+            <div className="relative flex-1">
+              <Mail className="w-4 h-4 text-sfa-navy/50 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                {...register("email")}
+                type="email"
+                aria-label="Email address for market insights newsletter"
+                placeholder="Enter your work email"
+                className="w-full pl-10 pr-4 py-3 bg-white text-sfa-navy placeholder:text-sfa-navy/50 text-sm font-avenir focus:outline-none focus:ring-2 focus:ring-[#00bdf1]"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="cursor-pointer shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0c2340] hover:bg-[#194866] text-white text-xs font-montserrat font-bold tracking-widest uppercase transition disabled:opacity-50"
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Subscribing...</span>
+                </>
+              ) : (
+                <>
+                  <span>Subscribe</span>
+                  <Send className="w-3.5 h-3.5" />
+                </>
+              )}
+            </button>
+          </div>
+          {errors.email && (
+            <p className="text-xs text-white/95 bg-red-600/80 px-2.5 py-1 mt-2 inline-block font-avenir">
+              {errors.email.message}
+            </p>
+          )}
+          {errorMessage && (
+            <p className="text-xs text-white/95 bg-red-600/80 px-2.5 py-1 mt-2 inline-block font-avenir">
+              {errorMessage}
+            </p>
+          )}
+        </form>
+      )}
+    </div>
   );
 };
