@@ -95,7 +95,7 @@ export default function ServicePageClient({
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
+          <nav className="hidden lg:flex items-center gap-7 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
             <button
               type="button"
               onClick={() => navigateToHomeSection("home")}
@@ -103,6 +103,30 @@ export default function ServicePageClient({
             >
               HOME
             </button>
+
+            <div className="relative group py-2">
+              <button
+                type="button"
+                onClick={() => navigateToHomeSection("markets")}
+                className="cursor-pointer inline-flex items-center gap-1 hover:text-sfa-blue transition uppercase tracking-widest"
+              >
+                <span>MARKETS</span>
+                <ChevronDown className="w-3.5 h-3.5" />
+              </button>
+              <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="w-56 bg-white border border-sfa-grey/15 shadow-lg py-2 flex flex-col">
+                  {MARKET_LINKS.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
 
             <div className="relative group py-2">
               <button
@@ -139,29 +163,13 @@ export default function ServicePageClient({
               NEWSROOM
             </Link>
 
-            <div className="relative group py-2">
-              <button
-                type="button"
-                onClick={() => navigateToHomeSection("clients")}
-                className="cursor-pointer inline-flex items-center gap-1 hover:text-sfa-blue transition uppercase tracking-widest"
-              >
-                <span>OUR NETWORK</span>
-                <ChevronDown className="w-3.5 h-3.5" />
-              </button>
-              <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="w-56 bg-white border border-sfa-grey/15 shadow-lg py-2 flex flex-col">
-                  {MARKET_LINKS.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <button
+              type="button"
+              onClick={() => navigateToHomeSection("clients")}
+              className="cursor-pointer hover:text-sfa-blue transition uppercase tracking-widest"
+            >
+              OUR NETWORK
+            </button>
 
             <button
               type="button"

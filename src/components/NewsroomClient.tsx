@@ -12,6 +12,7 @@ import {
   Briefcase,
   // CheckCircle2,
   ArrowUpRight,
+  ChevronDown,
 } from "lucide-react";
 // import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import { RequestValuationModal, ContactModal } from "@/components/Forms";
@@ -20,8 +21,22 @@ import type {
   SanitySiteContent,
 } from "@/sanity/lib/defaultData";
 
+const SERVICE_LINKS = [
+  { label: "Valuation & Advisory", href: "/services/valuation-advisory" },
+  { label: "Occupier Services", href: "/services/occupier-services" },
+  { label: "Capital Markets", href: "/services/capital-markets" },
+  { label: "Research Services", href: "/services/research-services" },
+];
+
+const MARKET_LINKS = [
+  { label: "United Arab Emirates", href: "/markets/uae" },
+  { label: "Maldives", href: "/markets/maldives" },
+  { label: "Sri Lanka", href: "/markets/sri-lanka" },
+];
+
 const NAV_LINKS = [
   { label: "HOME", section: "home" },
+  { label: "MARKETS", section: "markets" },
   { label: "WHAT WE OFFER", section: "offer" },
   { label: "NEWSROOM", section: "newsroom", active: true },
   { label: "OUR NETWORK", section: "clients" },
@@ -214,19 +229,69 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
-            {NAV_LINKS.map((link) => (
-              <button
-                key={link.label}
-                type="button"
-                onClick={() => navigateToSection(link.section)}
-                className={`cursor-pointer hover:text-sfa-blue transition uppercase tracking-widest ${
-                  link.active ? "text-sfa-blue font-semibold" : ""
-                }`}
-              >
-                {link.label}
-              </button>
-            ))}
+          <nav className="hidden lg:flex items-center gap-7 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
+            {NAV_LINKS.map((link) =>
+              link.label === "MARKETS" ? (
+                <div key={link.label} className="relative group py-2">
+                  <button
+                    type="button"
+                    onClick={() => navigateToSection(link.section)}
+                    className="cursor-pointer inline-flex items-center gap-1 hover:text-sfa-blue transition uppercase tracking-widest"
+                  >
+                    <span>{link.label}</span>
+                    <ChevronDown className="w-3.5 h-3.5" />
+                  </button>
+                  <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className="w-56 bg-white border border-sfa-grey/15 shadow-lg py-2 flex flex-col">
+                      {MARKET_LINKS.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : link.label === "WHAT WE OFFER" ? (
+                <div key={link.label} className="relative group py-2">
+                  <button
+                    type="button"
+                    onClick={() => navigateToSection(link.section)}
+                    className="cursor-pointer inline-flex items-center gap-1 hover:text-sfa-blue transition uppercase tracking-widest"
+                  >
+                    <span>{link.label}</span>
+                    <ChevronDown className="w-3.5 h-3.5" />
+                  </button>
+                  <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className="w-60 bg-white border border-sfa-grey/15 shadow-lg py-2 flex flex-col">
+                      {SERVICE_LINKS.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <button
+                  key={link.label}
+                  type="button"
+                  onClick={() => navigateToSection(link.section)}
+                  className={`cursor-pointer hover:text-sfa-blue transition uppercase tracking-widest ${
+                    link.active ? "text-sfa-blue font-semibold" : ""
+                  }`}
+                >
+                  {link.label}
+                </button>
+              )
+            )}
           </nav>
 
           {/* Mobile hamburger menu */}

@@ -221,13 +221,36 @@ export default function HomeClient({
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
+          <nav className="hidden lg:flex items-center gap-7 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
             <button
               onClick={() => scrollTo("home")}
               className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "home" ? "text-sfa-blue font-semibold" : ""}`}
             >
               HOME
             </button>
+            <div className="relative group py-2">
+              <button
+                type="button"
+                onClick={() => scrollTo("markets")}
+                className="cursor-pointer inline-flex items-center gap-1 hover:text-sfa-blue transition"
+              >
+                <span>MARKETS</span>
+                <ChevronDown className="w-3.5 h-3.5" />
+              </button>
+              <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="w-56 bg-white border border-sfa-grey/15 shadow-lg py-2 flex flex-col">
+                  <Link href="/markets/uae" className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition">
+                    United Arab Emirates
+                  </Link>
+                  <Link href="/markets/maldives" className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition">
+                    Maldives
+                  </Link>
+                  <Link href="/markets/sri-lanka" className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition">
+                    Sri Lanka
+                  </Link>
+                </div>
+              </div>
+            </div>
             <div className="relative group py-2">
               <button
                 type="button"
@@ -260,29 +283,12 @@ export default function HomeClient({
             >
               NEWSROOM
             </button>
-            <div className="relative group py-2">
-              <button
-                type="button"
-                onClick={() => scrollTo("clients")}
-                className={`cursor-pointer inline-flex items-center gap-1 hover:text-sfa-blue transition ${activeSection === "clients" || activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
-              >
-                <span>OUR NETWORK</span>
-                <ChevronDown className="w-3.5 h-3.5" />
-              </button>
-              <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="w-56 bg-white border border-sfa-grey/15 shadow-lg py-2 flex flex-col">
-                  <Link href="/markets/uae" className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition">
-                    United Arab Emirates
-                  </Link>
-                  <Link href="/markets/maldives" className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition">
-                    Maldives
-                  </Link>
-                  <Link href="/markets/sri-lanka" className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition">
-                    Sri Lanka
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <button
+              onClick={() => scrollTo("clients")}
+              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "clients" || activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
+            >
+              OUR NETWORK
+            </button>
             <button
               onClick={() => scrollTo("team")}
               className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "team" ? "text-sfa-blue font-semibold" : ""}`}
@@ -325,6 +331,20 @@ export default function HomeClient({
                 <button type="button" onClick={() => scrollTo("home")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   HOME
                 </button>
+                <button type="button" onClick={() => scrollTo("markets")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                  MARKETS
+                </button>
+                <div className="pl-3 pb-2 border-b border-sfa-grey/5 flex flex-col space-y-2 text-xs text-sfa-navy/75">
+                  <Link href="/markets/uae" onClick={() => setMobileMenuOpen(false)} className="hover:text-sfa-blue">
+                    United Arab Emirates
+                  </Link>
+                  <Link href="/markets/maldives" onClick={() => setMobileMenuOpen(false)} className="hover:text-sfa-blue">
+                    Maldives
+                  </Link>
+                  <Link href="/markets/sri-lanka" onClick={() => setMobileMenuOpen(false)} className="hover:text-sfa-blue">
+                    Sri Lanka
+                  </Link>
+                </div>
                 <button type="button" onClick={() => scrollTo("offer")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   WHAT WE OFFER
                 </button>
@@ -348,17 +368,6 @@ export default function HomeClient({
                 <button type="button" onClick={() => scrollTo("clients")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR NETWORK
                 </button>
-                <div className="pl-3 pb-2 border-b border-sfa-grey/5 flex flex-col space-y-2 text-xs text-sfa-navy/75">
-                  <Link href="/markets/uae" onClick={() => setMobileMenuOpen(false)} className="hover:text-sfa-blue">
-                    United Arab Emirates
-                  </Link>
-                  <Link href="/markets/maldives" onClick={() => setMobileMenuOpen(false)} className="hover:text-sfa-blue">
-                    Maldives
-                  </Link>
-                  <Link href="/markets/sri-lanka" onClick={() => setMobileMenuOpen(false)} className="hover:text-sfa-blue">
-                    Sri Lanka
-                  </Link>
-                </div>
                 <button type="button" onClick={() => scrollTo("team")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR TEAM
                 </button>
