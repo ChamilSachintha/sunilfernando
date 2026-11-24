@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { KnightFrankLogo } from "@/components/Logos";
 import { RequestValuationModal, ContactModal } from "@/components/Forms";
 import SiteFooter from "@/components/SiteFooter";
@@ -169,8 +169,6 @@ export default function HomeClient({
 
     if (!targetId) return;
 
-    setActiveSection(targetId);
-
     let cancelled = false;
     let attempts = 0;
 
@@ -187,6 +185,7 @@ export default function HomeClient({
       } catch {
         // Ignore storage errors
       }
+      setActiveSection(targetId);
       scrollToSectionTop(targetId);
     };
 
@@ -229,24 +228,61 @@ export default function HomeClient({
             >
               HOME
             </button>
-            <button
-              onClick={() => scrollTo("offer")}
-              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "offer" ? "text-sfa-blue font-semibold" : ""}`}
-            >
-              WHAT WE OFFER
-            </button>
+            <div className="relative group py-2">
+              <button
+                type="button"
+                onClick={() => scrollTo("offer")}
+                className={`cursor-pointer inline-flex items-center gap-1 hover:text-sfa-blue transition ${activeSection === "offer" ? "text-sfa-blue font-semibold" : ""}`}
+              >
+                <span>WHAT WE OFFER</span>
+                <ChevronDown className="w-3.5 h-3.5" />
+              </button>
+              <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="w-60 bg-white border border-sfa-grey/15 shadow-lg py-2 flex flex-col">
+                  <Link href="/services/valuation-advisory" className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition">
+                    Valuation &amp; Advisory
+                  </Link>
+                  <Link href="/services/occupier-services" className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition">
+                    Occupier Services
+                  </Link>
+                  <Link href="/services/capital-markets" className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition">
+                    Capital Markets
+                  </Link>
+                  <Link href="/services/research-services" className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition">
+                    Research Services
+                  </Link>
+                </div>
+              </div>
+            </div>
             <button
               onClick={() => scrollTo("newsroom")}
               className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "newsroom" ? "text-sfa-blue font-semibold" : ""}`}
             >
               NEWSROOM
             </button>
-            <button
-              onClick={() => scrollTo("clients")}
-              className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "clients" || activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
-            >
-              OUR NETWORK
-            </button>
+            <div className="relative group py-2">
+              <button
+                type="button"
+                onClick={() => scrollTo("clients")}
+                className={`cursor-pointer inline-flex items-center gap-1 hover:text-sfa-blue transition ${activeSection === "clients" || activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
+              >
+                <span>OUR NETWORK</span>
+                <ChevronDown className="w-3.5 h-3.5" />
+              </button>
+              <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="w-56 bg-white border border-sfa-grey/15 shadow-lg py-2 flex flex-col">
+                  <Link href="/markets/uae" className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition">
+                    United Arab Emirates
+                  </Link>
+                  <Link href="/markets/maldives" className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition">
+                    Maldives
+                  </Link>
+                  <Link href="/markets/sri-lanka" className="px-4 py-2.5 text-xs font-avenir font-semibold tracking-wider uppercase text-sfa-navy/80 hover:bg-sfa-light-blue/50 hover:text-sfa-blue transition">
+                    Sri Lanka
+                  </Link>
+                </div>
+              </div>
+            </div>
             <button
               onClick={() => scrollTo("team")}
               className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "team" ? "text-sfa-blue font-semibold" : ""}`}
@@ -292,12 +328,37 @@ export default function HomeClient({
                 <button type="button" onClick={() => scrollTo("offer")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   WHAT WE OFFER
                 </button>
+                <div className="pl-3 pb-2 border-b border-sfa-grey/5 flex flex-col space-y-2 text-xs text-sfa-navy/75">
+                  <Link href="/services/valuation-advisory" onClick={() => setMobileMenuOpen(false)} className="hover:text-sfa-blue">
+                    Valuation &amp; Advisory
+                  </Link>
+                  <Link href="/services/occupier-services" onClick={() => setMobileMenuOpen(false)} className="hover:text-sfa-blue">
+                    Occupier Services
+                  </Link>
+                  <Link href="/services/capital-markets" onClick={() => setMobileMenuOpen(false)} className="hover:text-sfa-blue">
+                    Capital Markets
+                  </Link>
+                  <Link href="/services/research-services" onClick={() => setMobileMenuOpen(false)} className="hover:text-sfa-blue">
+                    Research Services
+                  </Link>
+                </div>
                 <button type="button" onClick={() => scrollTo("newsroom")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   NEWSROOM
                 </button>
                 <button type="button" onClick={() => scrollTo("clients")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR NETWORK
                 </button>
+                <div className="pl-3 pb-2 border-b border-sfa-grey/5 flex flex-col space-y-2 text-xs text-sfa-navy/75">
+                  <Link href="/markets/uae" onClick={() => setMobileMenuOpen(false)} className="hover:text-sfa-blue">
+                    United Arab Emirates
+                  </Link>
+                  <Link href="/markets/maldives" onClick={() => setMobileMenuOpen(false)} className="hover:text-sfa-blue">
+                    Maldives
+                  </Link>
+                  <Link href="/markets/sri-lanka" onClick={() => setMobileMenuOpen(false)} className="hover:text-sfa-blue">
+                    Sri Lanka
+                  </Link>
+                </div>
                 <button type="button" onClick={() => scrollTo("team")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR TEAM
                 </button>
@@ -428,6 +489,20 @@ export default function HomeClient({
                     </a>
                   </div>
                 )}
+                <div className="mt-2.5 flex justify-center md:justify-start">
+                  <Link
+                    href={
+                      office.country.toUpperCase().includes("UAE") || office.country.toUpperCase().includes("DUBAI")
+                        ? "/markets/uae"
+                        : office.country.toUpperCase().includes("MALDIVES")
+                        ? "/markets/maldives"
+                        : "/markets/sri-lanka"
+                    }
+                    className="inline-flex items-center gap-1.5 text-[11px] font-avenir font-bold tracking-[0.15em] uppercase text-sfa-cyan hover:text-white transition drop-shadow-sm"
+                  >
+                    <span>EXPLORE MARKET &rarr;</span>
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -626,12 +701,20 @@ export default function HomeClient({
                     </p>
                   </div>
 
-                  <button
-                    onClick={() => setValuationOpen(true)}
-                    className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-[#00bdf1] uppercase hover:underline cursor-pointer w-fit mt-6 lg:mt-0"
-                  >
-                    <span>{cms.services.valuations.ctaText} &rarr;</span>
-                  </button>
+                  <div className="flex flex-wrap items-center gap-6 mt-6 lg:mt-0">
+                    <button
+                      onClick={() => setValuationOpen(true)}
+                      className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-[#00bdf1] uppercase hover:underline cursor-pointer w-fit"
+                    >
+                      <span>{cms.services.valuations.ctaText} &rarr;</span>
+                    </button>
+                    <Link
+                      href="/services/valuation-advisory"
+                      className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-white uppercase hover:text-[#00bdf1] hover:underline w-fit"
+                    >
+                      <span>EXPLORE SERVICE &rarr;</span>
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Right Column (Categories) */}
@@ -713,7 +796,12 @@ export default function HomeClient({
                     ))}
                   </div>
 
-                  <div aria-hidden="true" />
+                  <Link
+                    href="/services/occupier-services"
+                    className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-sfa-navy uppercase hover:text-primary hover:underline w-fit mt-6 lg:mt-0"
+                  >
+                    <span>EXPLORE OCCUPIER SERVICES &rarr;</span>
+                  </Link>
                 </div>
 
                 {/* Right Column Spacer / Mobile Image */}
@@ -782,7 +870,12 @@ export default function HomeClient({
                     {cms.services.capitalMarkets.leftSummary}
                   </p>
 
-                  <div aria-hidden="true" />
+                  <Link
+                    href="/services/capital-markets"
+                    className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-[#00bdf1] uppercase hover:underline w-fit mt-6 lg:mt-0"
+                  >
+                    <span>EXPLORE CAPITAL MARKETS &rarr;</span>
+                  </Link>
                 </div>
 
                 {/* Right Column (Details) */}
@@ -875,7 +968,12 @@ export default function HomeClient({
                     </p>
                   </div>
 
-                  <div aria-hidden="true" />
+                  <Link
+                    href="/services/research-services"
+                    className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-sfa-navy uppercase hover:text-primary hover:underline w-fit mt-6 lg:mt-0"
+                  >
+                    <span>EXPLORE RESEARCH SERVICES &rarr;</span>
+                  </Link>
                 </div>
 
                 {/* Right Column Spacer / Mobile Image */}

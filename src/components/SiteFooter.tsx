@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 const SERVICES = [
-  "Valuation & Advisory",
-  "Occupier Services",
-  "Capital Markets",
-  "Research Services",
+  { label: "Valuation & Advisory", href: "/services/valuation-advisory" },
+  { label: "Occupier Services", href: "/services/occupier-services" },
+  { label: "Capital Markets", href: "/services/capital-markets" },
+  { label: "Research Services", href: "/services/research-services" },
 ];
 
 const SECTORS = [
@@ -16,9 +16,9 @@ const SECTORS = [
 ];
 
 const MARKETS = [
-  "United Arab Emirates",
-  "Maldives",
-  "Sri Lanka",
+  { label: "United Arab Emirates", href: "/markets/uae" },
+  { label: "Maldives", href: "/markets/maldives" },
+  { label: "Sri Lanka", href: "/markets/sri-lanka" },
 ];
 
 const CONTACT_OFFICES: Array<{
@@ -67,11 +67,10 @@ const CONTACT_OFFICES: Array<{
  * When `onServiceClick` is provided (home page), service links open the matching
  * service tab in place; otherwise they link back to the home page services section.
  */
-export default function SiteFooter({
-  onServiceClick,
-}: {
+export default function SiteFooter(_props: {
   onServiceClick?: (idx: number) => void;
 }) {
+  void _props;
   return (
     <footer className="bg-primary text-white pt-16 pb-8 border-t border-white/10">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-0 items-start mb-12 text-center md:text-left">
@@ -100,17 +99,11 @@ export default function SiteFooter({
         <div className="lg:col-span-2 lg:border-l lg:border-white/20 lg:pl-6 space-y-4">
           <h4 className="text-base font-montserrat font-medium text-white">Services</h4>
           <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
-            {SERVICES.map((label, idx) => (
-              <li key={label}>
-                {onServiceClick ? (
-                  <button onClick={() => onServiceClick(idx)} className="hover:text-white transition cursor-pointer text-center md:text-left">
-                    {label}
-                  </button>
-                ) : (
-                  <Link href="/#offer" className="hover:text-white transition cursor-pointer">
-                    {label}
-                  </Link>
-                )}
+            {SERVICES.map((service) => (
+              <li key={service.href}>
+                <Link href={service.href} className="hover:text-white transition cursor-pointer">
+                  {service.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -131,9 +124,9 @@ export default function SiteFooter({
           <h4 className="text-base font-montserrat font-medium text-white">Markets</h4>
           <ul className="space-y-2 text-sm font-avenir font-medium text-[#0c2340]">
             {MARKETS.map((market) => (
-              <li key={market}>
-                <Link href="/#markets" className="hover:text-white transition cursor-pointer">
-                  {market}
+              <li key={market.href}>
+                <Link href={market.href} className="hover:text-white transition cursor-pointer">
+                  {market.label}
                 </Link>
               </li>
             ))}

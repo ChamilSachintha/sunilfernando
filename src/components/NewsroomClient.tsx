@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-// import Link from "next/link";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
@@ -195,7 +195,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
       } catch {
         // Ignore storage errors
       }
-      window.location.href = "/";
+      window.location.assign("/");
     }
   };
 
@@ -204,14 +204,14 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
       {/* 1. Main Header (identical to Homepage navbar) */}
       <header className="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-sfa-grey/10 shadow-sm transition-all">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex justify-between items-center">
-          <a href="/" className="cursor-pointer flex items-center">
+          <Link href="/" className="cursor-pointer flex items-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={cms.settings.logoUrl || "/logo.png"}
               alt="Sunil Fernando & Associates Logo"
               className="h-16 sm:h-20 py-0 block object-contain"
             />
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
