@@ -712,12 +712,6 @@ export default function HomeClient({
                   </div>
 
                   <div className="flex flex-wrap items-center gap-6 mt-6 lg:mt-0">
-                    <button
-                      onClick={() => setValuationOpen(true)}
-                      className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-[#00bdf1] uppercase hover:underline cursor-pointer w-fit"
-                    >
-                      <span>{cms.services.valuations.ctaText} &rarr;</span>
-                    </button>
                     <Link
                       href="/services/valuation-advisory"
                       className="inline-flex items-center gap-2 text-xs font-avenir font-black tracking-widest text-white uppercase hover:text-[#00bdf1] hover:underline w-fit"
