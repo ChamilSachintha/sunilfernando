@@ -229,7 +229,7 @@ export default function NewsroomClient({ content }: { content: SanitySiteContent
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-7 font-sans text-[11px] xl:text-sm font-semibold uppercase tracking-wider xl:tracking-widest whitespace-nowrap text-sfa-navy/80">
+          <nav className="hidden lg:flex items-center gap-7 font-sans text-sm font-semibold uppercase tracking-widest text-sfa-navy/80">
             {NAV_LINKS.map((link) =>
               link.label === "MARKETS" ? (
                 <div key={link.label} className="relative group py-2">
