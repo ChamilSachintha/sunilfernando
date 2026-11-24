@@ -278,12 +278,13 @@ export default function HomeClient({
                 </div>
               </div>
             </div>
-            <Link
+            {/* Newsroom hidden until content is ready */}
+            {/* <Link
               href="/newsroom"
               className="cursor-pointer hover:text-sfa-blue transition"
             >
               NEWSROOM
-            </Link>
+            </Link> */}
             <button
               onClick={() => scrollTo("clients")}
               className={`cursor-pointer hover:text-sfa-blue transition ${activeSection === "clients" || activeSection === "network" ? "text-sfa-blue font-semibold" : ""}`}
@@ -363,9 +364,10 @@ export default function HomeClient({
                     Research Services
                   </Link>
                 </div>
-                <Link href="/newsroom" onClick={() => setMobileMenuOpen(false)} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
+                {/* Newsroom hidden until content is ready */}
+                {/* <Link href="/newsroom" onClick={() => setMobileMenuOpen(false)} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   NEWSROOM
-                </Link>
+                </Link> */}
                 <button type="button" onClick={() => scrollTo("clients")} className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue">
                   OUR NETWORK
                 </button>

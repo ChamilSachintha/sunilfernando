@@ -156,12 +156,13 @@ export default function ServicePageClient({
               </div>
             </div>
 
-            <Link
+            {/* Newsroom hidden until content is ready */}
+            {/* <Link
               href="/newsroom"
               className="cursor-pointer hover:text-sfa-blue transition uppercase tracking-widest"
             >
               NEWSROOM
-            </Link>
+            </Link> */}
 
             <button
               type="button"
@@ -255,13 +256,14 @@ export default function ServicePageClient({
                     ))}
                   </div>
                 </div>
-                <Link
+                {/* Newsroom hidden until content is ready */}
+                {/* <Link
                   href="/newsroom"
                   onClick={() => setMobileMenuOpen(false)}
                   className="cursor-pointer text-left py-2 border-b border-sfa-grey/5 hover:text-sfa-blue"
                 >
                   NEWSROOM
-                </Link>
+                </Link> */}
                 <button
                   type="button"
                   onClick={() => navigateToHomeSection("team")}
