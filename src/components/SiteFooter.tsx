@@ -101,28 +101,30 @@ export default function SiteFooter(_props: {
         </div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-0 items-start mb-12 text-center md:text-left">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-0 items-stretch mb-12 text-center md:text-left">
         {/* Column 1: SFA identity & Reg info */}
-        <div className="lg:col-span-3 space-y-6 lg:pr-6 flex flex-col items-center md:items-start">
-          <h3 className="text-xl sm:text-2xl font-montserrat font-medium tracking-[0.15em] uppercase leading-tight text-white">
-            SUNIL FERNANDO &amp;
-            <span className="block mt-1">ASSOCIATES</span>
-          </h3>
+        <div className="lg:col-span-3 lg:pr-6 flex flex-col items-center md:items-start h-full">
+          <div className="space-y-6 flex flex-col items-center md:items-start">
+            <h3 className="text-xl sm:text-2xl font-montserrat font-medium tracking-[0.15em] uppercase leading-tight text-white">
+              SUNIL FERNANDO &amp;
+              <span className="block mt-1">ASSOCIATES</span>
+            </h3>
 
-          <p className="text-sm font-avenir tracking-wide text-white uppercase">
-            Real Estate Advisory Since 1999
-          </p>
+            <p className="text-sm font-avenir tracking-wide text-white uppercase">
+              Real Estate Advisory Since 1999
+            </p>
 
-          <p className="text-sm font-avenir leading-relaxed text-[#0c2340] text-center md:text-left md:text-justify font-medium max-w-md md:max-w-none">
-            Sri Lanka&apos;s largest independent real estate consultancy delivering internationally accepted valuation and advisory services across Sri Lanka, the Maldives, and the UAE.
-          </p>
+            <p className="text-sm font-avenir leading-relaxed text-[#0c2340] text-center md:text-left md:text-justify font-medium max-w-md md:max-w-none">
+              Sri Lanka&apos;s largest independent real estate consultancy delivering internationally accepted valuation and advisory services across Sri Lanka, the Maldives, and the UAE.
+            </p>
 
-          <div className="flex justify-center md:justify-start gap-2 pt-2">
-            <span className="border border-white/40 px-3 py-1 text-[10px] font-barlow font-normal tracking-widest text-white">RICS</span>
-            <span className="border border-white/40 px-3 py-1 text-[10px] font-barlow font-normal tracking-widest text-white">IVSL</span>
+            <div className="flex justify-center md:justify-start gap-2 pt-2">
+              <span className="border border-white/40 px-3 py-1 text-[10px] font-barlow font-normal tracking-widest text-white">RICS</span>
+              <span className="border border-white/40 px-3 py-1 text-[10px] font-barlow font-normal tracking-widest text-white">IVSL</span>
+            </div>
           </div>
 
-          <div className="pt-1">
+          <div className="mt-auto pt-6">
             <a
               href="https://www.linkedin.com/company/sunil-fernando-associates/"
               target="_blank"
