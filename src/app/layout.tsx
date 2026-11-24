@@ -22,7 +22,7 @@ const poppins = Poppins({
   weight: ["400"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sunilfernando.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.sunilfernando.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
