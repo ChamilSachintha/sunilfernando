@@ -422,7 +422,7 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
   teamMembers: [
     {
       _id: "team-1",
-      name: "Mr. Sunil Fernando",
+      name: "Sunil Fernando",
       designation: "Founder & Chairman",
       credentials: "FIV(SL), FRICS",
       image: "/sunil-fernando.png",

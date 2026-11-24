@@ -479,7 +479,7 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
               const lowerName = (m.name || "").toLowerCase();
               const profileOverride = lowerName.includes("sunil fernando")
                 ? {
-                    name: "Mr. Sunil Fernando",
+                    name: "Sunil Fernando",
                     designation: "Founder & Chairman",
                     credentials: "FIV(SL), FRICS",
                     linkedinUrl:
