@@ -168,8 +168,8 @@ export const DEFAULT_SITE_CONTENT: SanitySiteContent = {
         flagUrl: "/flag-ae.png",
         address:
           "Office #1029, Building B-2, Level 1, Dubai CommerCity, Umm Ramool, Dubai",
-        phoneDisplay: "+971 4 894 2444",
-        phoneHref: "+97148942444",
+        phoneDisplay: "+971 508947837",
+        phoneHref: "+971508947837",
         email: "enquiries@sunilfernando.com",
       },
       {

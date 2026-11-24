@@ -308,6 +308,8 @@ export async function getSiteContent(): Promise<SanitySiteContent> {
                 if (countryUpper.includes("UAE") || countryUpper.includes("DUBAI")) {
                   return {
                     ...office,
+                    phoneDisplay: "+971 508947837",
+                    phoneHref: "+971508947837",
                     email: office.email || "enquiries@sunilfernando.com",
                   };
                 }
