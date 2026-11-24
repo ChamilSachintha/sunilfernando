@@ -1,15 +1,3 @@
 {
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "sunilfernando.vercel.app"
-        }
-      ],
-      "destination": "https://www.sunilfernando.com/$1",
-      "statusCode": 301
-    }
-  ]
+  "redirects": []
 }

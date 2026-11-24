@@ -18,17 +18,14 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: "/:path*",
-        has: [
-          {
-            type: "host",
-            value: "sunilfernando.vercel.app",
-          },
-        ],
-        destination: "https://www.sunilfernando.com/:path*",
-        statusCode: 301,
-      },
+      // Temporarily disabled for testing on https://sunilfernando.vercel.app
+      // Re-enable before final GoDaddy launch:
+      // {
+      //   source: "/:path*",
+      //   has: [{ type: "host", value: "sunilfernando.vercel.app" }],
+      //   destination: "https://www.sunilfernando.com/:path*",
+      //   statusCode: 301,
+      // },
       {
         source: "/studio",
         destination: "/admin",
